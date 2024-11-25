@@ -1,0 +1,30 @@
+# config/config.yaml
+models:
+  idea_generation:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.7
+  
+  initial_critique:
+    provider: openai
+    model: gpt-4-turbo-preview
+    max_tokens: 4000
+    temperature: 0.7
+
+  proposal_development:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.7
+
+paths:
+  outputs: ./outputs
+  generated_topics: generated_topics.json
+  topics_culled: topics_culled.json
+  detailed_proposals: detailed_proposals.json
+
+parameters:
+  num_initial_topics: 8
+  max_develop_topics: 2
+  max_possible_topics: 1
