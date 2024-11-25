@@ -31,10 +31,13 @@ philosophy_pipeline/
 
 ## Usage
 
-To generate topics:
+Generate and evaluate topics:
 ```bash
+# Generate initial topics
 python -m src.stages.generate
-```
+
+# Evaluate and cull topics
+python -m src.stages.evaluate
 
 ## Development
 
