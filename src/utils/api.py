@@ -5,6 +5,9 @@ import anthropic
 from typing import Dict, Any
 import yaml
 from dotenv import load_dotenv
+import time
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type  # Added import
+
 
 def load_config() -> Dict[str, Any]:
     """Load configuration from yaml file"""
@@ -33,6 +36,11 @@ class APIHandler:
         # Load config
         self.config = load_config()
 
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=1, min=4, max=10),
+        retry=retry_if_exception_type(anthropic.InternalServerError)
+    )
     def make_api_call(self, stage: str, prompt: str) -> str:
         """Make API call to appropriate provider based on stage"""
         model_config = self.config['models'][stage]

@@ -6,25 +6,55 @@ models:
     max_tokens: 8192
     temperature: 0.7
   
-  initial_critique:
+  topic_analysis:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.5  # Lower temperature for more focused analysis
+  
+  abstract_development:
     provider: openai
     model: gpt-4-turbo-preview
     max_tokens: 4000
     temperature: 0.7
+    
+  argument_development:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.6
 
-  proposal_development:
+  outline_assembly:
+    provider: openai
+    model: gpt-4-turbo-preview
+    max_tokens: 4000
+    temperature: 0.6
+    
+  structure_planning:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.6
+    
+  section_development:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
     temperature: 0.7
 
 paths:
-  outputs: ./outputs
+  base_dir: ./outputs
   generated_topics: generated_topics.json
   topics_culled: topics_culled.json
-  detailed_proposals: detailed_proposals.json
+  topic_analysis: topic_analysis.json
+  abstracts: topic_abstracts.json
+  arguments: argument_development.json
+  outlines: detailed_outlines.json
+  final_selection: final_selection.json
 
 parameters:
   num_initial_topics: 8
-  max_develop_topics: 2
-  max_possible_topics: 1
+  max_selected_topics: 3
+  abstract_length: 300
+  outline_sections: 6  # approximate number of major sections
+  development_stages: 5  # number of API calls per topic
