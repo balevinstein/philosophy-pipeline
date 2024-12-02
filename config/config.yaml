@@ -41,6 +41,31 @@ models:
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
     temperature: 0.7
+    
+  final_selection:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.5  # Lower temperature for more focused selection
+    
+  outline_improvement:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.7
+    
+  outline_critique:
+    provider: openai
+    model: o1-preview  # Use o1 for critical analysis
+    max_tokens: 20000
+    temperature: 1
+    
+  outline_refinement:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.6
+
 
 paths:
   base_dir: ./outputs
@@ -51,6 +76,8 @@ paths:
   arguments: argument_development.json
   outlines: detailed_outlines.json
   final_selection: final_selection.json
+  outline_development_state: outline_development_state.json
+  outline_development: current_outline.md
 
 parameters:
   num_initial_topics: 8
@@ -58,3 +85,4 @@ parameters:
   abstract_length: 300
   outline_sections: 6  # approximate number of major sections
   development_stages: 5  # number of API calls per topic
+  outline_development_cycles: 3  

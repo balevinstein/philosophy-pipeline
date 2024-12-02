@@ -1,6 +1,7 @@
 # src/stages/development.py
 
 import json
+from datetime import datetime
 from typing import Dict, Any, List
 from .base import BaseStage
 from ..prompts.development import DevelopmentPrompts
@@ -21,7 +22,7 @@ class DevelopmentStage(BaseStage):
             "topics": topics,
             "culling": culling
         }
-
+    
     def run_topic_analysis(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """Run the initial topic analysis"""
         try:
@@ -61,7 +62,7 @@ class DevelopmentStage(BaseStage):
         except Exception as e:
             print(f"\nError in topic analysis:\nType: {type(e)}\nMessage: {str(e)}")
             return None
-
+    
     def run_abstract_development(self, analysis_result: Dict[str, Any]) -> Dict[str, Any]:
         """Develop abstracts for selected topics"""
         try:
@@ -100,21 +101,8 @@ class DevelopmentStage(BaseStage):
             print(f"\nError in abstract development:\nType: {type(e)}\nMessage: {str(e)}")
             return None
 
- 
-    def save_stage_output(self, output: Dict[str, Any]) -> None:
-        """Save complete development results"""
-        try:
-            self.json_handler.save_json(
-                output,
-                self.get_full_path('final_selection')
-            )
-            print(f"\nDevelopment results saved to {self.get_full_path('final_selection')}")
-        except Exception as e:
-            print(f"Error saving development results: {e}")
-
-
     def run_structure_planning(self, abstract_result: Dict[str, Any]) -> Dict[str, Any]:
-        """Run the structure planning phase"""
+        """Run the structure planning phase for all papers"""
         try:
             print("\nStarting structure planning...")
             
@@ -141,11 +129,11 @@ class DevelopmentStage(BaseStage):
             
             # Print summary
             print("\nStructure Planning Summary:")
-            paper = structure_result["paper_structure"]
-            print(f"\n- {paper['title']}")
-            print("  Sections:")
-            for section in paper['sections']:
-                print(f"    • {section['section_title']} ({section['target_length']} words)")
+            for paper in structure_result["paper_structures"]:
+                print(f"\n- {paper['title']}")
+                print("  Sections:")
+                for section in paper['sections']:
+                    print(f"    • {section['section_title']} ({section['target_length']} words)")
             
             return structure_result
             
@@ -154,49 +142,116 @@ class DevelopmentStage(BaseStage):
             return None
 
     def run_section_development(self, structure_result: Dict[str, Any]) -> Dict[str, Any]:
-        """Run the section development phase"""
+        """Run the section development phase for all papers"""
         try:
             print("\nStarting section development...")
-            paper_sections = []
-            previous_sections = ""
+            section_results = {"paper_developments": []}
             
-            paper = structure_result["paper_structure"]
-            
-            for section in paper['sections']:
-                # Make API call for each section
-                response_text = self.api_handler.make_api_call(
-                    stage='section_development',
-                    prompt=self.prompt_manager.section_development.get_prompt(
-                        structure_json=json.dumps(paper, indent=2),
-                        section_focus=section['section_title'],
-                        previous_sections=previous_sections
-                    )
-                )
+            # Process each paper
+            for paper in structure_result["paper_structures"]:
+                paper_sections = []
+                previous_sections = ""
                 
-                # Add section content to previous sections for context
-                previous_sections += f"\n\n{response_text}"
-                paper_sections.append({
-                    "section_title": section['section_title'],
-                    "content": response_text
+                # Process each section within the paper
+                for section in paper['sections']:
+                    response_text = self.api_handler.make_api_call(
+                        stage='section_development',
+                        prompt=self.prompt_manager.section_development.get_prompt(
+                            structure_json=json.dumps(paper, indent=2),
+                            section_focus=section['section_title'],
+                            previous_sections=previous_sections
+                        )
+                    )
+                    
+                    # Add section content to previous sections for context
+                    previous_sections += f"\n\n{response_text}"
+                    paper_sections.append({
+                        "section_title": section['section_title'],
+                        "content": response_text
+                    })
+                
+                # Add completed paper development
+                section_results["paper_developments"].append({
+                    "title": paper['title'],
+                    "sections": paper_sections
                 })
             
-            section_results = {
-                paper['title']: paper_sections
+            # Add comparative analysis
+            section_results["comparative_analysis"] = {
+                "relative_development": [],
+                "synergies": [],
+                "distinct_contributions": []
             }
             
             # Save section results
             self.json_handler.save_json(
-                {"section_developments": section_results},
+                section_results,
                 self.config['paths']['arguments']
             )
             
             print("\nSection Development Complete")
-            return {"section_developments": section_results}
+            # Print summary of developed papers
+            for paper_dev in section_results["paper_developments"]:
+                print(f"\n- {paper_dev['title']}")
+                print("  Sections developed:")
+                for section in paper_dev['sections']:
+                    print(f"    • {section['section_title']}")
+            
+            return section_results
             
         except Exception as e:
             print(f"\nError in section development:\nType: {type(e)}\nMessage: {str(e)}")
             return None
-    
+        
+    def run_final_selection(self, analysis_result: Dict[str, Any], 
+                       abstract_result: Dict[str, Any],
+                       structure_result: Dict[str, Any],
+                       section_result: Dict[str, Any]) -> Dict[str, Any]:
+        """Run the final selection phase"""
+        try:
+            print("\nStarting final selection...")
+            
+            # Prepare inputs as JSON strings
+            analysis_json = json.dumps(analysis_result, indent=2)
+            abstracts_json = json.dumps(abstract_result, indent=2)
+            outlines_json = json.dumps(structure_result, indent=2)
+            developments_json = json.dumps(section_result, indent=2)
+            
+            # Make API call for final selection
+            response_text = self.api_handler.make_api_call(
+                stage='final_selection',
+                prompt=self.prompt_manager.final_selection.get_prompt(
+                    analysis_json=analysis_json,
+                    abstracts_json=abstracts_json,
+                    outlines_json=outlines_json,
+                    developments_json=developments_json
+                )
+            )
+            
+            # Process response
+            cleaned_content = self.json_handler.clean_json_string(response_text)
+            selection_result = json.loads(cleaned_content)
+            
+            # Save selection results
+            self.json_handler.save_json(
+                selection_result,
+                self.config['paths']['final_selection']
+            )
+            
+            # Print summary
+            print(f"\nFinal Selection:")
+            print(f"Selected Paper: {selection_result['selected_paper']['title']}")
+            print("\nKey Strengths:")
+            for strength in selection_result['selected_paper']['key_strengths']:
+                print(f"  • {strength}")
+            print(f"\nSelection Confidence: {selection_result['selection_confidence']}")
+            
+            return selection_result
+            
+        except Exception as e:
+            print(f"\nError in final selection:\nType: {type(e)}\nMessage: {str(e)}")
+            return None
+
     def run(self) -> Dict[str, Any]:
         """Run the full development stage"""
         try:
@@ -214,26 +269,59 @@ class DevelopmentStage(BaseStage):
             if not abstract_result:
                 return None
             
-            # Run structure planning
+            # Run structure planning for all papers
             structure_result = self.run_structure_planning(abstract_result)
             if not structure_result:
                 return None
             
-            # Run section development
+            # Run section development for all papers
             section_result = self.run_section_development(structure_result)
             if not section_result:
                 return None
             
-            return {
+              
+            # Run final selection
+            selection_result = self.run_final_selection(
+                    analysis_result=analysis_result,
+                    abstract_result=abstract_result,
+                    structure_result=structure_result,
+                    section_result=section_result
+                )
+            if not selection_result:
+                return None
+                
+            final_result = {
                 "analysis": analysis_result,
                 "abstracts": abstract_result,
                 "structure": structure_result,
-                "sections": section_result
+                "sections": section_result,
+                "final_selection": selection_result,
+                "development_summary": {
+                    "papers_developed": len(section_result["paper_developments"]),
+                    "selected_paper": selection_result["selected_paper"]["title"],
+                    "timestamp": datetime.now().isoformat(),
+                    "development_notes": "Complete development through selection"
+                }
             }
             
+            self.save_stage_output(final_result)
+            return final_result
+                
         except Exception as e:
             print(f"\nError in development stage:\nType: {type(e)}\nMessage: {str(e)}")
             return None
+       
+        
+    def save_stage_output(self, output: Dict[str, Any]) -> None:
+        """Save complete development results"""
+        try:
+            self.json_handler.save_json(
+                output,
+                self.get_full_path('final_selection')
+            )
+            print(f"\nDevelopment results saved to {self.get_full_path('final_selection')}")
+        except Exception as e:
+            print(f"Error saving development results: {e}")
 
 if __name__ == "__main__":
     developer = DevelopmentStage()

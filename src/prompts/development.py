@@ -3,14 +3,14 @@ from datetime import datetime
 from typing import Dict, Any, Optional
 
 class TopicAnalysisPrompt:
-    """Initial topic analysis and selection"""
+    """Initial topic analysis and selection of topics for full development"""
     
     def __init__(self):
         self.CONTEXT = """
 CONTEXT:
-You are part of an autonomous philosophical research pipeline where multiple LLMs collaborate to write a paper for Analysis journal. Your task is to select and begin developing AT MOST three topics from the provided list that are most promising for AI development.
+You are part of an autonomous philosophical research pipeline where multiple LLMs collaborate to write papers for Analysis journal. Your task is to identify AT MOST THREE topics that warrant full development and detailed comparison.
 
-Previous stages have generated topics and provided initial evaluation. However, you should make your own assessment, treating previous evaluations as input but not as binding."""
+While only one paper will ultimately be chosen, at this stage we need multiple promising candidates for thorough development and comparison. Previous stages have generated topics and provided initial evaluation, but you should make your own assessment, treating previous evaluations as input but not as binding."""
 
         self.SELECTION_CRITERIA = """
 SELECTION CRITERIA:
@@ -29,10 +29,11 @@ SELECTION CRITERIA:
    - Manageable literature engagement
    - Identifiable potential objections and responses
    
-4. Risk Assessment
-   - Likelihood of generating genuine insight
-   - Potential pitfalls in development
-   - Distinctness from existing work"""
+4. Comparative Assessment Potential
+   - Clear criteria for evaluation
+   - Measurable progress indicators
+   - Comparable development challenges
+   - Features that will enable informed final selection"""
 
         self.OUTPUT_FORMAT = """
 Your response must be a JSON object with this structure:
@@ -71,12 +72,17 @@ Your response must be a JSON object with this structure:
                 "potential_failures": ["string"],
                 "mitigation_strategies": ["string"],
                 "success_criteria": ["string"]
+            },
+            "selection_metrics": {
+                "philosophical_novelty": "string",
+                "technical_feasibility": "string",
+                "development_clarity": "string"
             }
         }
     ],
     "selection_rationale": "string",
     "development_priority": "string",
-    "cross_topic_synergies": "string"
+    "comparative_assessment_criteria": ["string"]
 }"""
 
     def get_prompt(self, topics_json: str, culling_json: str) -> str:
@@ -95,7 +101,7 @@ Previously generated topics:
 Previous evaluation:
 {culling_json}
 
-Analyze the topics carefully and select AT MOST THREE that are most promising for AI development. Consider both the philosophical merit and the practical feasibility for AI development. Your selection may differ from previous evaluations if you identify stronger candidates."""
+Analyze the topics carefully and select AT MOST THREE that warrant full development. Consider both philosophical merit and practical feasibility, while ensuring selected topics can be meaningfully compared for final selection. Your selection may differ from previous evaluations if you identify stronger candidates."""
 
 class DevelopmentMetadata:
     """Tracks the development state and history of each topic"""
@@ -117,7 +123,8 @@ class DevelopmentMetadata:
             "quality_metrics": {
                 "novelty_score": 0.0,
                 "coherence_score": 0.0,
-                "development_potential": 0.0
+                "development_potential": 0.0,
+                "implementation_clarity": 0.0
             },
             "revision_tracking": {
                 "major_revisions": [],
@@ -132,7 +139,23 @@ class AbstractDevelopmentPrompt:
     def __init__(self):
         self.CONTEXT = """
 CONTEXT:
-You are developing detailed abstracts for philosophical papers as part of an AI research pipeline. Each abstract should clearly present the paper's thesis, approach, and contribution while setting up the argument structure."""
+You are developing detailed abstracts for philosophical papers as part of an AI research pipeline. Each abstract should clearly present the paper's thesis, approach, and contribution while setting up the argument structure.
+
+DEVELOPMENT PRINCIPLES:
+1. Equal Depth
+   - Develop each abstract to full potential
+   - Maintain consistent quality across all abstracts
+   - Each abstract deserves thorough treatment for fair comparison
+
+2. Independent Development
+   - Each abstract developed fully on its own merits
+   - Clear documentation of unique strengths and challenges
+   - Thorough exploration of argument potential
+
+3. Selection Relevance
+   - Note features that affect development viability
+   - Track potential implementation challenges
+   - Document special requirements or opportunities"""
 
         self.REQUIREMENTS = """
 ABSTRACT REQUIREMENTS:
@@ -144,7 +167,8 @@ ABSTRACT REQUIREMENTS:
    - Key moves/approach
    - Contribution/significance
 3. Must integrate with provided development guidance
-4. Should set up clear expectations for argument structure"""
+4. Should set up clear expectations for argument structure
+5. Must enable comparative assessment"""
 
         self.OUTPUT_FORMAT = """
 Your response must be a JSON object with this structure:
@@ -159,10 +183,20 @@ Your response must be a JSON object with this structure:
             "development_notes": {
                 "crucial_sections": ["string"],
                 "potential_challenges": ["string"],
-                "resolution_strategies": ["string"]
+                "resolution_strategies": ["string"],
+                "development_features": {
+                    "technical_requirements": "string",
+                    "argument_complexity": "string",
+                    "literature_demands": "string"
+                }
             }
         }
-    ]
+    ],
+    "development_assessment": {
+        "relative_technical_demands": ["string"],
+        "implementation_challenges": ["string"],
+        "distinctive_features": ["string"]
+    }
 }"""
 
     def get_prompt(self, analysis_json: str) -> str:
@@ -177,10 +211,7 @@ Your response must be a JSON object with this structure:
 Previous analysis:
 {analysis_json}
 
-Develop detailed abstracts that build on the previous analysis while setting up clear paths for argument development."""
-
-
-
+Develop detailed abstracts for each selected topic, ensuring thorough and equal development to enable informed comparison. Each abstract should stand on its own merits while providing clear indicators for comparative assessment."""
 
 class StructurePlanningPrompt:
     """First stage: High-level outline planning"""
@@ -188,7 +219,23 @@ class StructurePlanningPrompt:
     def __init__(self):
         self.CONTEXT = """
 CONTEXT:
-You are part of an autonomous philosophical research pipeline where multiple LLMs collaborate to write papers for Analysis journal. Your task is to develop a detailed structural plan that will guide section-by-section development.
+You are part of an autonomous philosophical research pipeline where multiple LLMs collaborate to write papers for Analysis journal. Your task is to develop detailed structural plans for ALL topics that have reached this stage.
+
+DEVELOPMENT PRINCIPLES:
+1. Equal Depth
+   - Develop structural plans for all topics to same level
+   - Maintain consistent detail and scope
+   - Enable fair comparison through parallel development
+
+2. Independent Development
+   - Each topic planned on its own merits
+   - Full exploration of structural possibilities
+   - Clear tracking of unique requirements
+
+3. Selection Relevance
+   - Note features affecting final viability
+   - Track implementation challenges
+   - Document development requirements
 
 Analysis is one of the most prestigious journals in analytic philosophy. Successful Analysis papers typically:
 - Make a single, clear philosophical contribution
@@ -230,67 +277,100 @@ OUTLINE REQUIREMENTS:
    - Rigorous but accessible argumentation
    - Clear advancement over existing work
    - Philosophical significance evident
-   - Manageable scope"""
+   - Manageable scope
+
+4. Development Assessment
+   - Track technical requirements
+   - Note development challenges
+   - Identify unique features"""
 
         self.OUTPUT_FORMAT = """
 Your response must be a JSON object with this structure:
 {
-    "paper_structure": {
-        "title": "string",
-        "core_thesis": "string",
-        "target_audience": "string",
-        "sections": [
-            {
-                "section_title": "string",
-                "target_length": "integer",
-                "key_claims": ["string"],
-                "required_setup": ["string"],
-                "core_moves": ["string"],
-                "dependencies": ["string"],
-                "technical_requirements": ["string"],
-                "literature_engagement": ["string"],
-                "potential_pitfalls": ["string"]
+    "paper_structures": [
+        {
+            "title": "string",
+            "core_thesis": "string",
+            "target_audience": "string",
+            "sections": [
+                {
+                    "section_title": "string",
+                    "target_length": "integer",
+                    "key_claims": ["string"],
+                    "required_setup": ["string"],
+                    "core_moves": ["string"],
+                    "dependencies": ["string"],
+                    "technical_requirements": ["string"],
+                    "literature_engagement": ["string"],
+                    "potential_pitfalls": ["string"]
+                }
+            ],
+            "development_sequence": ["string"],
+            "integration_points": {
+                "literature": ["string"],
+                "formal_elements": ["string"],
+                "examples": ["string"]
+            },
+            "word_budget": {
+                "introduction": "integer",
+                "setup": "integer",
+                "main_argument": "integer",
+                "objections": "integer",
+                "conclusion": "integer"
+            },
+            "development_assessment": {
+                "technical_complexity": "string",
+                "argument_clarity": "string",
+                "implementation_challenges": "string"
             }
-        ],
-        "development_sequence": ["string"],
-        "integration_points": {
-            "literature": ["string"],
-            "formal_elements": ["string"],
-            "examples": ["string"]
-        },
-        "word_budget": {
-            "introduction": "integer",
-            "setup": "integer",
-            "main_argument": "integer",
-            "objections": "integer",
-            "conclusion": "integer"
         }
+    ],
+    "comparative_notes": {
+        "relative_complexity": ["string"],
+        "development_challenges": ["string"],
+        "distinctive_features": ["string"]
     }
 }"""
 
     def get_prompt(self, abstracts_json: str) -> str:
-        return f"""You are developing a detailed structural plan for Analysis journal papers.
+        return f"""You are developing detailed structural plans for Analysis journal papers.
 
-        {self.CONTEXT}
+{self.CONTEXT}
 
-        {self.REQUIREMENTS}
+{self.REQUIREMENTS}
 
-        {self.OUTPUT_FORMAT}
+{self.OUTPUT_FORMAT}
 
-        Previously developed abstracts:
-        {abstracts_json}
+Previously developed abstracts:
+{abstracts_json}
 
-        Develop a detailed structural plan for each abstract, ensuring clear progression and efficient word usage."""
-
+Develop detailed structural plans for all topics, ensuring equal depth of development while maintaining focus on features relevant to final selection."""
 
 class SectionDevelopmentPrompt:
-
     """Second stage: Detailed section development"""
     
     def __init__(self):
         self.CONTEXT = """
 CONTEXT:
-You are developing detailed content for specific sections of an Analysis paper as part of an autonomous LLM research pipeline. Your task is to transform the structural plan into detailed, publication-ready section content.
+You are part of an autonomous philosophical research pipeline where multiple LLMs collaborate to write papers for Analysis journal. Your task is to develop detailed section content for ALL topics that have reached this stage.
+
+Each topic deserves full development to enable informed final selection. While earlier stages appropriately culled less promising topics, remaining topics should be developed with equal thoroughness to reveal their full potential.
+
+DEVELOPMENT PRINCIPLES:
+1. Equal Depth
+   - Develop all sections to full potential
+   - Maintain consistent quality
+   - Enable fair comparison
+
+2. Independent Development
+   - Each paper developed on its own merits
+   - Clear tracking of progress
+   - Full exploration of argument potential
+
+3. Selection Relevance
+   - Note features affecting viability
+   - Track development challenges
+   - Document special requirements
 
 Key Considerations:
 1. Analysis Style
@@ -327,10 +407,45 @@ SECTION DEVELOPMENT REQUIREMENTS:
    - Precise philosophical language
    - Clear signposting
    - Efficient prose
-   - Natural transitions"""
+   - Natural transitions
+
+4. Assessment Preparation
+   - Track development progress
+   - Note implementation challenges
+   - Document special features"""
+
+        self.OUTPUT_FORMAT = """
+Your response must be a JSON object with this structure:
+{
+    "paper_developments": [
+        {
+            "title": "string",
+            "sections": [
+                {
+                    "section_title": "string",
+                    "content": "string",
+                    "key_moves": ["string"],
+                    "technical_elements": ["string"],
+                    "literature_connections": ["string"]
+                }
+            ],
+            "development_notes": {
+                "strengths": ["string"],
+                "challenges": ["string"],
+                "unique_features": ["string"],
+                "implementation_requirements": ["string"]
+            }
+        }
+    ],
+    "development_assessment": {
+        "relative_progress": ["string"],
+        "implementation_challenges": ["string"],
+        "distinctive_features": ["string"]
+    }
+}"""
 
         self.FORMAT_GUIDE = """
-Expected markdown structure:
+Expected markdown structure for each section:
 # Section Title
 
 ## Motivation and Setup
@@ -359,7 +474,7 @@ Expected markdown structure:
 [Clear statement of progress made]"""
 
     def get_prompt(self, structure_json: str, section_focus: str, previous_sections: str = "") -> str:
-        return f"""You are developing detailed content for a section of an Analysis paper as part of an autonomous LLM research project.
+        return f"""You are developing detailed content for selected sections of Analysis papers as part of an autonomous LLM research project.
 
 {self.CONTEXT}
 
@@ -367,16 +482,130 @@ Expected markdown structure:
 
 {self.FORMAT_GUIDE}
 
-Paper structure:
+Paper structures:
 {structure_json}
 
 Previously developed sections:
 {previous_sections}
 
-Focus section:
+Focus sections:
 {section_focus}
 
-Develop detailed markdown content for this section, ensuring it builds properly on previous sections and maintains focus on the paper's core thesis."""
+Develop detailed section content for all papers, ensuring equal depth of development while maintaining focus on features relevant to final selection."""
+
+class FinalSelectionPrompt:
+    """Final selection of paper for full development"""
+    
+    def __init__(self):
+        self.CONTEXT = """
+CONTEXT:
+You are part of an autonomous philosophical research pipeline where multiple LLMs collaborate to write papers for Analysis journal. Your task is to select the SINGLE most promising paper for full development, based on the parallel development work done so far.
+
+This choice is crucial as the selected paper will be developed entirely through LLM interactions. The choice must therefore balance:
+1. Philosophical merit and novelty
+2. Feasibility for AI development
+3. Demonstrated progress in initial development
+
+Key LLM Capabilities to Consider:
+STRENGTHS:
+- Logical analysis and formal reasoning
+- Systematic argument evaluation
+- Clear exposition of defined concepts
+- Working with explicit premises and conclusions
+- Mathematical and formal manipulation
+
+LIMITATIONS:
+- Heavy reliance on recent or obscure literature
+- Complex historical interpretation
+- Detailed empirical analysis
+- Subtle linguistic intuitions
+- Heavy context-dependent reasoning"""
+
+        self.EVALUATION_CRITERIA = """
+EVALUATION CRITERIA:
+1. Development Success
+   - Quality of initial sections
+   - Clarity of argument structure
+   - Technical precision and control
+   - Effective literature engagement
+   
+2. Implementation Feasibility
+   - Alignment with LLM capabilities
+   - Manageable technical requirements
+   - Clear development pathway
+   - Bounded scope
+   
+3. Philosophical Promise
+   - Novelty of contribution
+   - Significance of insights
+   - Potential impact
+   - Resilience to objections
+
+4. Practical Considerations
+   - Word limit manageability (4,000 words)
+   - Literature engagement scope
+   - Technical apparatus requirements
+   - Clarity of success criteria"""
+
+        self.OUTPUT_FORMAT = """
+Your response must be a JSON object with this structure:
+{
+    "selected_paper": {
+        "title": "string",
+        "selection_rationale": {
+            "development_quality": "string",
+            "ai_feasibility": "string",
+            "philosophical_merit": "string",
+            "practical_advantages": "string"
+        },
+        "key_strengths": ["string"],
+        "development_recommendations": ["string"],
+        "success_criteria": ["string"]
+    },
+    "comparative_analysis": {
+        "development_assessment": {
+            "paper_title": "string",
+            "section_quality": "string",
+            "argument_clarity": "string",
+            "technical_control": "string"
+        },
+        "feasibility_comparison": {
+            "relative_strengths": ["string"],
+            "implementation_challenges": ["string"],
+            "risk_assessment": ["string"]
+        }
+    },
+    "selection_confidence": "string",
+    "development_guidance": {
+        "key_focus_areas": ["string"],
+        "potential_pitfalls": ["string"],
+        "mitigation_strategies": ["string"]
+    }
+}"""
+
+    def get_prompt(self, analysis_json: str, abstracts_json: str, outlines_json: str, developments_json: str) -> str:
+        return f"""You are making the final selection of which paper to develop fully in an autonomous philosophical research pipeline.
+
+{self.CONTEXT}
+
+{self.EVALUATION_CRITERIA}
+
+{self.OUTPUT_FORMAT}
+
+Topic analysis:
+{analysis_json}
+
+Abstracts developed:
+{abstracts_json}
+
+Outlines created:
+{outlines_json}
+
+Section developments:
+{developments_json}
+
+Based on all parallel development so far, select the SINGLE most promising paper for full development. Consider both philosophical merit and practical feasibility for AI development. Provide detailed rationale for your selection and clear guidance for further development."""
+
 
 
 class DevelopmentPrompts:
@@ -387,6 +616,7 @@ class DevelopmentPrompts:
         self.abstract_development = AbstractDevelopmentPrompt()
         self.structure_planning = StructurePlanningPrompt()
         self.section_development = SectionDevelopmentPrompt()
+        self.final_selection = FinalSelectionPrompt()
         self.metadata = DevelopmentMetadata()
     
     def update_metadata(self, topic_id: str, stage: str, metrics: Optional[Dict] = None) -> Dict:
