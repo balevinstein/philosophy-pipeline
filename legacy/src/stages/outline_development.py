@@ -96,6 +96,53 @@ class OutlineDevelopmentStage(BaseStage):
                     for move in section['core_moves']:
                         outline.append(f"- {move}")
                     outline.append("")
+
+                if 'formal_definitions' in section:
+                    outline.append("\n### Formal Definitions")
+                    for definition in section['formal_definitions']:
+                        outline.append(f"\n#### {definition.get('term', '')}")
+                        outline.append(f"**Definition:** {definition.get('definition', '')}")
+                        if definition.get('formal_notation'):
+                            outline.append("\n**Formal Notation:**")
+                            outline.append(f"```\n{definition['formal_notation']}\n```")
+                        if definition.get('justification'):
+                            outline.append(f"\n**Justification:** {definition['justification']}")
+                    outline.append("")
+
+                          # Add technical framework if present
+                if 'technical_framework' in section:
+                    outline.append("\n### Technical Framework")
+                    framework = section['technical_framework']
+                    
+                    if framework.get('base_elements'):
+                        outline.append("\n#### Base Elements")
+                        for element in framework['base_elements']:
+                            outline.append(f"- {element}")
+                    
+                    if framework.get('axioms'):
+                        outline.append("\n#### Axioms")
+                        for axiom in framework['axioms']:
+                            outline.append(f"- {axiom}")
+                    
+                    if framework.get('key_properties'):
+                        outline.append("\n#### Key Properties")
+                        for prop in framework['key_properties']:
+                            outline.append(f"- {prop}")
+                    outline.append("")
+
+                # Add formal development content
+                if 'formal_development' in section:
+                    outline.append("\n### Formal Development")
+                    for dev in section['formal_development']:
+                        outline.append(f"\n#### {dev.get('element_type', '').title()}")
+                        outline.append(dev.get('content', ''))
+                        if dev.get('formal_notation'):
+                            outline.append("\n**Formal Notation:**")
+                            outline.append(f"```\n{dev['formal_notation']}\n```")
+                        if dev.get('supporting_notes'):
+                            outline.append(f"\n**Notes:** {dev['supporting_notes']}")
+                    outline.append("")
+
                 
                 # Technical elements
                 if 'technical_requirements' in section:
@@ -204,6 +251,18 @@ class OutlineDevelopmentStage(BaseStage):
                                 outline.append(f"- Philosophical: {v['philosophical_contribution']}")
                 
                 outline.append("\n")
+
+                if 'verification' in section:
+                    outline.append("\n### Verification Notes")
+                    verify = section['verification']
+                    if verify.get('technical_accuracy'):
+                        outline.append(f"\n**Technical Accuracy:** {verify['technical_accuracy']}")
+                    if verify.get('clarity_achieved'):
+                        outline.append(f"\n**Clarity:** {verify['clarity_achieved']}")
+                    if verify.get('philosophical_connection'):
+                        outline.append(f"\n**Philosophical Connection:** {verify['philosophical_connection']}")
+                    outline.append("")
+
                 
             return "\n".join(outline)
                     
@@ -211,134 +270,93 @@ class OutlineDevelopmentStage(BaseStage):
             print(f"Error generating markdown: {e}")
             return "Error generating outline markdown"
         
-
-    
-    
     def update_outline_state(self, current_state: Dict[str, Any], development_result: Dict[str, Any]) -> Dict[str, Any]:
         """Update outline state with development results"""
         try:
             print("\nUpdating outline state...")
             new_state = current_state.copy()
             aspect = development_result['aspect']
+
+            # Add error recovery for JSON parsing
+            if 'improvement' in development_result:
+                if isinstance(development_result['improvement'], str):
+                    try:
+                        improvement = json.loads(development_result['improvement'])
+                    except json.JSONDecodeError:
+                        print("Warning: Failed to parse improvement JSON, attempting cleanup")
+                        cleaned = self.json_handler.clean_json_string(development_result['improvement'])
+                        try:
+                            improvement = json.loads(cleaned)
+                        except json.JSONDecodeError:
+                            print("Error: Could not parse improvement JSON even after cleanup")
+                            improvement = {"content": {}}
+                else:
+                    improvement = development_result['improvement']
             
             # Initialize development_notes if it doesn't exist
             if 'development_notes' not in new_state:
                 new_state['development_notes'] = {}
-            if aspect not in new_state['development_notes']:
-                new_state['development_notes'][aspect] = {}
-                
+            
+            # Parse improvement content
             try:
-                refined_str = self.json_handler.clean_json_string(development_result['refinement'])
-                refinement = json.loads(refined_str)
-            except json.JSONDecodeError as e:
-                print(f"\nJSON decode error: {e}")
-                print(f"\nFull refinement response:\n{development_result['refinement']}")
-                return current_state
-
-            # After getting refinement, initialize section notes
-            for section in new_state['sections']:
-                if 'development_notes' not in section:
-                    section['development_notes'] = {}
-                if aspect not in section['development_notes']:
-                    section['development_notes'][aspect] = {}
-                
-                # Move relevant notes into section
-                section['development_notes'][aspect].update({
-                    'technical_resolution': refinement.get('refinement_process', {}).get('technical_resolution', ''),
-                    'philosophical_resolution': refinement.get('refinement_process', {}).get('philosophical_resolution', ''),
-                    'integration_strategy': refinement.get('refinement_process', {}).get('integration_strategy', ''),
-                    'verification': refinement.get('verification', {})
-                })
-    
-            
-            # Look for content in the refinement structure we're actually getting
-            if 'refined_content' in refinement:
-                for content in refinement['refined_content']:
-                    content_type = content.get('content_type', '')
-                    # Determine target section based on content type or explicit target
-                    section_title = content.get('target_section')
-                    if not section_title:
-                        # Default section mappings based on content type
-                        section_mappings = {
-                            'example': 'The Asymmetry Phenomenon',
-                            'formal_definition': 'Formal Analysis and Revision',
-                            'theorem': 'Formal Analysis and Revision',
-                            'objection_response': 'Formal Analysis and Revision',
-                            'bridge_principle': 'Introduction'
-                        }
-                        section_title = section_mappings.get(content_type, section_title)
+                if isinstance(development_result['improvement'], str):
+                    improvement = json.loads(development_result['improvement'])
+                else:
+                    improvement = development_result['improvement']
                     
-                    for section in new_state['sections']:
-                        if section['section_title'] == section_title:
-                            # Examples
-                            if content_type == 'example' or content_type == 'primary_example':
-                                if 'examples' not in section:
-                                    section['examples'] = {'primary': {}, 'supporting': []}
-                                if content_type == 'primary_example' or content.get('is_primary'):
-                                    section['examples']['primary'] = {
-                                        'text': content['refined_version'],
-                                        'technical_notes': content.get('technical_notes', ''),
-                                        'philosophical_notes': content.get('philosophical_notes', '')
-                                    }
-                                else:
-                                    section['examples']['supporting'].append({
-                                        'text': content['refined_version'],
-                                        'purpose': content.get('purpose', ''),
-                                        'technical_notes': content.get('technical_notes', '')
-                                    })
-                            
-                            # Formal content
-                            elif content_type in ['formal_definition', 'theorem', 'proof_outline', 'formal_framework']:
-                                if 'formal_content' not in section:
-                                    section['formal_content'] = {'foundations': {}, 'development': []}
-                                if content_type == 'formal_definition' or content_type == 'formal_framework':
-                                    section['formal_content']['foundations'][content_type] = {
-                                        'content': content['refined_version'],
-                                        'technical_notes': content.get('technical_notes', ''),
-                                        'philosophical_notes': content.get('philosophical_notes', '')
-                                    }
-                                else:
-                                    section['formal_content']['development'].append({
-                                        'type': content_type,
-                                        'content': content['refined_version'],
-                                        'technical_notes': content.get('technical_notes', '')
-                                    })
-                            
-                            # Objections and responses
-                            elif content_type in ['objection_response', 'anticipated_concern']:
-                                if 'objections' not in section:
-                                    section['objections'] = {'major': [], 'anticipated': []}
-                                if content_type == 'objection_response':
-                                    section['objections']['major'].append({
-                                        'objection': content.get('original_version', ''),
-                                        'response': content['refined_version'],
-                                        'technical_support': content.get('technical_notes', '')
-                                    })
-                                else:
-                                    section['objections']['anticipated'].append({
-                                        'concern': content.get('original_version', ''),
-                                        'resolution': content['refined_version']
-                                    })
+                if 'content' in improvement:
+                    content = improvement['content']
+                    
+                    # Update sections with text content
+                    if 'text' in content:
+                        for text_item in content['text']:
+                            section_title = text_item.get('section')
+                            if section_title:
+                                for section in new_state['sections']:
+                                    if section['section_title'] == section_title:
+                                        if 'content' not in section:
+                                            section['content'] = {}
+                                        section['content']['text'] = text_item.get('content', '')
+                                        if 'formal_notation' in text_item:
+                                            section['content']['formal_notation'] = text_item['formal_notation']
 
-            # Also check refinement_process for additional content
-            if 'refinement_process' in refinement:
-                process = refinement['refinement_process']
-                new_state['development_notes'][aspect].update({
-                    'technical_resolution': process.get('technical_resolution', ''),
-                    'philosophical_resolution': process.get('philosophical_resolution', ''),
-                    'integration_strategy': process.get('integration_strategy', '')
-                })
-            
-            # Save verification info if present
-            if 'verification' in refinement:
-                new_state['development_notes'][aspect]['verification'] = refinement['verification']
-            
-            return new_state
+            except (json.JSONDecodeError, KeyError) as e:
+                print(f"\nError processing improvement content: {e}")
                 
+            # Handle refinement process and verification
+            try:
+                if 'refinement' in development_result:
+                    if isinstance(development_result['refinement'], str):
+                        refinement = json.loads(development_result['refinement'])
+                    else:
+                        refinement = development_result['refinement']
+                    
+                    if aspect not in new_state['development_notes']:
+                        new_state['development_notes'][aspect] = {}
+                        
+                    if 'refinement_process' in refinement:
+                        new_state['development_notes'][aspect].update({
+                            'technical_resolution': refinement['refinement_process'].get('technical_resolution', ''),
+                            'philosophical_resolution': refinement['refinement_process'].get('philosophical_resolution', ''),
+                            'integration_strategy': refinement['refinement_process'].get('integration_strategy', '')
+                        })
+                    
+                    if 'verification' in refinement:
+                        new_state['development_notes'][aspect]['verification'] = refinement['verification']
+                    
+            except (json.JSONDecodeError, KeyError) as e:
+                print(f"\nError processing refinement: {e}")
+
+            return new_state
+                    
         except Exception as e:
             print(f"Error updating outline state: {e}")
-            print(f"Traceback: {traceback.format_exc()}")  # Add this for better error tracking
+            print(f"Traceback: {traceback.format_exc()}")
             return current_state
+        
+ 
+                
+
 
     def is_improvement_significant(self, old_state: Dict, new_state: Dict) -> bool:
         """Determine if the improvement is significant enough to continue"""
@@ -378,71 +396,140 @@ class OutlineDevelopmentStage(BaseStage):
             print(f"Error checking improvement significance: {e}")
             return False
 
+    
     def develop_aspect(self, current_state: Dict[str, Any], aspect: str) -> Dict[str, Any]:
-        """Run development cycle for a specific aspect"""
+        """Run development cycle for a specific aspect with specialized processing"""
         try:
-            # Actor: Propose improvements
-            print(f"\nGetting improvement proposal for {aspect}...")
-            improvement_response = self.api_handler.make_api_call(
-                stage='outline_improvement',
-                prompt=self.prompt_manager.get_development_prompt(
-                    current_state=json.dumps(current_state, indent=2),
-                    focus_aspect=aspect
+            print(f"\n=== Starting {aspect} development ===")
+            
+            # Different handling based on aspect
+            if aspect in ['formal_framework', 'argument_structure']:
+                print("\nInitiating formal development...")
+                improvement_response = self.api_handler.make_api_call(
+                    stage='formal_development',
+                    prompt=self.prompt_manager.get_formal_development_prompt(
+                        current_state=json.dumps(current_state, indent=2),
+                        focus_aspect=aspect
+                    )
                 )
-            ) or "{}"  # Default to empty object if None
-            
-            # Critic: Analyze improvements
-            print(f"\nGetting critique for {aspect}...")
-            critique_response = self.api_handler.make_api_call(
-                stage='outline_critique',
-                prompt=self.prompt_manager.get_critique_prompt(
-                    proposed_changes=improvement_response,
-                    focus_aspect=aspect
+                
+                if not improvement_response:
+                    print("WARNING: Received empty improvement response")
+                    return None
+                    
+                print("\nResponse received, length:", len(improvement_response))
+                print("Response preview:", improvement_response[:200])
+
+                print("\nChecking clarity...")
+                clarity_critique = self.api_handler.make_api_call(
+                    stage='clarity_verification',
+                    prompt=self.prompt_manager.get_clarity_critique_prompt(
+                        proposed_changes=improvement_response,
+                        focus_aspect=aspect
+                    )
                 )
-            ) or "{}"
-            
-            # Debug responses before cleaning
-            print(f"\nDebug: Raw improvement response type: {type(improvement_response)}")
-            print(f"\nDebug: Raw critique response type: {type(critique_response)}")
-            
-            # Clean responses
+
+                print("\nRefining formal content...")
+                refined_response = self.api_handler.make_api_call(
+                    stage='formal_refinement',
+                    prompt=self.prompt_manager.get_formal_refinement_prompt(
+                        original_development=improvement_response,
+                        clarity_feedback=clarity_critique,
+                        focus_aspect=aspect
+                    )
+                )
+
+            elif aspect == 'example_development':
+                print("\nGenerating initial examples...")
+                improvement_response = self.api_handler.make_api_call(
+                    stage='outline_improvement',
+                    prompt=self.prompt_manager.get_example_development_prompt(
+                        current_state=json.dumps(current_state, indent=2)
+                    )
+                )
+                
+                print("\nEnhancing examples with technical detail...")
+                clarity_critique = self.api_handler.make_api_call(
+                    stage='example_enhancement',
+                    prompt=self.prompt_manager.get_example_enhancement_prompt(
+                        initial_examples=improvement_response,
+                        current_state=json.dumps(current_state, indent=2)
+                    )
+                )
+                
+                print("\nFinalizing examples...")
+                refined_response = self.api_handler.make_api_call(
+                    stage='outline_refinement',
+                    prompt=self.prompt_manager.get_refinement_prompt(
+                        original_changes=improvement_response,
+                        critique=clarity_critique,
+                        focus_aspect=aspect
+                    )
+                )
+
+            else:
+                print("\nRunning standard development process...")
+                improvement_response = self.api_handler.make_api_call(
+                    stage='outline_improvement',
+                    prompt=self.prompt_manager.get_development_prompt(
+                        current_state=json.dumps(current_state, indent=2),
+                        focus_aspect=aspect
+                    )
+                )
+                
+                print("\nConducting critique...")
+                clarity_critique = self.api_handler.make_api_call(
+                    stage='outline_critique',
+                    prompt=self.prompt_manager.get_critique_prompt(
+                        proposed_changes=improvement_response,
+                        focus_aspect=aspect
+                    )
+                )
+                
+                print("\nRefining content...")
+                refined_response = self.api_handler.make_api_call(
+                    stage='outline_refinement',
+                    prompt=self.prompt_manager.get_refinement_prompt(
+                        original_changes=improvement_response,
+                        critique=clarity_critique,
+                        focus_aspect=aspect
+                    )
+                )
+
+            print("\nCleaning and validating responses...")
             cleaned_improvement = self.json_handler.clean_json_string(improvement_response)
-            cleaned_critique = self.json_handler.clean_json_string(critique_response)
-            
-            # Better debug printing with start and end
-            print("\nDebug: Improvement response start:")
-            print(cleaned_improvement[:500])
-            print("\nDebug: Improvement response end:")
-            print(cleaned_improvement[-500:])
-            print("\nDebug: Critique response start:")
-            print(cleaned_critique[:500])
-            print("\nDebug: Critique response end:")
-            print(cleaned_critique[-500:])
-            
-            # Actor: Refine based on critique
-            print(f"\nGetting refinement for {aspect}...")
-            refined_response = self.api_handler.make_api_call(
-                stage='outline_refinement',
-                prompt=self.prompt_manager.get_refinement_prompt(
-                    original_changes=cleaned_improvement,
-                    critique=cleaned_critique,
-                    focus_aspect=aspect
-                )
-            ) or "{}"  # Default to empty object if None
-            
+            cleaned_critique = self.json_handler.clean_json_string(clarity_critique)
             cleaned_refinement = self.json_handler.clean_json_string(refined_response)
-            
-            development_result = {
-                "aspect": aspect,
-                "improvement": cleaned_improvement,
-                "critique": cleaned_critique,
-                "refinement": cleaned_refinement
+
+            # Validate and clean responses if needed
+            responses_to_check = {
+                'improvement_response': cleaned_improvement,
+                'clarity_critique': cleaned_critique,
+                'refined_response': cleaned_refinement
             }
             
-            return development_result
-                
+            for key, response in responses_to_check.items():
+                if response:
+                    try:
+                        json.loads(response if isinstance(response, str) else json.dumps(response))
+                    except json.JSONDecodeError:
+                        print(f"Warning: Invalid JSON in {key}, attempting cleanup")
+                        responses_to_check[key] = self.json_handler.clean_json_string(
+                            response if isinstance(response, str) else json.dumps(response)
+                        )
+            
+            return {
+                "aspect": aspect,
+                "improvement": responses_to_check['improvement_response'],
+                "critique": responses_to_check['clarity_critique'],
+                "refinement": responses_to_check['refined_response']
+            }
+
+
         except Exception as e:
-            print(f"\nError in {aspect} development:\nType: {type(e)}\nMessage: {str(e)}")
+            print(f"\nError in {aspect} development:")
+            print(f"Type: {type(e)}")
+            print(f"Message: {str(e)}")
             print(f"Traceback: {traceback.format_exc()}")
             return None
     

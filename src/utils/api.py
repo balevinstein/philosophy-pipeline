@@ -11,7 +11,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_excep
 
 def load_config() -> Dict[str, Any]:
     """Load configuration from yaml file"""
-    with open("config/config.yaml", 'r') as f:
+    with open("config/conceptual_config.yaml", 'r') as f: #change to config.yaml for other pipeline
         return yaml.safe_load(f)
 
 class APIHandler:
@@ -88,6 +88,13 @@ class APIHandler:
             print(f"Config: {config}")
             raise
 
+    
+    
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=1, min=4, max=10),
+        retry=retry_if_exception_type((Exception, openai.APIError))
+    )
     def _call_anthropic(self, prompt: str, config: Dict[str, Any]) -> str:
         """Make Anthropic API call"""
         try:
