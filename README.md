@@ -11,12 +11,12 @@ This pipeline uses a series of AI models to:
 
 ## Project Structure
 
-philosophy_pipeline/\
-├── papers/              # PDF storage for literature\
-├── src/\
-│   ├── prompts/        # Prompt management\
-│   ├── stages/         # Pipeline stages\
-│   └── utils/          # Utility functions\
+philosophy_pipeline/
+├── papers/              # PDF storage for literature
+├── src/
+│   ├── prompts/        # Prompt management
+│   ├── stages/         # Pipeline stages
+│   └── utils/          # Utility functions
 └── outputs/            # Stage outputs
 
 ## Usage
