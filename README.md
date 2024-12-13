@@ -10,7 +10,7 @@ This pipeline uses a series of AI models to:
 4. Create structured paper drafts
 
 ## Project Structure
-
+```
 philosophy_pipeline/
 ├── papers/              # PDF storage for literature
 ├── src/
@@ -18,6 +18,7 @@ philosophy_pipeline/
 │   ├── stages/         # Pipeline stages
 │   └── utils/          # Utility functions
 └── outputs/            # Stage outputs
+```
 
 ## Usage
 Run the complete Phase I pipeline:
