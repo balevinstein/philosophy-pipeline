@@ -1,0 +1,29 @@
+{
+  "framework": {
+    "abstract": "Testimonial knowledge acquisition presents unique challenges for anti-luck epistemology that remain insufficiently analyzed. Building on anti-luck virtue epistemology, this paper establishes a theoretically grounded distinction between transmission luck and content luck in testimony. Through systematic examination of paradigm cases, I demonstrate how these conceptually independent forms of epistemic luck require different safety conditions and virtue-theoretic treatments, while showing how they interact in practice through shared cognitive mechanisms. By examining cases where testimony fails to produce knowledge either through unreliable transmission processes or through accidentally true content, I develop criteria for distinguishing these luck types. This taxonomy illuminates why seemingly similar cases of testimonial knowledge acquisition can differ in epistemically significant ways, with implications for both theoretical understanding and practical assessment of testimonial knowledge claims.",
+    "main_thesis": "Testimonial knowledge requires separate treatment of transmission luck and content luck - conceptually independent forms of epistemic luck that interact through shared cognitive mechanisms and demand distinct safety conditions and virtue-theoretic requirements for knowledge production.",
+    "core_contribution": "The paper provides a theoretically grounded taxonomy of epistemic luck in testimony that demonstrates why and how transmission reliability and content truth require distinct treatments, extending anti-luck virtue epistemology through precise analysis of how these luck types manifest and interact in testimonial knowledge acquisition.",
+    "key_moves": [
+      "Establish theoretical foundations for distinguishing transmission and content luck based on their distinct epistemic features and roles",
+      "Develop systematic case comparison methodology focusing on controlled variation of transmission and content conditions",
+      "Demonstrate conceptual independence through analysis of cases where each luck type occurs independently",
+      "Analyze interaction mechanisms through examination of shared cognitive processes",
+      "Synthesize findings into a framework showing how the distinction illuminates testimonial knowledge assessment"
+    ],
+    "development_notes": "Refinements strengthen theoretical grounding while maintaining tight scope. Enhanced methodology clarity and interaction analysis. Added implications preview while keeping focus on theoretical contribution. Maintained feasibility by limiting technical detail and literature engagement.",
+    "validation_status": {
+      "scope_appropriate": true,
+      "clearly_articulated": true,
+      "sufficiently_original": true,
+      "feasibly_developable": true
+    },
+    "changes_made": [
+      "Added theoretical grounding to abstract and moves",
+      "Clarified case methodology approach",
+      "Specified interaction mechanisms",
+      "Added brief implications preview",
+      "Maintained scope and feasibility constraints",
+      "Ensured coherence across all components"
+    ]
+  }
+}

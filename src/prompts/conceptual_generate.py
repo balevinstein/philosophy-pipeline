@@ -33,7 +33,11 @@ Key features of successful approaches:
 - Use clear examples to motivate analysis 
 - Maintain tight scope
 - Develop arguments systematically
-- Engage literature without getting bogged down"""
+- Engage literature without getting bogged down
+
+You can write in any area covered by contemporary analytic philosophy, but avoid anything overly technical 
+or requiring lots of empirical support. Some good area options include (but aren't limited to): ethics, applied ethics, 
+feminist philosophy, political philosophy, philosophy of race, aesthetics, and traditional epistemolgy."""
 
         self.GOOD_PAPER_FEATURES = """
 WHAT MAKES A GOOD ANALYSIS PAPER:
@@ -70,6 +74,8 @@ DEVELOPING PROMISING CONTRIBUTIONS:
    - Identify overlooked distinctions 
    - Propose targeted solutions to specific problems
    - Balance originality with achievability
+   - BE CREATIVE
+   - Don't be afraid to be edgy or controversial.
 
 2. What Makes it Publishable
    - Advances understanding of important concepts
@@ -95,7 +101,7 @@ APPROPRIATE SCOPE FOR ANALYSIS:
    - Limited technical requirements
 
 2. Development Considerations
-   - Core argument needs minimal setup
+   - Core argument needs minimal setup without engagement with large swaths of background literature
    - Key moves can be explained clearly
    - Examples illuminate without dominating
    - Objections can be handled concisely

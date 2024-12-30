@@ -24,7 +24,7 @@ class PhaseIIWorker(ABC):
     
     def __init__(self, config: Dict[str, Any]):
         self.config = config
-        self.api_handler = APIHandler()
+        self.api_handler = APIHandler(config)
     
     @abstractmethod
     def prepare_input(self, state: Dict[str, Any]) -> WorkerInput:
@@ -35,12 +35,20 @@ class PhaseIIWorker(ABC):
     def process_output(self, response: str) -> WorkerOutput:
         """Process API response into structured output"""
         pass
+
+    def get_state(self) -> Dict[str, Any]:
+        """Optional state management"""
+        return {}
+        
+    def validate_output(self, output: WorkerOutput) -> bool:
+        """Optional output validation"""
+        return True
         
     def run(self, state: Dict[str, Any]) -> WorkerOutput:
         """Execute worker's task"""
         input_data = self.prepare_input(state)
         response = self.api_handler.make_api_call(
-            stage=self.__class__.__name__.lower(),
+            stage=getattr(self, 'stage_name', self.__class__.__name__.lower()),
             prompt=self._construct_prompt(input_data)
         )
         return self.process_output(response)

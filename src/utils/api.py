@@ -52,7 +52,7 @@ def load_config() -> Dict[str, Any]:
         return yaml.safe_load(f)
 
 class APIHandler:
-    def __init__(self):
+    def __init__(self, config: Dict[str, Any] = None):
         load_dotenv()
         self.openai_key = os.getenv("OPENAI_API_KEY")
         self.anthropic_key = os.getenv("ANTHROPIC_API_KEY")
@@ -71,7 +71,10 @@ class APIHandler:
                 "anthropic-beta": "pdfs-2024-09-25"
             }
         )
-        self.config = load_config()
+        if config is None:
+            self.config = self.load_config()  # Load default if none provided
+        else:
+            self.config = config
         self.o1_calls = 0
 
         self.logger = logging.getLogger(__name__)
@@ -88,6 +91,12 @@ class APIHandler:
             max_wait=30
         )
     
+    #To make loading the config easier in the run_phase_one script.
+    #Check there are no problems when loading a different config for tests.
+    def load_config(self) -> Dict[str, Any]:
+        """Load configuration from yaml file"""
+        with open("config/conceptual_config.yaml", 'r') as f:
+            return yaml.safe_load(f)
 
     
     def _encode_pdf(self, pdf_path: Path) -> str:

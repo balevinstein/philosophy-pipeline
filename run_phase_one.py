@@ -2,6 +2,7 @@
 
 import sys
 from pathlib import Path
+from src.utils.api import APIHandler, load_config
 from src.stages.conceptual_generate import ConceptualTopicGenerator
 from src.stages.conceptual_evaluate import ConceptualTopicEvaluator
 from src.stages.conceptual_topic_development import ConceptualTopicDeveloper

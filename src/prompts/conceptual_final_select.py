@@ -13,6 +13,9 @@ You will be evaluating topics that have undergone initial development, including
    - Does the core move feel right/promising?
    - Is there room for sophisticated development?
    - Would other philosophers find this interesting?
+   - Is it novel enough?
+   - Is it interesting enough?
+   - Does it take a firm stand? (Edgy is okay.)
 
 2. Development Potential
    - How well did the test arguments work in development testing?

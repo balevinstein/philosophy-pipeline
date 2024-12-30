@@ -1,0 +1,31 @@
+{
+  "framework": {
+    "abstract": "This paper introduces a systematic distinction between two types of conceptual analysis based on their core methodological commitments and success criteria. Through careful examination of analytical methods, we distinguish descriptive analysis, which aims to capture existing usage and intuitions, from revisionary analysis, which prioritizes theoretical utility and precision. We develop specific evaluative criteria including alignment with linguistic practices, theoretical fertility, and methodological transparency. Building on Quinean insights about meaning holism while preserving the value of analytical methods, we show how these approaches serve distinct philosophical purposes and require different evaluative standards. The framework provides practical guidance for selecting analytical methods while illuminating historical debates. By demonstrating how apparent tensions often arise from conflating these distinct approaches, we advance both theoretical understanding and methodological practice in ways that acknowledge key challenges to traditional analysis while preserving its philosophical value.",
+    "main_thesis": "Conceptual analysis encompasses two distinct but interrelated methodological approaches - descriptive and revisionary - which can be systematically distinguished through specific evaluative criteria including linguistic alignment, theoretical fertility, and methodological transparency.",
+    "core_contribution": "The paper provides both a novel theoretical framework that clarifies the nature and validity of conceptual analysis by systematically distinguishing descriptive from revisionary approaches through explicit success criteria, and practical methodological guidance for selecting and applying appropriate analytical methods within recognized constraints.",
+    "key_moves": [
+      "Establish explicit evaluative criteria distinguishing descriptive from revisionary analysis, including linguistic alignment, theoretical fertility, and methodological transparency",
+      "Demonstrate how historical debates about conceptual analysis often conflate these distinct approaches while showing how both types remain viable under Quinean constraints",
+      "Present focused case studies from epistemology and philosophy of mind that illustrate how different success criteria apply to each analytical approach",
+      "Develop practical decision procedures showing how to select and apply appropriate analytical methods based on specific philosophical goals and constraints"
+    ],
+    "development_notes": "Framework now more explicitly addresses success criteria while maintaining feasible scope. Enhanced connection to Quinean challenges through specific discussion of how different types of analysis remain viable under different standards. Case studies remain focused on illustrating criteria application rather than theoretical debate. Practical guidance emphasized through concrete decision procedures without expanding scope.",
+    "validation_status": {
+      "scope_appropriate": true,
+      "clearly_articulated": true,
+      "sufficiently_original": true,
+      "feasibly_developable": true
+    },
+    "changes_made": [
+      "Added explicit success criteria to abstract and thesis",
+      "Strengthened practical guidance component throughout framework",
+      "Enhanced connection to literature through specific Quinean engagement",
+      "Made evaluative criteria more specific and concrete",
+      "Maintained case study approach while clarifying purpose",
+      "Preserved coherence between abstract and framework components",
+      "Ensured all additions remain within feasible scope"
+    ]
+  },
+  "outline": "## 1. Introduction: The Two Faces of Conceptual Analysis\n- Opening problem: Apparent tensions in conceptual analysis\n- Preview of descriptive/revisionary distinction\n- Thesis statement and roadmap\n- Significance for contemporary philosophy\n\n## 2. Theoretical Foundations and Framework\n### 2.1 Core Challenges and Responses\n- Historical development of conceptual analysis\n- Quinean challenges and meaning holism\n- Framework response outline\n\n### 2.2 Success Criteria Framework\n- Criteria development and justification\n- Methodological transparency requirements\n- Literature engagement and validation\n- Evaluation principles\n\n### 2.3 Descriptive Analysis\n- Core methodological commitments\n- Application of success criteria\n- Strengths and limitations\n\n### 2.4 Revisionary Analysis\n- Core methodological commitments\n- Application of success criteria\n- Strengths and limitations\n\n## 3. Framework Application\n### 3.1 Application Principles\n- Method selection criteria\n- Success evaluation procedures\n- Constraint management\n\n### 3.2 Implementation Guidelines\n- Best practices for each approach\n- Quality assessment procedures\n- Practical recommendations\n\n## 4. Extended Case Study: Knowledge Attribution Analysis\n- Parallel descriptive/revisionary application\n- Detailed criteria demonstration\n- Comparative insights\n- Framework validation\n\n## 5. Conclusion\n- Framework synthesis\n- Practical implications\n- Future directions",
+  "key_moves": "## Move 1: Establish Explicit Evaluative Criteria\n1. Quinean Foundation\n- Meaning holism implications for criteria development\n- Connection to verification theory critique\n- Framework response through conditional analysis\n\n2. Success Metrics\nLinguistic Alignment:\n- Focused corpus analysis (key usage patterns)\n- Expert consensus evaluation\n- Systematic deviation tracking\n\nTheoretical Fertility:\n- Problem resolution capacity\n- Research program potential\n- Theoretical integration\n\n[Bridge: From Theory to Application]\n- Criteria as practical tools\n- Implementation principles\n\n## Move 2: Historical Context\n- Targeted Quinean challenges\n- Chalmers/Jackson response framework\n- Contemporary application potential\n\n[Bridge: Historical Lessons to Current Practice]\n- Pattern of framework responses\n- Practical implications\n\n## Moves 3-4: Application\n- Knowledge attribution case study\n- Explicit criteria application\n- Theoretical grounding in Chalmers/Jackson\n- Clear success evaluation"
+}

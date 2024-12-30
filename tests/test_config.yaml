@@ -1,0 +1,67 @@
+models:
+  abstract_development:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.7
+
+  outline_development:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.7
+
+  key_moves_development:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.4
+
+  abstract_critic:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.3
+
+  abstract_refinement:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.5  # Balance between creativity and consistency
+
+  outline_critic:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.3  # Lower for careful evaluation
+
+  outline_refinement:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.5  # Balanced for creativity/consistency
+    
+  key_moves_critic:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.3  # Lower for careful evaluation
+
+  key_moves_refinement:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.5  # Balance between creativity and consistency
+
+development_cycles:
+  abstract_num_cycles: 3
+  outline_num_cycles: 3
+  key_moves_num_cycles: 3
+
+paths:
+  framework_development:
+    abstract: framework_development/abstract.json
+    outline: framework_development/outline.json
+    critiques: framework_development/critiques
+    refinements: framework_development/refinements
+    outline_development: framework_development/outline_development

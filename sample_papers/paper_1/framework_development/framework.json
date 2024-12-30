@@ -1,0 +1,29 @@
+{
+  "framework": {
+    "abstract": "This paper introduces a systematic distinction between two types of conceptual analysis based on their core methodological commitments and success criteria. Through careful examination of analytical methods, we distinguish descriptive analysis, which aims to capture existing usage and intuitions, from revisionary analysis, which prioritizes theoretical utility and precision. We develop specific evaluative criteria including alignment with linguistic practices, theoretical fertility, and methodological transparency. Building on Quinean insights about meaning holism while preserving the value of analytical methods, we show how these approaches serve distinct philosophical purposes and require different evaluative standards. The framework provides practical guidance for selecting analytical methods while illuminating historical debates. By demonstrating how apparent tensions often arise from conflating these distinct approaches, we advance both theoretical understanding and methodological practice in ways that acknowledge key challenges to traditional analysis while preserving its philosophical value.",
+    "main_thesis": "Conceptual analysis encompasses two distinct but interrelated methodological approaches - descriptive and revisionary - which can be systematically distinguished through specific evaluative criteria including linguistic alignment, theoretical fertility, and methodological transparency.",
+    "core_contribution": "The paper provides both a novel theoretical framework that clarifies the nature and validity of conceptual analysis by systematically distinguishing descriptive from revisionary approaches through explicit success criteria, and practical methodological guidance for selecting and applying appropriate analytical methods within recognized constraints.",
+    "key_moves": [
+      "Establish explicit evaluative criteria distinguishing descriptive from revisionary analysis, including linguistic alignment, theoretical fertility, and methodological transparency",
+      "Demonstrate how historical debates about conceptual analysis often conflate these distinct approaches while showing how both types remain viable under Quinean constraints",
+      "Present focused case studies from epistemology and philosophy of mind that illustrate how different success criteria apply to each analytical approach",
+      "Develop practical decision procedures showing how to select and apply appropriate analytical methods based on specific philosophical goals and constraints"
+    ],
+    "development_notes": "Framework now more explicitly addresses success criteria while maintaining feasible scope. Enhanced connection to Quinean challenges through specific discussion of how different types of analysis remain viable under different standards. Case studies remain focused on illustrating criteria application rather than theoretical debate. Practical guidance emphasized through concrete decision procedures without expanding scope.",
+    "validation_status": {
+      "scope_appropriate": true,
+      "clearly_articulated": true,
+      "sufficiently_original": true,
+      "feasibly_developable": true
+    },
+    "changes_made": [
+      "Added explicit success criteria to abstract and thesis",
+      "Strengthened practical guidance component throughout framework",
+      "Enhanced connection to literature through specific Quinean engagement",
+      "Made evaluative criteria more specific and concrete",
+      "Maintained case study approach while clarifying purpose",
+      "Preserved coherence between abstract and framework components",
+      "Ensured all additions remain within feasible scope"
+    ]
+  }
+}
