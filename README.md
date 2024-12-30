@@ -22,39 +22,48 @@ The goal is to achieve a ~20% success rate in generating publishable-quality pap
 
 ### Prerequisites
 * Python 3.8+
-* Anthropic API key (recommended)
+* Anthropic API key 
 * OpenAI API key (optional)
 
 ### Installation
 1. Clone the repository
 ```bash
 git clone https://github.com/balevinstein/philosophy-pipeline.git
-cd philosophy-pipeline```
+cd philosophy-pipeline
+```
 2. Create and activate virtual environment
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate```
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 3. Install dependencies
 ```bash
-pip install -r requirements.txt```
-4. Create .env file with API keys
+pip install -r requirements.txt
+```
+4. Create `.env` file with API keys
 ```bash
 ANTHROPIC_API_KEY=your_key_here
-OPENAI_API_KEY=your_key_here  # Optional```
+OPENAI_API_KEY=your_key_here  # Optional
+```
 
 ## Running the Pipeline
 
 1. Generate and select topic
 ```bash
-python run_phase_one.py```
+python run_phase_one.py
+```
 After completion, check `outputs/final_selection.json` for required papers and manually add them to the `papers/` directory.
+
 2. Process literature
 ```bash
-python run_phase_two_one.py```
+python run_phase_two_one.py
+```
 This must be done with Claude
+
 3. Develop framework
 ```bash
-python run_phase_two_two.py```
+python run_phase_two_two.py
+```
 
 ## Project Structure
 ```bash
@@ -107,7 +116,7 @@ The system:
 
 ## Documentation
 
-- architecture-doc.md: Detailed system design and stage descriptions
+- `architecture-doc.md`: Detailed system design and stage descriptions
 - Sample outputs available in outputs/ directory
 - Test files showing development patterns
 - Configuration settings in conceptual_config.yaml
@@ -116,7 +125,7 @@ The system:
 
 Interested in contributing? Please:
 
-- Review architecture-doc.md for system design
+- Review `architecture-doc.md` for system design
 - Check current development focus (Phase II.3)
 - Feel free to open issues or pull requests
 
@@ -124,4 +133,4 @@ Interested in contributing? Please:
 Currently under private development. Licensing terms to be determined when repository is made public.
 
 ## Acknowledgments 
-Special thanks to Claude. 
+Special thanks to Claude, who helped with much of the development.
