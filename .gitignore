@@ -26,7 +26,8 @@ wheels/
 *.egg
 
 # Outputs
-outputs/*.json
+outputs/**
+outputs/
 
 # IDE specific files
 .idea/
