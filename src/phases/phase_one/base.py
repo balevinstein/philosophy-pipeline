@@ -1,8 +1,9 @@
 # src/stages/base.py
 from typing import Dict, Any
 import os
-from ..utils.api import APIHandler
-from ..utils.json_utils import JSONHandler
+
+from src.utils.api import APIHandler
+from src.utils.json_utils import JSONHandler
 
 class BaseStage:
     def __init__(self):

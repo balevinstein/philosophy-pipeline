@@ -3,10 +3,10 @@
 import sys
 from pathlib import Path
 from src.utils.api import APIHandler, load_config
-from src.stages.conceptual_generate import ConceptualTopicGenerator
-from src.stages.conceptual_evaluate import ConceptualTopicEvaluator
-from src.stages.conceptual_topic_development import ConceptualTopicDeveloper
-from src.stages.conceptual_final_select import FinalTopicSelector
+from src.phases.phase_one.conceptual_generate import ConceptualTopicGenerator
+from src.phases.phase_one.conceptual_evaluate import ConceptualTopicEvaluator
+from src.phases.phase_one.conceptual_topic_development import ConceptualTopicDeveloper
+from src.phases.phase_one.conceptual_final_select import FinalTopicSelector
 
 def run_phase_one():
     """Run all stages of Phase I in sequence"""

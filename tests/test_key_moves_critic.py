@@ -4,7 +4,7 @@ import json
 import yaml
 import os
 from pathlib import Path
-from src.stages.phase_two.stages.stage_two.workers.key_moves_critic import KeyMovesCritic
+from src.phases.phase_two.stages.stage_two.workers.key_moves_critic import KeyMovesCritic
 
 def load_yaml(path: str) -> dict:
     """Load YAML file"""

@@ -6,7 +6,7 @@ import json
 import logging
 from typing import Dict, Any
 
-from src.stages.phase_two.stages.stage_one.lit_processor import (
+from src.phases.phase_two.stages.stage_one.lit_processor import (
     LiteratureManager
 )
 

@@ -2,8 +2,10 @@
 
 import json
 from typing import Dict, Any, List, Optional
+
+from src.prompts.conceptual_topic_development import TopicDevelopmentPrompt
 from .base import BaseStage
-from ..prompts.conceptual_topic_development import TopicDevelopmentPrompt
+
 
 class ConceptualTopicDeveloper(BaseStage):
     """Stage for deeper development of promising philosophy paper topics"""
