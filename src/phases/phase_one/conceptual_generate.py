@@ -1,8 +1,10 @@
 # src/stages/conceptual_generate.py
 import json
 from typing import List, Dict, Any
+
+from src.prompts.conceptual_generate import TopicGenerationPrompt
 from .base import BaseStage
-from ..prompts.conceptual_generate import TopicGenerationPrompt
+
 
 class ConceptualTopicGenerator(BaseStage):
     """Stage for generating conceptually-focused paper topics"""

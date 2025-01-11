@@ -2,8 +2,10 @@
 
 import json
 from typing import Dict, Any, Optional
+
+from src.prompts.conceptual_final_select import FinalSelectionPrompt
 from .base import BaseStage
-from ..prompts.conceptual_final_select import FinalSelectionPrompt
+
 
 class FinalTopicSelector(BaseStage):
     """Stage for final topic selection and Phase II setup"""
