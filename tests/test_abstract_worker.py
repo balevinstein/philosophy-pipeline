@@ -2,7 +2,7 @@ import json
 import yaml
 import os
 from pathlib import Path
-from src.stages.phase_two.stages.stage_two.workers.abstract_worker import AbstractDevelopmentWorker
+from src.phases.phase_two.stages.stage_two.workers.abstract_worker import AbstractDevelopmentWorker
 
 
 def load_yaml(path: str) -> dict:

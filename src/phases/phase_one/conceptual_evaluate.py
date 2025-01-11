@@ -2,8 +2,10 @@
 
 import json
 from typing import Dict, Any, Optional
+
+from src.prompts.conceptual_evaluate import TopicEvaluationPrompt
 from .base import BaseStage
-from ..prompts.conceptual_evaluate import TopicEvaluationPrompt
+
 
 class ConceptualTopicEvaluator(BaseStage):
     """Stage for evaluating and culling generated philosophy paper topics"""

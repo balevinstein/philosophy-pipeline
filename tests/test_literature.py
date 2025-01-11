@@ -10,7 +10,7 @@ from typing import Dict, Any
 project_root = Path(__file__).parent
 sys.path.append(str(project_root))
 
-from src.stages.phase_two.stages.stage_one.literature_processor import LiteratureProcessor
+from src.phases.phase_two.stages.stage_one.lit_processor import LiteratureProcessor
 from src.utils.json_utils import JSONHandler
 from src.utils.api import APIHandler
 

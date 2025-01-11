@@ -10,7 +10,7 @@ from typing import Dict, Any, List
 project_root = Path(__file__).parent
 sys.path.append(str(project_root))
 
-from src.stages.phase_two.stages.stage_one.lit_processor import (
+from src.phases.phase_two.stages.stage_one.lit_processor import (
     LiteratureManager,
     InitialReader,
     ProjectSpecificReader,

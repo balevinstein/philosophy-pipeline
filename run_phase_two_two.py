@@ -9,15 +9,15 @@ import logging
 from typing import Dict, Any
 import subprocess 
 
-from src.stages.phase_two.stages.stage_two.workers.abstract_worker import AbstractDevelopmentWorker
-from src.stages.phase_two.stages.stage_two.workers.abstract_critic import AbstractCritic
-from src.stages.phase_two.stages.stage_two.workers.abstract_refinement_worker import AbstractRefinementWorker
-from src.stages.phase_two.stages.stage_two.workers.outline_worker import OutlineWorker
-from src.stages.phase_two.stages.stage_two.workers.outline_critic import OutlineCritic
-from src.stages.phase_two.stages.stage_two.workers.outline_refinement_worker import OutlineRefinementWorker
-from src.stages.phase_two.stages.stage_two.workers.key_moves_worker import KeyMovesWorker
-from src.stages.phase_two.stages.stage_two.workers.key_moves_critic import KeyMovesCritic
-from src.stages.phase_two.stages.stage_two.workers.key_moves_refinement_worker import KeyMovesRefinementWorker
+from src.phases.phase_two.stages.stage_two.workers.abstract_worker import AbstractDevelopmentWorker
+from src.phases.phase_two.stages.stage_two.workers.abstract_critic import AbstractCritic
+from src.phases.phase_two.stages.stage_two.workers.abstract_refinement_worker import AbstractRefinementWorker
+from src.phases.phase_two.stages.stage_two.workers.outline_worker import OutlineWorker
+from src.phases.phase_two.stages.stage_two.workers.outline_critic import OutlineCritic
+from src.phases.phase_two.stages.stage_two.workers.outline_refinement_worker import OutlineRefinementWorker
+from src.phases.phase_two.stages.stage_two.workers.key_moves_worker import KeyMovesWorker
+from src.phases.phase_two.stages.stage_two.workers.key_moves_critic import KeyMovesCritic
+from src.phases.phase_two.stages.stage_two.workers.key_moves_refinement_worker import KeyMovesRefinementWorker
 
 def setup_logging():
     """Configure logging"""
