@@ -13,7 +13,7 @@ class AbstractRefinementWorker(RefinementWorker):
         super().__init__(config)
         self.prompts = AbstractPrompts()
         self._state = {"iterations": 0, "refinement_history": []}
-        self.stage_name = "abstract_development"
+        self.stage_name = "abstract_refinement"
 
     def _construct_prompt(self, input_data: WorkerInput) -> bool:
         return self.prompts.get_refinement_prompt(
@@ -44,6 +44,7 @@ class AbstractRefinementWorker(RefinementWorker):
 
     def process_output(self, response: str) -> WorkerOutput:
         """Process response into structured output"""
+        response = response.replace("```json", "").replace("```", "")
         try:
             # Split into sections
             sections = response.split("# ")

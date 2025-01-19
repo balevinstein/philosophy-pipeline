@@ -23,7 +23,6 @@ class AbstractDevelopmentWorker(DevelopmentWorker):
 
     def process_input(self, state: Dict[str, Any]) -> WorkerInput:
         """Prepare input for abstract development"""
-        print(state)
         return WorkerInput(
             context={
                 "literature": state["literature"],
@@ -40,8 +39,8 @@ class AbstractDevelopmentWorker(DevelopmentWorker):
         """Process API response into structured output"""
         try:
             # Parse JSON response
+            response = response.replace("```json", "").replace("```", "")
             modifications = json.loads(response)
-
             # Update state
             self._state["iterations"] += 1
             self._state["current_abstract"] = modifications

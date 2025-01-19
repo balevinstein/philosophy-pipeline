@@ -1,9 +1,12 @@
 # src/stages/phase_two/stages/stage_two/workers/abstract_worker.py
 
 import json
+
+from src.phases.phase_two.stages.stage_two.prompts.abstract.abstract_prompts import (
+    AbstractPrompts,
+)
 from ....base.framework import FrameworkWorker
 from ....base.worker import WorkerInput, WorkerOutput
-from ..prompts.abstract_prompts import AbstractPrompts
 from typing import Dict, Any
 
 
@@ -94,9 +97,7 @@ class AbstractDevelopmentWorker(FrameworkWorker):
     def _construct_prompt(self, input_data: WorkerInput) -> str:
         """Construct prompt for abstract development"""
         return self.prompts.get_development_prompt(
-            lit_readings=input_data.context["literature"]["readings"],
             lit_synthesis=input_data.context["literature"]["synthesis"],
-            lit_narrative=input_data.context["literature"]["narrative"],
             final_selection=input_data.context["final_selection"],
         )
 
@@ -104,6 +105,7 @@ class AbstractDevelopmentWorker(FrameworkWorker):
         """Process API response into structured output"""
         try:
             # Parse JSON response
+            response = response.removeprefix("```json").removesuffix("```")
             modifications = json.loads(response)
 
             # Update state

@@ -94,7 +94,7 @@ Recent Critique:
 
 Think carefully about how changes to any component affect the whole framework.
 Not every suggestion must be implemented, but provide clear reasoning for your decisions.
-
+Provide a long abstract, at least 200 words
 Provide your refinement in the following format:
 {self.output_format}"""
 
