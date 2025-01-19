@@ -3,11 +3,12 @@
 from typing import Dict, Optional, List
 import json
 
+
 class AbstractRefinementPrompts:
-   """Prompts for refining abstract and framework based on critique"""
-   
-   def __init__(self):
-       self.CONTEXT = """You are refining an abstract and framework for a paper to be published in Analysis (4,000 word limit). 
+    """Prompts for refining abstract and framework based on critique"""
+
+    def __init__(self):
+        self.context = """You are refining an abstract and framework for a paper to be published in Analysis (4,000 word limit).
 Analysis favors clear, precise papers in the analytic tradition that make a single sharp philosophical contribution.
 
 You have received critique of the current framework. Consider each suggestion carefully, but maintain and preserve
@@ -23,7 +24,7 @@ The paper will be written by AI models that:
 - Cannot freely access additional academic literature
 - Must develop arguments without extensive citation requirements"""
 
-       self.OUTPUT_REQUIREMENTS = """
+        self.output_requirements = """
 OUTPUT REQUIREMENTS:
 1. Response must be valid JSON
 2. Use simple ASCII characters only
@@ -34,7 +35,7 @@ OUTPUT REQUIREMENTS:
 7. All components must maintain alignment
 8. Development notes should explain choices"""
 
-       self.OUTPUT_FORMAT = """# Scratch Work
+        self.output_format = """# Scratch Work
 [Think through suggested changes and their impacts across components]
 [Consider interactions between abstract and framework elements]
 [Evaluate feasibility of proposed changes]
@@ -68,15 +69,17 @@ OUTPUT REQUIREMENTS:
    ]
 }"""
 
-   def construct_prompt(self,
-                           current_framework: Dict,
-                           critique: Dict,                           
-                           lit_synthesis: Dict,                           
-                           previous_versions: Optional[List[Dict]] = None) -> str:
-       """Generate prompt for comprehensive framework refinement"""
-       
-       context = f"""
-{self.CONTEXT}
+    def construct_prompt(
+        self,
+        current_framework: Dict,
+        critique: Dict,
+        lit_synthesis: Dict,
+        previous_versions: Optional[List[Dict]] = None,
+    ) -> str:
+        """Generate prompt for comprehensive framework refinement"""
+
+        context = f"""
+{self.context}
 
 Literature Context:
 {json.dumps(lit_synthesis, indent=2)}
@@ -87,18 +90,18 @@ Current Framework Development:
 Recent Critique:
 {critique.get('content', '')}
 
-{self.OUTPUT_REQUIREMENTS}
+{self.output_requirements}
 
 Think carefully about how changes to any component affect the whole framework.
 Not every suggestion must be implemented, but provide clear reasoning for your decisions.
 
 Provide your refinement in the following format:
-{self.OUTPUT_FORMAT}"""
+{self.output_format}"""
 
-       if previous_versions:
-           context += f"""
+        if previous_versions:
+            context += f"""
 
-Note: This is refinement cycle {len(previous_versions)}. 
+Note: This is refinement cycle {len(previous_versions)}.
 Consider the evolution of the framework through previous versions while making further improvements."""
 
-       return context
+        return context

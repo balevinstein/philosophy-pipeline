@@ -3,23 +3,22 @@ from typing import Dict, Any
 
 from src.phases.core.base_worker import WorkerInput, WorkerOutput
 from src.phases.core.worker_types import DevelopmentWorker
-from src.phases.phase_two.stages.stage_two.prompts.abstract.abstract_prompts import AbstractPrompts
+from src.phases.phase_two.stages.stage_two.prompts.abstract.abstract_prompts import (
+    AbstractPrompts,
+)
 
 
 class AbstractDevelopmentWorker(DevelopmentWorker):
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         self.prompts = AbstractPrompts()
-        self._state = {
-            "iterations": 0,
-            "current_abstract": None
-        }
-        self.stage_name = 'abstract_development'
+        self._state = {"iterations": 0, "current_abstract": None}
+        self.stage_name = "abstract_development"
 
     def _construct_prompt(self, input_data: WorkerInput) -> str:
         return self.prompts.get_development_prompt(
             lit_synthesis=input_data.context["literature"]["synthesis"],
-            final_selection=input_data.context["final_selection"]
+            final_selection=input_data.context["final_selection"],
         )
 
     def process_input(self, state: Dict[str, Any]) -> WorkerInput:
@@ -28,13 +27,13 @@ class AbstractDevelopmentWorker(DevelopmentWorker):
         return WorkerInput(
             context={
                 "literature": state["literature"],
-                "final_selection": state["final_selection"]
+                "final_selection": state["final_selection"],
             },
             parameters={
                 "outline_state": state,
                 "stage": "abstract_development",
-                "iteration": self._state["iterations"]
-            }
+                "iteration": self._state["iterations"],
+            },
         )
 
     def process_output(self, response: str) -> WorkerOutput:
@@ -51,16 +50,16 @@ class AbstractDevelopmentWorker(DevelopmentWorker):
                 modifications=modifications,
                 notes={
                     "iteration": self._state["iterations"],
-                    "validation_passed": True
+                    "validation_passed": True,
                 },
-                status="completed"
+                status="completed",
             )
 
         except json.JSONDecodeError as e:
             return WorkerOutput(
                 modifications={},
                 notes={"error": f"Failed to parse response: {str(e)}"},
-                status="failed"
+                status="failed",
             )
 
     def validate_output(self, output: WorkerOutput) -> bool:
@@ -72,8 +71,12 @@ class AbstractDevelopmentWorker(DevelopmentWorker):
             return False
 
         required_fields = {
-            "abstract", "main_thesis", "core_contribution",
-            "key_moves", "development_notes", "validation_status"
+            "abstract",
+            "main_thesis",
+            "core_contribution",
+            "key_moves",
+            "development_notes",
+            "validation_status",
         }
 
         missing_fields = required_fields - set(output.modifications.keys())
@@ -93,15 +96,18 @@ class AbstractDevelopmentWorker(DevelopmentWorker):
             return False
 
         # Validate key moves
-        if not output.modifications["key_moves"] or \
-        not all(output.modifications["key_moves"]):
+        if not output.modifications["key_moves"] or not all(
+            output.modifications["key_moves"]
+        ):
             print("Failed: Empty or missing key moves")
             return False
 
         # Check validation status fields
         required_status = {
-            "scope_appropriate", "clearly_articulated",
-            "sufficiently_original", "feasibly_developable"
+            "scope_appropriate",
+            "clearly_articulated",
+            "sufficiently_original",
+            "feasibly_developable",
         }
 
         status = output.modifications["validation_status"]
