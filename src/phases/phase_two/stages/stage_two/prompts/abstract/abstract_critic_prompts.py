@@ -3,11 +3,12 @@
 import json
 from typing import Dict, Any
 
+
 class AbstractCriticPrompts:
     """Prompts for abstract criticism and evaluation"""
-    
+
     def __init__(self):
-        self.CONTEXT = """You are critiquing an abstract and framework for a paper to be published in Analysis (4,000 word limit). The paper will be written by AI models that:
+        self.context = """You are critiquing an abstract and framework for a paper to be published in Analysis (4,000 word limit). The paper will be written by AI models that:
 - Have access to the specific papers provided in our literature analysis
 - Cannot freely access additional academic literature
 - Must develop arguments without extensive citation requirements
@@ -21,7 +22,7 @@ Your task is to critically evaluate:
 
 Consider both specific elements and the overall framework. If components are already strong, acknowledge this - you do not need to manufacture criticism where none is warranted."""
 
-        self.OUTPUT_FORMAT = """# Scratch Work
+        self.output_format = """# Scratch Work
 [Think through the entire framework's strengths, weaknesses, and opportunities]
 
 # Abstract Analysis
@@ -69,14 +70,16 @@ MAJOR REVISION [if components need significant realignment]
 MINOR REFINEMENT [if components need small adjustments]
 MINIMAL CHANGES [if components are well-aligned and effective]"""
 
-    def construct_prompt(self,
-                          abstract_framework: Dict[str, Any],
-                          lit_readings: Dict[str, Any],
-                          lit_synthesis: Dict[str, Any],
-                          lit_narrative: str) -> str:
+    def construct_prompt(
+        self,
+        abstract_framework: Dict[str, Any],
+        lit_readings: Dict[str, Any],
+        lit_synthesis: Dict[str, Any],
+        lit_narrative: str,
+    ) -> str:
         """Generate prompt for comprehensive critique"""
         return f"""
-{self.CONTEXT}
+{self.context}
 
 Literature Context:
 1. Paper Readings:
@@ -92,6 +95,6 @@ Current Framework Development:
 {json.dumps(abstract_framework, indent=2)}
 
 Provide your evaluation following this format:
-{self.OUTPUT_FORMAT}
+{self.output_format}
 
 Remember: Focus on how components can be strengthened while maintaining coherence across the framework. Consider both individual elements and their integration."""

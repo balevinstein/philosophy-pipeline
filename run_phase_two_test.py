@@ -76,7 +76,7 @@ def main():
 
     # Create and run workflows
     abstract_workflow = create_abstract_workflow(config, output_dir=framework_dir)
-    state = abstract_workflow.execute(state)
+    abstract_state = abstract_workflow.execute(state)
 
 
 if __name__ == "__main__":

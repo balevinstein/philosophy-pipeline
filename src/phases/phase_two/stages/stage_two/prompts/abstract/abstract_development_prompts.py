@@ -2,13 +2,14 @@
 
 import json
 
+
 class AbstractDevelopmentPrompts:
     """Prompts for abstract development"""
-    
-    def __init__(self):
-        self.ANALYSIS_CONTEXT = """You are helping write a paper for Analysis, a philosophical journal with a strict 4,000 word limit. Papers in Analysis make a single, clear philosophical contribution that can be effectively developed in this space. The abstract should clearly state the main thesis and philosophical contribution while being engaging and precise."""
 
-        self.OUTPUT_REQUIREMENTS = """
+    def __init__(self):
+        self.analysis_context = """You are helping write a paper for Analysis, a philosophical journal with a strict 4,000 word limit. Papers in Analysis make a single, clear philosophical contribution that can be effectively developed in this space. The abstract should clearly state the main thesis and philosophical contribution while being engaging and precise."""
+
+        self.output_requirements = """
 OUTPUT REQUIREMENTS:
 1. Response must be valid JSON
 2. Use simple ASCII characters only (no special quotes or unicode)
@@ -18,7 +19,7 @@ OUTPUT REQUIREMENTS:
 6. Key moves should be concrete and specific
 7. Development notes should explain your choices"""
 
-        self.OUTPUT_FORMAT = """
+        self.output_format = """
 {
     "abstract": "Complete abstract for the paper",
     "main_thesis": "Clear and precise statement of the paper's main thesis",
@@ -36,12 +37,10 @@ OUTPUT REQUIREMENTS:
     }
 }"""
 
-    def construct_prompt(self,                              
-                             lit_synthesis: dict,                              
-                             final_selection: dict) -> str:
+    def construct_prompt(self, lit_synthesis: dict, final_selection: dict) -> str:
         """Generate prompt for initial abstract development"""
         return f"""
-{self.ANALYSIS_CONTEXT}
+{self.analysis_context}
 
 Your task is to develop an abstract and framework for the paper that builds on our literature analysis and selected topic.
 
@@ -57,7 +56,7 @@ Focus on creating an abstract that:
 - Engages meaningfully with our literature
 - Has concrete, developable key moves
 
-{self.OUTPUT_REQUIREMENTS}
+{self.output_requirements}
 
 Literature Analysis:
 ```json
@@ -70,6 +69,6 @@ Selected Topic and Development:
 ```
 
 Provide your output in the following format:
-{self.OUTPUT_FORMAT}
+{self.output_format}
 
 The full paper readings and narrative synthesis are available if you need to check specific details."""

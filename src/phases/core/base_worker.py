@@ -17,7 +17,7 @@ class WorkerInput:
 
 @dataclass
 class WorkerOutput:
-    status: str
+    status: str  # Status of the worker
     modifications: Dict[str, Any]  # Proposed changes to outline
     notes: Dict[str, Any]  # Worker's observations/suggestions
 
@@ -59,7 +59,7 @@ class BaseWorker(ABC):
         """Validate worker output"""
         pass
 
-    def execute(self, state: WorkerInput) -> WorkerOutput:
+    def execute(self, state: Dict[str, Any]) -> WorkerOutput:
         """Main execution method"""
         input_data = self.process_input(state)
         response = self.api_handler.make_api_call(

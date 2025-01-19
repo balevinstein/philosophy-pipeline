@@ -24,8 +24,7 @@ def create_abstract_workflow(config: Dict[str, Any], output_dir: Path) -> Workfl
                 "final_selection": "final_selection",
             },
             output_mapping={
-                "abstract": "result.abstract",
-                "framework": "result.framework",
+                "framework": "modifications",
             },
             name="development",
         ),
