@@ -69,7 +69,7 @@ MAJOR REVISION [if components need significant realignment]
 MINOR REFINEMENT [if components need small adjustments]
 MINIMAL CHANGES [if components are well-aligned and effective]"""
 
-    def get_critique_prompt(self,
+    def construct_prompt(self,
                           abstract_framework: Dict[str, Any],
                           lit_readings: Dict[str, Any],
                           lit_synthesis: Dict[str, Any],

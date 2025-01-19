@@ -68,12 +68,10 @@ OUTPUT REQUIREMENTS:
    ]
 }"""
 
-   def get_refinement_prompt(self,
+   def construct_prompt(self,
                            current_framework: Dict,
-                           critique: Dict,
-                           lit_readings: Dict,
-                           lit_synthesis: Dict,
-                           lit_narrative: str,
+                           critique: Dict,                           
+                           lit_synthesis: Dict,                           
                            previous_versions: Optional[List[Dict]] = None) -> str:
        """Generate prompt for comprehensive framework refinement"""
        
