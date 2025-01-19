@@ -68,7 +68,7 @@ Selected Topic and Development:
 {json.dumps(final_selection, indent=2)}
 ```
 
-Provide your output in the following format:
+Provide your output in the following JSON format:
 {self.output_format}
 
-The full paper readings and narrative synthesis are available if you need to check specific details."""
+The full paper readings and narrative synthesis are available if you need to check specific details. Provide a long abstract, at least 200 words"""

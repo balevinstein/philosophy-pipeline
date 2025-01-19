@@ -9,26 +9,13 @@ import logging
 from typing import Dict, Any
 import subprocess
 
+from src.phases.phase_two.stages.stage_two.workers.abstract_critic import AbstractCritic
 from src.phases.phase_two.stages.stage_two.workers.abstract_worker import (
     AbstractDevelopmentWorker,
 )
-from src.phases.phase_two.stages.stage_two.workers.abstract_critic import AbstractCritic
+
 from src.phases.phase_two.stages.stage_two.workers.abstract_refinement_worker import (
     AbstractRefinementWorker,
-)
-from src.phases.phase_two.stages.stage_two.workers.outline_worker import OutlineWorker
-from src.phases.phase_two.stages.stage_two.workers.outline_critic import OutlineCritic
-from src.phases.phase_two.stages.stage_two.workers.outline_refinement_worker import (
-    OutlineRefinementWorker,
-)
-from src.phases.phase_two.stages.stage_two.workers.key_moves_worker import (
-    KeyMovesWorker,
-)
-from src.phases.phase_two.stages.stage_two.workers.key_moves_critic import (
-    KeyMovesCritic,
-)
-from src.phases.phase_two.stages.stage_two.workers.key_moves_refinement_worker import (
-    KeyMovesRefinementWorker,
 )
 
 
@@ -102,13 +89,13 @@ def main():
         abstract_critic = AbstractCritic(config)
         abstract_refinement = AbstractRefinementWorker(config)
 
-        outline_worker = OutlineWorker(config)
-        outline_critic = OutlineCritic(config)
-        outline_refinement = OutlineRefinementWorker(config)
+        # outline_worker = OutlineWorker(config)
+        # outline_critic = OutlineCritic(config)
+        # outline_refinement = OutlineRefinementWorker(config)
 
-        key_moves_worker = KeyMovesWorker(config)
-        key_moves_critic = KeyMovesCritic(config)
-        key_moves_refinement = KeyMovesRefinementWorker(config)
+        # key_moves_worker = KeyMovesWorker(config)
+        # key_moves_critic = KeyMovesCritic(config)
+        # key_moves_refinement = KeyMovesRefinementWorker(config)
 
         # Abstract Development Cycle
         print("\nStarting Abstract Development...")
@@ -170,7 +157,7 @@ def main():
             open(framework_dir / "framework.json", "w"),
             indent=2,
         )
-
+        return
         # Similar cycles for outline and key moves...
         # Outline Development Cycle
         print("\nStarting Outline Development...")

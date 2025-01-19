@@ -6,7 +6,7 @@ from typing import Any, Dict
 import json
 
 
-from src.phases.phase_two.stages.stage_two.workflows.abstract.abstract_workflow import (
+from src.phases.phase_two.stages.stage_two.workflows.abstract_workflow import (
     create_abstract_workflow,
 )
 from src.utils.api import load_config
@@ -77,6 +77,7 @@ def main():
     # Create and run workflows
     abstract_workflow = create_abstract_workflow(config, output_dir=framework_dir)
     abstract_state = abstract_workflow.execute(state)
+    print(abstract_state)
 
 
 if __name__ == "__main__":

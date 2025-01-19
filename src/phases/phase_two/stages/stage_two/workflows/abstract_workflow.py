@@ -17,6 +17,8 @@ from src.phases.phase_two.stages.stage_two.workers.refinement.abstract_refinemen
 def create_abstract_workflow(config: Dict[str, Any], output_dir: Path) -> Workflow:
     """Create workflows"""
     return Workflow(
+        workflow_name="abstract",
+        max_cycles=3,
         initial_step=WorkflowStep(
             worker=AbstractDevelopmentWorker(config),
             input_mapping={
@@ -24,34 +26,37 @@ def create_abstract_workflow(config: Dict[str, Any], output_dir: Path) -> Workfl
                 "final_selection": "final_selection",
             },
             output_mapping={
-                "framework": "modifications",
+                "current_framework": "modifications",
+                "output_versions": "modifications",
             },
             name="development",
+            has_output_version=True,
         ),
         cycle_steps=[
             WorkflowStep(
                 worker=AbstractCriticWorker(config),
                 input_mapping={
-                    "abstract": "abstract",
-                    "framework": "framework",
+                    "current_framework": "current_framework",
                     "literature": "literature",
                 },
-                output_mapping={"critique": "result.critique"},
+                output_mapping={"current_critique": "modifications"},
                 name="critique",
+                has_output_version=False,
             ),
             WorkflowStep(
                 worker=AbstractRefinementWorker(config),
                 input_mapping={
-                    "current_version": "abstract",
-                    "critique": "critique",
-                    "framework": "framework",
+                    "current_critique": "current_critique",
+                    "current_framework": "current_framework",
                     "literature": "literature",
                 },
                 output_mapping={
-                    "refined_abstract": "result.abstract",
-                    "refined_framework": "result.framework",
+                    "current_refinment": "modifications",
+                    "current_framework": "framework_data",
+                    "output_versions": "framework_data",
                 },
                 name="refinment",
+                has_output_version=True,
             ),
         ],
         output_dir=output_dir,

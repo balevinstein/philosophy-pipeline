@@ -8,8 +8,8 @@ from src.utils.api import APIHandler
 
 @dataclass
 class WorkerInput:
-    context: Dict[str, Any]
-    parameters: Dict[str, Any]
+    context: Dict[str, Any]  # Context needed for prompt construction and LLM calls
+    parameters: Dict[str, Any]  # Execution based details
 
     def __getitem__(self, item):
         return getattr(self, item)
@@ -67,5 +67,6 @@ class BaseWorker(ABC):
         )
         output = self.process_output(response)
         if not self.validate_output(output):
+            print(response)
             raise ValidationError("Worker output failed validation")
         return output
