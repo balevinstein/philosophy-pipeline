@@ -2,7 +2,7 @@
 
 import json
 
-class AbstractPrompts:
+class AbstractDevelopmentPrompts:
     """Prompts for abstract development"""
     
     def __init__(self):
@@ -36,10 +36,8 @@ OUTPUT REQUIREMENTS:
     }
 }"""
 
-    def get_development_prompt(self, 
-                             lit_readings: dict,
-                             lit_synthesis: dict, 
-                             lit_narrative: str,
+    def construct_prompt(self,                              
+                             lit_synthesis: dict,                              
                              final_selection: dict) -> str:
         """Generate prompt for initial abstract development"""
         return f"""
@@ -62,10 +60,14 @@ Focus on creating an abstract that:
 {self.OUTPUT_REQUIREMENTS}
 
 Literature Analysis:
+```json
 {json.dumps(lit_synthesis, indent=2)}
+```
 
 Selected Topic and Development:
+```json
 {json.dumps(final_selection, indent=2)}
+```
 
 Provide your output in the following format:
 {self.OUTPUT_FORMAT}
