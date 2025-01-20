@@ -85,7 +85,7 @@ class AbstractCriticWorker(CriticWorker):
             }
 
             # Extract summary assessment
-            summary = self.extract_summary(response)
+            summary = self._extract_summary(response)
 
             return WorkerOutput(
                 modifications={
@@ -161,11 +161,3 @@ class AbstractCriticWorker(CriticWorker):
             return False
 
         return True
-
-    # Critic Specific
-    def extract_summary(self, summary_text: str) -> str:
-        """Extract summary assessment from text"""
-        for assessment in ["MAJOR REVISION", "MINOR REFINEMENT", "MINIMAL CHANGES"]:
-            if assessment in summary_text:
-                return assessment
-        return "UNKNOWN"

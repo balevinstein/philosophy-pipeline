@@ -1,19 +1,15 @@
-# src/stages/phase_two/stages/stage_two/workers/key_moves_worker.py
+from typing import Dict, Any
 
-
-from typing import Dict, Any, Optional
-
+from src.phases.core.base_worker import WorkerInput, WorkerOutput
+from src.phases.core.worker_types import DevelopmentWorker
 from src.phases.phase_two.stages.stage_two.prompts.key_moves.key_moves_prompts import (
     KeyMovesPrompts,
 )
-from ....base.framework import FrameworkWorker
-from ....base.worker import WorkerInput, WorkerOutput
 
 
-class KeyMovesWorker(FrameworkWorker):
-    """Worker for analyzing feasibility of individual key moves"""
+class KeyMovesDevelopmentWorker(DevelopmentWorker):
 
-    def __init__(self, config: Dict):
+    def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         self.prompts = KeyMovesPrompts()
         self.stage_name = "key_moves_development"
@@ -24,11 +20,15 @@ class KeyMovesWorker(FrameworkWorker):
             "development_phase": "argument",
         }
 
-    def get_state(self) -> Dict[str, Any]:
-        """Get current worker state"""
-        return self._state.copy()
+    def _construct_prompt(self, input_data: WorkerInput) -> str:
+        return self.prompts.get_development_argument_prompt(
+            move=input_data.parameters["move"],
+            abstract=input_data.context.get("abstract"),
+            outline=input_data.context.get("outline"),
+            prior_moves=self._state.get("analyzed_moves"),
+        )
 
-    def prepare_input(self, state: Dict[str, Any]) -> WorkerInput:
+    def process_input(self, state: Dict[str, Any]) -> WorkerInput:
         """Prepare input for key moves analysis"""
         print("\nPreparing input for key moves analysis...")
         print("\nReceived state keys:", list(state.keys()))
@@ -46,7 +46,6 @@ class KeyMovesWorker(FrameworkWorker):
             self._state["current_move"] = moves[0]
 
         return WorkerInput(
-            outline_state=state,
             context={
                 "framework": state["framework"],
                 "outline": state["outline"],
@@ -54,20 +53,31 @@ class KeyMovesWorker(FrameworkWorker):
                 "lit_synthesis": state.get("literature", {}).get("synthesis"),
                 "lit_narrative": state.get("literature", {}).get("narrative"),
             },
-            task_specific={
+            parameters={
+                "outline_state": state,
                 "phase": "key_moves_analysis",
                 "move": self._state["current_move"],
             },
         )
 
-    def _construct_prompt(self, input_data: WorkerInput) -> str:
-        """Construct prompt based on current phase"""
-        return self.prompts.get_development_argument_prompt(
-            move=input_data.task_specific["move"],
-            abstract=input_data.context.get("abstract"),
-            outline=input_data.context.get("outline"),
-            prior_moves=self._state.get("analyzed_moves"),
-        )
+    def process_output(self, response: str) -> WorkerOutput:
+        """Process API response into structured output"""
+        try:
+            return WorkerOutput(
+                modifications={"content": response.strip()},
+                notes={
+                    "move": self._state["current_move"],
+                    "iteration": self._state["iterations"],
+                },
+                status="completed",
+            )
+
+        except Exception as e:
+            return WorkerOutput(
+                modifications={},
+                notes={"error": f"Failed to process response: {str(e)}"},
+                status="failed",
+            )
 
     def validate_output(self, output: WorkerOutput) -> bool:
         """Verify output meets requirements"""
@@ -97,49 +107,3 @@ class KeyMovesWorker(FrameworkWorker):
 
         print("Validation passed!")
         return True
-
-    # TODO: NOT_USED
-    def analyze_move(
-        self, move: str, abstract: str, outline: str, prior_moves: Optional[Dict] = None
-    ) -> Dict[str, Any]:
-        """Analyze a single key move"""
-        # Set up state for this move
-        self._state["current_move"] = move
-
-        input_data = WorkerInput(
-            outline_state={"current_move": move},
-            context={
-                "abstract": abstract,
-                "outline": outline,
-                "prior_moves": prior_moves,
-            },
-            task_specific={"phase": "analysis"},
-        )
-
-        result = self.run(input_data)
-
-        return {
-            "move": move,
-            "analysis": result.modifications["content"],
-            "feasibility_assessment": result.modifications.get("feasibility", {}),
-            "development_notes": result.modifications.get("notes", {}),
-        }
-
-    def process_output(self, response: str) -> WorkerOutput:
-        """Process API response into structured output"""
-        try:
-            return WorkerOutput(
-                modifications={"content": response.strip()},
-                notes={
-                    "move": self._state["current_move"],
-                    "iteration": self._state["iterations"],
-                },
-                status="completed",
-            )
-
-        except Exception as e:
-            return WorkerOutput(
-                modifications={},
-                notes={"error": f"Failed to process response: {str(e)}"},
-                status="failed",
-            )

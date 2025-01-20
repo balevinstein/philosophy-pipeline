@@ -1,27 +1,32 @@
 from typing import Dict, Any
 
+from src.phases.core.base_worker import WorkerInput, WorkerOutput
+from src.phases.core.worker_types import CriticWorker
 from src.phases.phase_two.stages.stage_two.prompts.key_moves.key_moves_prompts import (
     KeyMovesPrompts,
 )
-from ....base.framework import CriticWorker
-from ....base.worker import WorkerInput, WorkerOutput
 
 
-class KeyMovesCritic(CriticWorker):
-    """Worker for critiquing key argumentative moves"""
+class KeyMovesCriticWorker(CriticWorker):
 
-    def __init__(self, config: Dict):
+    def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         self.prompts = KeyMovesPrompts()
         self.stage_name = "key_moves_critic"
         self._state = {"iterations": 0, "previous_critiques": []}
 
-    def get_state(self) -> Dict[str, Any]:
-        """Get current worker state"""
-        return self._state.copy()
+    def _construct_prompt(self, input_data: WorkerInput) -> str:
+        return self.prompts.get_critic_prompt(
+            current_moves=input_data.context["key_moves"],
+            framework=input_data.context["framework"],
+            outline=input_data.context["outline"],
+            lit_readings=input_data.context.get("lit_readings"),
+            lit_synthesis=input_data.context.get("lit_synthesis"),
+            lit_narrative=input_data.context.get("lit_narrative"),
+        )
 
-    def prepare_input(self, state: Dict[str, Any]) -> WorkerInput:
-        """Prepare input for critique"""
+    def process_input(self, state: Dict[str, Any]) -> WorkerInput:
+        """Map the input data to worker input"""
         print("\nPreparing input for key moves critique...")
         print("\nReceived state keys:", list(state.keys()))
 
@@ -36,7 +41,6 @@ class KeyMovesCritic(CriticWorker):
             raise ValueError("No key moves data found in state")
 
         return WorkerInput(
-            outline_state=state,
             context={
                 "framework": state["framework"],
                 "outline": state["outline"],
@@ -45,18 +49,7 @@ class KeyMovesCritic(CriticWorker):
                 "lit_synthesis": state.get("literature", {}).get("synthesis"),
                 "lit_narrative": state.get("literature", {}).get("narrative"),
             },
-            task_specific={"iteration": self._state["iterations"]},
-        )
-
-    def _construct_prompt(self, input_data: WorkerInput) -> str:
-        """Construct critique prompt"""
-        return self.prompts.get_critic_prompt(
-            current_moves=input_data.context["key_moves"],
-            framework=input_data.context["framework"],
-            outline=input_data.context["outline"],
-            lit_readings=input_data.context.get("lit_readings"),
-            lit_synthesis=input_data.context.get("lit_synthesis"),
-            lit_narrative=input_data.context.get("lit_narrative"),
+            parameters={"outline_state": state, "iteration": self._state["iterations"]},
         )
 
     def process_output(self, response: str) -> WorkerOutput:
@@ -123,15 +116,8 @@ class KeyMovesCritic(CriticWorker):
                 status="failed",
             )
 
-    def _extract_summary(self, summary_text: str) -> str:
-        """Extract summary assessment from text"""
-        for assessment in ["MAJOR REVISION", "MINOR REFINEMENT", "MINIMAL CHANGES"]:
-            if assessment in summary_text:
-                return assessment
-        return "UNKNOWN"
-
     def validate_output(self, output: WorkerOutput) -> bool:
-        """Verify output meets basic requirements"""
+        """Optional output validation"""
         print("\nValidating key moves critique output...")
 
         if not output.modifications:
@@ -168,8 +154,3 @@ class KeyMovesCritic(CriticWorker):
 
         print("Validation passed!")
         return True
-
-    def evaluate(self, content: Dict[str, Any]) -> Dict[str, Any]:
-        """Evaluate provided content - implements abstract method"""
-        result = self.run({"key_moves_analysis": content})
-        return result.modifications

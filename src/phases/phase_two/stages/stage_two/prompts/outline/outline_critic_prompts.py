@@ -1,11 +1,12 @@
-from typing import Dict, Optional
+from typing import Dict
 import json
 
+
 class OutlineCriticPrompts:
-   """Prompts for critiquing outline and suggesting improvements"""
-   
-   def __init__(self):
-       self.CONTEXT = """You are critiquing an initial high-level outline for a paper to be published in Analysis (4,000 word limit). 
+    """Prompts for critiquing outline and suggesting improvements"""
+
+    def __init__(self):
+        self.context = """You are critiquing an initial high-level outline for a paper to be published in Analysis (4,000 word limit).
 This outline focuses on main sections and key structural elements - more detailed section development will occur in later stages.
 
 The paper will be written by AI models that:
@@ -23,7 +24,7 @@ While detailed word allocation will come later, consider that a 4,000 word paper
 
 Take time to think through different aspects before providing your assessment."""
 
-       self.OUTPUT_FORMAT = """# Scratch Work
+        self.output_format = """# Scratch Work
 [Think through the outline's strengths, weaknesses, and opportunities]
 
 # Framework Alignment Analysis
@@ -69,15 +70,17 @@ MAJOR REVISION [if structure needs significant rework]
 MINOR REFINEMENT [if structure needs small adjustments]
 MINIMAL CHANGES [if structure is fundamentally sound]"""
 
-   def get_critique_prompt(self,
-                         outline: str,
-                         framework: Dict,
-                         lit_readings: Dict,
-                         lit_synthesis: Dict,
-                         lit_narrative: str) -> str:
-       """Generate prompt for outline critique"""
-       return f"""
-{self.CONTEXT}
+    def construct_prompt(
+        self,
+        outline: str,
+        framework: Dict,
+        lit_readings: Dict,
+        lit_synthesis: Dict,
+        lit_narrative: str,
+    ) -> str:
+        """Generate prompt for outline critique"""
+        return f"""
+{self.context}
 
 Current Framework Development:
 {json.dumps(framework, indent=2)}
@@ -96,6 +99,6 @@ Literature Context:
 {lit_narrative}
 
 Provide your evaluation following this format:
-{self.OUTPUT_FORMAT}
+{self.output_format}
 
 Remember to think carefully about how the outline can best support development of the framework while maintaining feasibility and coherence. Consider both high-level structure and essential development requirements."""
