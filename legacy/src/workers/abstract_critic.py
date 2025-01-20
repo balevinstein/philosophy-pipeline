@@ -3,11 +3,11 @@
 import json
 from typing import Dict, Any
 
+from src.phases.phase_two.base.framework import CriticWorker
+from src.phases.phase_two.base.worker import WorkerInput
 from src.phases.phase_two.stages.stage_two.prompts.abstract.abstract_prompts import (
     AbstractPrompts,
 )
-from ....base.framework import CriticWorker
-from ....base.worker import WorkerInput, WorkerOutput
 
 
 class AbstractCritic(CriticWorker):
