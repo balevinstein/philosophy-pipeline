@@ -1,11 +1,12 @@
 import json
-from typing import Dict, Optional
+from typing import Dict
+
 
 class OutlineRefinementPrompts:
     """Prompts for refining outline based on critique"""
-    
+
     def __init__(self):
-        self.CONTEXT = """You are refining a high-level outline for a paper to be published in Analysis (4,000 word limit). 
+        self.context = """You are refining a high-level outline for a paper to be published in Analysis (4,000 word limit).
 This outline establishes the main sections and key structural elements that will scaffold later development.
 
 You have received critique of the current outline. Your primary focus should be ensuring the outline effectively supports:
@@ -23,7 +24,7 @@ Consider each suggestion carefully, but maintain what is already working well. Y
 
 Take time to think through how changes will affect the outline's ability to support argument development and key moves."""
 
-        self.OUTPUT_FORMAT = """# Scratch Work
+        self.output_format = """# Scratch Work
 [Think through critique suggestions and their implications]
 [Consider structural impacts]
 [Evaluate section dependencies]
@@ -52,16 +53,16 @@ Take time to think through how changes will affect the outline's ability to supp
 - Effect on development feasibility
 - Support for key moves"""
 
-    def get_refinement_prompt(self,
-                            outline: str,
-                            critique: Dict,
-                            framework: Dict,
-                            lit_readings: Dict,
-                            lit_synthesis: Dict,
-                            lit_narrative: str) -> str:
+    def construct_prompt(
+        self,
+        outline: str,
+        critique: Dict,
+        framework: Dict,
+        lit_synthesis: Dict,
+    ) -> str:
         """Generate prompt for outline refinement"""
         return f"""
-{self.CONTEXT}
+{self.context}
 
 Current Framework:
 {json.dumps(framework, indent=2)}
@@ -76,6 +77,6 @@ Literature Context:
 {json.dumps(lit_synthesis, indent=2)}
 
 Provide your refinement following this format:
-{self.OUTPUT_FORMAT}
+{self.output_format}
 
 Think carefully about how each change affects the outline's ability to support the framework's development."""

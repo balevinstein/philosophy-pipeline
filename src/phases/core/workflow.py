@@ -12,7 +12,6 @@ class WorkflowStep:
     input_mapping: Dict[str, str]  # Maps workflow state to worker input
     output_mapping: Dict[str, str]  # Maps worker output to workflow state
     name: str  # Step identifier
-    has_output_version: bool  # Does this give an output version
     save_output: bool = True  # Whether to save step output
 
 
@@ -63,6 +62,10 @@ class Workflow:
 
             if source_path == "modifications":
                 self.state[target_path] = getattr(worker_output, "modifications")
+                continue
+
+            if target_path == "previous_versions":
+                self.state[target_path] = self.output_versions[:-1]
                 continue
 
             if target_path == "output_versions":

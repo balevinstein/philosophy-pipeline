@@ -1,52 +1,22 @@
-# src/stages/phase_two/stages/stage_two/workers/key_moves_refinement_worker.py
-
 import json
 from typing import Dict, Any, List
 
+from src.phases.core.base_worker import WorkerInput, WorkerOutput
+from src.phases.core.worker_types import RefinementWorker
 from src.phases.phase_two.stages.stage_two.prompts.key_moves.key_moves_prompts import (
     KeyMovesPrompts,
 )
-from ....base.framework import FrameworkWorker
-from ....base.worker import WorkerInput, WorkerOutput
 
 
-class KeyMovesRefinementWorker(FrameworkWorker):
-    """Worker for refining key moves based on critique"""
+class KeyMovesRefinementWorker(RefinementWorker):
 
-    def __init__(self, config: Dict):
+    def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         self.prompts = KeyMovesPrompts()
         self.stage_name = "key_moves_refinement"
         self._state = {"iterations": 0, "refinement_history": []}
 
-    def get_state(self) -> Dict[str, Any]:
-        """Get current worker state"""
-        return self._state.copy()
-
-    def prepare_input(self, state: Dict[str, Any]) -> WorkerInput:
-        """Prepare input for refinement"""
-        print("\nPreparing input for key moves refinement...")
-        print("\nReceived state keys:", list(state.keys()))
-
-        if "key_moves_analysis" not in state or "critique" not in state:
-            raise ValueError("Missing required state: key_moves_analysis and critique")
-
-        return WorkerInput(
-            outline_state=state,
-            context={
-                "current_moves": state["key_moves_analysis"],
-                "current_critique": state["critique"],
-                "framework": state.get("framework", {}),
-                "outline": state.get("outline", ""),
-                "lit_readings": state.get("literature", {}).get("readings"),
-                "lit_synthesis": state.get("literature", {}).get("synthesis"),
-                "lit_narrative": state.get("literature", {}).get("narrative"),
-            },
-            task_specific={"iteration": self._state["iterations"]},
-        )
-
     def _construct_prompt(self, input_data: WorkerInput) -> str:
-        """Construct refinement prompt"""
         return self.prompts.get_refinement_prompt(
             current_moves=input_data.context["current_moves"],
             critique=input_data.context["current_critique"],
@@ -54,51 +24,6 @@ class KeyMovesRefinementWorker(FrameworkWorker):
             outline=input_data.context.get("outline"),
             lit_synthesis=input_data.context.get("lit_synthesis"),
         )
-
-    def validate_output(self, output: WorkerOutput) -> bool:
-        """Verify output meets requirements"""
-        print("\nValidating key moves refinement output...")
-
-        if not output.modifications:
-            print("Failed: No modifications")
-            return False
-
-        # Instead of working with raw content, let's use the processed sections
-        sections = output.modifications.get("sections", {})
-        print("\nProcessed sections:", list(sections.keys()))
-
-        # Check for required main sections
-        required_sections = [
-            "Scratch Work",
-            "Refinement Decisions",
-            "Updated Move Development",
-            "Change Notes",
-        ]
-
-        missing_sections = [
-            section for section in required_sections if section not in sections
-        ]
-        if missing_sections:
-            print(f"Failed: Missing sections: {missing_sections}")
-            return False
-
-        # Check Refinement Decisions structure
-        refinement_section = sections.get("Refinement Decisions", {})
-        print("\nRefinement section structure:", refinement_section.keys())
-
-        if not isinstance(refinement_section, dict):
-            print("Failed: Refinement Decisions not properly structured")
-            return False
-
-        if not (
-            "Will Implement" in refinement_section
-            and "Won't Implement" in refinement_section
-        ):
-            print("Failed: Missing required Will/Won't Implement subsections")
-            return False
-
-        print("Validation passed!")
-        return True
 
     def _extract_decisions(
         self, decisions_section: Dict[str, str]
@@ -127,6 +52,29 @@ class KeyMovesRefinementWorker(FrameworkWorker):
                     )
 
         return decisions
+
+    def process_input(self, state: Dict[str, Any]) -> WorkerInput:
+        """Prepare input for refinement"""
+        print("\nPreparing input for key moves refinement...")
+        print("\nReceived state keys:", list(state.keys()))
+
+        if "current_moves" not in state or "current_critique" not in state:
+            raise ValueError(
+                "Missing required state: current_moves and current_critique"
+            )
+
+        return WorkerInput(
+            context={
+                "current_moves": state["current_moves"],
+                "current_critique": state["current_critique"],
+                "framework": state.get("framework", {}),
+                "outline": state.get("outline", ""),
+                "lit_readings": state.get("literature", {}).get("readings"),
+                "lit_synthesis": state.get("literature", {}).get("synthesis"),
+                "lit_narrative": state.get("literature", {}).get("narrative"),
+            },
+            parameters={"outline_state": state, "iteration": self._state["iterations"]},
+        )
 
     def process_output(self, response: str) -> WorkerOutput:
         """Process response into structured output"""
@@ -228,3 +176,48 @@ class KeyMovesRefinementWorker(FrameworkWorker):
                 notes={"error": f"Failed to process response: {str(e)}"},
                 status="failed",
             )
+
+    def validate_output(self, output: WorkerOutput) -> bool:
+        """Verify output meets requirements"""
+        print("\nValidating key moves refinement output...")
+
+        if not output.modifications:
+            print("Failed: No modifications")
+            return False
+
+        # Instead of working with raw content, let's use the processed sections
+        sections = output.modifications.get("sections", {})
+        print("\nProcessed sections:", list(sections.keys()))
+
+        # Check for required main sections
+        required_sections = [
+            "Scratch Work",
+            "Refinement Decisions",
+            "Updated Move Development",
+            "Change Notes",
+        ]
+
+        missing_sections = [
+            section for section in required_sections if section not in sections
+        ]
+        if missing_sections:
+            print(f"Failed: Missing sections: {missing_sections}")
+            return False
+
+        # Check Refinement Decisions structure
+        refinement_section = sections.get("Refinement Decisions", {})
+        print("\nRefinement section structure:", refinement_section.keys())
+
+        if not isinstance(refinement_section, dict):
+            print("Failed: Refinement Decisions not properly structured")
+            return False
+
+        if not (
+            "Will Implement" in refinement_section
+            and "Won't Implement" in refinement_section
+        ):
+            print("Failed: Missing required Will/Won't Implement subsections")
+            return False
+
+        print("Validation passed!")
+        return True

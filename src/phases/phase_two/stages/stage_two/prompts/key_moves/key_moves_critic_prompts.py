@@ -1,11 +1,12 @@
 from typing import Dict, Any
 import json
 
+
 class KeyMovesCriticPrompts:
     """Prompts for analyzing feasibility and integration of key moves"""
-    
+
     def __init__(self):
-        self.CONTEXT = """You are evaluating key argumentative moves for an Analysis paper (4,000 word limit). Each move must be:
+        self.context = """You are evaluating key argumentative moves for an Analysis paper (4,000 word limit). Each move must be:
 1. Concretely developable within the space constraints
 2. Well-integrated with the paper's framework
 3. Supported by available literature
@@ -15,7 +16,7 @@ class KeyMovesCriticPrompts:
 Your goal is to identify both strengths and potential issues while maintaining focus on what matters most for successful development. Different moves may require different types of support - some may rely heavily on examples, others on formal argumentation, others on careful conceptual development.
 """
 
-        self.EVALUATION_FOCUS = """
+        self.evaluation_focus = """
 Key areas requiring careful evaluation:
 
 Argument Structure:
@@ -56,7 +57,7 @@ Your critique should:
 3. Suggest improvements or additions where needed
 4. Consider how moves work together to advance the paper's thesis"""
 
-        self.LITERATURE_GUIDANCE = """
+        self.literature_guidance = """
 Literature Support:
 - What specific resources from our literature base support this move?
 - Are there potential tensions with existing work?
@@ -65,7 +66,7 @@ Literature Support:
 
 Remember you only have access to the specific papers provided in the literature files - evaluate support and engagement possibilities within these constraints."""
 
-        self.OUTPUT_GUIDANCE = """Consider carefully:
+        self.output_guidance = """Consider carefully:
 - How effectively does this move advance the paper's thesis?
 - What specific development challenges might arise?
 - How well does it integrate with other moves and the overall framework?
@@ -77,7 +78,7 @@ Frame your critique to help improve the move while preserving what works.
 
 Remember that different moves may require different types of development and support. Your critique should be responsive to the specific needs of each move while ensuring the overall argument structure is sound and complete."""
 
-        self.OUTPUT_FORMAT = """Analyze each key move in sequence, using this structure:
+        self.output_format = """Analyze each key move in sequence, using this structure:
 
 # Scratch Work
 [Think through the moves' interactions, dependencies, and overall coherence]
@@ -105,18 +106,20 @@ MINOR REFINEMENT [if targeted improvements needed]
 MINIMAL CHANGES [if moves are fundamentally sound]
 
 [Provide clear explanation of assessment and next steps. ALWAYS include this section.]"""
-    
-    def get_critique_prompt(self,
-                          current_moves: Dict[str, Any],
-                          framework: Dict[str, Any],
-                          outline: str,
-                          lit_readings: Dict[str, Any],
-                          lit_synthesis: Dict[str, Any],
-                          lit_narrative: str) -> str:
+
+    def construct_prompt(
+        self,
+        current_moves: Dict[str, Any],
+        framework: Dict[str, Any],
+        outline: str,
+        lit_readings: Dict[str, Any],
+        lit_synthesis: Dict[str, Any],
+        lit_narrative: str,
+    ) -> str:
         """Generate prompt for key moves critique"""
-        
+
         return f"""
-{self.CONTEXT}
+{self.context}
 
 Current Framework Development:
 {json.dumps(framework, indent=2)}
@@ -137,14 +140,14 @@ Literature Context:
 3. Synthesis Narrative:
 {lit_narrative}
 
-{self.EVALUATION_FOCUS}
+{self.evaluation_focus}
 
-{self.LITERATURE_GUIDANCE}
+{self.literature_guidance}
 
-{self.OUTPUT_GUIDANCE}
+{self.output_guidance}
 
-{self.OUTPUT_FORMAT}
+{self.output_format}
 
-Take time to think through how the moves work together before evaluating each one. 
+Take time to think through how the moves work together before evaluating each one.
 
 Then evaluate each key move carefully, considering both its individual strength and its role in the overall framework."""

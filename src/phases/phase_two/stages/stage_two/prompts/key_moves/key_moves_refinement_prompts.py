@@ -1,11 +1,12 @@
 from typing import Dict, Any
 import json
 
+
 class KeyMovesRefinementPrompts:
     """Prompts for refining key moves based on critique"""
-    
+
     def __init__(self):
-        self.CONTEXT = """You are refining key argumentative moves for an Analysis paper (4,000 word limit). Each move must:
+        self.context = """You are refining key argumentative moves for an Analysis paper (4,000 word limit). Each move must:
 1. Advance the paper's main thesis
 2. Be concretely developable within space constraints
 3. Integrate well with other moves
@@ -20,10 +21,8 @@ Consider each suggested change carefully, but maintain what works. You should:
 
 Remember you can only use the specific papers provided in the literature files - ensure all refinements are supported by these available sources."""
 
-
-
-
-        self.OUTPUT_FORMAT = """Analyze the critique and provide refinements using this structure:
+        self.output_format = """Analyze the critique and provide refinements using this structure:
+        You MUST include all the sections listed below in the output format. The major output sections are marked by heading notation "#"
 
         # Scratch Work
         [Think through the changes being suggested]
@@ -48,24 +47,24 @@ Remember you can only use the specific papers provided in the literature files -
 
         # Change Notes
         - Impact on theoretical foundations
-        - Effect on move interactions 
+        - Effect on move interactions
         - Literature integration adjustments
         - Framework alignment status
         - Development feasibility within word constraints
         - Dependencies between refined moves"""
-        
-    def get_refinement_prompt(self,
-                            current_moves: Dict[str, Any],
-                            critique: Dict[str, Any],
-                            framework: Dict[str, Any],
-                            outline: str,
-                            lit_readings: Dict[str, Any],
-                            lit_synthesis: Dict[str, Any],
-                            lit_narrative: str) -> str:
+
+    def construct_prompt(
+        self,
+        current_moves: Dict[str, Any],
+        critique: Dict[str, Any],
+        framework: Dict[str, Any],
+        outline: str,
+        lit_synthesis: Dict[str, Any],
+    ) -> str:
         """Generate prompt for key moves refinement"""
-        
+
         return f"""
-{self.CONTEXT}
+{self.context}
 
 Current Framework:
 {json.dumps(framework, indent=2)}
@@ -82,6 +81,6 @@ Recent Critique:
 Literature Context:
 {json.dumps(lit_synthesis, indent=2)}
 
-{self.OUTPUT_FORMAT}
+{self.output_format}
 
 Think carefully about how each change affects the moves' ability to support the paper's thesis and their integration with the overall framework."""

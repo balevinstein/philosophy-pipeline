@@ -2,15 +2,14 @@ from pathlib import Path
 from typing import Dict, Any
 
 from src.phases.core.workflow import Workflow, WorkflowStep
-
-from src.phases.phase_two.stages.stage_two.workers.critic.abstract_critic import (
-    AbstractCriticWorker,
+from src.phases.phase_two.stages.stage_two.workers.critic.key_moves_critic import (
+    KeyMovesCriticWorker,
 )
-from src.phases.phase_two.stages.stage_two.workers.development.abstract_development import (
-    AbstractDevelopmentWorker,
+from src.phases.phase_two.stages.stage_two.workers.development.key_moves_development import (
+    KeyMovesDevelopmentWorker,
 )
-from src.phases.phase_two.stages.stage_two.workers.refinement.abstract_refinement import (
-    AbstractRefinementWorker,
+from src.phases.phase_two.stages.stage_two.workers.refinement.key_moves_refinement import (
+    KeyMovesRefinementWorker,
 )
 
 
@@ -21,7 +20,7 @@ from src.phases.phase_two.stages.stage_two.workers.refinement.abstract_refinemen
 # refer to the code in core/workflow.py/_update_state
 
 
-def create_abstract_framework_workflow(
+def create_key_moves_workflow(
     config: Dict[str, Any],
     output_dir: Path,
     workflow_name: str,
@@ -32,39 +31,44 @@ def create_abstract_framework_workflow(
         workflow_name=workflow_name,
         max_cycles=max_cycles,
         initial_step=WorkflowStep(
-            worker=AbstractDevelopmentWorker(config),
+            worker=KeyMovesDevelopmentWorker(config),
             input_mapping={
+                "framework": "framework",
+                "outline": "outline",
                 "literature": "literature",
-                "final_selection": "final_selection",
             },
             output_mapping={
-                "current_framework": "modifications",
-                "output_versions": "modifications",
+                "current_moves": "content",
+                "output_versions": "content",
             },
             name="development",
         ),
         cycle_steps=[
             WorkflowStep(
-                worker=AbstractCriticWorker(config),
+                worker=KeyMovesCriticWorker(config),
                 input_mapping={
-                    "current_framework": "current_framework",
+                    "current_moves": "current_moves",
                     "literature": "literature",
+                    "outline": "outline",
+                    "framework": "framework",
                 },
                 output_mapping={"current_critique": "modifications"},
                 name="critique",
             ),
             WorkflowStep(
-                worker=AbstractRefinementWorker(config),
+                worker=KeyMovesRefinementWorker(config),
                 input_mapping={
+                    "current_moves": "current_moves",
                     "current_critique": "current_critique",
-                    "current_framework": "current_framework",
-                    "previous_versions": "current_framework",
+                    "previous_versions": "current_moves",
+                    "outline": "outline",
+                    "framework": "framework",
                     "literature": "literature",
                 },
                 output_mapping={
                     "current_refinment": "modifications",
-                    "current_framework": "framework_data",
-                    "output_versions": "framework_data",
+                    "current_moves": "modifications",
+                    "output_versions": "modifications",
                 },
                 name="refinment",
             ),

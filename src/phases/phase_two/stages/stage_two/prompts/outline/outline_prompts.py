@@ -1,65 +1,59 @@
-# src/stages/phase_two/stages/stage_two/prompts/outline_prompts.py
-import json
+from typing import Dict
+
+from src.phases.phase_two.stages.stage_two.prompts.outline.outline_critic_prompts import (
+    OutlineCriticPrompts,
+)
+from src.phases.phase_two.stages.stage_two.prompts.outline.outline_development_prompts import (
+    OutlineDevelopmentPrompts,
+)
+from src.phases.phase_two.stages.stage_two.prompts.outline.outline_refinement_prompts import (
+    OutlineRefinementPrompts,
+)
+
 
 class OutlinePrompts:
-    """Prompts for outline development"""
-    
-    def __init__(self):
-        self.CONTEXT = """You are developing an outline for a paper to be published in Analysis (4,000 word limit). 
-Analysis favors clear, precise papers in the analytic tradition that make a single sharp philosophical contribution.
+    """Prompts for outline workflow"""
 
-Your task is to create an outline that faithfully develops the validated abstract and framework. The outline must:
-- Create clear spaces for developing each key move specified in the abstract
-- Maintain the sharp focus and contribution identified in the abstract
-- Support the main thesis through a natural progression of arguments
-- Enable all elements of the abstract to be developed effectively"""
+    def get_refinement_prompt(
+        self,
+        outline: str,
+        critique: Dict,
+        framework: Dict,
+        lit_synthesis: Dict,
+    ) -> str:
 
-        self.STRUCTURE_REQUIREMENTS = """The outline should include:
-- Main sections (typically 4-7)
-- Key subsections where needed
-- Brief description of each section's purpose
-- Notes on key arguments/moves in each section
+        refinement_prompts = OutlineRefinementPrompts()
+        return refinement_prompts.construct_prompt(
+            outline=outline,
+            critique=critique,
+            framework=framework,
+            lit_synthesis=lit_synthesis,
+        )
 
-You can use scratch work to think through:
-- How sections build on each other
-- Where key moves fit best
-- Potential development challenges
-- Alternative structures considered"""
+    def get_development_prompt(
+        self, abstract: str, main_thesis: str, core_contribution: str, key_moves: list
+    ) -> str:
+        development_prompts = OutlineDevelopmentPrompts()
+        return development_prompts.construct_prompt(
+            abstract=abstract,
+            main_thesis=main_thesis,
+            core_contribution=core_contribution,
+            key_moves=key_moves,
+        )
 
-        self.OUTPUT_FORMAT = """# Scratch Work
-[Your thinking about structure and organization]
-
-# Final Outline
-[Structured outline in markdown. MAKE SURE TO INCLUDE AN INTRODUCTION AND CONCLUSION.]
-
-# Development Notes
-- Important considerations for development
-- Critical connections between sections
-- Potential challenges to address"""
-
-    def get_development_prompt(self, 
-                             abstract: str,
-                             main_thesis: str,
-                             core_contribution: str,
-                             key_moves: list) -> str:
-        """Generate prompt for outline development"""
-        return f"""
-{self.CONTEXT}
-
-Abstract:
-{abstract}
-
-Main Thesis:
-{main_thesis}
-
-Core Contribution:
-{core_contribution}
-
-Key Moves:
-{json.dumps(key_moves, indent=2)}
-
-{self.STRUCTURE_REQUIREMENTS}
-
-Provide your response in the following format:
-{self.OUTPUT_FORMAT}
-"""
+    def get_critic_prompt(
+        self,
+        outline: str,
+        framework: Dict,
+        lit_readings: Dict,
+        lit_synthesis: Dict,
+        lit_narrative: str,
+    ) -> str:
+        critic_prompts = OutlineCriticPrompts()
+        return critic_prompts.construct_prompt(
+            outline=outline,
+            framework=framework,
+            lit_readings=lit_readings,
+            lit_synthesis=lit_synthesis,
+            lit_narrative=lit_narrative,
+        )
