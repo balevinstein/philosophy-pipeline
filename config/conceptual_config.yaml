@@ -5,56 +5,55 @@ models:
     model: o1-preview
     max_tokens: 20000
     temperature: 1
-  
+
   topic_evaluation:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.5  # Lower temperature for more focused analysis
-    
+    temperature: 0.5 # Lower temperature for more focused analysis
 
   literature_assessment:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.5  # Lower for more reliable memory access
-    
+    temperature: 0.5 # Lower for more reliable memory access
+
   development_testing:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.7  # Higher for creative testing
-    
+    temperature: 0.7 # Higher for creative testing
+
   topic_refinement:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.6  # Balanced for refinement
-  
+    temperature: 0.6 # Balanced for refinement
+
   topic_analysis:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
     temperature: 0.5
-  
+
   conceptual_development:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
     temperature: 0.7
-    
+
   topic_selection:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.3  # Lower for careful selection
-    
+    temperature: 0.3 # Lower for careful selection
+
   phase_two_setup:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.5  # Balanced for planning
-    
+    temperature: 0.5 # Balanced for planning
+
   literature_processing:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
@@ -64,29 +63,30 @@ models:
       cache_enabled: true
       max_pages: 100
       max_size_mb: 32
-      
+
   initialreader:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.3  # Lower for consistent extraction
-  
+    temperature: 0.3 # Lower for consistent extraction
+
   projectspecificreader:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.5  # Medium for finding connections
-    
+    temperature: 0.5 # Medium for finding connections
+
   literaturesynthesizer:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.7  # Higher for creative synthesis
+    temperature: 0.7 # Higher for creative synthesis
 
+  # TODO: Reconsider temperature settings
   abstract_development:
     provider: openai
-    model: o1-preview
-    max_tokens: 20000
+    model: gpt-4o-2024-08-06
+    max_tokens: 16384
     temperature: 1
 
   outline_development:
@@ -101,23 +101,29 @@ models:
     max_tokens: 8192
     temperature: 0.3
 
+  # abstract_refinement:
+  #   provider: anthropic
+  #   model: claude-3-5-sonnet-20241022
+  #   max_tokens: 8192
+  #   temperature: 0.5 # Balance between creativity and consistency
+
   abstract_refinement:
-    provider: anthropic
-    model: claude-3-5-sonnet-20241022
-    max_tokens: 8192
-    temperature: 0.5  # Balance between creativity and consistency
+    provider: openai
+    model: gpt-4o-2024-08-06
+    max_tokens: 16384
+    temperature: 0.5 # Balance between creativity and consistency
 
   outline_critic:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.3  # Lower for careful evaluation
+    temperature: 0.3 # Lower for careful evaluation
 
   outline_refinement:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.5  # Balanced for creativity/consistency
+    temperature: 0.5 # Balanced for creativity/consistency
 
   key_moves_development:
     provider: anthropic
@@ -129,13 +135,13 @@ models:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.3  # Lower for careful evaluation
+    temperature: 0.3 # Lower for careful evaluation
 
   key_moves_refinement:
     provider: anthropic
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
-    temperature: 0.5  # Balanced for refinements
+    temperature: 0.5 # Balanced for refinements
 
 paths:
   base_dir: ./outputs
@@ -154,20 +160,21 @@ paths:
       markdown: literature_synthesis.md
 
 parameters:
-  num_initial_topics: 6  #Num topics generated as ideas in stage 1.1
+  num_initial_topics: 6 #Num topics generated as ideas in stage 1.1
   cull_min: 2 #Min topics left after first culling in stage 1.2
   cull_max: 4 #Max topics left after first culling in stage 1.2
-  max_selected_topics: 2  # Fewer topics carried forward for deeper analysis
-  development_stages: 3   # Number of development iterations per topic
+  max_selected_topics: 2 # Fewer topics carried forward for deeper analysis
+  development_stages: 3 # Number of development iterations per topic
   # Conceptual development specific parameters
-  min_examples_per_topic: 2  # Minimum number of illustrative examples
-  max_technical_score: 0.3   # Maximum allowed technical complexity (0-1)
-  required_elements: [
-    "core_conceptual_contribution",
-    "illustrative_examples",
-    "development_path",
-    "potential_objections"
-  ]
+  min_examples_per_topic: 2 # Minimum number of illustrative examples
+  max_technical_score: 0.3 # Maximum allowed technical complexity (0-1)
+  required_elements:
+    [
+      "core_conceptual_contribution",
+      "illustrative_examples",
+      "development_path",
+      "potential_objections",
+    ]
   literature_processing:
     max_retries: 3
     min_wait: 4
