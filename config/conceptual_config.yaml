@@ -82,11 +82,10 @@ models:
     max_tokens: 8192
     temperature: 0.7 # Higher for creative synthesis
 
-  # TODO: Reconsider temperature settings
   abstract_development:
     provider: openai
-    model: gpt-4o-2024-08-06
-    max_tokens: 16384
+    model: o1-preview
+    max_tokens: 20000
     temperature: 1
 
   outline_development:
@@ -101,16 +100,10 @@ models:
     max_tokens: 8192
     temperature: 0.3
 
-  # abstract_refinement:
-  #   provider: anthropic
-  #   model: claude-3-5-sonnet-20241022
-  #   max_tokens: 8192
-  #   temperature: 0.5 # Balance between creativity and consistency
-
   abstract_refinement:
-    provider: openai
-    model: gpt-4o-2024-08-06
-    max_tokens: 16384
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
     temperature: 0.5 # Balance between creativity and consistency
 
   outline_critic:
