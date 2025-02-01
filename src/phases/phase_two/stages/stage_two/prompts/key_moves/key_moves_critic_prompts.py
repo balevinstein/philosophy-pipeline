@@ -79,6 +79,7 @@ Frame your critique to help improve the move while preserving what works.
 Remember that different moves may require different types of development and support. Your critique should be responsive to the specific needs of each move while ensuring the overall argument structure is sound and complete."""
 
         self.output_format = """Analyze each key move in sequence, using this structure:
+         You MUST include the Scratch Work and Summary Assessment sections listed below in the output format. The major output sections are marked by heading notation "#".
 
 # Scratch Work
 [Think through the moves' interactions, dependencies, and overall coherence]

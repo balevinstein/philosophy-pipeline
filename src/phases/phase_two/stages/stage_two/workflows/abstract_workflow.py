@@ -62,11 +62,11 @@ def create_abstract_framework_workflow(
                     "literature": "literature",
                 },
                 output_mapping={
-                    "current_refinment": "modifications",
+                    "current_refinement": "modifications",
                     "current_framework": "framework_data",
                     "output_versions": "framework_data",
                 },
-                name="refinment",
+                name="refinement",
             ),
         ],
         output_dir=output_dir,
