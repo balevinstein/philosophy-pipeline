@@ -66,11 +66,11 @@ def create_key_moves_workflow(
                     "literature": "literature",
                 },
                 output_mapping={
-                    "current_refinment": "modifications",
+                    "current_refinement": "modifications",
                     "current_moves": "modifications",
                     "output_versions": "modifications",
                 },
-                name="refinment",
+                name="refinement",
             ),
         ],
         output_dir=output_dir,

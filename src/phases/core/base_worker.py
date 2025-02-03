@@ -68,5 +68,5 @@ class BaseWorker(ABC):
         output = self.process_output(response)
         if not self.validate_output(output):
             print(response)
-            raise ValidationError("Worker output failed validation")
+            raise ValidationError("Worker output failed validation: ", self.stage_name)
         return output
