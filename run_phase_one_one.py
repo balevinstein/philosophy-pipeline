@@ -1,9 +1,7 @@
 # run_phase_one.py
-# pylint: skip-file
+
 
 import sys
-from pathlib import Path
-from src.utils.api import APIHandler, load_config
 from src.phases.phase_one.conceptual_generate import ConceptualTopicGenerator
 from src.phases.phase_one.conceptual_evaluate import ConceptualTopicEvaluator
 from src.phases.phase_one.conceptual_topic_development import ConceptualTopicDeveloper
@@ -11,9 +9,9 @@ from src.phases.phase_one.conceptual_final_select import FinalTopicSelector
 
 
 def run_phase_one_one():
-    """Run all stages of Phase I in sequence"""
+    """Run stage 1 of Phase I"""
     try:
-        print("\nStarting Phase I pipeline...")
+        print("\nStarting Phase I.1 pipeline...")
 
         # Run each stage in sequence
         generator = ConceptualTopicGenerator()

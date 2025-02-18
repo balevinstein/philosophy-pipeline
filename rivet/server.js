@@ -9,36 +9,30 @@ const listenPort = 4040;
 app.use(Express.urlencoded({ extended: true }))
 app.use(Express.json())
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get('/life', (req, res) => {
+  res.send('I\'m Alive').status(200);
 });
 
 app.post('/litResearch', async (req, res) => {
 
     const openAIKey = req.body.openAIKey;
-    const question = req.body.question;
-    console.log({openAIKey})
+    const final_selection = req.body.final_selection;
 
-    const answer = await Rivet.runGraphInFile('./phil_pipeline.rivet-project', {
+    const graphOutput = await Rivet.runGraphInFile('./philosphy-pipeline.rivet-project', {
         graph: 'Literary Research Query',
         inputs: {
-            question: {
-                type: 'string',
-                value: question
+          final_selection: {
+                type: 'object',
+                value: final_selection
             },
         },
         openAiKey: openAIKey,
     });
 
-    console.log("Exectued Graph")
-    console.log({answer})
+    console.log("Exectued Graph: Literary Research Query")
 
-    res.send(answer).status(200);
+    res.send(graphOutput.output.value).status(200);
 });
-
-app.get('/test', (req, res) => {
-    res.send('Hello World!');
-  });
 
 // Start the server
 app.listen(listenPort, () => {

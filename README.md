@@ -3,7 +3,9 @@
 A system that generates and develops publishable-quality analytic philosophy papers through a series of structured development stages.
 
 ## Project Overview
+
 This project explores whether large language models can systematically develop philosophical papers suitable for academic publication. Targeting the journal Analysis (4,000-word limit), the system:
+
 1. Generates and evaluates potential paper topics
 2. Develops detailed argumentative frameworks
 3. Creates structured paper outlines
@@ -12,6 +14,7 @@ This project explores whether large language models can systematically develop p
 The goal is to achieve a ~20% success rate in generating publishable-quality papers while maintaining philosophical rigor and originality.
 
 ## Current Status
+
 - Phase I (Topic Generation): Complete, pending future restructuring
 - Phase II.1 (Literature Processing): Complete, uses Claude's native PDF processing
 - Phase II.2 (Framework Development): Complete, framework-driven paper development
@@ -21,57 +24,81 @@ The goal is to achieve a ~20% success rate in generating publishable-quality pap
 ## Getting Started
 
 ### Prerequisites
-* Python 3.8+
-* Anthropic API key 
-* OpenAI API key (optional)
+
+- Python 3.8+
+- Anthropic API key
+- OpenAI API key
+- Tavily Search API key (optional)
 
 ### Installation
+
 1. Clone the repository
+
 ```bash
 git clone https://github.com/balevinstein/philosophy-pipeline.git
 cd philosophy-pipeline
 ```
+
 2. Create and activate virtual environment
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
+
 3. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
+
 4. Create `.env` file with API keys
+
 ```bash
 ANTHROPIC_API_KEY=your_key_here
 OPENAI_API_KEY=your_key_here  # Optional
+TAVILY_API_KEY=your_key_here  # Optional
+```
+
+5. Start Rivet server
+
+```
+cd rivet
+node --watch server.js
 ```
 
 ## Running the Pipeline
 
 1. Generate and select topic
+
 ```bash
-python run_phase_one.py
+python run_phase_one_one.py
 ```
+
 After completion, check `outputs/final_selection.json` for required papers and manually add them to the `papers/` directory.
 
 2. Process literature
+
 ```bash
 python run_phase_two_one.py
 ```
+
 This must be done with Claude
 
 3. Develop framework
+
 ```bash
 python run_phase_two_two.py
 ```
 
 ## Project Structure
+
 ```bash
 philosophy_pipeline/
 ├── papers/                          # PDF storage for literature
 ├── src/
 │   ├── prompts/                     # Phase I prompts
-│   ├── stages/                      
+│   ├── stages/
 │   │   ├── conceptual_generate.py   # Current Phase I implementation
 │   │   ├── conceptual_evaluate.py
 │   │   ├── conceptual_topic_development.py
@@ -87,17 +114,17 @@ philosophy_pipeline/
 │   │           └── stage_four/     # Detailed outline
 │   └── utils/                      # Utility functions
 ├── config/
-│   └── conceptual_config.yaml    
+│   └── conceptual_config.yaml
 ├── outputs/                        # Stage outputs
 ├── tests/                         # Test scripts
 └── run_phase_*.py                 # Pipeline execution scripts
 ```
 
-## Development Status 
+## Development Status
 
 Current focus is on Phase II.3: Key Moves Development, which involves:
 
-- Full development of key argumentative moves	
+- Full development of key argumentative moves
 - Integration of examples and literature
 - Local and global coherence maintenance
 - Quality control through worker/critic cycles
@@ -130,7 +157,9 @@ Interested in contributing? Please:
 - Feel free to open issues or pull requests
 
 ## License
+
 Currently under private development. Licensing terms to be determined when repository is made public.
 
-## Acknowledgments 
+## Acknowledgments
+
 Special thanks to Claude, who helped with much of the development.
