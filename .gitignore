@@ -39,3 +39,8 @@ outputs/
 # Virtual environment
 venv/
 ENV/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+npm-debug.log
