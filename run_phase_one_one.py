@@ -10,7 +10,7 @@ from src.phases.phase_one.conceptual_topic_development import ConceptualTopicDev
 from src.phases.phase_one.conceptual_final_select import FinalTopicSelector
 
 
-def run_phase_one():
+def run_phase_one_one():
     """Run all stages of Phase I in sequence"""
     try:
         print("\nStarting Phase I pipeline...")
@@ -45,4 +45,4 @@ def run_phase_one():
 
 
 if __name__ == "__main__":
-    run_phase_one()
+    run_phase_one_one()
