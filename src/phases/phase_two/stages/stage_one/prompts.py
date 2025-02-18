@@ -1,13 +1,14 @@
 # src/stages/phase_two/stages/stage_one/prompts.py
 
-from typing import Dict, Any, List, Tuple
+from typing import Dict
 import json
+
 
 class InitialReadPrompts:
     """Prompts for initial paper reading"""
-    
+
     def __init__(self):
-        self.OUTPUT_REQUIREMENTS = """
+        self.output_requirements = """
 OUTPUT REQUIREMENTS:
 1. Response must be valid JSON
 2. Use simple ASCII characters only (no special quotes or unicode)
@@ -19,7 +20,7 @@ OUTPUT REQUIREMENTS:
 8. Include confidence levels where specified
 9. Flag any uncertainties explicitly"""
 
-        self.OUTPUT_FORMAT = """
+        self.output_format = """
 {
     "paper_info": {
         "title": "exact paper title",
@@ -121,20 +122,19 @@ Read the paper carefully and extract key information, focusing on:
 5. Paper structure and organization
 6. Areas that might be valuable for future work
 
-{self.OUTPUT_REQUIREMENTS}
+{self.output_requirements}
 
 Be thorough but focus on accuracy over quantity. If you're uncertain about anything, note this explicitly in your confidence assessments. For quotes, only include those you're highly confident are exact.
 
 Provide your analysis in the following format:
-{self.OUTPUT_FORMAT}"""
-    
+{self.output_format}"""
 
 
 class ProjectSpecificPrompts:
     """Prompts for project-specific paper analysis"""
-    
+
     def __init__(self):
-        self.OUTPUT_REQUIREMENTS = """
+        self.output_requirements = """
 OUTPUT REQUIREMENTS:
 1. Response must be valid JSON
 2. Use simple ASCII characters only (no special quotes or unicode)
@@ -143,7 +143,7 @@ OUTPUT REQUIREMENTS:
 5. Array fields can be empty or contain a single 'none' entry if nothing relevant is found
 6. Include confidence levels where specified"""
 
-        self.OUTPUT_FORMAT = """{
+        self.output_format = """{
     "paper_info": {
         "title": "exact paper title",
         "authors": ["list of authors"]
@@ -182,10 +182,16 @@ OUTPUT REQUIREMENTS:
     def get_prompt(self, initial_reading: Dict, final_selection: Dict) -> str:
         """Generate prompt for project-specific reading"""
         # Extract key information from final_selection
-        chosen_topic = final_selection['selection']['selection_analysis']['selection']['chosen_topic']
-        core_thesis = final_selection['phase_two_setup']['phase_two_setup']['thesis_development']['core_thesis']
-        key_moves = final_selection['phase_two_setup']['phase_two_setup']['thesis_development']['key_moves']
-        
+        chosen_topic = final_selection["selection"]["selection_analysis"]["selection"][
+            "chosen_topic"
+        ]
+        core_thesis = final_selection["phase_two_setup"]["phase_two_setup"][
+            "thesis_development"
+        ]["core_thesis"]
+        key_moves = final_selection["phase_two_setup"]["phase_two_setup"][
+            "thesis_development"
+        ]["key_moves"]
+
         return f"""You are conducting a focused re-reading of a philosophy paper specifically for our project.
 
     Our project focus:
@@ -203,23 +209,24 @@ OUTPUT REQUIREMENTS:
     3. Where might we agree or disagree?
     4. How might this inform our development?
 
-    {self.OUTPUT_REQUIREMENTS}
+    {self.output_requirements}
 
     Provide your analysis in the following format:
-    {self.OUTPUT_FORMAT}"""    
+    {self.output_format}"""
+
 
 class SynthesisPrompts:
     """Prompts for synthesizing literature analysis"""
-    
+
     def __init__(self):
-        self.JSON_REQUIREMENTS = """
+        self.json_requirements = """
 JSON OUTPUT REQUIREMENTS:
 1. Use simple ASCII characters only (no special quotes or unicode)
 2. Keep all text fields as single-line strings (no line breaks)
 3. Include confidence levels where specified
 4. Flag any uncertainties explicitly"""
 
-        self.MARKDOWN_REQUIREMENTS = """
+        self.markdown_requirements = """
 MARKDOWN OUTPUT REQUIREMENTS:
 1. Use clear section headers (##)
 2. Include line breaks between sections
@@ -227,7 +234,7 @@ MARKDOWN OUTPUT REQUIREMENTS:
 4. Use standard Markdown formatting (*italic*, **bold**)
 5. Keep paragraphs focused and concise"""
 
-        self.JSON_FORMAT = """
+        self.json_format = """
 {
     "literature_overview": {
         "primary_papers": [
@@ -273,7 +280,7 @@ MARKDOWN OUTPUT REQUIREMENTS:
     ]
 }"""
 
-        self.MARKDOWN_SECTIONS = """
+        self.markdown_sections = """
 ## Literature Synthesis
 
 [Provide a narrative overview of how the papers fit together and relate to our project. Explain the scholarly context we're entering and how we'll position our work.]
@@ -320,19 +327,19 @@ You will provide two types of output:
 - Classification and organization of papers
 - Key concepts and their roles
 - Priority engagement points
-{self.JSON_REQUIREMENTS}
+{self.json_requirements}
 
 2. Narrative Analysis (Markdown):
 - How papers and arguments relate
 - Development strategy
 - Risks and opportunities
-{self.MARKDOWN_REQUIREMENTS}
+{self.markdown_requirements}
 
 For the JSON output, use this format:
-{self.JSON_FORMAT}
+{self.json_format}
 
 For the Markdown output, use these sections:
-{self.MARKDOWN_SECTIONS}
+{self.markdown_sections}
 
 Consider carefully:
 1. How papers relate to each other
