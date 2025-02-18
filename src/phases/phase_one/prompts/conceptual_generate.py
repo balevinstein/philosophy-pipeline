@@ -1,19 +1,20 @@
 # src/prompts/conceptual_generate.py
 
+
 class TopicGenerationPrompt:
     """Manages prompts for conceptual philosophy paper topic generation"""
-    
+
     def __init__(self):
         self.SUCCESSFUL_APPROACHES = """
 SUCCESSFUL APPROACHES IN ANALYSIS:
 Papers succeed through different combinations of these elements, but all make focused conceptual contributions. Consider these approaches:
 
 1. Conceptual Distinction Drawing
-   Example: 'Two Kinds of Failure in Joint Action' 
+   Example: 'Two Kinds of Failure in Joint Action'
    - Identifies distinct phenomena previously conflated
    - Shows why the distinction matters
-   - Careful analysis using clear examples 
-   - Value comes from improved conceptual clarity 
+   - Careful analysis using clear examples
+   - Value comes from improved conceptual clarity
 
 2. Concept Refinement/Revision
    Example: 'Microaggression and Ambiguous Experience'
@@ -22,7 +23,7 @@ Papers succeed through different combinations of these elements, but all make fo
    - Proposes more precise analysis
    - Value comes from better theoretical understanding
 
-3. Novel Analytical Framework  
+3. Novel Analytical Framework
    - Introduces new way to analyze familiar phenomena
    - Shows how framework illuminates existing debates
    - Uses minimal technical apparatus
@@ -30,13 +31,13 @@ Papers succeed through different combinations of these elements, but all make fo
 
 Key features of successful approaches:
 - Focus on specific conceptual issues
-- Use clear examples to motivate analysis 
+- Use clear examples to motivate analysis
 - Maintain tight scope
 - Develop arguments systematically
 - Engage literature without getting bogged down
 
-You can write in any area covered by contemporary analytic philosophy, but avoid anything overly technical 
-or requiring lots of empirical support. Some good area options include (but aren't limited to): ethics, applied ethics, 
+You can write in any area covered by contemporary analytic philosophy, but avoid anything overly technical
+or requiring lots of empirical support. Some good area options include (but aren't limited to): ethics, applied ethics,
 feminist philosophy, political philosophy, philosophy of race, aesthetics, and traditional epistemolgy."""
 
         self.GOOD_PAPER_FEATURES = """
@@ -71,7 +72,7 @@ DEVELOPING PROMISING CONTRIBUTIONS:
 1. Novelty Sweet Spot
    - Look for unexplored tensions in existing debates
    - Find new applications for established conceptual tools
-   - Identify overlooked distinctions 
+   - Identify overlooked distinctions
    - Propose targeted solutions to specific problems
    - Balance originality with achievability
    - BE CREATIVE
@@ -106,7 +107,7 @@ APPROPRIATE SCOPE FOR ANALYSIS:
    - Examples illuminate without dominating
    - Objections can be handled concisely
    - Implications follow straightforwardly"""
-        
+
         self.OUTPUT_FORMAT = """
 OUTPUT FORMAT REQUIREMENTS:
 
@@ -156,7 +157,6 @@ Example Excerpt:
     }
     ...
 }"""
-
 
     def get_prompt(self, num_topics: int) -> str:
         """Construct the full topic generation prompt"""

@@ -1,9 +1,10 @@
 # src/prompts/conceptual_topic_development.py
 import json
 
+
 class TopicDevelopmentPrompt:
     """Manages prompts for developing promising philosophy paper topics"""
-    
+
     def __init__(self):
         self.LITERATURE_ASSESSMENT = """
 LITERATURE ASSESSMENT GUIDELINES:
@@ -123,7 +124,7 @@ Key Requirements:
         "development_needs": ["string"],
         "risk_assessment": "string"
     }
-}"""
+}""",
         }
 
     def get_literature_prompt(self, topic_info: dict) -> str:
