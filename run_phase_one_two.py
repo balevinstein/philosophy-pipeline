@@ -63,12 +63,13 @@ def get_lit_search_queries(final_selection):
         sys.exit(1)
 
 
-def get_lit_papers(search_results):
+def get_lit_papers(search_results, final_selection):
 
     try:
         load_dotenv()
         request_data = {
             "search_results": search_results,
+            "final_selection": final_selection,
             "openAiKey": os.getenv("OPENAI_API_KEY"),
         }
 
@@ -127,7 +128,7 @@ def run_phase_one_two():
 
         print("\nCompleted Web Search")
 
-        papers = get_lit_papers(search_results)
+        papers = get_lit_papers(search_results, final_selection)
         papers = str(markdownify.markdownify(papers))
 
         print("\nPhase I.2 completed successfully!")
