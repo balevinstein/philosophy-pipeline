@@ -133,10 +133,12 @@ def run_phase_one_two():
 
         print("\nPhase I.2 completed successfully!")
         print(
-            "\n\nPlease download the following papers and add them to the src/papers directory"
+            "\n\nPlease download the following papers and add them to the src/papers directory\n"
         )
+
         print(papers)
 
+        print("\n\nSaving the output to ./outputs/literature_research_papers.md\n")
         with open("./outputs/literature_research_papers.md", "w") as f:
             f.write(papers)
 
