@@ -11,20 +11,56 @@ data:
         id: Lv-7ZJrqRBh7iROzwNz7Y
         name: Get Literature Papers
       nodes:
+        '[0SNVUCXMeuXR8fM388NEd]:array "Array"':
+          data:
+            flatten: true
+            flattenDeep: false
+          outgoingConnections:
+            - output->"Extract Object Path" FnETSkXzMbX2bxw7BW5E-/object
+            - output->"Extract Object Path" Zl3lHkFB-gDz3-CDZ30QH/object
+            - output->"Extract Object Path" ux-2g-wSIHtSrKdTithA4/object
+          visualData: -172.5425829937265/953.3468427057768/230/83//
+        '[AyfoDzLSMlTZcRlKvw1NG]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: final_selection
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Extract Object Path" VQPB9qP8BttplW2DDGg6r/object
+            - data->"Extract Object Path" ot_v4XWlBvJZGu3H1trlm/object
+          visualData: -263.3330054984033/330.6120912896172/330/69//
         '[BvrHb9ikueWhhqpUX2sTV]:prompt "Prompt"':
           data:
             enableFunctionCall: false
             promptText: >-
-              Find the right papers I should be using for literature engagement
-              on my paper. Output the papers that I should use in a list with
-              their urls.
+              You are working a new philosophy research. The details about the
+              current thesis are in JSON as follows:
 
+              ```json
+
+              {{thesis_development}}
+
+              ```
+
+
+              The previous AI step has detailed a few requirements that the relevant searched literature must have. Be mindful of these requirements when drafting the search queries. The literature_requirements are in JSON as follows:
+
+              ```json
+
+              {{literature_requirements}}
 
               ```
 
-              {{final_selection}}
 
-              ```
+              Another AI agent searced the web for relevant philosophical literature. These search_results are provided to you below:
+
+
+              {{search_results}}
+
+
+
+
+              Use the literature_requirements and the thesis to refine the search results and output the results that are relevant to the current research topic.
 
 
               Return format in plain text:
@@ -44,18 +80,123 @@ data:
             useTypeInput: false
           outgoingConnections:
             - output->"Chat" kldzyqU5z3hxF9VmpYsCP/prompt
-          visualData: 901.611356830693/727.3027220070976/280/39//
+          visualData: 1470.8427366181716/641.3533062548818/280/88//
+        '[F9Aql0CU9Q1H-SbqStFKb]:object "Object"':
+          data:
+            jsonTemplate: >-
+              [
+                {
+                    "url": "https://www.researchgate.net/publication/342280974_Taking_another_perspective_on_overconfidence_in_cognitive_ability_A_comparison_of_self_and_other_metacognitive_judgments",
+                    "title": "Taking another perspective on overconfidence in cognitive ability",
+                    "content": "We investigated whether overconfidence extends to judgments from or about other people, and tested various competing theories of this",
+                    "score": 0.1493951,
+                    "raw_content": null
+                  },
+                  {
+                    "url": "https://philpapers.org/browse/social-epistemology-misc",
+                    "title": "Social Epistemology, Misc - Bibliography - PhilPapers",
+                    "content": "Epistemic Autonomy and Intellectual Humility: Mutually Supporting Virtues.Jonathan Matheson - 2024 - Social Epistemology 38 (3):318-330.",
+                    "score": 0.06947242,
+                    "raw_content": null
+                  },
+                  {
+                    "url": "https://academic.oup.com/edited-volume/34654/chapter/295267574",
+                    "title": "Looking Backward and Forward on Hindsight Bias - Oxford Academic",
+                    "content": "On a metacognitive level, overconfidence and surprise contribute to hindsight bias. Overconfidence in knowledge increases hindsight bias whereas a well-",
+                    "score": 0.06782414,
+                    "raw_content": null
+                  },
+                  {
+                    "url": "https://link.springer.com/article/10.1007/s11229-020-02604-4",
+                    "title": "Against overconfidence: arguing for the accessibility of memorial ...",
+                    "content": "In this article, I argue that access internalism should replace preservationism, which has been called “a received view” in the epistemology of memory.",
+                    "score": 0.060512852,
+                    "raw_content": null
+                  },
+                  {
+                    "url": "https://www.cambridge.org/core/journals/american-political-science-review/article/intellectualism-antiintellectualism-and-epistemic-hubris-in-red-and-blue-america/37C9F95A5DF4F81BAF69677DC6C9C972",
+                    "title": "Intellectualism, Anti-Intellectualism, and Epistemic Hubris in Red ...",
+                    "content": "Intellectual Identity and Anti-Intellectual Affect are both associated with Epistemic Hubris regardless of the other's presence in the model or",
+                    "score": 0.0510308,
+                    "raw_content": null
+                  },
+                  {
+                    "url": "https://philpapers.org/archive/KIDFVE.docx",
+                    "title": "[DOC] From vice epistemology to critical character epistemology - PhilPapers",
+                    "content": "A welcome development in recent epistemology has been the growing interest in epistemic vices, the negative character traits that stand opposed to what Linda",
+                    "score": 0.57064295,
+                    "raw_content": null
+                  }    
+              ]
+          outgoingConnections:
+            - output->"Graph Input" xt0dSPi10WcO2_-5KqFAL/default
+          visualData: -1110.7683317938536/687.9430328714977/230/80//
+        '[FnETSkXzMbX2bxw7BW5E-]:extractObjectPath "Extract Object Path"':
+          data:
+            path: $.url
+            usePathInput: false
+          isSplitRun: true
+          outgoingConnections:
+            - match->"Text" VaPH2RipaJ8EqCr6BT_y9/url
+          splitRunMax: 100
+          visualData: 205.77425119987313/941.7063247305891/280/84//
         '[Hj1kPG0daWRenLxqh1_Uw]:graphOutput "Graph Output"':
           data:
             dataType: object
             id: output
-          visualData: 2075.3654652949963/510.229648456783/330/41//
+          visualData: 2405.9561757903266/510.229648456783/330/86//
+        '[KsH21YBV1QfsajW_GKlvH]:readFile "Read File"':
+          data:
+            asBinary: false
+            errorOnMissingFile: false
+            path: /Users/Shared/personal/philosophy-pipeline/outputs/final_selection.json
+            usePathInput: true
+          outgoingConnections:
+            - content->"Extract JSON" PvHILbWIArzLN7_alVHIN/input
+          visualData: -1004.8350486188883/320.59701548789417/280/71//
+        '[PvHILbWIArzLN7_alVHIN]:extractJson "Extract JSON"':
+          outgoingConnections:
+            - output->"Graph Input" AyfoDzLSMlTZcRlKvw1NG/default
+          visualData: -618.5300668906967/330.7731053700308/280/72//
+        '[VQPB9qP8BttplW2DDGg6r]:extractObjectPath "Extract Object Path"':
+          data:
+            path: $.phase_two_setup.phase_two_setup.thesis_development
+            usePathInput: false
+          outgoingConnections:
+            - match->"Prompt" BvrHb9ikueWhhqpUX2sTV/thesis_development
+          visualData: 424.8411741891137/387.45006167560086/280/75//
+        '[VaPH2RipaJ8EqCr6BT_y9]:text "Text"':
+          data:
+            text: |-
+              ========================================================
+              Title: "{{title}}"
+              URL: "{{url}}"
+              Content:
+              ```
+              {{content}}
+              ```
+          isSplitRun: true
+          outgoingConnections:
+            - output->"Prompt" BvrHb9ikueWhhqpUX2sTV/search_results
+          splitRunMax: 100
+          visualData: 709.8086795254997/1084.8846958253976/330/null//
+        '[Zl3lHkFB-gDz3-CDZ30QH]:extractObjectPath "Extract Object Path"':
+          data:
+            path: $.title
+            usePathInput: false
+          isSplitRun: true
+          outgoingConnections:
+            - match->"Text" VaPH2RipaJ8EqCr6BT_y9/title
+          splitRunMax: 100
+          visualData: 205.77425119987313/1177.7919304536708/280/85//
         '[gdWux8Ku3ryo2o8X7lzUW]:prompt "Prompt"':
           data:
             enableFunctionCall: false
-            promptText: You are a web search AI agent. You are helping an AI system to draft
-              web search queries that will yield the best research material in
-              the context of a current AI research
+            promptText: You are a literature research refinement agent which is part of a
+              larger AI system. You will be given web search results relevant to
+              the current research topic. Your task is to use the context
+              provided to you and return the research papers that should be
+              included in the research as part of the literature engagement.
             type: system
             useTypeInput: false
           outgoingConnections:
@@ -85,7 +226,7 @@ data:
             useModelInput: false
             usePredictedOutput: false
             usePresencePenaltyInput: false
-            useReasoningEffortInput: false
+            useReasoningEffortInput: true
             useServerTokenCalculation: true
             useStop: false
             useStopInput: false
@@ -96,338 +237,121 @@ data:
             useUserInput: false
           outgoingConnections:
             - response->"Graph Output" Hj1kPG0daWRenLxqh1_Uw/value
-          visualData: 1568.7264433283365/493.3890372449406/230/39//
+          visualData: 1952.86353650953/496.8811926374969/230/87//
+        '[ot_v4XWlBvJZGu3H1trlm]:extractObjectPath "Extract Object Path"':
+          data:
+            path: $.phase_two_setup.phase_two_setup.literature_needs
+            promptText: ""
+            usePathInput: false
+          outgoingConnections:
+            - match->"Prompt" BvrHb9ikueWhhqpUX2sTV/literature_requirements
+          visualData: 372.02855581346904/647.6488156238992/280/74//
+        '[ux-2g-wSIHtSrKdTithA4]:extractObjectPath "Extract Object Path"':
+          data:
+            path: $.content
+            usePathInput: false
+          isSplitRun: true
+          outgoingConnections:
+            - match->"Text" VaPH2RipaJ8EqCr6BT_y9/content
+          splitRunMax: 100
+          visualData: 205.77425119987313/1377.7919304536708/280/85//
         '[xt0dSPi10WcO2_-5KqFAL]:graphInput "Graph Input"':
           data:
             dataType: object
             id: search_results
-            useDefaultValueInput: false
+            useDefaultValueInput: true
           outgoingConnections:
-            - data->"Prompt" BvrHb9ikueWhhqpUX2sTV/final_selection
-          visualData: 508.7553617695621/638.220998921535/330/40//
+            - data->"Array" 0SNVUCXMeuXR8fM388NEd/input1
+          visualData: -677.3109590951605/834.3519503845567/330/81//
     P3VgCXmQMf_2EWIGrVarF:
       metadata:
         description: ""
         id: P3VgCXmQMf_2EWIGrVarF
         name: Literary Research Query
       nodes:
-        '[2KVulxz40ZNa4Es5TFhG7]:graphInput "Graph Input"':
+        '[8hMsEE8VZ1Qdh5edsCxu2]:readFile "Read File"':
           data:
-            dataType: object
-            id: final_selection
-            useDefaultValueInput: true
+            asBinary: false
+            errorOnMissingFile: false
+            path: /Users/Shared/personal/philosophy-pipeline/outputs/final_selection.json
+            usePathInput: true
           outgoingConnections:
-            - data->"Extract Object Path" EymfJ_bmcZ0ft7gW5zKqG/object
-            - data->"Prompt" rlzu2-WHsQzkJIJFlyteC/final_selection
-          visualData: -713.4092412570682/384.16358133527535/330/34//
+            - content->"Extract JSON" QDvZCzzpbRh-Cwqf3yFLF/input
+          visualData: -1367.4805969853578/66.98847389328556/280/62//
         '[ALzZ9S_wyWclWFpmT18_k]:prompt "Prompt"':
           data:
             enableFunctionCall: false
-            promptText: You are a web search AI agent. You are helping an AI system to draft
-              web search queries that will yield the best research material in
-              the context of a current AI research
+            promptText: You are a web search AI agent. You are helping an AI system find the
+              right literature or research papers that will be needed to
+              construct a new research paper. These research materials will be
+              used as part of the literature engagement in the new research
+              paper. Your job is to use the context provided to you and provide
+              search queries that would yield the best results for relevant
+              philosophical literature in the field.
             type: system
             useTypeInput: false
           outgoingConnections:
             - output->"Chat" ykeGZg8QrHWyjNIL140F_/systemPrompt
-          visualData: 785.6580152699504/-46.377339164725356/280/26//
+          visualData: 787.2531752956681/-197.91754160791416/280/64//
         '[DVD11dvqVJvjUX356B0Gv]:extractJson "Extract JSON"':
           outgoingConnections:
             - output->"Graph Output" a6BishDCULH9QUwWB-fp2/value
           visualData: 1972.5100421727752/396.20785858937006/280/24//
-        '[EymfJ_bmcZ0ft7gW5zKqG]:extractObjectPath "Extract Object Path"':
+        '[OcfEGcMo2iohYtDnXd1-j]:extractObjectPath "Extract Object Path"':
           data:
-            path: $.phase_two_setup.phase_two_setup
+            path: $.phase_two_setup.phase_two_setup.thesis_development
             usePathInput: false
-          visualData: -193.0871037528378/387.1199781167906/280/37//
-        '[P0MByxp8ysXnlMzlMJWRq]:object "Object"':
-          data:
-            jsonTemplate: >-
-              {
-                "selection": {
-                  "selection_analysis": {
-                    "comparative_reasoning": {
-                      "steps": [
-                        {
-                          "step": "Initial Assessment",
-                          "consideration": "Core philosophical contribution",
-                          "analysis": "Both topics identify novel distinctions within established frameworks - epistemic overconfidence as a form of injustice and intentional vs outcome moral luck - but the epistemic overconfidence argument appears to carve out more clearly novel territory."
-                        },
-                        {
-                          "step": "Literature Review",
-                          "consideration": "Engagement with existing scholarship",
-                          "analysis": "The moral luck topic faces a more saturated literature landscape, while the epistemic overconfidence topic has identified a clearer gap in the existing framework of epistemic injustice."
-                        },
-                        {
-                          "step": "Argument Testing",
-                          "consideration": "Development work results",
-                          "analysis": "Both arguments underwent productive testing, but the epistemic overconfidence topic emerged with more concrete pathways for establishing its core claims through empirical support and institutional analysis."
-                        }
-                      ],
-                      "key_insights": [
-                        "The epistemic overconfidence topic offers more unexplored theoretical territory while maintaining clear connections to established frameworks.",
-                        "The moral luck distinction, while valuable, faces greater challenges in establishing novelty given extensive existing literature.",
-                        "The epistemic overconfidence argument has more concrete paths for empirical support and practical application."
-                      ]
-                    },
-                    "comparison": {
-                      "criteria": [
-                        {
-                          "criterion": "Philosophical Promise",
-                          "assessment": [
-                            {
-                              "topic_title": "Rethinking Epistemic Injustice",
-                              "strength_rating": "high",
-                              "key_factors": [
-                                "Novel extension of established framework",
-                                "Clear practical implications",
-                                "Bridges individual and structural analysis"
-                              ],
-                              "concerns": [
-                                "Needs stronger empirical support",
-                                "Must clarify distinction from other epistemic vices"
-                              ]
-                            },
-                            {
-                              "topic_title": "Moral Luck Reconsidered",
-                              "strength_rating": "medium",
-                              "key_factors": [
-                                "Important conceptual distinction",
-                                "Strong intuitive appeal"
-                              ],
-                              "concerns": [
-                                "Heavily discussed area",
-                                "Distinction may collapse under scrutiny"
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "criterion": "Development Potential",
-                          "assessment": [
-                            {
-                              "topic_title": "Rethinking Epistemic Injustice",
-                              "strength_rating": "high",
-                              "key_factors": [
-                                "Clear empirical research pathway",
-                                "Multiple promising example domains",
-                                "Concrete institutional applications"
-                              ],
-                              "concerns": [
-                                "Challenge of measuring overconfidence",
-                                "Need for systematic evidence"
-                              ]
-                            },
-                            {
-                              "topic_title": "Moral Luck Reconsidered",
-                              "strength_rating": "medium",
-                              "key_factors": [
-                                "Clear theoretical framework",
-                                "Strong existing examples"
-                              ],
-                              "concerns": [
-                                "May struggle to find novel cases",
-                                "Theoretical distinction challenges"
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    "selection": {
-                      "chosen_topic": "Rethinking Epistemic Injustice: Introducing Epistemic Overconfidence",
-                      "rationale": "The epistemic overconfidence topic offers the strongest combination of philosophical novelty, practical significance, and clear development pathways while engaging productively with established theoretical frameworks.",
-                      "key_strengths": [
-                        "Identifies novel mechanism of epistemic harm not previously systematically analyzed",
-                        "Bridges individual cognitive bias and structural injustice in innovative way",
-                        "Offers clear pathways for empirical support and practical application",
-                        "Engages productively with established epistemic injustice framework while extending it significantly"
-                      ],
-                      "critical_considerations": [
-                        "Success depends on establishing clear empirical support for systematic nature of overconfidence",
-                        "Must develop precise criteria for distinguishing epistemic overconfidence from related vices",
-                        "Need to demonstrate distinctive harm mechanisms separate from existing accounts of epistemic injustice",
-                        "Important to balance theoretical and practical elements in development"
-                      ]
-                    }
-                  }
-                },
-                "phase_two_setup": {
-                  "phase_two_setup": {
-                    "thesis_development": {
-                      "core_thesis": "Systematic epistemic overconfidence among privileged groups constitutes a distinct form of epistemic injustice through the mechanism of unwarranted expertise claims rather than explicit bias.",
-                      "key_moves": [
-                        "Establish clear criteria distinguishing epistemic overconfidence from related epistemic vices like arrogance and privilege.",
-                        "Demonstrate systematic connection between social privilege and epistemic overconfidence through empirical evidence.",
-                        "Develop framework showing how overconfidence creates structural rather than merely individual epistemic harms.",
-                        "Show how this mechanism differs from existing categories of epistemic injustice."
-                      ],
-                      "contribution_summary": "This project extends epistemic injustice theory by identifying a novel mechanism through which privileged groups can systematically distort knowledge practices without conscious bias, revealing an unexamined form of structural epistemic harm."
-                    },
-                    "literature_needs": {
-                      "remembered_papers": [
-                        {
-                          "title": "Epistemic Injustice: Power and the Ethics of Knowing",
-                          "authors": [
-                            "Miranda Fricker"
-                          ],
-                          "confidence": {
-                            "title_accuracy": "high",
-                            "content_memory": "high"
-                          },
-                          "key_arguments": [
-                            "Framework of testimonial and hermeneutical injustice",
-                            "Analysis of credibility excess and its harms",
-                            "Role of social power in epistemic practices"
-                          ],
-                          "relevance": "Provides foundational framework for analyzing epistemic injustice that we need to extend and modify."
-                        }
-                      ],
-                      "search_requirements": [
-                        {
-                          "area": "Empirical studies of epistemic overconfidence",
-                          "key_journals": [
-                            "Journal of Experimental Psychology",
-                            "Cognition",
-                            "Social Psychology Quarterly"
-                          ],
-                          "search_guidance": "Focus on studies examining relationship between social status/privilege and confidence calibration in knowledge claims.",
-                          "desired_findings": [
-                            "Evidence linking social position to overconfidence patterns",
-                            "Studies of expertise claims in professional settings",
-                            "Research on gender/status differences in confidence calibration"
-                          ]
-                        },
-                        {
-                          "area": "Recent work on epistemic vice",
-                          "key_journals": [
-                            "Episteme",
-                            "Social Epistemology",
-                            "Philosophical Studies"
-                          ],
-                          "search_guidance": "Look for treatments of epistemic vice published in last 5 years, particularly regarding structural aspects.",
-                          "desired_findings": [
-                            "Theoretical frameworks for analyzing epistemic vices",
-                            "Discussions of structural versus individual vice",
-                            "Analyses of relationship between privilege and epistemic vice"
-                          ]
-                        }
-                      ],
-                      "background_knowledge": [
-                        "Foundational literature on epistemic injustice establishes framework but does not directly address overconfidence.",
-                        "Empirical work on overconfidence exists but needs to be connected to epistemological framework.",
-                        "Recent work on epistemic vice may provide useful theoretical tools but requires verification."
-                      ]
-                    },
-                    "development_guidance": {
-                      "special_attention_areas": {
-                        "example_development": {
-                          "importance": "Examples must clearly demonstrate systematic nature of overconfidence and its connection to privilege.",
-                          "challenges": [
-                            "Need examples from multiple domains to show systematic pattern",
-                            "Must rule out alternative explanations besides overconfidence",
-                            "Examples should clearly show structural rather than individual effects"
-                          ],
-                          "considerations": [
-                            "Focus on institutional settings where expertise claims matter most",
-                            "Include quantifiable measures where possible",
-                            "Demonstrate clear connection to social privilege"
-                          ]
-                        },
-                        "argument_structure": {
-                          "importance": "Must clearly establish overconfidence as distinct form of epistemic injustice while maintaining connection to existing framework.",
-                          "challenges": [
-                            "Balancing extension of existing theory with novel contribution",
-                            "Establishing clear criteria for identifying cases",
-                            "Demonstrating systematic rather than individual effects"
-                          ],
-                          "considerations": [
-                            "Build carefully on Fricker's framework while showing distinct mechanism",
-                            "Develop clear taxonomy of harm types",
-                            "Create robust criteria for identifying cases"
-                          ]
-                        },
-                        "literature_integration": {
-                          "importance": "Need to effectively combine empirical research with philosophical framework.",
-                          "challenges": [
-                            "Bridging empirical and theoretical literature",
-                            "Incorporating recent work on epistemic vice",
-                            "Maintaining philosophical focus while using empirical support"
-                          ],
-                          "considerations": [
-                            "Use empirical work to support theoretical claims",
-                            "Connect to recent developments in epistemic vice literature",
-                            "Maintain focus on structural analysis"
-                          ]
-                        }
-                      },
-                      "initial_structure": {
-                        "potential_sections": [
-                          "Introduction and framing within epistemic injustice literature",
-                          "Theoretical framework for analyzing epistemic overconfidence",
-                          "Empirical evidence linking privilege to overconfidence",
-                          "Analysis of harm mechanisms",
-                          "Case studies demonstrating systematic effects",
-                          "Responses to objections"
-                        ],
-                        "key_dependencies": [
-                          "Empirical support must precede claims about systematic nature",
-                          "Theoretical framework needs to be established before detailed case analysis",
-                          "Criteria for identifying cases must be clear before presenting examples"
-                        ],
-                        "flexibility_notes": [
-                          "Order of empirical and theoretical sections may shift based on literature findings",
-                          "Case study selection may adjust based on available evidence",
-                          "Scope may narrow if empirical support is limited"
-                        ]
-                      }
-                    },
-                    "phase_two_considerations": {
-                      "critical_success_factors": [
-                        "Finding strong empirical evidence linking privilege to overconfidence",
-                        "Establishing clear criteria for identifying epistemic overconfidence",
-                        "Demonstrating structural rather than merely individual effects",
-                        "Successfully distinguishing from existing accounts of epistemic injustice"
-                      ],
-                      "development_priorities": [
-                        "Verify empirical support for key claims about systematic patterns",
-                        "Develop clear framework for analyzing overconfidence as epistemic injustice",
-                        "Create robust taxonomy of harm mechanisms",
-                        "Build strong case examples from multiple domains"
-                      ],
-                      "potential_challenges": [
-                        "Limited empirical evidence for systematic patterns",
-                        "Difficulty distinguishing from related epistemic vices",
-                        "Challenge of showing structural rather than individual effects",
-                        "Need to establish clear criteria for identifying cases"
-                      ]
-                    }
-                  }
-                }
-              }
           outgoingConnections:
-            - output->"Graph Input" 2KVulxz40ZNa4Es5TFhG7/default
-          visualData: -1101.44908321177/260.8831083885003/230/33//
+            - match->"Prompt" rlzu2-WHsQzkJIJFlyteC/thesis_development
+          visualData: 61.48020570454679/234.10588015330126/280/66//
+        '[QDvZCzzpbRh-Cwqf3yFLF]:extractJson "Extract JSON"':
+          outgoingConnections:
+            - output->"Graph Input" qajwq5cYAl-w5g0nTkpDJ/default
+          visualData: -967.0063761807737/100.3505913549735/280/62//
         '[a6BishDCULH9QUwWB-fp2]:graphOutput "Graph Output"':
           data:
             dataType: object
             id: output
           visualData: 2403.9794902931226/364.48864029238246/330/23//
+        '[eqHwmjtnNGBGP9QRlwHKo]:extractObjectPath "Extract Object Path"':
+          data:
+            path: $.phase_two_setup.phase_two_setup
+            usePathInput: false
+          visualData: 31.04970385049853/-26.400152402907835/280/67//
+        '[qajwq5cYAl-w5g0nTkpDJ]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: final_selection
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Extract Object Path" OcfEGcMo2iohYtDnXd1-j/object
+            - data->"Extract Object Path" eqHwmjtnNGBGP9QRlwHKo/object
+            - data->"Extract Object Path" tJmNkdtQ71Gi-QX_K7_B6/object
+          visualData: -546.1155699797514/28.055269249289026/330/62//
         '[rlzu2-WHsQzkJIJFlyteC]:prompt "Prompt"':
           data:
             enableFunctionCall: false
             promptText: >-
-              This is the topic analysis below. Generate some search queries we
-              can use to find relevant philosopphy research. Generate a maximum
-              of three queries for the best results.
-
+              You are working a new philosophy research. The details about the
+              current thesis are in JSON as follows:
 
               ```
 
-              {{final_selection}}
+              {{thesis_development}}
 
               ```
 
+
+              The previous AI step has detailed a few requirements that the relevant searched literature must have. Be mindful of these requirements when drafting the search queries. The literature_requirements are in JSON as follows:
+
+              ```
+
+              {{literature_requirements}}
+
+              ```
+
+
+              You must limit your results to a max of 4 best queries that will yield the best search results.
 
               Return format in JSON:
 
@@ -443,6 +367,14 @@ data:
           outgoingConnections:
             - output->"Chat" ykeGZg8QrHWyjNIL140F_/prompt
           visualData: 879.8265400328498/615.4712791777908/280/38//
+        '[tJmNkdtQ71Gi-QX_K7_B6]:extractObjectPath "Extract Object Path"':
+          data:
+            path: $.phase_two_setup.phase_two_setup.literature_needs
+            promptText: ""
+            usePathInput: false
+          outgoingConnections:
+            - match->"Prompt" rlzu2-WHsQzkJIJFlyteC/literature_requirements
+          visualData: 62.591986225229554/569.7431036765985/280/68//
         '[ykeGZg8QrHWyjNIL140F_]:chat "Chat"':
           data:
             additionalParameters: []

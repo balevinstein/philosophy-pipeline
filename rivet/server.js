@@ -40,14 +40,19 @@ app.post('/litResearch/papers', async (req, res) => {
 
   const openAIKey = req.body.openAIKey;
   const search_results = req.body.search_results;
+  const final_selection = req.body.final_selection;
 
   const graphOutput = await Rivet.runGraphInFile('./philosphy-pipeline.rivet-project', {
       graph: 'Get Literature Papers',
       inputs: {
         search_results: {
-              type: 'object',
-              value: search_results
+            type: 'object',
+            value: search_results
           },
+        final_selection: {
+          type: 'object',
+          value: final_selection
+        }
       },
       remoteDebugger: debuggerServer,
       openAiKey: openAIKey,
