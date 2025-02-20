@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import requests
 
 from tavily import TavilyClient
+import markdownify
 
 
 def load_final_selection() -> Dict[str, Any]:
@@ -62,8 +63,40 @@ def get_lit_search_queries(final_selection):
         sys.exit(1)
 
 
+def get_lit_papers(search_results):
+
+    try:
+        load_dotenv()
+        request_data = {
+            "search_results": search_results,
+            "openAiKey": os.getenv("OPENAI_API_KEY"),
+        }
+
+        headers = {"Content-Type": "application/json"}
+
+        response = requests.post(
+            "http://localhost:4040/litResearch/papers",
+            data=json.dumps(request_data),
+            timeout=5000,
+            headers=headers,
+        )
+
+        if response.status_code == 200:
+            try:
+                return response.content
+            except ValueError:
+                print("Failed to decode JSON")
+
+        print("Finished generating search queries")
+
+    except Exception as e:
+        print(f"\nError in Phase I pipeline: {str(e)}")
+        sys.exit(1)
+
+
 def run_phase_one_two():
     """Run stage 2 of Phase I in sequence"""
+
     try:
         print("\nStarting Phase I.2 pipeline...")
         print("\nPlease make sure you started the rivet node server...")
@@ -80,7 +113,6 @@ def run_phase_one_two():
         print("\nGenerated queries for web search")
 
         search_results = []
-
         tavily_client = TavilyClient(api_key=tavily_key)
 
         for query in queries:
@@ -94,12 +126,23 @@ def run_phase_one_two():
             search_results.extend(response["results"])
 
         print("\nCompleted Web Search")
-        print(search_results)
+
+        papers = get_lit_papers(search_results)
+        papers = str(markdownify.markdownify(papers))
+
         print("\nPhase I.2 completed successfully!")
-        return search_results
+        print(
+            "\n\nPlease download the following papers and add them to the src/papers directory"
+        )
+        print(papers)
+
+        with open("./outputs/literature_research_papers.md", "w") as f:
+            f.write(papers)
+
+        return papers
 
     except Exception as e:
-        print(f"\nError in Phase I pipeline: {str(e)}")
+        print(f"\nError in Phase I.2 pipeline: {str(e)}")
         sys.exit(1)
 
 
