@@ -5,6 +5,106 @@ data:
       testSuites: []
       version: 1
   graphs:
+    Lv-7ZJrqRBh7iROzwNz7Y:
+      metadata:
+        description: ""
+        id: Lv-7ZJrqRBh7iROzwNz7Y
+        name: Get Literature Papers
+      nodes:
+        '[BvrHb9ikueWhhqpUX2sTV]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              Find the right papers I should be using for literature engagement
+              on my paper. Output the papers that I should use in a list with
+              their urls.
+
+
+              ```
+
+              {{final_selection}}
+
+              ```
+
+
+              Return format in plain text:
+
+              ============================================================
+
+              Research Paper Title:
+                - Research Paper URL
+                - How is this research paper relevant to the topic?
+              ============================================================
+
+              Research Paper Title:
+                - Research Paper URL
+                - How is this research paper relevant to the topic?
+              ============================================================
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" kldzyqU5z3hxF9VmpYsCP/prompt
+          visualData: 901.611356830693/727.3027220070976/280/39//
+        '[Hj1kPG0daWRenLxqh1_Uw]:graphOutput "Graph Output"':
+          data:
+            dataType: object
+            id: output
+          visualData: 2075.3654652949963/510.229648456783/330/41//
+        '[gdWux8Ku3ryo2o8X7lzUW]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: You are a web search AI agent. You are helping an AI system to draft
+              web search queries that will yield the best research material in
+              the context of a current AI research
+            type: system
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" kldzyqU5z3hxF9VmpYsCP/systemPrompt
+          visualData: 807.4428320677935/65.45410366458145/280/39//
+        '[kldzyqU5z3hxF9VmpYsCP]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            enableFunctionUse: false
+            headers: []
+            maxTokens: 16384
+            modalitiesIncludeAudio: false
+            modalitiesIncludeText: false
+            model: gpt-4o
+            numberOfChoices: 1
+            outputUsage: false
+            parallelFunctionCalling: true
+            reasoningEffort: low
+            stop: ""
+            temperature: 0.3
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePredictedOutput: false
+            usePresencePenaltyInput: false
+            useReasoningEffortInput: false
+            useServerTokenCalculation: true
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Graph Output" Hj1kPG0daWRenLxqh1_Uw/value
+          visualData: 1568.7264433283365/493.3890372449406/230/39//
+        '[xt0dSPi10WcO2_-5KqFAL]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: search_results
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Prompt" BvrHb9ikueWhhqpUX2sTV/final_selection
+          visualData: 508.7553617695621/638.220998921535/330/40//
     P3VgCXmQMf_2EWIGrVarF:
       metadata:
         description: ""
@@ -17,8 +117,9 @@ data:
             id: final_selection
             useDefaultValueInput: true
           outgoingConnections:
+            - data->"Extract Object Path" EymfJ_bmcZ0ft7gW5zKqG/object
             - data->"Prompt" rlzu2-WHsQzkJIJFlyteC/final_selection
-          visualData: 205.05503051655927/535.5959009950435/330/15//
+          visualData: -713.4092412570682/384.16358133527535/330/34//
         '[ALzZ9S_wyWclWFpmT18_k]:prompt "Prompt"':
           data:
             enableFunctionCall: false
@@ -29,11 +130,16 @@ data:
             useTypeInput: false
           outgoingConnections:
             - output->"Chat" ykeGZg8QrHWyjNIL140F_/systemPrompt
-          visualData: 736.4063543608916/143.16693160650118/280/12//
+          visualData: 785.6580152699504/-46.377339164725356/280/26//
         '[DVD11dvqVJvjUX356B0Gv]:extractJson "Extract JSON"':
           outgoingConnections:
             - output->"Graph Output" a6BishDCULH9QUwWB-fp2/value
-          visualData: 1678.4925512914238/563.3650107655699/280/19//
+          visualData: 1972.5100421727752/396.20785858937006/280/24//
+        '[EymfJ_bmcZ0ft7gW5zKqG]:extractObjectPath "Extract Object Path"':
+          data:
+            path: $.phase_two_setup.phase_two_setup
+            usePathInput: false
+          visualData: -193.0871037528378/387.1199781167906/280/37//
         '[P0MByxp8ysXnlMzlMJWRq]:object "Object"':
           data:
             jsonTemplate: >-
@@ -301,12 +407,12 @@ data:
               }
           outgoingConnections:
             - output->"Graph Input" 2KVulxz40ZNa4Es5TFhG7/default
-          visualData: -470.6708338311446/466.354163520454/230/17//
+          visualData: -1101.44908321177/260.8831083885003/230/33//
         '[a6BishDCULH9QUwWB-fp2]:graphOutput "Graph Output"':
           data:
             dataType: object
             id: output
-          visualData: 2112.9469485577747/555.5253856366107/330/18//
+          visualData: 2403.9794902931226/364.48864029238246/330/23//
         '[rlzu2-WHsQzkJIJFlyteC]:prompt "Prompt"':
           data:
             enableFunctionCall: false
@@ -336,7 +442,7 @@ data:
             useTypeInput: false
           outgoingConnections:
             - output->"Chat" ykeGZg8QrHWyjNIL140F_/prompt
-          visualData: 749.1500444994584/497.4161517782491/280/16//
+          visualData: 879.8265400328498/615.4712791777908/280/38//
         '[ykeGZg8QrHWyjNIL140F_]:chat "Chat"':
           data:
             additionalParameters: []
@@ -347,9 +453,10 @@ data:
             modalitiesIncludeAudio: false
             modalitiesIncludeText: false
             model: gpt-4o
+            numberOfChoices: 1
             outputUsage: false
             parallelFunctionCalling: true
-            reasoningEffort: medium
+            reasoningEffort: low
             stop: ""
             temperature: 0.3
             top_p: 1
@@ -371,7 +478,7 @@ data:
             useUserInput: false
           outgoingConnections:
             - response->"Extract JSON" DVD11dvqVJvjUX356B0Gv/input
-          visualData: 1320.0854914342224/548.7147465918337/230/8//
+          visualData: 1546.9416265304935/381.55759441563384/230/25//
   metadata:
     description: ""
     id: rBponj37DhN1Lkq2pRSnU
