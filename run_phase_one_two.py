@@ -55,6 +55,11 @@ def get_lit_search_queries(final_selection):
                 return response.json()["queries"]
             except ValueError:
                 print("Failed to decode JSON")
+        else:
+            print("Search query generation request failed")
+            print(response.status_code)
+            print(response.content)
+            return
 
         print("Finished generating search queries")
 
@@ -88,8 +93,6 @@ def get_lit_papers(search_results, final_selection):
             except ValueError:
                 print("Failed to decode JSON")
 
-        print("Finished generating search queries")
-
     except Exception as e:
         print(f"\nError in Phase I pipeline: {str(e)}")
         sys.exit(1)
@@ -111,6 +114,10 @@ def run_phase_one_two():
         check_rivet_life()
 
         queries = get_lit_search_queries(final_selection=final_selection)
+        if queries is None:
+            print("\nCould not generate research queries\n\n")
+            return
+
         print("\nGenerated queries for web search")
 
         search_results = []
