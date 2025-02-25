@@ -64,7 +64,7 @@ def get_lit_search_queries(final_selection):
         print("Finished generating search queries")
 
     except Exception as e:
-        print(f"\nError in Phase I pipeline: {str(e)}")
+        print(f"\nError in Phase I.2 pipeline: {str(e)}")
         sys.exit(1)
 
 
@@ -94,7 +94,7 @@ def get_lit_papers(search_results, final_selection):
                 print("Failed to decode JSON")
 
     except Exception as e:
-        print(f"\nError in Phase I pipeline: {str(e)}")
+        print(f"\nError in Phase I.2 pipeline: {str(e)}")
         sys.exit(1)
 
 
