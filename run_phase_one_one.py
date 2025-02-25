@@ -34,11 +34,11 @@ def run_phase_one_one():
         if not selection:
             raise Exception("Final selection failed")
 
-        print("\nPhase I completed successfully!")
+        print("\nPhase I.1 completed successfully!")
         return selection
 
     except Exception as e:
-        print(f"\nError in Phase I pipeline: {str(e)}")
+        print(f"\nError in Phase I.1 pipeline: {str(e)}")
         sys.exit(1)
 
 
