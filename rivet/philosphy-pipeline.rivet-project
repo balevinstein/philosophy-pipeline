@@ -79,8 +79,8 @@ data:
             type: user
             useTypeInput: false
           outgoingConnections:
-            - output->"Assemble Prompt" bsW6iItpdpJKErO3uv84u/message2
-          visualData: 1107.9634355178491/639.72604481497/280/91//
+            - output->"Chat" kldzyqU5z3hxF9VmpYsCP/prompt
+          visualData: 1470.8427366181716/641.3533062548818/280/88//
         '[F9Aql0CU9Q1H-SbqStFKb]:object "Object"':
           data:
             jsonTemplate: >-
@@ -189,10 +189,6 @@ data:
             - match->"Text" VaPH2RipaJ8EqCr6BT_y9/title
           splitRunMax: 100
           visualData: 205.77425119987313/1177.7919304536708/280/85//
-        '[bsW6iItpdpJKErO3uv84u]:assemblePrompt "Assemble Prompt"':
-          outgoingConnections:
-            - prompt->"Chat" kldzyqU5z3hxF9VmpYsCP/prompt
-          visualData: 1553.846709546542/579.5004200610673/280/92//
         '[gdWux8Ku3ryo2o8X7lzUW]:prompt "Prompt"':
           data:
             enableFunctionCall: false
@@ -204,7 +200,7 @@ data:
             type: system
             useTypeInput: false
           outgoingConnections:
-            - output->"Assemble Prompt" bsW6iItpdpJKErO3uv84u/message1
+            - output->"Chat" kldzyqU5z3hxF9VmpYsCP/systemPrompt
           visualData: 807.4428320677935/65.45410366458145/280/39//
         '[kldzyqU5z3hxF9VmpYsCP]:chat "Chat"':
           data:
@@ -219,7 +215,7 @@ data:
             numberOfChoices: 1
             outputUsage: false
             parallelFunctionCalling: true
-            reasoningEffort: ""
+            reasoningEffort: low
             stop: ""
             temperature: 0.3
             top_p: 1
@@ -292,19 +288,15 @@ data:
               paper. Your job is to use the context provided to you and provide
               search queries that would yield the best results for relevant
               philosophical literature in the field.
-            type: user
+            type: system
             useTypeInput: false
           outgoingConnections:
-            - output->"Assemble Prompt" E-KV5hJcMeCGXtJFAAb5u/message1
+            - output->"Chat" ykeGZg8QrHWyjNIL140F_/systemPrompt
           visualData: 787.2531752956681/-197.91754160791416/280/64//
         '[DVD11dvqVJvjUX356B0Gv]:extractJson "Extract JSON"':
           outgoingConnections:
             - output->"Graph Output" a6BishDCULH9QUwWB-fp2/value
           visualData: 1972.5100421727752/396.20785858937006/280/24//
-        '[E-KV5hJcMeCGXtJFAAb5u]:assemblePrompt "Assemble Prompt"':
-          outgoingConnections:
-            - prompt->"Chat" ykeGZg8QrHWyjNIL140F_/prompt
-          visualData: 1184.215772394587/367.8323530242148/280/74//
         '[OcfEGcMo2iohYtDnXd1-j]:extractObjectPath "Extract Object Path"':
           data:
             path: $.phase_two_setup.phase_two_setup.thesis_development
@@ -367,8 +359,8 @@ data:
             type: user
             useTypeInput: false
           outgoingConnections:
-            - output->"Assemble Prompt" E-KV5hJcMeCGXtJFAAb5u/message2
-          visualData: 756.1228885155574/248.1317555245158/280/71//
+            - output->"Chat" ykeGZg8QrHWyjNIL140F_/prompt
+          visualData: 831.6222897118624/253.93940177038542/280/70//
         '[tJmNkdtQ71Gi-QX_K7_B6]:extractObjectPath "Extract Object Path"':
           data:
             path: $.phase_two_setup.phase_two_setup.literature_needs
@@ -390,7 +382,7 @@ data:
             numberOfChoices: 1
             outputUsage: false
             parallelFunctionCalling: true
-            reasoningEffort: ""
+            reasoningEffort: low
             stop: ""
             temperature: 0.3
             top_p: 1
@@ -412,7 +404,7 @@ data:
             useUserInput: false
           outgoingConnections:
             - response->"Extract JSON" DVD11dvqVJvjUX356B0Gv/input
-          visualData: 1620.1179692284506/380.39606516645995/230/72//
+          visualData: 1546.9416265304935/381.55759441563384/230/25//
   metadata:
     description: ""
     id: rBponj37DhN1Lkq2pRSnU
