@@ -21,7 +21,7 @@ app.post('/litResearch', async (req, res) => {
     let graphOutput = {}
 
     try {
-      graphOutput = await Rivet.runGraphInFile('./philosphy-pipeline.rivet-project', {
+      graphOutput = await Rivet.runGraphInFile('./philosophy-pipeline.rivet-project', {
         graph: 'Literary Research Query',
         inputs: {
           final_selection: {
@@ -49,9 +49,10 @@ app.post('/litResearch/papers', async (req, res) => {
   const openAIKey = req.body.openAIKey;
   const search_results = req.body.search_results;
   const final_selection = req.body.final_selection;
+
   let graphOutput = {}
   try{
-      graphOutput = await Rivet.runGraphInFile('./philosphy-pipeline.rivet-project', {
+      graphOutput = await Rivet.runGraphInFile('./philosophy-pipeline.rivet-project', {
         graph: 'Get Literature Papers',
         inputs: {
           search_results: {
