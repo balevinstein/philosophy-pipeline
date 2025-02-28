@@ -470,7 +470,7 @@ data:
             numberOfChoices: 1
             outputUsage: false
             parallelFunctionCalling: true
-            reasoningEffort: low
+            reasoningEffort: ""
             stop: ""
             temperature: 0.3
             top_p: 1
@@ -892,7 +892,7 @@ data:
             numberOfChoices: 1
             outputUsage: false
             parallelFunctionCalling: true
-            reasoningEffort: low
+            reasoningEffort: ""
             stop: ""
             temperature: 0.3
             top_p: 1
