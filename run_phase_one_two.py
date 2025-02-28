@@ -38,7 +38,7 @@ def get_lit_search_queries(final_selection):
         load_dotenv()
         request_data = {
             "final_selection": final_selection,
-            "openAiKey": os.getenv("OPENAI_API_KEY"),
+            "openAIKey": os.getenv("OPENAI_API_KEY"),
         }
 
         headers = {"Content-Type": "application/json"}
@@ -75,7 +75,7 @@ def get_lit_papers(search_results, final_selection):
         request_data = {
             "search_results": search_results,
             "final_selection": final_selection,
-            "openAiKey": os.getenv("OPENAI_API_KEY"),
+            "openAIKey": os.getenv("OPENAI_API_KEY"),
         }
 
         headers = {"Content-Type": "application/json"}
