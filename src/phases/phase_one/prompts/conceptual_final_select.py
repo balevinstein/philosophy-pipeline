@@ -1,8 +1,9 @@
 # src/prompts/conceptual_final_select.py
 
+
 class FinalSelectionPrompt:
     """Manages prompts for final topic selection and Phase II setup"""
-    
+
     def __init__(self):
         self.SELECTION_CRITERIA = """
 PHILOSOPHICAL EVALUATION GUIDANCE:
@@ -203,4 +204,3 @@ Here is the selected topic with its development:
 {selected_topic_json}
 
 Focus on creating clear literature requirements for human researchers and identifying critical areas needing special attention in future development."""
-

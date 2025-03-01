@@ -193,7 +193,7 @@ class JSONHandler:
                 try:
                     return json.loads(content)
                 except json.JSONDecodeError as e:
-                    print(f"\nError parsing JSON from {filepath}")
+                    print(f"\nError parsing JSON from {filepath} {e}")
                     cleaned = self.clean_json_string(content)
                     return json.loads(cleaned)
         except FileNotFoundError:

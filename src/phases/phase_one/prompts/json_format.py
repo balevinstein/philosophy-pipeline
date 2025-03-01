@@ -1,10 +1,11 @@
 # src/prompts/json_format.py
 
+
 class JSONFormattingRequirements:
     """Centralized JSON formatting requirements used across the pipeline"""
-    
+
     def __init__(self):
-       self.JSON_FORMATTING_REQUIREMENTS = r"""
+        self.JSON_FORMATTING_REQUIREMENTS = r"""
         CRITICAL JSON REQUIREMENTS - ANY VIOLATION WILL CAUSE PARSING TO FAIL
 
     1. BASIC JSON STRUCTURE
@@ -54,7 +55,7 @@ class JSONFormattingRequirements:
      WRONG: "content": "This can be expressed 'as': '$\\phi \\rightarrow \\psi$' "
      WRONG: "content": "This can be expressed "as": "$\\phi \\rightarrow \\psi$" "
      CORRECT: "content": "This can be expressed as: $\\phi \\rightarrow \\psi$"
-   
+
    - For possessives, use straight apostrophes:
      WRONG: "content": "The agent"'s belief"
      CORRECT: "content": "The agent's belief"

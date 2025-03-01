@@ -1,14 +1,15 @@
 # src/prompts/conceptual_evaluate.py
 
+
 class TopicEvaluationPrompt:
     """Manages prompts for evaluating philosophy paper topics"""
-    
+
     def __init__(self, cull_min: int, cull_max: int):
         """Initialize prompt manager with culling parameters"""
         self.cull_min = cull_min
         self.cull_max = cull_max
 
-        self.EVALUATION_PRINCIPLES = """
+        self.evaluation_principles = """
 EVALUATION PRINCIPLES:
 We are looking for topics that represent the right balance across multiple dimensions:
 
@@ -36,7 +37,7 @@ We are looking for topics that represent the right balance across multiple dimen
    - Example needs that are manageable
    - Clear but sophisticated argumentation"""
 
-        self.EVALUATION_PROCESS = f"""
+        self.evaluation_process = f"""
 EVALUATION PROCESS:
 For each topic:
 1. Analyze core contribution
@@ -70,7 +71,7 @@ After evaluating all topics:
 4. Rank selected topics
 5. Provide clear rationales"""
 
-        self.SELECTION_GUIDANCE = f"""
+        self.selection_guidance = f"""
 SELECTION GUIDANCE:
 Choose {self.cull_min} to {self.cull_max} topics that best balance:
 1. Clear and novel contribution
@@ -92,14 +93,14 @@ Avoid topics that:
 - Risk being too ambitious
 - Lack clear development strategy"""
 
-        self.OUTPUT_REQUIREMENTS = """
+        self.output_requirements = """
 1. Response Structure:
 - Must be a valid JSON array of topic objects
 - Each topic must follow the exact structure below
 - Avoid special characters (quotes, unicode) in text fields
 - Use simple ASCII characters only
 - Keep all text fields as single-line strings (no line breaks)
-        
+
 Output must be valid JSON matching this structure exactly:
 {
   "topic_evaluations": [
@@ -171,13 +172,13 @@ IMPORTANT:
         """Construct the full evaluation prompt"""
         return f"""You are an expert in analytic philosophy tasked with evaluating potential paper topics for Analysis journal. Your goal is to identify the {self.cull_min} to {self.cull_max} most promising topics that are well-suited for AI development while maintaining appropriate scholarly ambition.
 
-{self.EVALUATION_PRINCIPLES}
+{self.evaluation_principles}
 
-{self.EVALUATION_PROCESS}
+{self.evaluation_process}
 
-{self.SELECTION_GUIDANCE}
+{self.selection_guidance}
 
-{self.OUTPUT_REQUIREMENTS}
+{self.output_requirements}
 
 Here are the topics for evaluation:
 {topics_json}
