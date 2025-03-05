@@ -39,7 +39,7 @@ app.post('/litResearch', async (req, res) => {
       return;
     }
 
-    console.log("Exectued Graph: Literary Research Query")
+    console.log("Executed Graph: Literary Research Query")
 
     res.send(graphOutput.output.value).status(200);
 });
@@ -74,7 +74,7 @@ app.post('/litResearch/papers', async (req, res) => {
     return;
   }
 
-  console.log("Exectued Graph: Get Literature Papers")
+  console.log("Executed Graph: Get Literature Papers")
 
   res.send(graphOutput.output.value).status(200);
 });
