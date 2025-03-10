@@ -48,7 +48,7 @@ This document describes the architecture for Phase II of the AI-driven philosoph
      - Key moves identification
      - Literature engagement mapping
 
-   - II.3: Key Moves Development [IN PROGRESS]
+   - II.3: Key Moves Development [COMPLETED]
 
      - Full development of each move
      - Local worker/critic refinement cycles
@@ -568,21 +568,21 @@ philosophy_pipeline/
 
    - II.1: Literature processing and synthesis
    - II.2: Framework development (abstract, outline, key moves)
+   - II.3: Key moves development
    - Base worker/critic/refinement infrastructure
    - PDF handling and literature integration
    - Test infrastructure and validation
 
 2. **In Progress**
 
-   - II.3 design and implementation
-   - Key moves development system
+   - II.4 design and implementation
+   - Detailed outline development system
    - Local/global worker coordination
    - Refinement cycle management
 
 3. **Next Steps**
 
-   - II.3 implementation completion
-   - II.4 detailed outline development
+   - II.4 implementation completion
    - Potential II.5 planning if needed
    - Phase III preparation
 
