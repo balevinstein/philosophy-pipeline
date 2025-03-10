@@ -16,6 +16,7 @@ from tenacity import (
     retry_if_exception_type,
     RetryCallState,
 )
+import time
 
 
 def create_retry_decorator(
@@ -196,12 +197,43 @@ class APIHandler:
         def make_call():
             """Make Anthropic API call without PDF"""
             try:
+                print(f"\nMaking API call to {config['model']}")
+                
+                # Add a delay between retries to avoid rate limits
+                time.sleep(1)
+                
+                # Try with a smaller max_tokens if we're getting errors
+                max_tokens = config["max_tokens"]
+                
+                # Try with a smaller prompt if needed
+                current_prompt = prompt
+                if len(prompt) > 50000:  # If prompt is very large
+                    print(f"Warning: Large prompt ({len(prompt)} chars), truncating...")
+                    current_prompt = prompt[:50000]  # Truncate to avoid API issues
+                
                 response = self.anthropic_client.messages.create(
                     model=config["model"],
-                    max_tokens=config["max_tokens"],
-                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=max_tokens,
+                    messages=[{"role": "user", "content": current_prompt}],
                 )
                 return response.content[0].text
+            except anthropic.InternalServerError as e:
+                print(f"Anthropic Internal Server Error: {e}")
+                print("This is likely a temporary issue with the Anthropic API.")
+                print("Retrying with a shorter prompt and fewer tokens...")
+                
+                # Try with a much smaller prompt and fewer tokens
+                shortened_prompt = prompt[:20000] if len(prompt) > 20000 else prompt
+                try:
+                    response = self.anthropic_client.messages.create(
+                        model=config["model"],
+                        max_tokens=min(config["max_tokens"], 4000),
+                        messages=[{"role": "user", "content": shortened_prompt}],
+                    )
+                    return response.content[0].text
+                except Exception as inner_e:
+                    print(f"Still failed with shortened prompt: {inner_e}")
+                    raise
             except Exception as e:
                 print(f"Anthropic API call failed: {e}")
                 raise
