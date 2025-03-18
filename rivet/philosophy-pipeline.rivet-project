@@ -9,17 +9,24 @@ data:
       metadata:
         description: ""
         id: Lv-7ZJrqRBh7iROzwNz7Y
-        name: Get Literature Papers
+        name: Phase I.2/Get Literature Papers
       nodes:
         '[0SNVUCXMeuXR8fM388NEd]:array "Array"':
           data:
             flatten: true
             flattenDeep: false
           outgoingConnections:
+            - length->"Compare" 6jADWgv1w1hmh994UXeoV/a
             - output->"Extract Object Path" FnETSkXzMbX2bxw7BW5E-/object
             - output->"Extract Object Path" Zl3lHkFB-gDz3-CDZ30QH/object
             - output->"Extract Object Path" ux-2g-wSIHtSrKdTithA4/object
           visualData: -172.5425829937265/953.3468427057768/230/83//
+        '[6jADWgv1w1hmh994UXeoV]:compare "Compare"':
+          data:
+            comparisonFunction: <=
+          outgoingConnections:
+            - output->"If/Else" xEGmGshe3FvDy6qBGHOGl/if
+          visualData: 1447.400335894513/1237.7488518544128/190/96//
         '[AyfoDzLSMlTZcRlKvw1NG]:graphInput "Graph Input"':
           data:
             dataType: object
@@ -81,6 +88,12 @@ data:
           outgoingConnections:
             - output->"Chat" kldzyqU5z3hxF9VmpYsCP/prompt
           visualData: 1470.8427366181716/641.3533062548818/280/88//
+        '[BwMS96eXSbmjo7vR769RW]:text "Text"':
+          data:
+            text: No search results found
+          outgoingConnections:
+            - output->"If/Else" xEGmGshe3FvDy6qBGHOGl/true
+          visualData: 1691.6880423093376/1356.9346113916522/330/98//
         '[F9Aql0CU9Q1H-SbqStFKb]:object "Object"':
           data:
             jsonTemplate: >-
@@ -144,7 +157,7 @@ data:
           data:
             dataType: object
             id: output
-          visualData: 2405.9561757903266/510.229648456783/330/86//
+          visualData: 2837.3553265007085/600.4952316217272/330/101//
         '[KHkaV0awFXr6ocRVYg5se]:object "Object"':
           data:
             jsonTemplate: >-
@@ -444,6 +457,14 @@ data:
             - match->"Text" VaPH2RipaJ8EqCr6BT_y9/title
           splitRunMax: 100
           visualData: 205.77425119987313/1177.7919304536708/280/85//
+        '[fKNOfaLVa1lvOEiJtjTOU]:number "Number"':
+          data:
+            round: false
+            roundTo: 0
+            value: 0
+          outgoingConnections:
+            - value->"Compare" 6jADWgv1w1hmh994UXeoV/b
+          visualData: 1147.7499827179863/1448.3724748574398/230/null//
         '[gdWux8Ku3ryo2o8X7lzUW]:prompt "Prompt"':
           data:
             enableFunctionCall: false
@@ -478,7 +499,7 @@ data:
             useAsGraphPartialOutput: true
             useFrequencyPenaltyInput: false
             useMaxTokensInput: false
-            useModelInput: false
+            useModelInput: true
             usePredictedOutput: false
             usePresencePenaltyInput: false
             useReasoningEffortInput: true
@@ -491,7 +512,7 @@ data:
             useUseTopPInput: false
             useUserInput: false
           outgoingConnections:
-            - response->"Graph Output" Hj1kPG0daWRenLxqh1_Uw/value
+            - response->"If/Else" xEGmGshe3FvDy6qBGHOGl/false
           visualData: 1952.86353650953/496.8811926374969/230/87//
         '[ot_v4XWlBvJZGu3H1trlm]:extractObjectPath "Extract Object Path"':
           data:
@@ -510,6 +531,12 @@ data:
             - match->"Text" VaPH2RipaJ8EqCr6BT_y9/content
           splitRunMax: 100
           visualData: 205.77425119987313/1377.7919304536708/280/85//
+        '[xEGmGshe3FvDy6qBGHOGl]:ifElse "If/Else"':
+          data:
+            unconnectedControlFlowExcluded: true
+          outgoingConnections:
+            - output->"Graph Output" Hj1kPG0daWRenLxqh1_Uw/value
+          visualData: 2461.8761999634708/591.4355749408932/205/100//
         '[xt0dSPi10WcO2_-5KqFAL]:graphInput "Graph Input"':
           data:
             dataType: object
@@ -517,23 +544,32 @@ data:
             useDefaultValueInput: true
           outgoingConnections:
             - data->"Array" 0SNVUCXMeuXR8fM388NEd/input1
-          visualData: -677.3109590951605/834.3519503845567/330/81//
+          visualData: -688.833504642201/819.5372489669331/330/95//
     P3VgCXmQMf_2EWIGrVarF:
       metadata:
         description: ""
         id: P3VgCXmQMf_2EWIGrVarF
-        name: Literary Research Query
+        name: Phase I.2/Literary Research Query
       nodes:
         '[ALzZ9S_wyWclWFpmT18_k]:prompt "Prompt"':
           data:
             enableFunctionCall: false
-            promptText: You are a web search AI agent. You are helping an AI system find the
-              right literature or research papers that will be needed to
-              construct a new research paper. These research materials will be
-              used as part of the literature engagement in the new research
-              paper. Your job is to use the context provided to you and provide
-              search queries that would yield the best results for relevant
-              philosophical literature in the field.
+            promptText: >-
+              You are a web search AI agent. You are helping an AI system find
+              the right literature or research papers that will be needed to
+              construct a new research paper. This academic literature will be
+              used as part of the literature engagement step in the new research
+              paper. 
+
+
+              Your job is to use the context provided to you and provide targeted, concise search queries that would yield the best results for relevant philosophical literature in the field.
+
+
+              Only use keywords related to your current topic in your output. 
+
+              DO NOT include time references or verbs in the search queries of your output
+
+              DO NOT include names of specific journals in your response.
             type: system
             useTypeInput: false
           outgoingConnections:
