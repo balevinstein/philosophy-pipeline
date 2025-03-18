@@ -22,7 +22,7 @@ app.post('/litResearch', async (req, res) => {
 
     try {
       graphOutput = await Rivet.runGraphInFile('./philosophy-pipeline.rivet-project', {
-        graph: 'Literary Research Query',
+        graph: 'Phase I.2/Literary Research Query',
         inputs: {
           final_selection: {
                 type: 'object',
@@ -53,7 +53,7 @@ app.post('/litResearch/papers', async (req, res) => {
   let graphOutput = {}
   try{
       graphOutput = await Rivet.runGraphInFile('./philosophy-pipeline.rivet-project', {
-        graph: 'Get Literature Papers',
+        graph: 'Phase I.2/Get Literature Papers',
         inputs: {
           search_results: {
               type: 'object',

@@ -130,6 +130,7 @@ def run_phase_one_two():
                 search_depth="advanced",
                 include_raw_content=False,
                 max_results=5,
+                include_domains=["scholar.google.com", "philpapers.org"],
             )
             search_results.extend(response["results"])
 
