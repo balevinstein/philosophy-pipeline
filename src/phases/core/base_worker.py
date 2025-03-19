@@ -39,7 +39,7 @@ class BaseWorker(ABC):
         return self._state.copy()
 
     @abstractmethod
-    def _construct_prompt(self, input_data: WorkerInput) -> bool:
+    def _construct_prompt(self, input_data: WorkerInput) -> str:
         """Construct the prompt for the worker"""
         pass
 

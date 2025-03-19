@@ -154,6 +154,31 @@ models:
     model: claude-3-5-sonnet-20241022
     max_tokens: 8192
     temperature: 0.5 # Balanced for refinements
+    
+  # New Phase II.4 workers
+  detailed_outline_planning:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.5 # Balance creativity and precision for planning
+    
+  detailed_outline_development:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.7 # Higher for creative development
+    
+  detailed_outline_critic:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.3 # Lower for careful evaluation
+    
+  detailed_outline_refinement:
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+    max_tokens: 8192
+    temperature: 0.5 # Balanced for refinements
 
 paths:
   base_dir: ./outputs
@@ -196,3 +221,4 @@ parameters:
     outline_num_cycles: 3
     key_moves_num_cycles: 3
     key_move_max_cycles: 3 # New parameter for Phase II.3
+    outline_max_cycles: 3 # New parameter for Phase II.4

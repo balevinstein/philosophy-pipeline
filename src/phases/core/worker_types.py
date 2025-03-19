@@ -24,3 +24,9 @@ class RefinementWorker(BaseWorker):
     """For refinement tasks"""
 
     worker_type = "refinement"
+
+
+class PlanningWorker(BaseWorker):
+    """For planning tasks"""
+
+    worker_type = "planning"

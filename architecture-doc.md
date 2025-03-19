@@ -55,17 +55,21 @@ This document describes the architecture for Phase II of the AI-driven philosoph
      - Global coherence validation
      - Literature integration
 
-   - II.4: Detailed Outline Development
+   - II.4: Detailed Outline Development [COMPLETED]
 
      - Full structural expansion
      - Move integration
      - Section/subsection planning
      - Transition development
+     - Output: `outputs/detailed_outline/detailed_outline_final.json`
 
-   - II.5: Integration and Smoothing [OPTIONAL]
-     - Final alignment check
-     - Gap identification
-     - Last feasibility validation
+   - II.5: Content Integration and Enhancement [IN_PROGRESS]
+     - Input: `outputs/detailed_outline/detailed_outline_final.json` and all previous phase outputs
+     - Detailed argument structure development
+     - Specific literature citation integration
+     - Concrete examples and thought experiments
+     - Enhanced transitions and connections
+     - Output: `outputs/detailed_integration/enhanced_outline_final.json`
 
 3. **Phase III: Paper Writing**
 
@@ -234,9 +238,9 @@ This approach allows workers to use their full capabilities while maintaining:
 - Development quality
 - Systematic progress
 
-### II.4: Detailed Outline Development
+### II.4: Detailed Outline Development [COMPLETED]
 
-Takes the fully developed key moves from II.3 and creates a comprehensive outline that will guide Phase III writing.
+Takes the fully developed key moves from II.3 and creates a comprehensive structural outline that will guide Phase III writing.
 
 #### Core Objectives
 
@@ -247,34 +251,109 @@ Takes the fully developed key moves from II.3 and creates a comprehensive outlin
 
 #### Worker Architecture
 
-[Similar local/global pattern but focused on structural development]
+1. Framework Integration Worker
+   - Creates the foundational structural skeleton
+   - Allocates section/subsection organization
+   - Assigns word counts to sections
 
-#### Development Flow
+2. Literature Mapping Worker
+   - Maps literature sources to specific sections
+   - Identifies primary/supporting source relationships
+   - Plans literature engagement strategy
 
-1. Initial structural expansion
-2. Move integration
-3. Transition development
-4. Feasibility validation
+3. Content Development Worker
+   - Creates generalized content guidance
+   - Develops structural bullet points
+   - Establishes content flow
+
+4. Structural Validation Worker
+   - Validates overall structure coherence
+   - Ensures logical progression
+   - Verifies key move integration
 
 #### Success Criteria
 
-- Clear development path for each section
-- Proper space for move deployment
-- Feasible within word constraints
-- Ready for Phase III writing
+- Comprehensive section/subsection structure
+- Proper word count allocation
+- Basic content guidance
+- Logical structural flow
+- Key move integration into structure
 
-### II.5: Integration and Smoothing [Optional]
+#### Output Files
 
-This stage may be used if needed to handle any remaining integration issues after II.4.
+- `outputs/detailed_outline/detailed_outline_final.md`: Human-readable outline
+- `outputs/detailed_outline/detailed_outline_final.json`: Machine-readable structured outline containing:
+  - Complete outline text
+  - Thesis statement
+  - Core contribution
+  - Key moves
+  - Metadata
 
-#### Potential Objectives
+### II.5: Content Integration and Enhancement [IN_PROGRESS]
 
-- Final framework alignment check
-- Move-structure integration issues
-- Literature coverage gaps
-- Last feasibility validation
+This stage takes the structural outline from II.4 and enhances it with specific content details necessary for effective Phase III writing.
 
-This stage might prove unnecessary if II.3 and II.4 achieve sufficient development quality.
+#### Core Objectives
+
+- Transform structural outline into detailed content blueprint
+- Integrate specific literature citations with quotes and page numbers
+- Develop explicit argument structures with clear premises and conclusions
+- Create concrete examples and thought experiments
+- Provide detailed methodological guidance
+- Ensure comprehensive integration of previous phases' outputs
+
+#### Input Files
+
+- `outputs/detailed_outline/detailed_outline_final.json`: Primary structural outline
+- `outputs/framework_development/abstract_framework.json`: Core thesis and contribution
+- `outputs/key_moves_development/key_moves_development/all_developed_moves.json`: Fully developed moves
+- `outputs/literature_synthesis.json`: Literature analysis and engagement points
+
+#### Development Focus
+
+1. Argument Enhancement
+   - Explicit premise-conclusion structures
+   - Formal argument patterns where appropriate
+   - Clear inferential connections
+   - Detailed objection-response pairs
+
+2. Literature Integration
+   - Specific citations with page numbers
+   - Key quotes for inclusion
+   - Explicit connections to framework
+   - Scholar position mapping
+
+3. Example Development
+   - Concrete thought experiments
+   - Real-world applications
+   - Detailed case analyses
+   - Illustrative scenarios
+
+4. Methodological Specification
+   - Explicit philosophical methodology
+   - Analytical approach details
+   - Assessment criteria
+   - Evaluation frameworks
+
+#### Expected Output
+
+- `outputs/detailed_integration/enhanced_outline_final.json`: Comprehensive content blueprint containing:
+  - Detailed arguments with premises and conclusions
+  - Specific literature citations and quotes
+  - Fully developed examples and thought experiments
+  - Comprehensive section content guidance
+  - Detailed transition plans
+
+#### Success Criteria
+
+- Provides specific content that Phase III writers can directly incorporate
+- Offers detailed arguments that maintain logical validity
+- Includes concrete examples that illustrate key points
+- Features specific literature engagement with exact citations
+- Maintains alignment with framework while adding substantial detail
+- Enables Phase III writers to focus on expression rather than content creation
+
+This stage fills the gap between the structural outline of II.4 and the writing needs of Phase III, ensuring writers have specific content to include rather than just structural guidance.
 
 ### Actor/Critic Methodology
 
