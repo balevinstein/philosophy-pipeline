@@ -951,6 +951,48 @@ data:
           outgoingConnections:
             - response->"Extract JSON" DVD11dvqVJvjUX356B0Gv/input
           visualData: 1546.9416265304935/381.55759441563384/230/25//
+    k8tmbasjp4GNIH2x9uetc:
+      metadata:
+        description: ""
+        id: k8tmbasjp4GNIH2x9uetc
+        name: Phase II.5/Coalesce Previous Steps
+      nodes:
+        '[4LBIdEH2XDzUTMCI8nGnn]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: key_moves
+            useDefaultValueInput: false
+          visualData: 511/1095/330/5//
+        '[7BkNpr9ZAHovB_EAtK7WM]:graphInput "Graph Input"':
+          data:
+            dataType: gpt-function
+            id: lit_readings
+            useDefaultValueInput: false
+          visualData: 527/1348/330/8//
+        '[Bjd3APNbabuiJs7_zOT5g]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: lit_synthesis
+            useDefaultValueInput: false
+          visualData: 529/1592/330/9//
+        '[SE-QpbpotrnxiPjN3oOM2]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: outline
+            useDefaultValueInput: false
+          visualData: 516/855/330/7//
+        '[UOpxoOBc-kM6I83qOa3d4]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: final_selection
+            useDefaultValueInput: false
+          visualData: 518/361/330/null//
+        '[tg75jMAFy7lpPyox70Phs]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: abstract_framework
+            useDefaultValueInput: false
+          visualData: 515/621/330/3//
   metadata:
     description: ""
     id: rBponj37DhN1Lkq2pRSnU
