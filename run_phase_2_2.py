@@ -1,11 +1,15 @@
-import logging
 import os
 from pathlib import Path
 import subprocess
-from typing import Any, Dict
-import json
 
 
+from run_utils import (
+    load_final_selection,
+    load_framework,
+    load_literature,
+    load_outline,
+    setup_logging,
+)
 from src.phases.phase_two.stages.stage_two.workflows.abstract_workflow import (
     create_abstract_framework_workflow,
 )
@@ -16,67 +20,6 @@ from src.phases.phase_two.stages.stage_two.workflows.outline_workflow import (
     create_outline_workflow,
 )
 from src.utils.api import load_config
-
-
-def setup_logging():
-    """Configure logging"""
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-    )
-
-
-def load_final_selection() -> Dict[str, Any]:
-    """Load final selection from Phase I"""
-    try:
-        with open("./outputs/final_selection.json") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        raise ValueError("Could not find final_selection.json. Run Phase I first.")
-
-
-def load_framework() -> Dict[str, Any]:
-    """Load framework"""
-    try:
-        with open("./outputs/framework_development/abstract_framework.json") as f:
-            return json.load(f)["abstract_framework"]
-    except FileNotFoundError:
-        raise ValueError("Could not find abstract_framework.json.")
-
-
-def load_outline() -> Dict[str, Any]:
-    """Load outline"""
-    try:
-        with open("./outputs/framework_development/outline.json") as f:
-            return json.load(f)["outline"]
-    except FileNotFoundError:
-        raise ValueError("Could not find outline.json.")
-
-
-def load_literature() -> Dict[str, Any]:
-    """Load literature analysis from Phase II.1"""
-    try:
-        lit_readings = json.load(open("./outputs/literature_readings.json"))
-        lit_synthesis = json.load(open("./outputs/literature_synthesis.json"))
-        with open("./outputs/literature_synthesis.md") as f:
-            lit_narrative = f.read()
-        return {
-            "readings": lit_readings,
-            "synthesis": lit_synthesis,
-            "narrative": lit_narrative,
-        }
-    except FileNotFoundError as e:
-        raise ValueError(f"Missing literature files. Run Phase II.1 first. Error: {e}")
-
-
-def caffeinate():
-    """Prevent system sleep during execution"""
-    try:
-        subprocess.Popen(["caffeinate", "-i", "-w", str(os.getpid())])
-    except Exception as e:
-        print(f"Warning: Could not caffeinate process: {e}")
-        print(
-            "You may want to manually prevent your system from sleeping during execution."
-        )
 
 
 def main():
