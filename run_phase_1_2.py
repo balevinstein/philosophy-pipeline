@@ -3,33 +3,13 @@
 import json
 import os
 import sys
-from typing import Dict, Any
 from dotenv import load_dotenv
 import requests
 
 from tavily import TavilyClient
 import markdownify
 
-
-def load_final_selection() -> Dict[str, Any]:
-    """Load final selection from Phase I.1"""
-    try:
-        with open("./outputs/final_selection.json") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        raise ValueError("Could not find final_selection.json. Run Phase I.1 first.")
-
-
-def check_rivet_life() -> Dict[str, Any]:
-    """Check if Rivet server is up"""
-    try:
-        result = requests.get("http://localhost:4040/life", timeout=5000)
-        if result.ok:
-            print("Rivet alive")
-    except ConnectionError:
-        raise ValueError(
-            "Could not connect to the Rivet server. Please run `node ./rivet/app.js --watch` in another terminal process"
-        )
+from run_utils import check_rivet_life, load_final_selection
 
 
 def get_lit_search_queries(final_selection):

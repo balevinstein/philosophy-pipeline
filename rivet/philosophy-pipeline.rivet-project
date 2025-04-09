@@ -961,41 +961,842 @@ data:
           data:
             dataType: object
             id: key_moves
-            useDefaultValueInput: false
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" FYU5J1gDIfUW0CGKbAzXt/key_moves
           visualData: 511/1095/330/5//
         '[7BkNpr9ZAHovB_EAtK7WM]:graphInput "Graph Input"':
           data:
-            dataType: gpt-function
-            id: lit_readings
-            useDefaultValueInput: false
-          visualData: 527/1348/330/8//
-        '[Bjd3APNbabuiJs7_zOT5g]:graphInput "Graph Input"':
-          data:
             dataType: object
-            id: lit_synthesis
-            useDefaultValueInput: false
-          visualData: 529/1592/330/9//
+            id: literature
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" FYU5J1gDIfUW0CGKbAzXt/literature
+          visualData: 527/1348/330/8//
+        '[BuKgsL_RrxOsbMrNRXyVb]:extractJson "Extract JSON"':
+          outgoingConnections:
+            - output->"Graph Output" ndWQoMAVs0ddbTXEFrW-3/value
+          visualData: 3501.7586296913214/1237.4410024590911/280/17//
+        '[FYU5J1gDIfUW0CGKbAzXt]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              You are provided with the necessary contexts below
+
+
+              ## Final Selection
+
+
+              ```json
+
+              {{final_selection}}
+
+              ```
+
+
+              ## Abstract Framework
+
+
+              ```json
+
+              {{abstract_framework}}
+
+              ```
+
+
+              ## Outline
+
+
+              ```json
+
+              {{outline}}
+
+              ```
+
+
+
+              ## Key Moves
+
+
+              ```json
+
+              {{key_moves}}
+
+              ```
+
+
+              ### Developed Key Moves
+
+
+              ```json
+
+              {{developed_key_moves}}
+
+              ```
+
+
+              ## Literature
+
+
+              ```json
+
+              {{literature}}
+
+              ```
+
+
+              Ouput Format:
+
+              Use JSON for your outputs in a self-decided structure and schema, use only snake case for labels
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" kq8aGlU1E_ASmVQMK97S-/prompt
+          visualData: 1901.484040082138/1207.630637538344/280/10//
+        '[KD3_v8PANeFKr2gRwCtog]:object "Object"':
+          data:
+            jsonTemplate: >-
+              {
+                "developed_moves": [
+                  {
+                    "key_move_index": 0,
+                    "key_move_text": 0,
+                    "development": {
+                      "initial": "",
+                      "examples": "",
+                      "literature": ""
+                    },
+                    "final_content": "",
+                    "refinement_history": []
+                  },
+                  {
+                    "key_move_index": 1,
+                    "key_move_text": 1,
+                    "development": {
+                      "initial": "",
+                      "examples": "",
+                      "literature": ""
+                    },
+                    "final_content": "",
+                    "refinement_history": []
+                  }
+                ],
+                "metadata": {
+                  "framework_title": "Philosophy Paper Framework",
+                  "main_thesis": "Epistemic overconfidence constitutes a distinct mechanism of epistemic injustice, identifiable through precise criteria of epistemic accessibility that distinguish warranted from unwarranted expertise claims within knowledge practices.",
+                  "core_contribution": "This paper extends epistemic injustice theory by developing a rigorous theoretical framework that identifies unwarranted epistemic overconfidence as a novel mechanism of epistemic harm, distinguished through systematic criteria adapted from Patten's analysis of epistemic accessibility.",
+                  "processing_date": "2025-04-08 20:58:50.269302"
+                }
+              }
+          outgoingConnections:
+            - output->"Graph Input" t40u6cGivBPmU0TFDypVJ/default
+          visualData: -161.8977041392642/2258.562908497447/230/null//
+        '[S3hzO9JUKSJuYUOw7uErA]:object "Object"':
+          data:
+            jsonTemplate: >-
+              {
+                "selection": {
+                  "selection_analysis": {
+                    "comparative_reasoning": {
+                      "steps": [
+                        {
+                          "step": "Initial Assessment",
+                          "consideration": "Core philosophical contribution",
+                          "analysis": "Both topics identify novel distinctions within established frameworks - epistemic overconfidence as a form of injustice and intentional vs outcome moral luck - but the epistemic overconfidence argument appears to carve out more clearly novel territory."
+                        },
+                        {
+                          "step": "Literature Review",
+                          "consideration": "Engagement with existing scholarship",
+                          "analysis": "The moral luck topic faces a more saturated literature landscape, while the epistemic overconfidence topic has identified a clearer gap in the existing framework of epistemic injustice."
+                        },
+                        {
+                          "step": "Argument Testing",
+                          "consideration": "Development work results",
+                          "analysis": "Both arguments underwent productive testing, but the epistemic overconfidence topic emerged with more concrete pathways for establishing its core claims through empirical support and institutional analysis."
+                        }
+                      ],
+                      "key_insights": [
+                        "The epistemic overconfidence topic offers more unexplored theoretical territory while maintaining clear connections to established frameworks.",
+                        "The moral luck distinction, while valuable, faces greater challenges in establishing novelty given extensive existing literature.",
+                        "The epistemic overconfidence argument has more concrete paths for empirical support and practical application."
+                      ]
+                    },
+                    "comparison": {
+                      "criteria": [
+                        {
+                          "criterion": "Philosophical Promise",
+                          "assessment": [
+                            {
+                              "topic_title": "Rethinking Epistemic Injustice",
+                              "strength_rating": "high",
+                              "key_factors": [
+                                "Novel extension of established framework",
+                                "Clear practical implications",
+                                "Bridges individual and structural analysis"
+                              ],
+                              "concerns": [
+                                "Needs stronger empirical support",
+                                "Must clarify distinction from other epistemic vices"
+                              ]
+                            },
+                            {
+                              "topic_title": "Moral Luck Reconsidered",
+                              "strength_rating": "medium",
+                              "key_factors": [
+                                "Important conceptual distinction",
+                                "Strong intuitive appeal"
+                              ],
+                              "concerns": [
+                                "Heavily discussed area",
+                                "Distinction may collapse under scrutiny"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "criterion": "Development Potential",
+                          "assessment": [
+                            {
+                              "topic_title": "Rethinking Epistemic Injustice",
+                              "strength_rating": "high",
+                              "key_factors": [
+                                "Clear empirical research pathway",
+                                "Multiple promising example domains",
+                                "Concrete institutional applications"
+                              ],
+                              "concerns": [
+                                "Challenge of measuring overconfidence",
+                                "Need for systematic evidence"
+                              ]
+                            },
+                            {
+                              "topic_title": "Moral Luck Reconsidered",
+                              "strength_rating": "medium",
+                              "key_factors": [
+                                "Clear theoretical framework",
+                                "Strong existing examples"
+                              ],
+                              "concerns": [
+                                "May struggle to find novel cases",
+                                "Theoretical distinction challenges"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "selection": {
+                      "chosen_topic": "Rethinking Epistemic Injustice: Introducing Epistemic Overconfidence",
+                      "rationale": "The epistemic overconfidence topic offers the strongest combination of philosophical novelty, practical significance, and clear development pathways while engaging productively with established theoretical frameworks.",
+                      "key_strengths": [
+                        "Identifies novel mechanism of epistemic harm not previously systematically analyzed",
+                        "Bridges individual cognitive bias and structural injustice in innovative way",
+                        "Offers clear pathways for empirical support and practical application",
+                        "Engages productively with established epistemic injustice framework while extending it significantly"
+                      ],
+                      "critical_considerations": [
+                        "Success depends on establishing clear empirical support for systematic nature of overconfidence",
+                        "Must develop precise criteria for distinguishing epistemic overconfidence from related vices",
+                        "Need to demonstrate distinctive harm mechanisms separate from existing accounts of epistemic injustice",
+                        "Important to balance theoretical and practical elements in development"
+                      ]
+                    }
+                  }
+                },
+                "phase_two_setup": {
+                  "phase_two_setup": {
+                    "thesis_development": {
+                      "core_thesis": "Systematic epistemic overconfidence among privileged groups constitutes a distinct form of epistemic injustice through the mechanism of unwarranted expertise claims rather than explicit bias.",
+                      "key_moves": [
+                        "Establish clear criteria distinguishing epistemic overconfidence from related epistemic vices like arrogance and privilege.",
+                        "Demonstrate systematic connection between social privilege and epistemic overconfidence through empirical evidence.",
+                        "Develop framework showing how overconfidence creates structural rather than merely individual epistemic harms.",
+                        "Show how this mechanism differs from existing categories of epistemic injustice."
+                      ],
+                      "contribution_summary": "This project extends epistemic injustice theory by identifying a novel mechanism through which privileged groups can systematically distort knowledge practices without conscious bias, revealing an unexamined form of structural epistemic harm."
+                    },
+                    "literature_needs": {
+                      "remembered_papers": [
+                        {
+                          "title": "Epistemic Injustice: Power and the Ethics of Knowing",
+                          "authors": [
+                            "Miranda Fricker"
+                          ],
+                          "confidence": {
+                            "title_accuracy": "high",
+                            "content_memory": "high"
+                          },
+                          "key_arguments": [
+                            "Framework of testimonial and hermeneutical injustice",
+                            "Analysis of credibility excess and its harms",
+                            "Role of social power in epistemic practices"
+                          ],
+                          "relevance": "Provides foundational framework for analyzing epistemic injustice that we need to extend and modify."
+                        }
+                      ],
+                      "search_requirements": [
+                        {
+                          "area": "Empirical studies of epistemic overconfidence",
+                          "key_journals": [
+                            "Journal of Experimental Psychology",
+                            "Cognition",
+                            "Social Psychology Quarterly"
+                          ],
+                          "search_guidance": "Focus on studies examining relationship between social status/privilege and confidence calibration in knowledge claims.",
+                          "desired_findings": [
+                            "Evidence linking social position to overconfidence patterns",
+                            "Studies of expertise claims in professional settings",
+                            "Research on gender/status differences in confidence calibration"
+                          ]
+                        },
+                        {
+                          "area": "Recent work on epistemic vice",
+                          "key_journals": [
+                            "Episteme",
+                            "Social Epistemology",
+                            "Philosophical Studies"
+                          ],
+                          "search_guidance": "Look for treatments of epistemic vice published in last 5 years, particularly regarding structural aspects.",
+                          "desired_findings": [
+                            "Theoretical frameworks for analyzing epistemic vices",
+                            "Discussions of structural versus individual vice",
+                            "Analyses of relationship between privilege and epistemic vice"
+                          ]
+                        }
+                      ],
+                      "background_knowledge": [
+                        "Foundational literature on epistemic injustice establishes framework but does not directly address overconfidence.",
+                        "Empirical work on overconfidence exists but needs to be connected to epistemological framework.",
+                        "Recent work on epistemic vice may provide useful theoretical tools but requires verification."
+                      ]
+                    },
+                    "development_guidance": {
+                      "special_attention_areas": {
+                        "example_development": {
+                          "importance": "Examples must clearly demonstrate systematic nature of overconfidence and its connection to privilege.",
+                          "challenges": [
+                            "Need examples from multiple domains to show systematic pattern",
+                            "Must rule out alternative explanations besides overconfidence",
+                            "Examples should clearly show structural rather than individual effects"
+                          ],
+                          "considerations": [
+                            "Focus on institutional settings where expertise claims matter most",
+                            "Include quantifiable measures where possible",
+                            "Demonstrate clear connection to social privilege"
+                          ]
+                        },
+                        "argument_structure": {
+                          "importance": "Must clearly establish overconfidence as distinct form of epistemic injustice while maintaining connection to existing framework.",
+                          "challenges": [
+                            "Balancing extension of existing theory with novel contribution",
+                            "Establishing clear criteria for identifying cases",
+                            "Demonstrating systematic rather than individual effects"
+                          ],
+                          "considerations": [
+                            "Build carefully on Fricker's framework while showing distinct mechanism",
+                            "Develop clear taxonomy of harm types",
+                            "Create robust criteria for identifying cases"
+                          ]
+                        },
+                        "literature_integration": {
+                          "importance": "Need to effectively combine empirical research with philosophical framework.",
+                          "challenges": [
+                            "Bridging empirical and theoretical literature",
+                            "Incorporating recent work on epistemic vice",
+                            "Maintaining philosophical focus while using empirical support"
+                          ],
+                          "considerations": [
+                            "Use empirical work to support theoretical claims",
+                            "Connect to recent developments in epistemic vice literature",
+                            "Maintain focus on structural analysis"
+                          ]
+                        }
+                      },
+                      "initial_structure": {
+                        "potential_sections": [
+                          "Introduction and framing within epistemic injustice literature",
+                          "Theoretical framework for analyzing epistemic overconfidence",
+                          "Empirical evidence linking privilege to overconfidence",
+                          "Analysis of harm mechanisms",
+                          "Case studies demonstrating systematic effects",
+                          "Responses to objections"
+                        ],
+                        "key_dependencies": [
+                          "Empirical support must precede claims about systematic nature",
+                          "Theoretical framework needs to be established before detailed case analysis",
+                          "Criteria for identifying cases must be clear before presenting examples"
+                        ],
+                        "flexibility_notes": [
+                          "Order of empirical and theoretical sections may shift based on literature findings",
+                          "Case study selection may adjust based on available evidence",
+                          "Scope may narrow if empirical support is limited"
+                        ]
+                      }
+                    },
+                    "phase_two_considerations": {
+                      "critical_success_factors": [
+                        "Finding strong empirical evidence linking privilege to overconfidence",
+                        "Establishing clear criteria for identifying epistemic overconfidence",
+                        "Demonstrating structural rather than merely individual effects",
+                        "Successfully distinguishing from existing accounts of epistemic injustice"
+                      ],
+                      "development_priorities": [
+                        "Verify empirical support for key claims about systematic patterns",
+                        "Develop clear framework for analyzing overconfidence as epistemic injustice",
+                        "Create robust taxonomy of harm mechanisms",
+                        "Build strong case examples from multiple domains"
+                      ],
+                      "potential_challenges": [
+                        "Limited empirical evidence for systematic patterns",
+                        "Difficulty distinguishing from related epistemic vices",
+                        "Challenge of showing structural rather than individual effects",
+                        "Need to establish clear criteria for identifying cases"
+                      ]
+                    }
+                  }
+                }
+              }
+          outgoingConnections:
+            - output->"Graph Input" UOpxoOBc-kM6I83qOa3d4/default
+          visualData: -280.69419554182326/65.54148085843048/230/28//
         '[SE-QpbpotrnxiPjN3oOM2]:graphInput "Graph Input"':
           data:
             dataType: object
             id: outline
-            useDefaultValueInput: false
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" FYU5J1gDIfUW0CGKbAzXt/outline
           visualData: 516/855/330/7//
         '[UOpxoOBc-kM6I83qOa3d4]:graphInput "Graph Input"':
           data:
             dataType: object
             id: final_selection
-            useDefaultValueInput: false
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" FYU5J1gDIfUW0CGKbAzXt/final_selection
           visualData: 518/361/330/null//
+        '[cpx75moghgdfG2srMaIMv]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: You are a research consolidation AI Agent. You excel at combining
+              context given to you in a well structured piece of context that
+              can be used by other AI agents to conduct future research.
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" kq8aGlU1E_ASmVQMK97S-/systemPrompt
+          visualData: 1921.809288891738/733.3748319810079/280/15//
+        '[fb25jJ1Kypuie-cF7x3VR]:object "Object"':
+          data:
+            jsonTemplate: >-
+              {
+                "key_moves": {
+                  "content": "# Scratch Work\n- Critique correctly identifies need for methodological strengthening\n- Parameter scope in Move 3 needs careful pruning while maintaining rigor\n- Bridge sections require explicit theoretical anchoring to Patten framework\n- Case analysis structure needs tighter connection to criteria development\n- Must balance added methodology elements with space constraints\n- Need to maintain focus on epistemic accessibility as organizing principle\n\n# Refinement Decisions\n\n## Will Implement\n1. Add explicit methodology subsection focusing on Patten's epistemic accessibility framework -- Strengthens theoretical foundation\n2. Streamline parameter framework to core epistemic accessibility elements -- Enhances feasibility\n3. Create structured bridges emphasizing epistemic accessibility progression -- Improves theoretical coherence\n4. Add explicit criteria application protocol based on Patten's methodology -- Tightens case analysis\n5. Strengthen harm mechanism specification in Move 1 -- Better grounds distinctness claims\n\n## Won't Implement\n1. Detailed taxonomy of all epistemic injustice types -- Beyond scope needs\n2. Extended parameter validation discussion -- Would strain space constraints\n3. Multiple case studies -- Would dilute theoretical focus\n4. Comprehensive framework objections section -- Not central to main argument\n\n# Updated Move Development\n\n## 1. Establish Distinctness\n1. Theoretical analysis of epistemic authority claims\n2. Harm mechanism specification:\n   - Epistemic accessibility violations\n   - Structural impact patterns\n   - Connection to injustice theory\n3. Core overconfidence features:\n   - Epistemic accessibility boundaries\n   - Authority claim characteristics\n   - Systematic harm patterns\n4. Bridge to accessibility framework\n\n## 2. Framework Adaptation\n1. Methodological foundation:\n   - Patten's epistemic accessibility criteria\n   - Application to expertise claims\n   - Core distinction parameters\n2. Framework adaptation methodology:\n   - Essential elements identification\n   - Modification principles\n   - Validation approach\n3. Core accessibility elements:\n   - Evidence evaluation criteria\n   - Domain boundary markers\n   - Authority verification methods\n4. Bridge to criteria development\n\n## 3. Criteria Construction\n1. Essential parameters:\n   - Epistemic accessibility markers\n   - Domain boundary indicators\n   - Authority claim verification\n2. Assessment framework:\n   - Core evaluation criteria\n   - Application principles\n   - Validation methods\n3. Theoretical justification\n4. Bridge to application\n\n## 4. Theoretical Application\n1. Structured analysis protocol:\n   - Accessibility criteria application\n   - Evidence evaluation method\n   - Impact assessment framework\n2. Case demonstration:\n   - Systematic criteria application\n   - Harm mechanism analysis\n   - Framework validation\n3. Theoretical implications:\n   - Epistemic accessibility impacts\n   - Structural patterns\n   - Theory development\n\n# Change Notes\nTheoretical Foundations:\n- Enhanced focus on epistemic accessibility\n- Clearer methodological grounding\n- More systematic theoretical development\n\nMove Interactions:\n- Stronger theoretical bridges\n- Better progression through accessibility framework\n- More integrated harm analysis\n\nLiterature Integration:\n- More focused use of Patten's framework\n- Clearer methodological parallels\n- Better scope management\n\nFramework Alignment:\n- Tighter connection to main thesis\n- Enhanced theoretical coherence\n- Better support for key claims\n\nDevelopment Feasibility:\n- More realistic parameter scope\n- Better space allocation\n- Clearer development priorities\n\nDependencies:\n- Stronger theoretical scaffolding\n- Clearer progression through moves\n- Better integration points",
+                  "sections": {
+                    "Scratch Work": "- Critique correctly identifies need for methodological strengthening\n- Parameter scope in Move 3 needs careful pruning while maintaining rigor\n- Bridge sections require explicit theoretical anchoring to Patten framework\n- Case analysis structure needs tighter connection to criteria development\n- Must balance added methodology elements with space constraints\n- Need to maintain focus on epistemic accessibility as organizing principle",
+                    "Refinement Decisions": {
+                      "Will Implement": "1. Add explicit methodology subsection focusing on Patten's epistemic accessibility framework -- Strengthens theoretical foundation\n2. Streamline parameter framework to core epistemic accessibility elements -- Enhances feasibility\n3. Create structured bridges emphasizing epistemic accessibility progression -- Improves theoretical coherence\n4. Add explicit criteria application protocol based on Patten's methodology -- Tightens case analysis\n5. Strengthen harm mechanism specification in Move 1 -- Better grounds distinctness claims",
+                      "Won't Implement": "1. Detailed taxonomy of all epistemic injustice types -- Beyond scope needs\n2. Extended parameter validation discussion -- Would strain space constraints\n3. Multiple case studies -- Would dilute theoretical focus\n4. Comprehensive framework objections section -- Not central to main argument"
+                    },
+                    "Updated Move Development": "## 1. Establish Distinctness\n1. Theoretical analysis of epistemic authority claims\n2. Harm mechanism specification:\n   - Epistemic accessibility violations\n   - Structural impact patterns\n   - Connection to injustice theory\n3. Core overconfidence features:\n   - Epistemic accessibility boundaries\n   - Authority claim characteristics\n   - Systematic harm patterns\n4. Bridge to accessibility framework\n\n## 2. Framework Adaptation\n1. Methodological foundation:\n   - Patten's epistemic accessibility criteria\n   - Application to expertise claims\n   - Core distinction parameters\n2. Framework adaptation methodology:\n   - Essential elements identification\n   - Modification principles\n   - Validation approach\n3. Core accessibility elements:\n   - Evidence evaluation criteria\n   - Domain boundary markers\n   - Authority verification methods\n4. Bridge to criteria development\n\n## 3. Criteria Construction\n1. Essential parameters:\n   - Epistemic accessibility markers\n   - Domain boundary indicators\n   - Authority claim verification\n2. Assessment framework:\n   - Core evaluation criteria\n   - Application principles\n   - Validation methods\n3. Theoretical justification\n4. Bridge to application\n\n## 4. Theoretical Application\n1. Structured analysis protocol:\n   - Accessibility criteria application\n   - Evidence evaluation method\n   - Impact assessment framework\n2. Case demonstration:\n   - Systematic criteria application\n   - Harm mechanism analysis\n   - Framework validation\n3. Theoretical implications:\n   - Epistemic accessibility impacts\n   - Structural patterns\n   - Theory development",
+                    "Change Notes": "Theoretical Foundations:\n- Enhanced focus on epistemic accessibility\n- Clearer methodological grounding\n- More systematic theoretical development\n\nMove Interactions:\n- Stronger theoretical bridges\n- Better progression through accessibility framework\n- More integrated harm analysis\n\nLiterature Integration:\n- More focused use of Patten's framework\n- Clearer methodological parallels\n- Better scope management\n\nFramework Alignment:\n- Tighter connection to main thesis\n- Enhanced theoretical coherence\n- Better support for key claims\n\nDevelopment Feasibility:\n- More realistic parameter scope\n- Better space allocation\n- Clearer development priorities\n\nDependencies:\n- Stronger theoretical scaffolding\n- Clearer progression through moves\n- Better integration points"
+                  },
+                  "decisions": {
+                    "will_implement": [
+                      {
+                        "change": "1. Add explicit methodology subsection focusing on Patten's epistemic accessibility framework",
+                        "rationale": "Strengthens theoretical foundation"
+                      },
+                      {
+                        "change": "2. Streamline parameter framework to core epistemic accessibility elements",
+                        "rationale": "Enhances feasibility"
+                      },
+                      {
+                        "change": "3. Create structured bridges emphasizing epistemic accessibility progression",
+                        "rationale": "Improves theoretical coherence"
+                      },
+                      {
+                        "change": "4. Add explicit criteria application protocol based on Patten's methodology",
+                        "rationale": "Tightens case analysis"
+                      },
+                      {
+                        "change": "5. Strengthen harm mechanism specification in Move 1",
+                        "rationale": "Better grounds distinctness claims"
+                      }
+                    ],
+                    "wont_implement": [
+                      {
+                        "change": "1. Detailed taxonomy of all epistemic injustice types",
+                        "rationale": "Beyond scope needs"
+                      },
+                      {
+                        "change": "2. Extended parameter validation discussion",
+                        "rationale": "Would strain space constraints"
+                      },
+                      {
+                        "change": "3. Multiple case studies",
+                        "rationale": "Would dilute theoretical focus"
+                      },
+                      {
+                        "change": "4. Comprehensive framework objections section",
+                        "rationale": "Not central to main argument"
+                      }
+                    ]
+                  },
+                  "moves": "## 1. Establish Distinctness\n1. Theoretical analysis of epistemic authority claims\n2. Harm mechanism specification:\n   - Epistemic accessibility violations\n   - Structural impact patterns\n   - Connection to injustice theory\n3. Core overconfidence features:\n   - Epistemic accessibility boundaries\n   - Authority claim characteristics\n   - Systematic harm patterns\n4. Bridge to accessibility framework\n\n## 2. Framework Adaptation\n1. Methodological foundation:\n   - Patten's epistemic accessibility criteria\n   - Application to expertise claims\n   - Core distinction parameters\n2. Framework adaptation methodology:\n   - Essential elements identification\n   - Modification principles\n   - Validation approach\n3. Core accessibility elements:\n   - Evidence evaluation criteria\n   - Domain boundary markers\n   - Authority verification methods\n4. Bridge to criteria development\n\n## 3. Criteria Construction\n1. Essential parameters:\n   - Epistemic accessibility markers\n   - Domain boundary indicators\n   - Authority claim verification\n2. Assessment framework:\n   - Core evaluation criteria\n   - Application principles\n   - Validation methods\n3. Theoretical justification\n4. Bridge to application\n\n## 4. Theoretical Application\n1. Structured analysis protocol:\n   - Accessibility criteria application\n   - Evidence evaluation method\n   - Impact assessment framework\n2. Case demonstration:\n   - Systematic criteria application\n   - Harm mechanism analysis\n   - Framework validation\n3. Theoretical implications:\n   - Epistemic accessibility impacts\n   - Structural patterns\n   - Theory development",
+                  "iteration": 3
+                }
+              }
+          outgoingConnections:
+            - output->"Graph Input" 4LBIdEH2XDzUTMCI8nGnn/default
+          visualData: -557.2646920335808/865.4783507463084/230/37//
+        '[kq8aGlU1E_ASmVQMK97S-]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            enableFunctionUse: false
+            headers: []
+            maxTokens: 100000
+            modalitiesIncludeAudio: false
+            modalitiesIncludeText: false
+            model: gpt-4o-mini
+            outputUsage: false
+            overrideMaxTokens: 200000
+            parallelFunctionCalling: true
+            promptText: ""
+            reasoningEffort: medium
+            responseFormat: json
+            stop: ""
+            temperature: 0.3
+            text: ""
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useMaxTokensInput: false
+            useModelInput: true
+            usePredictedOutput: false
+            usePresencePenaltyInput: false
+            useReasoningEffortInput: false
+            useServerTokenCalculation: true
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Extract JSON" BuKgsL_RrxOsbMrNRXyVb/input
+          visualData: 2936.716712784438/1153.4299740460772/230/14//
+        '[ndWQoMAVs0ddbTXEFrW-3]:graphOutput "Graph Output"':
+          data:
+            dataType: object
+            id: output
+          visualData: 4097.965928106259/1190.0154219033573/330/16//
+        '[olEQ6rAAf3k49QUZXDE9O]:object "Object"':
+          data:
+            jsonTemplate: >-
+              {
+                "patten_-_liberal_neutrality_-_berkeley": {
+                  "initial": {
+                    "paper_info": {
+                      "title": "Liberal Neutrality: A Reinterpretation and Defense",
+                      "authors": [
+                        "Alan Patten"
+                      ],
+                      "publication_info": {
+                        "year": "2011",
+                        "venue": "Appears to be a journal article but venue not explicitly stated",
+                        "doi": "Not provided in text",
+                        "length": "45 pages"
+                      },
+                      "structure": {
+                        "sections": [
+                          "Introduction",
+                          "Neutrality as a Downstream Value",
+                          "Existing Conceptions of Neutrality",
+                          "Neutrality of Treatment",
+                          "The Fairness Justification of Neutrality",
+                          "Foundational Questions"
+                        ],
+                        "organization": "The paper develops systematically from critique of existing approaches through presentation of a new interpretation to defense and implications.",
+                        "methodology": "Analytical philosophical approach combining conceptual analysis with normative argumentation and use of illustrative examples."
+                      }
+                    },
+                    "core_content": {
+                      "main_thesis": "The state has a pro tanto reason to be neutral between conceptions of the good, based on fairness and self-determination, which is distinct from traditional interpretations of neutrality.",
+                      "background_context": "Liberal neutrality has fallen out of favor after brief prominence in the 1970s-80s, with critics arguing it is confused or misguided.",
+                      "key_arguments": [
+                        {
+                          "claim": "Neutrality of treatment offers a distinct third conception beyond neutrality of intentions and neutrality of effects.",
+                          "support": [
+                            "Equal accommodation rather than equal effects or neutral intentions",
+                            "Connects to fairness and self-determination",
+                            "Allows for pro tanto rather than absolute requirement"
+                          ],
+                          "development": "Developed through examples of sports facilities and taxation to show distinct nature of neutrality of treatment.",
+                          "significance": "Provides new defense of neutrality while avoiding problems of traditional approaches.",
+                          "confidence": "high"
+                        },
+                        {
+                          "claim": "Neutrality derives from fairness and self-determination rather than autonomy alone.",
+                          "support": [
+                            "Self-determination has intrinsic value",
+                            "Fairness requires equal accommodation",
+                            "Special weight for certain commitments like religion"
+                          ],
+                          "development": "Built through analysis of Rawls's benefit criterion and examination of perfectionist alternatives.",
+                          "significance": "Provides stronger foundation for neutrality than traditional autonomy-based defenses.",
+                          "confidence": "high"
+                        }
+                      ],
+                      "important_definitions": [
+                        {
+                          "term": "neutrality of treatment",
+                          "definition": "The state's policies must be equally accommodating of rival conceptions of the good.",
+                          "context": "Introduced as alternative to neutrality of intentions and effects.",
+                          "confidence": "high"
+                        },
+                        {
+                          "term": "self-determination",
+                          "definition": "The interest in being able to pursue and fulfill the conception of the good that one happens to hold.",
+                          "context": "Used to ground the importance of neutrality.",
+                          "confidence": "high"
+                        }
+                      ],
+                      "examples": [
+                        {
+                          "description": "Contrasting treatment of softball versus cricket in public facility access.",
+                          "purpose": "Illustrates distinction between neutrality of treatment and effects.",
+                          "effectiveness": "Effectively demonstrates how equal accommodation differs from equal success."
+                        }
+                      ]
+                    },
+                    "scholarly_context": {
+                      "key_citations": [
+                        {
+                          "author": "John Rawls",
+                          "year": "1999",
+                          "work": "A Theory of Justice",
+                          "purpose": "Source for benefit criterion and discussion of neutrality.",
+                          "confidence": "high"
+                        },
+                        {
+                          "author": "Joseph Raz",
+                          "year": "1986",
+                          "work": "The Morality of Freedom",
+                          "purpose": "Major critic of neutrality.",
+                          "confidence": "high"
+                        }
+                      ],
+                      "research_streams": [
+                        "Liberal political theory",
+                        "State neutrality",
+                        "Perfectionism debate",
+                        "Religious accommodation"
+                      ],
+                      "debates": [
+                        "Neutrality vs perfectionism",
+                        "Scope of state neutrality",
+                        "Foundations of liberal neutrality"
+                      ],
+                      "methodology_notes": "Combines conceptual analysis with normative argumentation, using detailed examples to illustrate theoretical distinctions."
+                    },
+                    "potential_uses": {
+                      "key_quotes": [
+                        {
+                          "quote": "The state violates this requirement when its policies are more accommodating, or less accommodating, of some conceptions of the good than they are of others.",
+                          "context": "Definition of neutrality of treatment.",
+                          "potential_uses": [
+                            "Building on this conception of neutrality",
+                            "Analyzing specific policies"
+                          ],
+                          "location": "p. 15",
+                          "confidence": "high"
+                        }
+                      ],
+                      "notable_points": [
+                        {
+                          "point": "Neutrality can be downstream from other values while still having significant force.",
+                          "context": "Discussion of neutrality as downstream value.",
+                          "potential_applications": [
+                            "Defending liberal neutrality",
+                            "Analyzing relationship between neutrality and other values"
+                          ],
+                          "confidence": "high"
+                        }
+                      ]
+                    },
+                    "analysis_notes": {
+                      "clarity_assessment": "Paper is clearly written and well-organized, with effective use of examples to illustrate abstract concepts.",
+                      "notable_features": [
+                        "Systematic development of new interpretation",
+                        "Effective use of examples",
+                        "Careful engagement with existing literature"
+                      ],
+                      "limitations": [
+                        "Some uncertainty about specific implications for policy",
+                        "Relationship to broader theories of justice not fully developed"
+                      ],
+                      "confidence_summary": {
+                        "understanding": "high",
+                        "quotes": "high",
+                        "context": "high"
+                      }
+                    }
+                  },
+                  "project_specific": {
+                    "paper_info": {
+                      "title": "Liberal Neutrality: A Reinterpretation and Defense",
+                      "authors": [
+                        "Alan Patten"
+                      ]
+                    },
+                    "engagement_assessment": {
+                      "type": "supporting",
+                      "overall_relevance": "medium",
+                      "rationale": "While not directly addressing moral luck/risk, the paper's treatment of epistemic accessibility in policy contexts and its framework for distinguishing types of neutrality provides useful parallel analysis for our project"
+                    },
+                    "key_connections": [
+                      {
+                        "type": "methodological",
+                        "description": "The paper's approach to distinguishing between types of neutrality (intentions/effects/treatment) parallels our need to distinguish between types of moral uncertainty",
+                        "strength": "medium",
+                        "development_needs": [
+                          "Adapt the tripartite distinction framework to our luck/risk context",
+                          "Develop analogous criteria for epistemic accessibility"
+                        ]
+                      },
+                      {
+                        "type": "conceptual",
+                        "description": "Treatment of self-determination and responsibility in policy contexts offers insights for our analysis of moral responsibility under uncertainty",
+                        "strength": "medium",
+                        "development_needs": [
+                          "Extend responsibility framework to probabilistic contexts",
+                          "Connect self-determination to agent knowledge of probabilities"
+                        ]
+                      }
+                    ],
+                    "critical_engagement": {
+                      "agreements": [
+                        {
+                          "point": "The importance of distinguishing between different types of seemingly similar phenomena based on their epistemic characteristics",
+                          "usefulness": "Supports our approach to distinguishing luck from risk based on epistemic accessibility",
+                          "development_needs": [
+                            "Formalize criteria for epistemic accessibility in moral contexts",
+                            "Develop parallel arguments for why the distinction matters"
+                          ]
+                        },
+                        {
+                          "point": "The value of using detailed examples to illustrate abstract distinctions",
+                          "usefulness": "Validates our planned approach to using case studies",
+                          "development_needs": [
+                            "Develop similarly clear examples for luck vs risk distinction",
+                            "Ensure examples highlight epistemic accessibility"
+                          ]
+                        }
+                      ],
+                      "disagreements": [
+                        {
+                          "claim": "That downstream values can have independent normative force",
+                          "our_position": "Epistemic accessibility is more fundamental to moral assessment than a downstream consideration",
+                          "engagement_value": "Helps clarify the foundational nature of our epistemic distinction"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+          outgoingConnections:
+            - output->"Graph Input" 7BkNpr9ZAHovB_EAtK7WM/default
+          visualData: -252.30027979149042/1305.8097296743886/230/39//
+        '[t40u6cGivBPmU0TFDypVJ]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: developed_moves
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" FYU5J1gDIfUW0CGKbAzXt/developed_key_moves
+          visualData: 564.5658727519107/1684.5002308982987/330/42//
         '[tg75jMAFy7lpPyox70Phs]:graphInput "Graph Input"':
           data:
             dataType: object
-            id: abstract_framework
-            useDefaultValueInput: false
+            id: framework
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" FYU5J1gDIfUW0CGKbAzXt/abstract_framework
           visualData: 515/621/330/3//
+        '[tkwOaQMxXihCEajC9HjHT]:object "Object"':
+          data:
+            jsonTemplate: >-
+              {
+                "outline": {
+                  "content": "# Scratch Work\n- Critique correctly identifies space pressure in methodology sections\n- Section 5.2 does risk diluting theoretical focus\n- Need for explicit methodology development is valid\n- Can streamline historical content while maintaining context\n- Literature limitations require careful scope management\n\n# Framework Support Analysis\nMain Thesis Support:\n- Expanding methodology section strengthens theoretical foundation\n- Combining 5.1/5.2 maintains focus on core epistemic harm claims\n- Reduced historical content allows more space for key development\n\nCore Contribution:\n- Enhanced methodology section better supports framework development\n- Tighter theoretical focus in Section 5 emphasizes novel contribution\n- More explicit criteria development strengthens analytical tools\n\nKey Moves:\n- Additional space for Patten framework adaptation\n- Clearer progression through theoretical development\n- Better support for distinguishing warranted/unwarranted claims\n\nLiterature Engagement:\n- More focused use of Patten's framework\n- Better integration of methodological elements\n- Realistic scope given limited literature base\n\n# Refinement Decisions\n## Will Implement\n1. Expand Section 3 to include explicit methodology subsection\n2. Combine Sections 5.1 and 5.2 into unified theoretical analysis\n3. Reduce historical background in Section 1\n4. Add specific subsection on criteria development\n5. Tighten scope of Section 4 to core theoretical application\n\n## Won't Implement\n1. Complete removal of social context - some background needed\n2. Additional literature engagement - working within constraints\n3. Expanding empirical examples - maintaining theoretical focus\n\n# Updated Outline\n\n## Introduction\n[Previous introduction section remains unchanged]\n\n## 1. Epistemic Injustice: Core Context and Concepts\n- **Purpose**: Provide essential theoretical context\n- **Key Arguments**:\n  - Define epistemic injustice and its key mechanisms\n  - Identify gap regarding epistemic overconfidence\n  - Position paper's contribution\n\n## 2. Defining Epistemic Overconfidence as a Distinct Mechanism\n[Previous Section 2 remains unchanged]\n\n## 3. Developing the Theoretical Framework\n\n### 3.1. Patten's Methodology and Epistemic Accessibility\n- **Purpose**: Establish methodological foundation\n- **Key Arguments**:\n  - Analyze Patten's epistemic accessibility framework\n  - Justify adaptation to expertise claims\n  - Establish methodological parameters\n\n### 3.2. Framework Adaptation Methodology\n- **Purpose**: Detail theoretical development process\n- **Key Arguments**:\n  - Outline adaptation methodology\n  - Justify theoretical choices\n  - Address potential objections\n\n### 3.3. Criteria Development for Expertise Claims\n- **Purpose**: Construct systematic evaluation criteria\n- **Key Arguments**:\n  - Establish core criteria components\n  - Define assessment parameters\n  - Justify criteria selection\n\n## 4. Warranted vs Unwarranted Expertise Claims\n- **Purpose**: Apply theoretical framework\n- **Key Arguments**:\n  - Demonstrate criteria application\n  - Analyze distinction mechanisms\n  - Establish theoretical implications\n\n## 5. Theoretical Implications and Epistemic Harm\n- **Purpose**: Analyze framework implications\n- **Key Arguments**:\n  - Examine how overconfidence constitutes epistemic harm\n  - Analyze structural implications\n  - Connect to broader epistemic justice theory\n\n## Conclusion\n[Previous conclusion section remains unchanged]\n\n# Change Notes\nFramework Support:\n- Enhanced methodology development strengthens theoretical foundation\n- Tighter focus maintains emphasis on core contribution\n- Better space allocation for key theoretical moves\n\nStructural Coherence:\n- Clearer progression through theoretical development\n- Better integration of methodological elements\n- More balanced section development\n\nDevelopment Feasibility:\n- More realistic space allocation\n- Better aligned with literature constraints\n- Clearer development priorities\n\nKey Move Support:\n- Stronger foundation for criteria development\n- Better theoretical progression\n- More focused application of framework",
+                  "sections": {
+                    "Scratch Work": "- Critique correctly identifies space pressure in methodology sections\n- Section 5.2 does risk diluting theoretical focus\n- Need for explicit methodology development is valid\n- Can streamline historical content while maintaining context\n- Literature limitations require careful scope management",
+                    "Framework Support Analysis": "Main Thesis Support:\n- Expanding methodology section strengthens theoretical foundation\n- Combining 5.1/5.2 maintains focus on core epistemic harm claims\n- Reduced historical content allows more space for key development\n\nCore Contribution:\n- Enhanced methodology section better supports framework development\n- Tighter theoretical focus in Section 5 emphasizes novel contribution\n- More explicit criteria development strengthens analytical tools\n\nKey Moves:\n- Additional space for Patten framework adaptation\n- Clearer progression through theoretical development\n- Better support for distinguishing warranted/unwarranted claims\n\nLiterature Engagement:\n- More focused use of Patten's framework\n- Better integration of methodological elements\n- Realistic scope given limited literature base",
+                    "Refinement Decisions": "## Will Implement\n1. Expand Section 3 to include explicit methodology subsection\n2. Combine Sections 5.1 and 5.2 into unified theoretical analysis\n3. Reduce historical background in Section 1\n4. Add specific subsection on criteria development\n5. Tighten scope of Section 4 to core theoretical application\n\n## Won't Implement\n1. Complete removal of social context - some background needed\n2. Additional literature engagement - working within constraints\n3. Expanding empirical examples - maintaining theoretical focus",
+                    "Updated Outline": "## Introduction\n[Previous introduction section remains unchanged]\n\n## 1. Epistemic Injustice: Core Context and Concepts\n- **Purpose**: Provide essential theoretical context\n- **Key Arguments**:\n  - Define epistemic injustice and its key mechanisms\n  - Identify gap regarding epistemic overconfidence\n  - Position paper's contribution\n\n## 2. Defining Epistemic Overconfidence as a Distinct Mechanism\n[Previous Section 2 remains unchanged]\n\n## 3. Developing the Theoretical Framework\n\n### 3.1. Patten's Methodology and Epistemic Accessibility\n- **Purpose**: Establish methodological foundation\n- **Key Arguments**:\n  - Analyze Patten's epistemic accessibility framework\n  - Justify adaptation to expertise claims\n  - Establish methodological parameters\n\n### 3.2. Framework Adaptation Methodology\n- **Purpose**: Detail theoretical development process\n- **Key Arguments**:\n  - Outline adaptation methodology\n  - Justify theoretical choices\n  - Address potential objections\n\n### 3.3. Criteria Development for Expertise Claims\n- **Purpose**: Construct systematic evaluation criteria\n- **Key Arguments**:\n  - Establish core criteria components\n  - Define assessment parameters\n  - Justify criteria selection\n\n## 4. Warranted vs Unwarranted Expertise Claims\n- **Purpose**: Apply theoretical framework\n- **Key Arguments**:\n  - Demonstrate criteria application\n  - Analyze distinction mechanisms\n  - Establish theoretical implications\n\n## 5. Theoretical Implications and Epistemic Harm\n- **Purpose**: Analyze framework implications\n- **Key Arguments**:\n  - Examine how overconfidence constitutes epistemic harm\n  - Analyze structural implications\n  - Connect to broader epistemic justice theory\n\n## Conclusion\n[Previous conclusion section remains unchanged]",
+                    "Change Notes": "Framework Support:\n- Enhanced methodology development strengthens theoretical foundation\n- Tighter focus maintains emphasis on core contribution\n- Better space allocation for key theoretical moves\n\nStructural Coherence:\n- Clearer progression through theoretical development\n- Better integration of methodological elements\n- More balanced section development\n\nDevelopment Feasibility:\n- More realistic space allocation\n- Better aligned with literature constraints\n- Clearer development priorities\n\nKey Move Support:\n- Stronger foundation for criteria development\n- Better theoretical progression\n- More focused application of framework"
+                  },
+                  "outline": "## Introduction\n[Previous introduction section remains unchanged]\n\n## 1. Epistemic Injustice: Core Context and Concepts\n- **Purpose**: Provide essential theoretical context\n- **Key Arguments**:\n  - Define epistemic injustice and its key mechanisms\n  - Identify gap regarding epistemic overconfidence\n  - Position paper's contribution\n\n## 2. Defining Epistemic Overconfidence as a Distinct Mechanism\n[Previous Section 2 remains unchanged]\n\n## 3. Developing the Theoretical Framework\n\n### 3.1. Patten's Methodology and Epistemic Accessibility\n- **Purpose**: Establish methodological foundation\n- **Key Arguments**:\n  - Analyze Patten's epistemic accessibility framework\n  - Justify adaptation to expertise claims\n  - Establish methodological parameters\n\n### 3.2. Framework Adaptation Methodology\n- **Purpose**: Detail theoretical development process\n- **Key Arguments**:\n  - Outline adaptation methodology\n  - Justify theoretical choices\n  - Address potential objections\n\n### 3.3. Criteria Development for Expertise Claims\n- **Purpose**: Construct systematic evaluation criteria\n- **Key Arguments**:\n  - Establish core criteria components\n  - Define assessment parameters\n  - Justify criteria selection\n\n## 4. Warranted vs Unwarranted Expertise Claims\n- **Purpose**: Apply theoretical framework\n- **Key Arguments**:\n  - Demonstrate criteria application\n  - Analyze distinction mechanisms\n  - Establish theoretical implications\n\n## 5. Theoretical Implications and Epistemic Harm\n- **Purpose**: Analyze framework implications\n- **Key Arguments**:\n  - Examine how overconfidence constitutes epistemic harm\n  - Analyze structural implications\n  - Connect to broader epistemic justice theory\n\n## Conclusion\n[Previous conclusion section remains unchanged]",
+                  "decisions": {
+                    "will_implement": [
+                      "Expand Section 3 to include explicit methodology subsection"
+                    ],
+                    "wont_implement": [
+                      "Complete removal of social context - some background needed"
+                    ]
+                  },
+                  "iteration": 0
+                }
+              }
+          outgoingConnections:
+            - output->"Graph Input" SE-QpbpotrnxiPjN3oOM2/default
+          visualData: -261.92544666826404/813.6911911300306/230/30//
+        '[uvgZAV6MQVs-zIQMc3wCY]:object "Object"':
+          data:
+            jsonTemplate: >-
+              {
+                "abstract_framework": {
+                  "abstract": "Recent work in epistemic injustice theory has expanded our understanding of how social power relations distort knowledge practices, primarily focusing on credibility deficits and prejudice-based testimonial exclusion. This paper identifies and theorizes a distinct mechanism of epistemic harm: systematic epistemic overconfidence among privileged groups. Drawing on Patten's methodological framework for distinguishing epistemically accessible from inaccessible claims, the paper develops precise criteria for differentiating warranted from unwarranted expertise assertions. This analysis reveals how privileged epistemic overconfidence can systematically distort knowledge practices through mechanisms distinct from explicit bias or credibility deficit. While patterns of epistemic overconfidence correlate with social privilege, the paper's primary contribution is theoretical: establishing rigorous criteria for identifying epistemically unwarranted expertise claims as a unique form of epistemic harm. By adapting established methodological approaches to epistemic accessibility, the framework provides new analytical tools for understanding structural epistemic injustice, demonstrating how seemingly neutral knowledge practices can perpetuate epistemic harms through unwarranted claims to expertise.",
+                  "main_thesis": "Epistemic overconfidence constitutes a distinct mechanism of epistemic injustice, identifiable through precise criteria of epistemic accessibility that distinguish warranted from unwarranted expertise claims within knowledge practices.",
+                  "core_contribution": "This paper extends epistemic injustice theory by developing a rigorous theoretical framework that identifies unwarranted epistemic overconfidence as a novel mechanism of epistemic harm, distinguished through systematic criteria adapted from Patten's analysis of epistemic accessibility.",
+                  "key_moves": [
+                    "Establish epistemic overconfidence as distinct from existing categories of epistemic injustice",
+                    "Adapt Patten's methodological framework to develop criteria for epistemic accessibility in expertise claims",
+                    "Construct systematic distinction between warranted and unwarranted expertise claims through accessibility criteria",
+                    "Demonstrate theoretical application through analysis of how inaccessible overconfidence claims constitute epistemic harm"
+                  ],
+                  "development_notes": "Refinements strengthen theoretical positioning within epistemic injustice literature while maintaining methodological rigor through Patten framework. Abstract now more explicitly connects to existing theory while clarifying novel contribution. Key moves reordered to emphasize theoretical development and criteria construction. Empirical elements carefully qualified as illustrative rather than foundational. Framework maintains feasible scope while adding precision to theoretical claims.",
+                  "validation_status": {
+                    "scope_appropriate": true,
+                    "clearly_articulated": true,
+                    "sufficiently_original": true,
+                    "feasibly_developable": true
+                  },
+                  "changes_made": [
+                    "Enhanced positioning within epistemic injustice theory",
+                    "Strengthened connection to Patten's methodological framework",
+                    "More careful qualification of empirical elements",
+                    "Added explicit focus on criteria development",
+                    "Reordered key moves to emphasize theoretical progression",
+                    "Maintained feasible scope while increasing precision"
+                  ]
+                }
+              }
+          outgoingConnections:
+            - output->"Graph Input" tg75jMAFy7lpPyox70Phs/default
+          visualData: -271.33399097188266/419.3190627835213/230/29//
+        '[wpULkIFJYvxBgwZleuFvI]:text "Text"':
+          data:
+            text: o1-2024-12-17
+          outgoingConnections:
+            - output->"Chat" kq8aGlU1E_ASmVQMK97S-/model
+          visualData: 1893.3539405582978/996.2480499185028/330/12//
   metadata:
     description: ""
     id: rBponj37DhN1Lkq2pRSnU
     title: philosophy-pipeline
   plugins: []
-  references: []

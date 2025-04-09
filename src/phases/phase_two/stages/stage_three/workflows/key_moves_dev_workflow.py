@@ -2,19 +2,25 @@ from pathlib import Path
 from typing import Dict, Any
 
 from src.phases.core.workflow import Workflow, WorkflowStep
-from src.phases.phase_two.stages.stage_three.workers.critic.move_critic import MoveCriticWorker
-from src.phases.phase_two.stages.stage_three.workers.development.move_development import MoveDevelopmentWorker
-from src.phases.phase_two.stages.stage_three.workers.refinement.move_refinement import MoveRefinementWorker
+from src.phases.phase_two.stages.stage_three.workers.critic.move_critic import (
+    MoveCriticWorker,
+)
+from src.phases.phase_two.stages.stage_three.workers.development.move_development import (
+    MoveDevelopmentWorker,
+)
+from src.phases.phase_two.stages.stage_three.workers.refinement.move_refinement import (
+    MoveRefinementWorker,
+)
 
 
 def create_key_moves_dev_workflow(
     config: Dict[str, Any],
     output_dir: Path,
     workflow_name: str,
-    max_cycles=3,
+    max_cycles=1,
 ) -> Workflow:
     """Create workflow for developing a single key move in depth.
-    
+
     This workflow processes one key move at a time, developing it in detail
     with arguments, examples, and literature connections.
     """
@@ -27,30 +33,32 @@ def create_key_moves_dev_workflow(
         "move_index": "move_index",
         "development_phase": "development_phase",  # Pass current phase to worker
     }
-    
+
     # Optional inputs - these may not always be available (marked with ?)
     optional_inputs = {
         "current_move_development": "?current_move_development",  # Optional previous development
     }
-    
+
     # For the initial development step, include optional inputs (will be ignored if not available)
     dev_input_mapping = required_inputs.copy()
     dev_input_mapping.update(optional_inputs)
-    
+
     # For critique step, include optional inputs
     critique_input_mapping = required_inputs.copy()
     critique_input_mapping.update(optional_inputs)
-    
+
     # For refinement step, include all inputs with proper optional markings
     refinement_input_mapping = required_inputs.copy()
     refinement_input_mapping.update(optional_inputs)
-    refinement_input_mapping.update({
-        "current_critique": "?current_critique",  # Optional critique 
-        "critique_assessment": "?critique_assessment",  # Optional assessment
-        "critique_recommendations": "?critique_recommendations",  # Optional recommendations
-        "previous_versions": "?current_move_development",  # Optional previous versions
-    })
-    
+    refinement_input_mapping.update(
+        {
+            "current_critique": "?current_critique",  # Optional critique
+            "critique_assessment": "?critique_assessment",  # Optional assessment
+            "critique_recommendations": "?critique_recommendations",  # Optional recommendations
+            "previous_versions": "?current_move_development",  # Optional previous versions
+        }
+    )
+
     return Workflow(
         workflow_name=workflow_name,
         max_cycles=max_cycles,
@@ -88,4 +96,4 @@ def create_key_moves_dev_workflow(
             ),
         ],
         output_dir=output_dir,
-    ) 
+    )
