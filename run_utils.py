@@ -1,22 +1,10 @@
+import json
 import logging
 import os
-from pathlib import Path
 import subprocess
 from typing import Any, Dict
-import json
-import datetime
 
-from src.phases.phase_two.stages.stage_three.workflows.master_workflow import (
-    process_all_key_moves,
-)
-from src.utils.api import load_config
-
-
-def setup_logging():
-    """Configure logging"""
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-    )
+import requests
 
 
 def load_final_selection() -> Dict[str, Any]:
@@ -55,8 +43,35 @@ def load_key_moves() -> Dict[str, Any]:
         raise ValueError("Could not find key_moves.json.")
 
 
+def load_developed_key_moves() -> Dict[str, Any]:
+    """Load Developed key moves"""
+    try:
+        with open(
+            "./outputs/key_moves_development/key_moves_development/all_developed_moves.json"
+        ) as f:
+            return json.load(f)["developed_moves"]
+    except FileNotFoundError:
+        raise ValueError("Could not find all_developed_json.json.")
+
+
 def load_literature() -> Dict[str, Any]:
     """Load literature analysis from Phase II.1"""
+    try:
+        lit_readings = json.load(open("./outputs/literature_readings.json"))
+        lit_synthesis = json.load(open("./outputs/literature_synthesis.json"))
+        with open("./outputs/literature_synthesis.md") as f:
+            lit_narrative = f.read()
+        return {
+            "readings": lit_readings,
+            "synthesis": lit_synthesis,
+            "narrative": lit_narrative,
+        }
+    except FileNotFoundError as e:
+        raise ValueError(f"Missing literature files. Run Phase II.1 first. Error: {e}")
+
+
+def load_developed_moves() -> Dict[str, Any]:
+    """Load all developed key moves"""
     try:
         lit_readings = json.load(open("./outputs/literature_readings.json"))
         lit_synthesis = json.load(open("./outputs/literature_synthesis.json"))
@@ -82,45 +97,20 @@ def caffeinate():
         )
 
 
-def main():
-    """Main execution for Phase II.3: Key Moves Development"""
-    print("Starting Phase II.3: Key Moves Development")
-    setup_logging()
-
-    # Prevent sleep during execution
-    caffeinate()
-
-    # Load configuration and inputs
-    config = load_config()
-
-    # Setup output directory
-    key_moves_dev_dir = Path("./outputs/key_moves_development")
-    key_moves_dev_dir.mkdir(exist_ok=True)
-
-    # Load required data
-    framework = load_framework()
-    outline = load_outline()
-    key_moves = load_key_moves()
-    literature = load_literature()
-    
-    print(f"Processing {len(framework.get('key_moves', []))} key moves...")
-
-    # Process all key moves
-    developed_moves = process_all_key_moves(
-        config=config,
-        output_dir=key_moves_dev_dir,
-        framework=framework,
-        outline=outline,
-        key_moves=key_moves,
-        literature=literature,
+def setup_logging():
+    """Configure logging"""
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
     )
 
-    print(f"Completed development of {len(developed_moves)} key moves")
-    print(f"Output saved to {key_moves_dev_dir}/all_developed_moves.json")
-    print(f"Human-readable version saved to {key_moves_dev_dir}/all_developed_moves.md")
 
-    return
-
-
-if __name__ == "__main__":
-    main() 
+def check_rivet_life() -> Dict[str, Any]:
+    """Check if Rivet server is up"""
+    try:
+        result = requests.get("http://localhost:4040/life", timeout=5000)
+        if result.ok:
+            print("Rivet alive")
+    except ConnectionError:
+        raise ValueError(
+            "Could not connect to the Rivet server. Please run `node ./rivet/app.js --watch` in another terminal process"
+        )
