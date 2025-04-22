@@ -24,6 +24,18 @@ The goal is to achieve a ~20% success rate in generating publishable-quality pap
 
 - Detailed system design available in architecture-doc.md
 
+### Note on Code Quality
+
+- Work‑in‑Progress: You may encounter uneven patterns and non‑ideal practices throughout the codebase.
+
+- Refactoring Planned: We’re prioritizing feature delivery now and will undertake a comprehensive refactor once our core functionality is in place.
+
+- Typing Migration: We’re migrating our Development, Critique, and Refinement workers to fully‑typed definitions in src/phases/core. Our goal is for all phases to adhere to these typing standards.
+
+- Rivet & Python Hybrid: Some modules (e.g. Phase 1.2) use Rivet to orchestrate AI graphs alongside Python implementations. While this mix can introduce inconsistencies, it lets us both visualize pipelines in Rivet and leverage Python’s flexibility.
+
+- Future Alignment: Ultimately, we plan to unify all phases under a consistent, typed architecture—preserving the clarity of Rivet visualizations and Pythons robustness.
+
 ## Getting Started
 
 ### Prerequisites
