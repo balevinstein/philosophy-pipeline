@@ -2,26 +2,10 @@
 
 from pathlib import Path
 import json
-import logging
-from typing import Dict, Any
 
+
+from run_utils import load_final_selection, setup_logging
 from src.phases.phase_two.stages.stage_one.lit_processor import LiteratureManager
-
-
-def setup_logging():
-    """Configure logging"""
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-    )
-
-
-def load_final_selection() -> Dict[str, Any]:
-    """Load final selection from Phase I"""
-    try:
-        with open("./outputs/final_selection.json") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        raise ValueError("Could not find final_selection.json. Run Phase I first.")
 
 
 def main():
