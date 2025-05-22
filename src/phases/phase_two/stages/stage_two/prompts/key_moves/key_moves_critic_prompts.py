@@ -78,10 +78,10 @@ Frame your critique to help improve the move while preserving what works.
 
 Remember that different moves may require different types of development and support. Your critique should be responsive to the specific needs of each move while ensuring the overall argument structure is sound and complete."""
 
-        self.output_format = """Analyze each key move in sequence, using this structure:
-         You MUST include the Scratch Work and Summary Assessment sections listed below in the output format. The major output sections are marked by heading notation "#".
+        self.output_format = """
+        You MUST include the Scratch Work and Summary Assessment sections listed below in the output format. The major output sections are marked by heading notation "#".
 
-# Scratch Work
+# Scratch Work // Required Section
 [Think through the moves' interactions, dependencies, and overall coherence]
 
 # Move Analysis
@@ -101,12 +101,11 @@ Remember that different moves may require different types of development and sup
 - Literature coverage
 - Framework support
 
-# Summary Assessment
+# Summary Assessment // Required Section
 MAJOR REVISION [if significant rework needed]
 MINOR REFINEMENT [if targeted improvements needed]
 MINIMAL CHANGES [if moves are fundamentally sound]
-
-[Provide clear explanation of assessment and next steps. ALWAYS include this section.]"""
+"""
 
     def construct_prompt(
         self,
@@ -147,8 +146,9 @@ Literature Context:
 
 {self.output_guidance}
 
+OUTPUT FORMAT
+
+Your output should exactly follow the format described below. DO NOT include any reasoning or description besides the output:
+
 {self.output_format}
-
-Take time to think through how the moves work together before evaluating each one.
-
-Then evaluate each key move carefully, considering both its individual strength and its role in the overall framework."""
+"""

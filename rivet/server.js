@@ -79,6 +79,64 @@ app.post('/litResearch/papers', async (req, res) => {
   res.send(graphOutput.output.value).status(200);
 });
 
+
+app.get('/mergedContext', async (req, res) => {
+
+  const openAIKey = req.body.openAIKey;
+  const framework = req.body.framework;
+  const outline = req.body.outline;
+  const key_moves = req.body.key_moves;
+  const literature = req.body.literature;
+  const final_selection = req.body.final_selection;
+  const development_moves = req.body.development_moves;
+
+  let graphOutput = {}
+
+  try {
+    graphOutput = await Rivet.runGraphInFile('./philosophy-pipeline.rivet-project', {
+      graph: 'Phase II.5/Coalesce Previous Steps',
+      inputs: {
+        framework: {
+              type: 'object',
+              value: framework
+        },
+        outline: {
+          type: 'object',
+          value: outline
+        },
+        key_moves: {
+          type: 'object',
+          value: key_moves
+        },
+        literature: {
+          type: 'object',
+          value: literature
+        },
+        final_selection: {
+          type: 'object',
+          value: final_selection
+        },
+        development_moves: {
+          type: 'object',
+          value: development_moves
+        },
+      },
+      remoteDebugger: debuggerServer,
+      openAiKey: openAIKey,
+    });
+  }
+
+  catch (err){
+    res.send({message: "Failed to execute graph"}).status(500)
+    console.log("\n\n" + err + "\n\n")
+    return;
+  }
+
+  console.log("Executed Graph: Coalesce Previous Steps")
+
+  res.send(graphOutput.output.value).status(200);
+});
+
 // Start the server
 app.listen(listenPort, () => {
   console.log(`Server started on port ${listenPort}`);

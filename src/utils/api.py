@@ -198,19 +198,16 @@ class APIHandler:
             """Make Anthropic API call without PDF"""
             try:
                 print(f"\nMaking API call to {config['model']}")
-                
+
                 # Add a delay between retries to avoid rate limits
                 time.sleep(1)
-                
+
                 # Try with a smaller max_tokens if we're getting errors
                 max_tokens = config["max_tokens"]
-                
+
                 # Try with a smaller prompt if needed
                 current_prompt = prompt
-                if len(prompt) > 50000:  # If prompt is very large
-                    print(f"Warning: Large prompt ({len(prompt)} chars), truncating...")
-                    current_prompt = prompt[:50000]  # Truncate to avoid API issues
-                
+
                 response = self.anthropic_client.messages.create(
                     model=config["model"],
                     max_tokens=max_tokens,
@@ -221,7 +218,7 @@ class APIHandler:
                 print(f"Anthropic Internal Server Error: {e}")
                 print("This is likely a temporary issue with the Anthropic API.")
                 print("Retrying with a shorter prompt and fewer tokens...")
-                
+
                 # Try with a much smaller prompt and fewer tokens
                 shortened_prompt = prompt[:20000] if len(prompt) > 20000 else prompt
                 try:
