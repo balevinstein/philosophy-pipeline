@@ -47,7 +47,7 @@ class Workflow:
             if source_path.startswith("?"):
                 is_optional = True
                 source_path = source_path[1:]  # Remove the ? prefix
-                
+
             value = source
             try:
                 for key in source_path.split("."):
@@ -59,20 +59,23 @@ class Workflow:
                             value = None
                             break
                         else:
-                            raise WorkflowError(f"Missing required state key: {source_path}")
-                
+                            raise WorkflowError(
+                                f"Missing required state key: {source_path}"
+                            )
+
                 # Only add to result if not None (for optional mappings)
                 if value is not None:
                     result[target_key] = value
-                    
+
             except (TypeError, AttributeError):
                 # Handle the case where value is not a dict or doesn't support item access
                 if is_optional:
                     # Just skip this mapping
                     continue
                 else:
-                    raise WorkflowError(f"Invalid state path: {source_path}, value: {value}")
-                
+                    raise WorkflowError(
+                        f"Invalid state path: {source_path}, value: {value}"
+                    )
         return result
 
     def _update_state(self, mapping: Dict[str, str], worker_output: WorkerOutput):
@@ -159,18 +162,22 @@ class Workflow:
         # Execute worker
         try:
             initial_step_output = self.initial_step.worker.execute(mapped_initial_state)
-            
+
             # Update workflow state
             try:
-                self._update_state(self.initial_step.output_mapping, initial_step_output)
+                self._update_state(
+                    self.initial_step.output_mapping, initial_step_output
+                )
             except WorkflowError as e:
-                print(f"Error updating state for step {self.initial_step.name}: {str(e)}")
+                print(
+                    f"Error updating state for step {self.initial_step.name}: {str(e)}"
+                )
                 raise
-                
+
             # Save the output
             if self.initial_step.save_output:
                 self._save_step_output(self.initial_step, initial_step_output)
-                
+
         except Exception as e:
             print(f"Error executing initial step {self.initial_step.name}: {str(e)}")
             # Don't continue with cycle steps if initial step fails
@@ -194,11 +201,11 @@ class Workflow:
                 try:
                     # Execute worker
                     step_output = step.worker.execute(step_context)
-                    
+
                     # Save output
                     if step.save_output:
                         self._save_step_output(step, step_output)
-    
+
                     # Update workflow state
                     try:
                         self._update_state(step.output_mapping, step_output)
@@ -206,7 +213,7 @@ class Workflow:
                         print(f"Error updating state for step {step.name}: {str(e)}")
                         # Continue to next step instead of failing the workflow
                         continue
-                        
+
                 except Exception as e:
                     print(f"Error executing step {step.name}: {str(e)}")
                     # Continue to next step instead of failing the entire workflow
