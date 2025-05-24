@@ -102,7 +102,7 @@ class MoveDevelopmentWorker(DevelopmentWorker):
             )
         else:
             print(
-                f"No current move development found - this is normal for initial phase."
+                f"No current move development found - this is normal for initial phase. {move_index}"
             )
 
         # Get the specific move we're working on
@@ -132,14 +132,14 @@ class MoveDevelopmentWorker(DevelopmentWorker):
             },
         )
 
-    def process_output(self, raw_output: str) -> WorkerOutput:
+    def process_output(self, response: str) -> WorkerOutput:
         """Process the raw output from the worker."""
         print(
             f"\nProcessing move development output for phase: {self._state.get('development_phase', 'initial')}"
         )
 
         # Extract the core content from the raw output
-        core_content = raw_output.strip()
+        core_content = response.strip()
 
         # Create a basic sections dictionary with the full content
         sections = {"Content": core_content}
