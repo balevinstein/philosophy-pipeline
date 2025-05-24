@@ -16,7 +16,7 @@ class MoveRefinementPrompts:
     ) -> str:
         """
         Construct prompt for refining the initial development of a key move.
-        
+
         This focuses on improving the argument structure based on critique.
         """
         # Extract the current development content
@@ -24,7 +24,7 @@ class MoveRefinementPrompts:
             current_content = move_development.get("content", "")
         else:
             current_content = move_development
-        
+
         # Extract the critique content
         if isinstance(critique, dict):
             critique_content = critique.get("content", "")
@@ -34,12 +34,14 @@ class MoveRefinementPrompts:
             critique_content = critique
             critique_assessment = "UNKNOWN"
             critique_recommendations = []
-        
+
         # Format recommendations as a string
-        recommendations_text = "\n".join([f"- {rec}" for rec in critique_recommendations])
+        recommendations_text = "\n".join(
+            [f"- {rec}" for rec in critique_recommendations]
+        )
         if not recommendations_text:
             recommendations_text = "- Review and refine the argument structure"
-        
+
         prompt = f"""# Key Move Refinement: Creating Publication-Ready Content
 
 ## Phase II.3 Context
@@ -62,7 +64,7 @@ Here is the current development of the key move:
 {current_content}
 ```
 
-## Critique 
+## Critique
 The critique of this development was:
 
 ```
@@ -105,7 +107,7 @@ IMPORTANT:
 [Briefly list the specific changes you made to address the critique recommendations and transform the content into publication-ready form]
 
 ## Guidelines
-- For any key recommendation from the critique, decide whether you agree it should be implemented. If so, be sure to implement it. 
+- For any key recommendation from the critique, decide whether you agree it should be implemented. If so, be sure to implement it.
 - Maintain philosophical depth while improving readability
 - Transform planning language into direct philosophical prose
 - Ensure content could be directly inserted into a published paper
@@ -128,7 +130,7 @@ IMPORTANT:
     ) -> str:
         """
         Construct prompt for refining the examples in a key move development.
-        
+
         This focuses on improving examples and illustrations based on critique.
         """
         # Extract the current development content
@@ -136,7 +138,7 @@ IMPORTANT:
             current_content = move_development.get("content", "")
         else:
             current_content = move_development
-        
+
         # Extract the critique content
         if isinstance(critique, dict):
             critique_content = critique.get("content", "")
@@ -146,12 +148,14 @@ IMPORTANT:
             critique_content = critique
             critique_assessment = "UNKNOWN"
             critique_recommendations = []
-        
+
         # Format recommendations as a string
-        recommendations_text = "\n".join([f"- {rec}" for rec in critique_recommendations])
+        recommendations_text = "\n".join(
+            [f"- {rec}" for rec in critique_recommendations]
+        )
         if not recommendations_text:
             recommendations_text = "- Improve examples to better support key premises"
-        
+
         prompt = f"""# Key Move Refinement: Creating Publication-Ready Examples
 
 ## Phase II.3 Context
@@ -174,7 +178,7 @@ Here is the current development of the key move, including examples:
 {current_content}
 ```
 
-## Critique 
+## Critique
 The critique of the examples was:
 
 ```
@@ -217,7 +221,7 @@ IMPORTANT:
 [Briefly list the specific changes you made to address the critique recommendations and transform the examples into publication-ready form]
 
 ## Guidelines
-- For any key recommendation from the critique, decide whether you agree it should be implemented. If so, be sure to implement it. 
+- For any key recommendation from the critique, decide whether you agree it should be implemented. If so, be sure to implement it.
 - Maintain philosophical depth while improving clarity
 - Transform meta-commentary into direct examples
 - Ensure examples could be directly inserted into a published paper
@@ -240,7 +244,7 @@ IMPORTANT:
     ) -> str:
         """
         Construct prompt for refining the literature integration in a key move development.
-        
+
         This focuses on improving literature engagement based on critique.
         """
         # Extract the current development content
@@ -248,7 +252,7 @@ IMPORTANT:
             current_content = move_development.get("content", "")
         else:
             current_content = move_development
-        
+
         # Extract the critique content
         if isinstance(critique, dict):
             critique_content = critique.get("content", "")
@@ -258,12 +262,16 @@ IMPORTANT:
             critique_content = critique
             critique_assessment = "UNKNOWN"
             critique_recommendations = []
-        
+
         # Format recommendations as a string
-        recommendations_text = "\n".join([f"- {rec}" for rec in critique_recommendations])
+        recommendations_text = "\n".join(
+            [f"- {rec}" for rec in critique_recommendations]
+        )
         if not recommendations_text:
-            recommendations_text = "- Improve integration of literature with the key move"
-        
+            recommendations_text = (
+                "- Improve integration of literature with the key move"
+            )
+
         prompt = f"""# Key Move Refinement: Creating Publication-Ready Literature Integration
 
 ## Phase II.3 Context
@@ -286,7 +294,7 @@ Here is the current development of the key move, including literature integratio
 {current_content}
 ```
 
-## Critique 
+## Critique
 The critique of the literature integration was:
 
 ```
@@ -329,7 +337,7 @@ IMPORTANT:
 [Briefly list the specific changes you made to address the critique recommendations and transform the literature integration into publication-ready form]
 
 ## Guidelines
-- For any key recommendation from the critique, decide whether you agree it should be implemented. If so, be sure to implement it. 
+- For any key recommendation from the critique, decide whether you agree it should be implemented. If so, be sure to implement it.
 - Maintain philosophical depth while improving clarity
 - Transform meta-commentary into direct scholarly engagement
 - Ensure literature integration could be directly inserted into a published paper
@@ -339,4 +347,4 @@ IMPORTANT:
 - Focus on how your argument extends beyond, challenges, or synthesizes existing views
 """
 
-        return prompt 
+        return prompt

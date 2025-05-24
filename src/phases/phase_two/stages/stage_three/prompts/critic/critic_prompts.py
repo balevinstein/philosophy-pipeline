@@ -15,7 +15,7 @@ class MoveCriticPrompts:
     ) -> str:
         """
         Construct prompt for critiquing the initial development of a key move.
-        
+
         This focuses on evaluating the argument structure and logical coherence.
         """
         # Extract the current development content
@@ -23,10 +23,10 @@ class MoveCriticPrompts:
             current_content = move_development.get("content", "")
         else:
             current_content = move_development
-        
+
         # Get the main thesis and contribution from the framework
         main_thesis = framework.get("main_thesis", "")
-        
+
         prompt = f"""# Key Move Critique: Publication-Ready Content Evaluation
 
 ## Phase II.3 Context
@@ -109,7 +109,7 @@ Next steps: List 2-5 specific, actionable recommendations for making the content
     ) -> str:
         """
         Construct prompt for critiquing the examples in a key move development.
-        
+
         This focuses on evaluating the effectiveness of examples and illustrations.
         """
         # Extract the current development content
@@ -117,7 +117,7 @@ Next steps: List 2-5 specific, actionable recommendations for making the content
             current_content = move_development.get("content", "")
         else:
             current_content = move_development
-        
+
         prompt = f"""# Key Move Critique: Publication-Ready Examples Evaluation
 
 ## Phase II.3 Context
@@ -194,7 +194,7 @@ Next steps: List 2-5 specific, actionable recommendations for making the example
     ) -> str:
         """
         Construct prompt for critiquing the literature integration in a key move development.
-        
+
         This focuses on evaluating how effectively literature is integrated into the move.
         """
         # Extract the current development content
@@ -202,7 +202,7 @@ Next steps: List 2-5 specific, actionable recommendations for making the example
             current_content = move_development.get("content", "")
         else:
             current_content = move_development
-        
+
         # Extract some literature context
         lit_summary = ""
         lit_synthesis = literature.get("synthesis", {})
@@ -214,7 +214,7 @@ Next steps: List 2-5 specific, actionable recommendations for making the example
                     source_title = source.get("title", "")
                     source_author = source.get("author", "")
                     lit_summary += f"- {source_title} by {source_author}\n"
-        
+
         prompt = f"""# Key Move Critique: Publication-Ready Literature Integration Evaluation
 
 ## Phase II.3 Context
@@ -283,4 +283,4 @@ Next steps: List 2-5 specific, actionable recommendations for making the literat
 - Remember: the goal is literature integration that can be directly inserted into the final paper
 """
 
-        return prompt 
+        return prompt

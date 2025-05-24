@@ -14,20 +14,20 @@ class MoveDevelopmentPrompts:
     ) -> str:
         """
         Construct prompt for initial development of a key move.
-        
+
         This focuses on developing the core argument structure.
         """
         # Get the main thesis and contribution from the framework
         main_thesis = framework.get("main_thesis", "")
         core_contribution = framework.get("core_contribution", "")
-        
+
         # Get the outline sections that might be relevant
         outline_sections = outline.get("outline", "")
-        
+
         # Get literature synthesis
         lit_synthesis = literature.get("synthesis", {})
         lit_narrative = literature.get("narrative", "")
-        
+
         prompt = f"""# Key Move Development: Initial Argument Structure
 
 ## Phase II.3 Context
@@ -72,7 +72,7 @@ The paper's outline is:
 ## Requirements
 Write the actual content for this key move AS IT WOULD APPEAR IN THE FINAL PAPER. This means:
 
-1. Write in scholarly philosophical prose, not in meta-commentary about the move. It should be written in the style seen in top journals in Analytic Philosophy, such as Analysis. 
+1. Write in scholarly philosophical prose, not in meta-commentary about the move. It should be written in the style seen in top journals in Analytic Philosophy, such as Analysis.
 2. Develop a complete, well-structured philosophical argument
 3. Include necessary background, premises, and conclusions
 4. Connect this move to the paper's overall thesis
@@ -85,7 +85,7 @@ Not every move requires the same elements. Determine what this specific move nee
 1. Does this move require concrete examples?
    - Use examples if the move is conceptually complex or counter-intuitive
    - Omit examples if the theoretical argument is clear without them
-   
+
 2. Does this move require literature engagement?
    - Cite only the most directly relevant works that provide essential context, represent positions you're directly responding to, or offer crucial support
    - Avoid literature "survey" approaches that list multiple authors making similar points
@@ -96,7 +96,7 @@ Not every move requires the same elements. Determine what this specific move nee
    - Case-based reasoning
    - Methodological argument
    - Novel theoretical contribution
-   
+
 Choose the approach that best serves this specific argument. Not all moves require all elements.
 
 ## Output Format
@@ -106,7 +106,7 @@ IMPORTANT:
 - DO NOT write "Move Analysis", "Argument Structure", or similar analytical headings
 - DO NOT use bullet points or outline format
 - DO NOT include phrases like "This move would..." or "This section will..."
-- DO NOT merely parrot other philosophers' arguments. Make the argument your own. Be ORIGINAL AND CREATIVE. 
+- DO NOT merely parrot other philosophers' arguments. Make the argument your own. Be ORIGINAL AND CREATIVE.
 - DO write in complete paragraphs as they would appear in the final paper
 - DO develop all arguments fully with proper premises and conclusions
 - DO write in a scholarly philosophical style appropriate for publication
@@ -116,7 +116,7 @@ IMPORTANT:
 - Focus on philosophical depth and rigorous argument development
 - Ensure logical coherence and theoretical soundness
 - Keep the move realistic in scope while maintaining philosophical significance
-- Consider both strengths and potential objections to the move if applicable 
+- Consider both strengths and potential objections to the move if applicable
 - Prioritize philosophical precision and conciseness
 - Remember: write the ACTUAL CONTENT, not commentary about it
 """
@@ -133,7 +133,7 @@ IMPORTANT:
     ) -> str:
         """
         Construct prompt for developing examples for a key move.
-        
+
         This focuses on creating effective examples and illustrations to support the argument.
         """
         # Extract the current development content, handling various inputs
@@ -142,7 +142,7 @@ IMPORTANT:
             main_thesis = framework.get("main_thesis", "")
             moves_list = framework.get("key_moves", [])
             move_index = moves_list.index(move) if move in moves_list else -1
-            
+
             current_content = f"""
 # Key Move Context
 This key move is: "{move}"
@@ -155,7 +155,7 @@ Please develop examples that illustrate and support this move.
             current_content = current_development.get("content", "")
         else:
             current_content = str(current_development)
-        
+
         prompt = f"""# Key Move Development: Examples and Illustrations
 
 ## Phase II.3 Context
@@ -223,7 +223,7 @@ IMPORTANT:
     ) -> str:
         """
         Construct prompt for integrating literature into a key move.
-        
+
         This focuses on connecting the move to relevant philosophical literature.
         """
         # Extract the current development content, handling various inputs
@@ -232,7 +232,7 @@ IMPORTANT:
             main_thesis = framework.get("main_thesis", "")
             moves_list = framework.get("key_moves", [])
             move_index = moves_list.index(move) if move in moves_list else -1
-            
+
             current_content = f"""
 # Key Move Context
 This key move is: "{move}"
@@ -245,22 +245,24 @@ Please integrate relevant literature with this move.
             current_content = current_development.get("content", "")
         else:
             current_content = str(current_development)
-        
+
         # Extract literature information
         lit_readings = literature.get("readings", {})
         lit_synthesis = literature.get("synthesis", {})
         lit_narrative = literature.get("narrative", "")
-        
+
         # Extract some key literature info to include in the prompt
         lit_summary = ""
         if lit_synthesis:
             themes = lit_synthesis.get("themes", [])
             lit_summary = "Key themes in the literature:\n"
-            for theme in themes[:3]:  # Limit to first 3 themes to keep prompt size reasonable
+            for theme in themes[
+                :3
+            ]:  # Limit to first 3 themes to keep prompt size reasonable
                 theme_name = theme.get("name", "")
                 theme_desc = theme.get("description", "")
                 lit_summary += f"- {theme_name}: {theme_desc}\n"
-        
+
         prompt = f"""# Key Move Development: Literature Integration
 
 ## Phase II.3 Context
@@ -320,4 +322,4 @@ IMPORTANT:
 - Remember: write the ACTUAL LITERATURE INTEGRATION as it would appear in the paper
 """
 
-        return prompt 
+        return prompt
