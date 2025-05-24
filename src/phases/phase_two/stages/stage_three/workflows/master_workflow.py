@@ -48,7 +48,8 @@ def process_all_key_moves(
     developed_moves = []
 
     # Process each key move sequentially
-    for i, move in enumerate(range(0, 2)):
+    for i in range(min(len(moves_list), 2)):  # Only process first 2 moves
+        move = moves_list[i]  # Get the actual move text
         logging.info(f"Processing key move {i+1}/{len(moves_list)}: {move}")
 
         # Create a workflow for this specific move
@@ -63,7 +64,7 @@ def process_all_key_moves(
         refinement_history = []
 
         # Process each development phase sequentially
-        for phase in enumerate(development_phases):
+        for phase_idx, phase in enumerate(development_phases):
             logging.info(f"Processing development phase: {phase}")
 
             # For phases after initial, use the previous phase's result
@@ -103,6 +104,9 @@ def process_all_key_moves(
                                     previous_phase_result[key]
                                 )
                                 break
+                    else:
+                        # If it's a string, pass it directly as the current content
+                        initial_state["current_move_development"] = previous_phase_result
 
             # Create and execute the workflow for this phase
             workflow = create_key_moves_dev_workflow(
@@ -129,15 +133,26 @@ def process_all_key_moves(
                                 result.get("refinements", []),
                             )
                         ):
+                            # Handle both dict and string critique/refinement objects
+                            if isinstance(critique, dict):
+                                assessment = critique.get("assessment", "UNKNOWN")
+                                recommendations = critique.get("recommendations", [])
+                            else:
+                                assessment = "UNKNOWN"
+                                recommendations = []
+
+                            if isinstance(refinement, dict):
+                                changes_made = refinement.get("changes_made", [])
+                            else:
+                                changes_made = []
+
                             refinement_history.append(
                                 {
                                     "phase": phase,
                                     "cycle": cycle_idx + 1,
-                                    "assessment": critique.get("assessment", "UNKNOWN"),
-                                    "recommendations": critique.get(
-                                        "recommendations", []
-                                    ),
-                                    "changes_made": refinement.get("changes_made", []),
+                                    "assessment": assessment,
+                                    "recommendations": recommendations,
+                                    "changes_made": changes_made,
                                 }
                             )
                 else:

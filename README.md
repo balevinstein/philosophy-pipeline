@@ -15,62 +15,69 @@ The goal is to achieve a ~20% success rate in generating publishable-quality pap
 
 ## Current Status
 
-- Phase I.1 (Topic Generation): Complete, pending future restructuring
-- Phase I.2 (Literature Research): Find relevant literature on the web
-- Phase II.1 (Literature Processing): Complete, uses Claude's native PDF processing
-- Phase II.2 (Framework Development): Complete, framework-driven paper development
-- Phase II.3 (Key Moves Development): Complete, focusing on argument development
-- Phase II.4 (Detailed Outline Development): In Progress, working on generating detailed outlines
+**All Phase II stages are complete and working!** 🎉
 
-- Detailed system design available in architecture-doc.md
+- ✅ **Phase I.1** (Topic Generation): Complete
+- ✅ **Phase I.2** (Literature Research): Complete - find relevant literature on the web
+- ✅ **Phase II.1** (Literature Processing): Complete - uses Claude's native PDF processing
+- ✅ **Phase II.2** (Framework Development): Complete - framework-driven paper development
+- ✅ **Phase II.3** (Key Moves Development): Complete - sophisticated argument development through 3 phases
+- ✅ **Phase II.4** (Detailed Outline Development): Complete - comprehensive outline with literature mapping
+- ✅ **Phase II.5** (Context Consolidation): Complete - unified context for Phase III
+- 🚧 **Phase III** (Paper Writing): In development
 
-### Note on Code Quality
+### Recent Fixes & Improvements
 
-- Work‑in‑Progress: You may encounter uneven patterns and non‑ideal practices throughout the codebase.
+- Fixed critical bugs in Phase II.3 enumeration and content aggregation
+- Improved content quality and proper literature integration
+- Enhanced error handling and type safety
+- Optimized workflow cycles and iteration management
 
-- Refactoring Planned: We’re prioritizing feature delivery now and will undertake a comprehensive refactor once our core functionality is in place.
+### Architecture & Code Quality
 
-- Typing Migration: We’re migrating our Development, Critique, and Refinement workers to fully‑typed definitions in src/phases/core. Our goal is for all phases to adhere to these typing standards.
+- **Work‑in‑Progress**: You may encounter uneven patterns and non‑ideal practices throughout the codebase.
+- **Refactoring Planned**: We're prioritizing feature delivery now and will undertake a comprehensive refactor once our core functionality is in place.
+- **Typing Migration**: We're migrating our Development, Critique, and Refinement workers to fully‑typed definitions in src/phases/core.
+- **Rivet & Python Hybrid**: Some modules (e.g. Phase II.5) use Rivet to orchestrate AI graphs alongside Python implementations.
+- **Future Alignment**: Ultimately, we plan to unify all phases under a consistent, typed architecture.
 
-- Rivet & Python Hybrid: Some modules (e.g. Phase 1.2) use Rivet to orchestrate AI graphs alongside Python implementations. While this mix can introduce inconsistencies, it lets us both visualize pipelines in Rivet and leverage Python’s flexibility.
-
-- Future Alignment: Ultimately, we plan to unify all phases under a consistent, typed architecture—preserving the clarity of Rivet visualizations and Pythons robustness.
+Detailed system design available in `architecture-doc.md`
 
 ## Getting Started
 
 ### Prerequisites
 
 - Python 3.8+
-- Node
-- Anthropic API key
-- OpenAI API key
-- Tavily Search API key
-- [Rivet](https://rivet.ironcladapp.com/)
-  - Please download and install the Rivet IDE
+- Node.js (for Rivet server)
+- API Keys:
+  - Anthropic API key (required for all phases)
+  - OpenAI API key
+  - Tavily Search API key
+- [Rivet](https://rivet.ironcladapp.com/) - Download and install the Rivet IDE
 
 ### Installation
 
-1. Clone the repository
+1. **Clone the repository**
 
 ```bash
 git clone https://github.com/balevinstein/philosophy-pipeline.git
 cd philosophy-pipeline
 ```
 
-2. Create and activate the virtual environment
+2. **Create and activate the virtual environment**
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-To deactivate the virtual environment at any point, use the command below:
+To deactivate the virtual environment at any point:
 
 ```bash
 deactivate
 ```
 
-3. Install dependencies
+3. **Install dependencies**
 
 In the root directory:
 
@@ -78,231 +85,205 @@ In the root directory:
 pip install -r requirements.txt
 ```
 
-In the `rivet` directory (`cd rivet`):
+In the `rivet` directory:
 
 ```bash
+cd rivet
 npm install
+cd ..
 ```
 
-4. Create `.env` file with API keys in the root directory
+4. **Create `.env` file with API keys in the root directory**
 
 ```bash
-ANTHROPIC_API_KEY=your_key_here
-OPENAI_API_KEY=your_key_here
-TAVILY_API_KEY=your_key_here
+ANTHROPIC_API_KEY=your_anthropic_key_here
+OPENAI_API_KEY=your_openai_key_here
+TAVILY_API_KEY=your_tavily_key_here
 ```
 
-5. Start Rivet server
+5. **Start Rivet server** (required for Phase II.5)
 
-```
+In a separate terminal:
+
+```bash
 cd rivet
 node --watch server.js
 ```
 
+Keep this running while using the pipeline.
+
 ## Running the Pipeline
 
-### 1. Generate and select a topic
+### Quick Start: Complete Phase II Pipeline
+
+Once you have literature papers in the `papers/` directory, you can run the complete Phase II pipeline:
 
 ```bash
-python run_phase_one_one.py
+# Activate virtual environment
+source venv/bin/activate
+
+# Run complete Phase II (takes ~75 minutes)
+python run_phase_2_1.py  # Literature processing
+python run_phase_2_2.py  # Framework development
+python run_phase_2_3.py  # Key moves development
+python run_phase_2_4.py  # Detailed outline
+python run_phase_2_5.py  # Context consolidation
 ```
 
-Output: `outputs/final_selection.json`
+### Detailed Step-by-Step Instructions
 
-### 2. Search papers for literature engagement
+#### 1. Generate and select a topic
 
 ```bash
-python run_phase_two_one.py
+python run_phase_1_1.py
 ```
 
-After completion, check `literature_research_papers.md` for required papers and manually add them to the `papers/` directory.
+**Output**: `outputs/final_selection.json`
 
-### 3. Process literature
-
-This must be done with Claude
+#### 2. Search papers for literature engagement
 
 ```bash
-python run_phase_two_one.py
+python run_phase_1_2.py
 ```
 
-Output:
+After completion, check `literature_research_papers.md` for required papers and **manually download PDFs** to the `papers/` directory.
 
-- `literature_synthesis.json`
-- `literature_synthesis.md`
+#### 3. Process literature
 
-### 4. Develop framework
+**Requires**: PDFs in `papers/` directory
+**Uses**: Claude for PDF processing
 
 ```bash
-python run_phase_two_two.py
+python run_phase_2_1.py
 ```
 
-Output:
+**Output**:
+- `outputs/literature_synthesis.json`
+- `outputs/literature_synthesis.md`
 
-- `outputs/framework_development`
-
-### 5. Develop Key Moves
+#### 4. Develop framework
 
 ```bash
-python run_phase_two_three.py
+python run_phase_2_2.py
 ```
 
-Output:
+**Output**: `outputs/framework_development/` containing abstract, outline, and key moves
 
-- `all_developed_moves.json`
-- `all_developed_moves.md`
+#### 5. Develop Key Moves
+
+```bash
+python run_phase_2_3.py
+```
+
+**Duration**: ~45 minutes for 2 key moves
+**Output**: `outputs/key_moves_development/key_moves_development/all_developed_moves.json`
+
+#### 6. Create Detailed Outline
+
+```bash
+python run_phase_2_4.py
+```
+
+**Duration**: ~15 minutes
+**Output**: `outputs/detailed_outline/detailed_outline_final.json`
+
+#### 7. Consolidate Context
+
+**Requires**: Rivet server running (`cd rivet && node server.js`)
+
+```bash
+python run_phase_2_5.py
+```
+
+**Output**: `outputs/phase_3_context.json` (comprehensive context for Phase III)
+
+## Output Quality
+
+The pipeline generates **publication-quality philosophical content**:
+
+- **Sophisticated Arguments**: Logically structured with clear premises and conclusions
+- **Literature Integration**: Proper citations and scholarly engagement
+- **Academic Structure**: Professional outline suitable for journal submission
+- **Philosophical Rigor**: Maintains theoretical coherence across development phases
+
+### Sample Output Structure
+
+```
+outputs/
+├── final_selection.json           # Phase I topic selection
+├── literature_synthesis.json      # Phase II.1 literature analysis
+├── framework_development/         # Phase II.2 core framework
+├── key_moves_development/         # Phase II.3 developed arguments
+├── detailed_outline/              # Phase II.4 comprehensive outline
+└── phase_3_context.json          # Phase II.5 consolidated context
+```
 
 ## Project Structure
 
-All directories are a python package and contain a `__init__.py` file to facilitate imports and exports
+```
+philosophy-pipeline/
+├── config/
+│   └── conceptual_config.yaml     # Pipeline configuration
+├── outputs/                       # Generated content (local only)
+├── papers/                        # PDF literature (add manually)
+├── rivet/                         # Rivet server and workflows
+├── src/
+│   ├── phases/
+│   │   ├── core/                  # Base worker types
+│   │   ├── phase_one/             # Topic generation
+│   │   └── phase_two/             # Framework development
+│   └── utils/                     # API and utility functions
+├── run_phase_*.py                 # Execution scripts
+├── architecture-doc.md            # Detailed system architecture
+└── requirements.txt
+```
 
-- config/ (conceptual_config.yaml)
+## Configuration
 
-- legacy/ (Legacy scripts and tests that are not relevant anymore)
+Edit `config/conceptual_config.yaml` to adjust:
 
-- outputs/ (local only) (Your outputs would be stored here in your local environment)
+- **Iteration limits**: Max cycles per development phase
+- **Model settings**: Provider, model, temperature per worker type
+- **Content parameters**: Word counts, section allocations
+- **Quality thresholds**: Assessment criteria and validation levels
 
-- papers/ (Scripts refer to this directory to look for literature engagement papers)
+## Performance Characteristics
 
-- rivet/ (Directory containing the Rivet node server)
+- **Phase II.1**: ~5 minutes (literature processing)
+- **Phase II.2**: ~10 minutes (framework development)
+- **Phase II.3**: ~45 minutes (key moves development, 2 moves)
+- **Phase II.4**: ~15 minutes (detailed outline)
+- **Phase II.5**: ~2 minutes (context consolidation)
+- **Total Phase II**: ~75 minutes for complete pipeline
 
-  - node_modules/
-  - package-lock.json
-  - package.json
-  - philosophy-pipeline.rivet-project
-  - server.js
+## Troubleshooting
 
-- sample_output_papers/ (Sample papers stored for future reference)
+### Common Issues
 
-  - paper_1/
-  - paper_2/
+1. **Rivet server not running**: Phase II.5 requires `node server.js` in rivet directory
+2. **Missing PDFs**: Download papers to `papers/` directory before Phase II.1
+3. **API rate limits**: The pipeline respects rate limits but may take longer during high usage
+4. **Virtual environment**: Always activate with `source venv/bin/activate`
 
-- tests (Scripts developed during testing or iteration)
-- .env (Local credentials file)
-- .gitignore
-- .pylintrc
-- architecture-doc.md (Project architecture overview)
-- requirements.txt
-- run_phase_one_one.py
-- run_phase_one_two.py
-- run_phase_two_one.py
-- run_phase_two_two.py
-- run_phase_two_three.py
+### Getting Help
 
-- src/
-  - utils/
-    - api.py
-    - json_utils.py
-    - paper_utils.py
-  - phases/
-    - core/
-      - base_worker.py
-      - exceptions.py
-      - worker_types.py
-      - workflow.py
-    - phase_one/
-      - prompts/
-        - conceptual_evaluate.py
-        - conceptual_final_select.py
-        - conceptual_generate.py
-        - conceptual_topic_development.py
-        - json_format.py
-      - base.py
-      - conceptual_evaluate.py
-      - conceptual_final_select.py
-      - conceptual_generate.py
-      - conceptual_topic_development.py
-    - phase_two/
-      - base/
-        - framework.py
-        - registry.py
-        - worker.py
-      - stages/
-        - stage_one/
-          - lit_processor.py
-          - pdf_processor.py
-          - prompts.py
-        - stage_two/
-          - prompts/
-            - abstract/
-              - abstract_critic_prompts.py
-              - abstract_development_prompts.py
-              - abstract_prompts.py
-              - abstract_refinement_prompts.py
-            - key_moves/
-              - key_moves_critic_prompts.py
-              - key_moves_development_prompts.py
-              - key_moves_prompts.py
-              - key_moves_refinment_prompts.py
-            - outline/
-              - outline_critic_prompts.py
-              - outline_development_prompts.py
-              - outline_prompts.py
-              - outline_refinement_prompts.py
-          - workers/
-            - critic/
-              - abstract_critic.py
-              - key_moves_critic.py
-              - outline_critic.py
-            - development/
-              - abstract_development.py
-              - key_moves_development.py
-              - outline_development.py
-            - refinement/
-              - abstract_refinement.py
-              - key_moves_refinement.py
-              - outline_refinement.py
-          - workflows/
-            - abstract_workflow.py
-            - key_moves_workflow.py
-            - outline_workflow.py
-        - stage_three/
-          - prompts/
-            - critic
-              - critic_prompts.py
-            - development
-              - development_prompts.py
-            - refinement
-              - refinement_prompts.py
-          - workers/
-            - critic/
-              - move_critic.py
-            - development/
-              - move_development.py
-            - refinement/
-              - move_refinement.py
-          - workflows/
-            - key_moves_dev_workflow.py
-            - master_workflow.py
-
-## Development Approach
-
-The system:
-
-- Uses Claude (and optionally GPT models) for development. Note that GPT outputs are buggier.
-- Manages cognitive load through clear task boundaries
-- Maintains framework alignment through systematic validation
-- Preserves development history for inspection
-- Creates clean outputs for each stage
-
-## Documentation
-
-- `architecture-doc.md`: Detailed system design and stage descriptions
-- Sample outputs available in outputs/ directory
-- Test files showing development patterns are in tests/
-- Configuration settings in conceptual_config.yaml
+- Check `architecture-doc.md` for detailed system design
+- Review configuration in `config/conceptual_config.yaml`
+- Examine outputs in `outputs/` directory for debugging
 
 ## Contributing
 
-Interested in contributing? Please:
+The project is in active development. Current priorities:
 
-- Review `architecture-doc.md` for system design
-- Check current development focus (Phase II.3)
-- Feel free to open issues or pull requests
+1. **Phase III Implementation**: Complete paper writing phase
+2. **Prompt Engineering**: Optimize LLM prompts for better output quality
+3. **Quiet Mode**: Reduce verbose logging for production use
+4. **Documentation**: Improve user guides and API documentation
 
 ## License
 
-Currently under private development. Licensing terms to be determined when repository is made public.
+[License information to be added]
 
-## Acknowledgments
+## Academic Goals
 
-Special thanks to Claude, who helped with much of the development.
+Target: **20% publication success rate** in generating papers suitable for analytic philosophy journals through systematic quality control and comprehensive development processes.

@@ -244,12 +244,25 @@ def record_refinement_history(result: Any, phase: str, history: List[Dict[str, A
     # If we have direct critique/refinement data
     if critiques and refinements and len(critiques) == len(refinements):
         for cycle_idx, (critique, refinement) in enumerate(zip(critiques, refinements)):
+            # Handle both dict and string critique/refinement objects
+            if isinstance(critique, dict):
+                assessment = critique.get("assessment", "UNKNOWN")
+                recommendations = critique.get("recommendations", [])
+            else:
+                assessment = "UNKNOWN"
+                recommendations = []
+
+            if isinstance(refinement, dict):
+                changes_made = refinement.get("changes_made", [])
+            else:
+                changes_made = []
+
             history.append({
                 "phase": phase,
                 "cycle": cycle_idx + 1,
-                "assessment": critique.get("assessment", "UNKNOWN"),
-                "recommendations": critique.get("recommendations", []),
-                "changes_made": refinement.get("changes_made", [])
+                "assessment": assessment,
+                "recommendations": recommendations,
+                "changes_made": changes_made
             })
     else:
         # Try alternate formats
