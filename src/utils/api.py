@@ -104,7 +104,7 @@ class APIHandler:
             return base64.b64encode(file.read()).decode("utf-8")
 
     def _call_anthropic_with_pdf(
-        self, prompt: str, pdf_path: Path, config: Dict[str, Any]
+        self, prompt: str, pdf_path: Path, config: Dict[str, Any], system_prompt: Optional[str] = None
     ) -> str:
         """Make Anthropic API call with PDF support"""
 
@@ -127,13 +127,17 @@ class APIHandler:
                     {"type": "text", "text": prompt},
                 ]
 
-                # Make API call
-                response = self.anthropic_client.messages.create(
-                    model=config["model"],
-                    max_tokens=config["max_tokens"],
-                    messages=[{"role": "user", "content": content}],
-                    # Headers will be handled by the client configuration
-                )
+                # Make API call with optional system prompt
+                kwargs = {
+                    "model": config["model"],
+                    "max_tokens": config["max_tokens"],
+                    "messages": [{"role": "user", "content": content}],
+                }
+                
+                if system_prompt:
+                    kwargs["system"] = system_prompt
+                
+                response = self.anthropic_client.messages.create(**kwargs)
                 return response.content[0].text
 
             except Exception as e:
@@ -147,7 +151,7 @@ class APIHandler:
         wait=wait_exponential(multiplier=1, min=4, max=10),
         retry=retry_if_exception_type((Exception, openai.APIError)),
     )
-    def _call_openai(self, prompt: str, config: Dict[str, Any]) -> str:
+    def _call_openai(self, prompt: str, config: Dict[str, Any], system_prompt: Optional[str] = None) -> str:
         """Make OpenAI API call with retries"""
         try:
             print(f"\nMaking API call to {config['model']}")
@@ -172,10 +176,13 @@ class APIHandler:
                 return content
 
             # For other OpenAI models
-            messages = [
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt},
-            ]
+            messages = []
+            if system_prompt:
+                messages.append({"role": "system", "content": system_prompt})
+            else:
+                messages.append({"role": "system", "content": "You are a helpful assistant."})
+            messages.append({"role": "user", "content": prompt})
+            
             response = self.openai_client.chat.completions.create(
                 model=config["model"],
                 messages=messages,
@@ -190,7 +197,7 @@ class APIHandler:
             print(f"Config: {config}")
             raise
 
-    def _call_anthropic(self, prompt: str, config: Dict[str, Any]) -> str:
+    def _call_anthropic(self, prompt: str, config: Dict[str, Any], system_prompt: Optional[str] = None) -> str:
         """Make standard Anthropic API call"""
 
         @self._retry_standard  # Use standard retry for normal calls
@@ -208,11 +215,17 @@ class APIHandler:
                 # Try with a smaller prompt if needed
                 current_prompt = prompt
 
-                response = self.anthropic_client.messages.create(
-                    model=config["model"],
-                    max_tokens=max_tokens,
-                    messages=[{"role": "user", "content": current_prompt}],
-                )
+                # Build kwargs with optional system prompt
+                kwargs = {
+                    "model": config["model"],
+                    "max_tokens": max_tokens,
+                    "messages": [{"role": "user", "content": current_prompt}],
+                }
+                
+                if system_prompt:
+                    kwargs["system"] = system_prompt
+
+                response = self.anthropic_client.messages.create(**kwargs)
                 return response.content[0].text
             except anthropic.InternalServerError as e:
                 print(f"Anthropic Internal Server Error: {e}")
@@ -222,11 +235,16 @@ class APIHandler:
                 # Try with a much smaller prompt and fewer tokens
                 shortened_prompt = prompt[:20000] if len(prompt) > 20000 else prompt
                 try:
-                    response = self.anthropic_client.messages.create(
-                        model=config["model"],
-                        max_tokens=min(config["max_tokens"], 4000),
-                        messages=[{"role": "user", "content": shortened_prompt}],
-                    )
+                    kwargs_shortened = {
+                        "model": config["model"],
+                        "max_tokens": min(config["max_tokens"], 4000),
+                        "messages": [{"role": "user", "content": shortened_prompt}],
+                    }
+                    
+                    if system_prompt:
+                        kwargs_shortened["system"] = system_prompt
+                        
+                    response = self.anthropic_client.messages.create(**kwargs_shortened)
                     return response.content[0].text
                 except Exception as inner_e:
                     print(f"Still failed with shortened prompt: {inner_e}")
@@ -238,16 +256,16 @@ class APIHandler:
         return make_call()
 
     def make_api_call(
-        self, stage: str, prompt: str, pdf_path: Optional[Path] = None
+        self, stage: str, prompt: str, pdf_path: Optional[Path] = None, system_prompt: Optional[str] = None
     ) -> str:
         """Make API call to appropriate provider based on stage"""
         model_config = self.config["models"][stage]
 
         if model_config["provider"] == "openai":
-            return self._call_openai(prompt, model_config)
+            return self._call_openai(prompt, model_config, system_prompt)
         elif model_config["provider"] == "anthropic":
             if pdf_path:
-                return self._call_anthropic_with_pdf(prompt, pdf_path, model_config)
-            return self._call_anthropic(prompt, model_config)
+                return self._call_anthropic_with_pdf(prompt, pdf_path, model_config, system_prompt)
+            return self._call_anthropic(prompt, model_config, system_prompt)
         else:
             raise ValueError(f"Unknown provider: {model_config['provider']}")

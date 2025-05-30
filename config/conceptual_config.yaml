@@ -1,217 +1,178 @@
-# config/conceptual_config.yaml
 models:
   idea_generation:
     provider: openai
     model: o1-preview
     max_tokens: 20000
     temperature: 1
-
   topic_evaluation:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
-    max_tokens: 8192
-    temperature: 0.5 # Lower temperature for more focused analysis
-
-  literature_assessment:
-    provider: anthropic
-    model: claude-3-5-sonnet-20241022
-    max_tokens: 8192
-    temperature: 0.5 # Lower for more reliable memory access
-
-  development_testing:
-    provider: anthropic
-    model: claude-3-5-sonnet-20241022
-    max_tokens: 8192
-    temperature: 0.7 # Higher for creative testing
-
-  topic_refinement:
-    provider: anthropic
-    model: claude-3-5-sonnet-20241022
-    max_tokens: 8192
-    temperature: 0.6 # Balanced for refinement
-
-  topic_analysis:
-    provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
     temperature: 0.5
-
-  conceptual_development:
+  literature_assessment:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  development_testing:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
     temperature: 0.7
-
+  topic_refinement:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.6
+  topic_analysis:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  conceptual_development:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
   topic_selection:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.3 # Lower for careful selection
-
+    temperature: 0.3
   phase_two_setup:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.5 # Balanced for planning
-
+    temperature: 0.5
   literature_processing:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
     temperature: 0.5
     pdf_settings:
       cache_enabled: true
       max_pages: 100
       max_size_mb: 32
-
   initialreader:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.3 # Lower for consistent extraction
-
+    temperature: 0.3
   projectspecificreader:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.5 # Medium for finding connections
-
+    temperature: 0.5
   literaturesynthesizer:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.7 # Higher for creative synthesis
-
+    temperature: 0.7
   abstract_development:
     provider: openai
     model: o1-preview
     max_tokens: 20000
     temperature: 1
-
   outline_development:
     provider: openai
     model: o1-preview
     max_tokens: 20000
     temperature: 1
-
   abstract_critic:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
     temperature: 0.3
-
   abstract_refinement:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.5 # Balance between creativity and consistency
-
+    temperature: 0.5
   outline_critic:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.3 # Lower for careful evaluation
-
+    temperature: 0.3
   outline_refinement:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.5 # Balanced for creativity/consistency
-
+    temperature: 0.5
   key_moves_development:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
     temperature: 0.7
-
   key_moves_critic:
     provider: anthropic
-    model: claude-3-7-sonnet-20250219
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.3 # Lower for careful evaluation
-
+    temperature: 0.3
   key_moves_refinement:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.5 # Balanced for refinements
-
-  # New Phase II.3 workers
+    temperature: 0.5
   move_development:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.7 # Higher for creative development
-
+    temperature: 0.7
   move_critic:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.3 # Lower for careful evaluation
-
+    temperature: 0.3
   move_refinement:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.5 # Balanced for refinements
-    
-  # New Phase II.4 workers
+    temperature: 0.5
   detailed_outline_planning:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.5 # Balance creativity and precision for planning
-    
+    temperature: 0.5
   detailed_outline_development:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.7 # Higher for creative development
-    
+    temperature: 0.7
   detailed_outline_critic:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.3 # Lower for careful evaluation
-    
+    temperature: 0.3
   detailed_outline_refinement:
     provider: anthropic
-    model: claude-3-5-sonnet-20241022
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.5 # Balanced for refinements
-    
-  # Phase III workers
+    temperature: 0.5
   section_writing:
     provider: anthropic
-    model: claude-sonnet-4-20250514  # Upgraded from 3.5 for better quality at same price
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.7 # Higher temperature for creative, flowing writing
-
+    temperature: 0.7
   section_critic:
     provider: anthropic
-    model: claude-sonnet-4-20250514  # Upgraded from 3.5 for better quality at same price
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.3 # Lower temperature for careful evaluation
-
+    temperature: 0.3
   section_refinement:
     provider: anthropic
-    model: claude-sonnet-4-20250514  # Upgraded from 3.5 for better quality at same price
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.5 # Balanced temperature for refinement
-
-  # Phase III.2 workers
+    temperature: 0.5
   paper_reader:
     provider: anthropic
-    model: claude-sonnet-4-20250514  # Upgraded from 3.5 for better quality at same price
+    model: claude-sonnet-4-20250514
     max_tokens: 8192
-    temperature: 0.3 # Lower temperature for careful analysis
-
+    temperature: 0.3
   paper_integration:
     provider: anthropic
-    model: claude-sonnet-4-20250514  # More capable model with higher token limits
-    max_tokens: 32000  # Much higher limit for complete paper generation
-    temperature: 0.5 # Balanced temperature for integration
-
+    model: claude-sonnet-4-20250514
+    max_tokens: 32000
+    temperature: 0.5
 paths:
   base_dir: ./outputs
   generated_topics: conceptual_topics.json
@@ -227,23 +188,19 @@ paths:
     synthesis:
       json: literature_synthesis.json
       markdown: literature_synthesis.md
-
 parameters:
-  num_initial_topics: 6 #Num topics generated as ideas in stage 1.1
-  cull_min: 2 #Min topics left after first culling in stage 1.2
-  cull_max: 4 #Max topics left after first culling in stage 1.2
-  max_selected_topics: 2 # Fewer topics carried forward for deeper analysis
-  development_stages: 3 # Number of development iterations per topic
-  # Conceptual development specific parameters
-  min_examples_per_topic: 2 # Minimum number of illustrative examples
-  max_technical_score: 0.3 # Maximum allowed technical complexity (0-1)
+  num_initial_topics: 6
+  cull_min: 2
+  cull_max: 4
+  max_selected_topics: 2
+  development_stages: 3
+  min_examples_per_topic: 2
+  max_technical_score: 0.3
   required_elements:
-    [
-      "core_conceptual_contribution",
-      "illustrative_examples",
-      "development_path",
-      "potential_objections",
-    ]
+  - core_conceptual_contribution
+  - illustrative_examples
+  - development_path
+  - potential_objections
   literature_processing:
     max_retries: 3
     min_wait: 4
@@ -252,117 +209,89 @@ parameters:
     abstract_num_cycles: 3
     outline_num_cycles: 3
     key_moves_num_cycles: 3
-    key_move_max_cycles: 3 # New parameter for Phase II.3
-    outline_max_cycles: 3 # New parameter for Phase II.4
-
-# Configuration for conceptual analysis pipeline
-
+    key_move_max_cycles: 3
+    outline_max_cycles: 3
 api:
-  model: "claude-3-5-sonnet-20241022"
+  model: claude-sonnet-4-20250514
   max_tokens: 8000
   temperature: 0.1
-
 workers:
-  # Phase I workers
   topic_researcher:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 4000
     temperature: 0.2
-
   topic_critic:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 4000
     temperature: 0.1
-
   selection_processor:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 4000
     temperature: 0.1
-
-  # Phase II workers
   framework_developer:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 6000
     temperature: 0.1
-
   framework_critic:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 4000
     temperature: 0.1
-
   framework_refinement:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 6000
     temperature: 0.1
-
   key_moves_developer:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 6000
     temperature: 0.1
-
   key_moves_critic:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 4000
     temperature: 0.1
-
   key_moves_refinement:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 6000
     temperature: 0.1
-
   detailed_outline_developer:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 6000
     temperature: 0.1
-
   detailed_outline_critic:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 4000
     temperature: 0.1
-
   detailed_outline_refinement:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 6000
     temperature: 0.1
-
   literature_researcher:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 6000
     temperature: 0.2
-
   literature_synthesizer:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 6000
     temperature: 0.1
-
-  # Phase III.1 workers
   section_writer:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 8000
     temperature: 0.1
-
   section_critic:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 6000
     temperature: 0.1
-
   section_refinement:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 8000
     temperature: 0.1
-
-  # Phase III.2 workers
   paper_reader:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 8000
     temperature: 0.1
-
   paper_integration:
-    model: "claude-3-5-sonnet-20241022"
+    model: claude-sonnet-4-20250514
     max_tokens: 8000
     temperature: 0.1
-
-# Output settings
 outputs:
   save_intermediate: true
   create_backups: true

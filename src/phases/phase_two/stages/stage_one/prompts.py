@@ -5,179 +5,315 @@ import json
 
 
 class InitialReadPrompts:
-    """Prompts for initial paper reading"""
+    """Prompts for initial paper reading with two-stage approach"""
 
     def __init__(self):
-        self.output_requirements = """
-OUTPUT REQUIREMENTS:
-1. Response must be valid JSON
-2. Use simple ASCII characters only (no special quotes or unicode)
-3. Keep all text fields as single-line strings (no line breaks)
-4. Be explicit and specific in all assessments
-5. Every string field must be a complete, well-formed sentence
-6. Array items should be distinct and substantive
-7. Maintain consistent detail level throughout
-8. Include confidence levels where specified
-9. Flag any uncertainties explicitly"""
+        self.system_prompt = """You are an expert philosophy researcher conducting deep analytical reading of academic papers. You excel at:
+1. Identifying core philosophical arguments and their structure
+2. Extracting quotable passages with precise citations
+3. Recognizing opportunities for philosophical engagement
+4. Understanding dialectical positioning within debates
+5. Maintaining accuracy in quotes and page references
 
-        self.output_format = """
-{
-    "paper_info": {
+IMPORTANT: You are part of an automated philosophy paper generation pipeline. Your output will be parsed by code and used by other AI agents in subsequent stages. Any formatting errors will cause the pipeline to fail."""
+
+        self.pipeline_context = """
+PIPELINE CONTEXT:
+You are Stage 1 of an automated philosophy paper generation system. Your JSON output will be:
+1. Parsed by Python code using json.loads()
+2. Passed to other AI agents for project-specific analysis
+3. Eventually integrated into a complete philosophy paper
+4. Used to make decisions about literature engagement
+
+Therefore, it is CRITICAL that your output is valid, parseable JSON with no extraneous text."""
+
+        self.json_formatting_rules = """
+CRITICAL JSON FORMATTING RULES:
+- Output ONLY valid JSON, no explanatory text before or after
+- Start your response with { or [
+- End your response with } or ]
+- Use double quotes for ALL strings
+- Escape special characters: \", \\, \n, \r, \t
+- No trailing commas
+- No comments (// or /* */)
+- Numbers and booleans should NOT be quoted
+- Ensure all brackets and braces are properly closed
+- VERIFY your JSON is valid before outputting
+
+REMEMBER: Invalid JSON will break the automated pipeline and prevent paper generation."""
+
+        # Stage 1: Quote extraction
+        self.quote_extraction_template = """<task>First Pass: Extract Key Quotations</task>
+
+{pipeline_context}
+
+<instructions>
+Read through the paper and extract 5-10 key quotations that:
+1. State the main thesis or claims
+2. Define key concepts or distinctions
+3. Present crucial arguments or examples
+4. Acknowledge limitations or objections
+5. Position the work relative to other philosophers
+
+For each quote:
+- Include the EXACT text in quotation marks
+- Note the page number
+- Add a brief note about why this quote matters
+</instructions>
+
+{json_rules}
+
+<output_format>
+{{
+    "quotes": [
+        {{
+            "number": 1,
+            "text": "Exact quote text here",
+            "page": "page number",
+            "context": "Brief context of where this appears",
+            "significance": "Why this quote matters",
+            "type": "thesis|argument|definition|objection|positioning"
+        }}
+    ]
+}}
+</output_format>
+
+Your quotes will be used by the next stage to conduct deep philosophical analysis."""
+
+        # Stage 2: Deep analysis using quotes
+        self.analysis_template = """<task>Second Pass: Philosophical Analysis</task>
+
+{pipeline_context}
+
+<context>
+Here are the key quotes from the paper:
+{quotes}
+</context>
+
+<analysis_tasks>
+1. THESIS AND ARGUMENT STRUCTURE
+   - State the main thesis (cite quote numbers)
+   - Map the argument structure using the quotes
+   - Identify the philosophical problem being addressed
+   
+2. KEY MOVES AND INNOVATIONS
+   - What novel philosophical moves does the author make?
+   - How do they advance beyond existing positions?
+   - What conceptual distinctions do they introduce?
+   
+3. DIALECTICAL POSITIONING
+   - Which philosophers/positions do they engage? (cite quotes)
+   - What objections do they anticipate?
+   - What objections do they miss?
+   
+4. ENGAGEMENT OPPORTUNITIES
+   Using specific quotes as jumping-off points:
+   - Where could we push their argument further?
+   - What counterexamples might challenge their view?
+   - What implications haven't they explored?
+   - Where might their distinctions break down?
+   
+5. TERMINOLOGY AND CONCEPTS
+   - Key technical terms (with quote references)
+   - Important distinctions made
+   - Conceptual framework employed
+</analysis_tasks>
+
+{json_rules}
+
+<output_format>
+{{
+    "paper_info": {{
         "title": "exact paper title",
         "authors": ["list of authors"],
-        "publication_info": {
+        "publication_info": {{
             "year": "year of publication",
             "venue": "journal or conference name",
-            "doi": "doi if available",
-            "length": "number of pages"
-        },
-        "structure": {
-            "sections": ["list of main section titles"],
-            "organization": "description of paper's organizational strategy",
-            "methodology": "description of paper's philosophical approach"
-        }
-    },
-    "core_content": {
-        "main_thesis": "central claim or argument of the paper",
-        "background_context": "scholarly context and motivation",
-        "key_arguments": [
-            {
-                "claim": "clear statement of argument",
-                "support": ["key supporting points"],
-                "development": "how the argument is developed",
-                "significance": "why this argument matters",
-                "confidence": "high|medium|low"
-            }
+            "doi": "doi if available"
+        }}
+    }},
+    "thesis": {{
+        "statement": "clear articulation of main thesis",
+        "supporting_quotes": [1, 3, 5],
+        "philosophical_problem": "what problem this addresses"
+    }},
+    "argument_structure": {{
+        "main_premises": [
+            {{
+                "premise": "statement of premise",
+                "quote_support": [2, 4],
+                "role": "how this supports the thesis"
+            }}
         ],
-        "important_definitions": [
-            {
-                "term": "term being defined",
-                "definition": "clear statement of definition",
-                "context": "how the definition is used",
-                "confidence": "high|medium|low"
-            }
+        "key_moves": [
+            {{
+                "move": "description of philosophical move",
+                "innovation": "what's novel about this",
+                "quote_refs": [6, 7]
+            }}
         ],
-        "examples": [
-            {
-                "description": "brief description of example",
-                "purpose": "how example is used in paper",
-                "effectiveness": "assessment of example's effectiveness"
-            }
-        ]
-    },
-    "scholarly_context": {
-        "key_citations": [
-            {
-                "author": "author name",
-                "year": "publication year",
-                "work": "work being cited",
-                "purpose": "how citation is used",
-                "confidence": "high|medium|low"
-            }
+        "conclusion": "how the argument concludes"
+    }},
+    "dialectical_context": {{
+        "engages_with": [
+            {{
+                "philosopher": "name",
+                "position": "their view",
+                "engagement_type": "agrees|disagrees|extends|modifies",
+                "quote_refs": [8]
+            }}
         ],
-        "research_streams": ["major research areas this engages with"],
-        "debates": ["key scholarly debates paper addresses"],
-        "methodology_notes": "description of paper's philosophical approach and methods"
-    },
-    "potential_uses": {
-        "key_quotes": [
-            {
-                "quote": "exact quote",
-                "context": "surrounding context",
-                "potential_uses": ["ways this might be useful"],
-                "location": "page or section reference",
-                "confidence": "high|medium|low"
-            }
-        ],
-        "notable_points": [
-            {
-                "point": "important point that might be useful",
-                "context": "how it arises in the paper",
-                "potential_applications": ["ways this might be used"],
-                "confidence": "high|medium|low"
-            }
-        ]
-    },
-    "analysis_notes": {
-        "clarity_assessment": "assessment of paper's clarity and accessibility",
-        "notable_features": ["distinctive features of the paper's approach"],
-        "limitations": ["any notable limitations or gaps"],
-        "confidence_summary": {
-            "understanding": "high|medium|low",
-            "quotes": "high|medium|low",
-            "context": "high|medium|low"
-        }
-    }
-}"""
+        "anticipated_objections": ["list of objections author considers"],
+        "missed_objections": ["objections author doesn't consider"]
+    }},
+    "engagement_opportunities": [
+        {{
+            "type": "extension|challenge|application|refinement",
+            "description": "specific opportunity",
+            "relevant_quotes": [3, 9],
+            "development_strategy": "how we might pursue this"
+        }}
+    ],
+    "key_concepts": [
+        {{
+            "term": "technical term",
+            "definition": "how defined",
+            "quote_ref": 10,
+            "usage": "how it functions in argument"
+        }}
+    ],
+    "methodological_notes": "approach and methods used",
+    "scholarly_significance": "why this paper matters to the field"
+}}
+</output_format>
 
-    def get_prompt(self, paper_path: str) -> str:
-        """Generate prompt for initial paper reading"""
-        return f"""You are reading an academic philosophy paper to understand its content and identify potentially useful elements. This is an initial read focused on understanding the paper's contributions and context.
+Your analysis will be used to determine how to engage with this paper in our own philosophical work."""
 
-Read the paper carefully and extract key information, focusing on:
-1. Clear understanding of main arguments and their development
-2. Important definitions, distinctions, and examples
-3. Scholarly context, debates, and methodology
-4. Potentially useful quotes and points
-5. Paper structure and organization
-6. Areas that might be valuable for future work
+    def get_system_prompt(self):
+        """Return the system prompt for API calls"""
+        return self.system_prompt
 
-{self.output_requirements}
+    def get_prompt(self, paper_path: str, stage: str = "full") -> str:
+        """Generate prompt for paper reading"""
+        if stage == "quotes":
+            return self.quote_extraction_template.replace(
+                "{json_rules}", self.json_formatting_rules
+            ).replace(
+                "{pipeline_context}", self.pipeline_context
+            )
+        elif stage == "analysis":
+            # This will be called with quotes already extracted
+            return self.analysis_template.replace(
+                "{json_rules}", self.json_formatting_rules
+            ).replace(
+                "{pipeline_context}", self.pipeline_context
+            )
+        else:
+            # For backward compatibility, combine both stages
+            combined = f"""You are reading an academic philosophy paper. This is a two-stage process:
 
-Be thorough but focus on accuracy over quantity. If you're uncertain about anything, note this explicitly in your confidence assessments. For quotes, only include those you're highly confident are exact.
+{self.pipeline_context}
 
-Provide your analysis in the following format:
-{self.output_format}"""
+STAGE 1: Quote Extraction
+{self.quote_extraction_template}
+
+STAGE 2: Deep Analysis
+After extracting quotes, conduct a deep philosophical analysis using those quotes as anchors for your interpretation.
+
+{self.analysis_template}
+
+Focus on accuracy in quotes and depth in analysis. The quotes should ground your interpretation and provide specific evidence for your analytical claims."""
+            return combined.replace(
+                "{json_rules}", self.json_formatting_rules
+            ).replace(
+                "{pipeline_context}", self.pipeline_context
+            )
 
 
 class ProjectSpecificPrompts:
     """Prompts for project-specific paper analysis"""
 
     def __init__(self):
-        self.output_requirements = """
-OUTPUT REQUIREMENTS:
-1. Response must be valid JSON
-2. Use simple ASCII characters only (no special quotes or unicode)
-3. Keep all text fields as single-line strings (no line breaks)
-4. Be explicit and specific in all assessments
-5. Array fields can be empty or contain a single 'none' entry if nothing relevant is found
-6. Include confidence levels where specified"""
+        self.system_prompt = """You are conducting a focused re-reading of philosophy papers for a specific project. Your expertise includes:
+1. Identifying precise connections to project goals
+2. Recognizing both agreements and productive disagreements  
+3. Finding specific elements that can be developed
+4. Assessing engagement priorities
 
-        self.output_format = """{
-    "paper_info": {
+IMPORTANT: You are part of an automated philosophy paper generation pipeline. Your output will be parsed by code and used by other AI agents in subsequent stages. Any formatting errors will cause the pipeline to fail."""
+
+        self.pipeline_context = """
+PIPELINE CONTEXT:
+You are in the project-specific analysis stage of an automated philosophy paper generation system. Your JSON output will be:
+1. Parsed by Python code
+2. Combined with analyses of other papers
+3. Used to determine literature engagement strategy
+4. Integrated into the final paper's arguments
+
+Your assessment will directly influence how the paper engages with this source."""
+
+        self.json_formatting_rules = """
+CRITICAL JSON FORMATTING RULES:
+- Output ONLY valid JSON, no explanatory text before or after
+- Start your response with { or [
+- End your response with } or ]
+- Use double quotes for ALL strings
+- Escape special characters: \", \\, \n, \r, \t
+- No trailing commas
+- No comments (// or /* */)
+- Ensure all brackets and braces are properly closed
+
+REMEMBER: The pipeline depends on valid JSON. Formatting errors will prevent paper generation."""
+
+        self.output_format = """<output_format>
+{{
+    "paper_info": {{
         "title": "exact paper title",
         "authors": ["list of authors"]
-    },
-    "engagement_assessment": {
+    }},
+    "engagement_assessment": {{
         "type": "primary|supporting|background",
         "overall_relevance": "high|medium|low",
         "rationale": "explanation of assessed relevance level"
-    },
-    "key_connections": [
-        {
-            "type": "conceptual|methodological|framework",
-            "description": "specific point of connection to our project",
-            "strength": "how strong/direct the connection is",
-            "development_needs": ["what we'd need to do to develop this"]
-        }
+    }},
+    "specific_connections": [
+        {{
+            "connection_type": "conceptual|methodological|framework|example",
+            "paper_element": "specific quote or concept from paper",
+            "project_element": "what in our project this connects to",
+            "page_ref": "page number if available",
+            "strength": "strong|moderate|weak",
+            "development_potential": "how we can build on this"
+        }}
     ],
-    "critical_engagement": {
-        "agreements": [
-            {
-                "point": "point of agreement",
-                "usefulness": "how this helps our project",
-                "development_needs": ["what we need to do to use this"]
-            }
-        ],
-        "disagreements": [
-            {
-                "claim": "claim we might challenge",
-                "our_position": "our view on this",
-                "engagement_value": "how this advances our project"
-            }
-        ]
-    }
-}"""
+    "critical_engagements": [
+        {{
+            "engagement_type": "agreement|disagreement|extension|refinement",
+            "paper_claim": "specific claim from paper",
+            "our_position": "our stance on this",
+            "philosophical_value": "why this engagement matters",
+            "quote_support": "relevant quote if available"
+        }}
+    ],
+    "usable_elements": [
+        {{
+            "element_type": "argument|example|distinction|method",
+            "description": "what we can use",
+            "adaptation_needed": "how we need to modify it",
+            "integration_point": "where in our project this fits"
+        }}
+    ],
+    "priority_recommendations": {{
+        "must_engage": ["elements requiring engagement"],
+        "should_engage": ["valuable but optional engagements"],
+        "citation_only": ["elements to cite without deep engagement"]
+    }}
+}}
+</output_format>"""
+
+    def get_system_prompt(self):
+        """Return the system prompt for API calls"""
+        return self.system_prompt
 
     def get_prompt(self, initial_reading: Dict, final_selection: Dict) -> str:
         """Generate prompt for project-specific reading"""
@@ -192,162 +328,224 @@ OUTPUT REQUIREMENTS:
             "thesis_development"
         ]["key_moves"]
 
-        return f"""You are conducting a focused re-reading of a philosophy paper specifically for our project.
+        return f"""<task>Project-Specific Analysis</task>
 
-    Our project focus:
-    Topic: {chosen_topic}
-    Thesis: {core_thesis}
-    Key Moves:
-    {json.dumps(key_moves, indent=2)}
+{self.pipeline_context}
 
-    Previous Reading:
-    {json.dumps(initial_reading, indent=2)}
+<project_context>
+Topic: {chosen_topic}
+Thesis: {core_thesis}
+Key Moves: {json.dumps(key_moves, indent=2)}
+</project_context>
 
-    Your task is to analyze how this paper specifically relates to our project. Consider:
-    1. How directly relevant is this paper?
-    2. What specific elements could we use?
-    3. Where might we agree or disagree?
-    4. How might this inform our development?
+<previous_reading>
+{json.dumps(initial_reading, indent=2)}
+</previous_reading>
 
-    {self.output_requirements}
+<instructions>
+Analyze how this paper specifically relates to our project:
+1. Identify precise connections between paper elements and project goals
+2. Find specific quotes, arguments, or examples we can use
+3. Determine where we agree, disagree, or can extend
+4. Assess engagement priority levels
+5. Map specific integration points
 
-    Provide your analysis in the following format:
-    {self.output_format}"""
+Be precise about page references and quotes where possible.
+Focus on actionable connections rather than general relevance.
+</instructions>
+
+{self.json_formatting_rules}
+
+{self.output_format}"""
 
 
 class SynthesisPrompts:
     """Prompts for synthesizing literature analysis"""
 
     def __init__(self):
-        self.json_requirements = """
-JSON OUTPUT REQUIREMENTS:
-1. Use simple ASCII characters only (no special quotes or unicode)
-2. Keep all text fields as single-line strings (no line breaks)
-3. Include confidence levels where specified
-4. Flag any uncertainties explicitly"""
+        self.system_prompt = """You are synthesizing multiple philosophy paper analyses to create a comprehensive literature foundation for a new paper. You excel at:
+1. Identifying patterns and connections across papers
+2. Mapping scholarly conversations and debates
+3. Finding gaps and opportunities
+4. Creating actionable development strategies
 
-        self.markdown_requirements = """
-MARKDOWN OUTPUT REQUIREMENTS:
-1. Use clear section headers (##)
-2. Include line breaks between sections
-3. Use bullet points for lists
-4. Use standard Markdown formatting (*italic*, **bold**)
-5. Keep paragraphs focused and concise"""
+IMPORTANT: You are part of an automated philosophy paper generation pipeline. Your outputs will be parsed by code and used to guide the entire paper development process."""
 
-        self.json_format = """
-{
-    "literature_overview": {
+        self.pipeline_context = """
+PIPELINE CONTEXT:
+You are creating the literature synthesis that will guide all subsequent paper development. Your outputs will:
+1. Be parsed as both JSON (for structured data) and Markdown (for narrative guidance)
+2. Determine which papers get cited and how deeply
+3. Shape the argumentative strategy of the paper
+4. Guide the development of key philosophical moves
+
+This synthesis is CRITICAL to the paper's success. Both outputs must be valid and parseable."""
+
+        self.json_formatting_rules = """
+CRITICAL JSON FORMATTING RULES:
+- For the JSON portion, output ONLY valid JSON
+- Start with { and end with }
+- Use double quotes for ALL strings
+- Escape special characters: \", \\, \n, \r, \t
+- No trailing commas
+- No comments
+- Ensure all brackets and braces are properly closed
+
+The JSON must be parseable by Python's json.loads() function."""
+
+        self.json_format = """<json_output>
+{{
+    "literature_overview": {{
         "primary_papers": [
-            {
+            {{
                 "title": "paper title",
-                "engagement_level": "primary",
-                "key_role": "how this paper will be central",
-                "development_priority": "high|medium|low"
-            }
+                "authors": ["authors"],
+                "role": "central role in our project",
+                "key_engagements": ["specific points we'll engage"],
+                "quotes_to_use": ["important quotes with page refs"]
+            }}
         ],
         "supporting_papers": [
-            {
+            {{
                 "title": "paper title",
-                "engagement_level": "supporting",
-                "key_role": "how this paper will support our work",
-                "development_priority": "high|medium|low"
-            }
+                "role": "supporting role",
+                "specific_uses": ["how we'll use this"]
+            }}
         ],
         "background_papers": [
-            {
+            {{
                 "title": "paper title",
-                "engagement_level": "background",
-                "key_role": "how this paper provides context",
-                "citation_priority": "high|medium|low"
-            }
+                "citation_purpose": "why we cite this"
+            }}
         ]
-    },
-    "key_concepts": [
-        {
-            "concept": "important concept or distinction",
-            "source": "where it comes from",
-            "role": "how we'll use it",
-            "development_needs": ["what we need to do to use this"]
-        }
-    ],
-    "engagement_priorities": [
-        {
-            "focus": "specific engagement point",
-            "papers": ["relevant papers"],
-            "importance": "high|medium|low",
-            "rationale": "why this is important"
-        }
+    }},
+    "conceptual_map": {{
+        "central_debates": [
+            {{
+                "debate": "description of debate",
+                "positions": ["position 1", "position 2"],
+                "our_stance": "where we stand",
+                "papers_involved": ["relevant papers"]
+            }}
+        ],
+        "key_distinctions": [
+            {{
+                "distinction": "conceptual distinction",
+                "source": "paper that introduces it",
+                "our_use": "how we'll employ or modify it"
+            }}
+        ],
+        "methodological_approaches": ["approaches seen across papers"]
+    }},
+    "engagement_strategy": {{
+        "agreements": [
+            {{
+                "claim": "what we agree with",
+                "source": "paper and page",
+                "building_strategy": "how we build on this"
+            }}
+        ],
+        "disagreements": [
+            {{
+                "claim": "what we challenge",
+                "source": "paper and page",
+                "critique_strategy": "our counterargument"
+            }}
+        ],
+        "extensions": [
+            {{
+                "idea": "what we extend",
+                "source": "paper and page",
+                "extension_strategy": "how we go beyond"
+            }}
+        ]
+    }},
+    "development_priorities": [
+        {{
+            "priority": "high|medium|low",
+            "task": "specific development task",
+            "papers_involved": ["relevant papers"],
+            "rationale": "why this priority level"
+        }}
     ]
-}"""
+}}
+</json_output>"""
 
-        self.markdown_sections = """
+        self.markdown_template = """<markdown_output>
 ## Literature Synthesis
 
-[Provide a narrative overview of how the papers fit together and relate to our project. Explain the scholarly context we're entering and how we'll position our work.]
+### Scholarly Landscape
+[Describe the intellectual terrain we're entering, major debates, and how papers relate to each other. Explain where our contribution fits.]
 
-## Key Arguments and Moves
+### Central Arguments and Positions
+[Map out the key arguments across papers, showing agreements, tensions, and gaps. Use specific quotes and page references.]
 
-[Analyze how arguments across papers relate to our planned moves. Identify tensions, support, and opportunities.]
+### Our Dialectical Position
+[Explain how we position ourselves relative to the literature. What do we accept, challenge, extend? Be specific about our moves.]
 
-## Development Strategy
+### Key Concepts and Distinctions
+[Identify crucial concepts we'll use or challenge. Show how different papers define/use these concepts.]
 
-[Explain how we should develop our contribution, what to emphasize, and how to manage engagement with different papers.]
+### Methodological Considerations
+[Discuss philosophical methods seen in the literature and our approach.]
 
-## Critical Points
+### Development Strategy
+[Provide specific guidance for developing our paper, including:
+- Which arguments to foreground
+- Which objections to anticipate
+- How to structure our engagement
+- Where to be careful about scope]
 
-[Discuss key areas where we'll engage critically, explaining how different critiques work together.]
+### Gaps and Opportunities
+[Identify what the literature misses or underdevelops that we can address.]
 
-## Risks and Challenges
+### Citation Strategy
+[Explain which papers need deep engagement vs. brief citation, and why.]
 
-[Identify potential challenges and strategies for addressing them.]
+### Potential Challenges
+[Anticipate difficulties in literature engagement and suggest solutions.]
 
-## Additional Notes and Observations
+### Next Steps
+[Specific recommendations for moving into framework development.]
+</markdown_output>"""
 
-[Include any important points, patterns, or considerations that don't fit elsewhere. This might include:
-- Unexpected connections between papers
-- Potential issues to watch for
-- Suggestions about approach or methodology
-- Other insights that could help project development]
-
-## Next Stage Preparation
-
-[Provide specific guidance for moving into argument development, including suggestions for abstract elements and outline structure.]"""
+    def get_system_prompt(self):
+        """Return the system prompt for API calls"""
+        return self.system_prompt
 
     def get_prompt(self, paper_readings: Dict, final_selection: Dict) -> str:
-        return f"""You are synthesizing our analysis of multiple papers to prepare for developing our philosophical paper. Your task is to create both structured and narrative analysis that will guide our development.
+        return f"""<task>Literature Synthesis</task>
 
-Our project focus:
+{self.pipeline_context}
+
+<project_focus>
 Thesis: {final_selection.get('current_thesis', '')}
 Contribution: {final_selection.get('core_contribution', '')}
-Key Moves: {final_selection.get('key_moves', [])}
+Key Moves: {json.dumps(final_selection.get('key_moves', []), indent=2)}
+</project_focus>
 
-You will provide two types of output:
+<paper_analyses>
+{json.dumps(paper_readings, indent=2)}
+</paper_analyses>
 
-1. Structured Data (JSON):
-- Classification and organization of papers
-- Key concepts and their roles
-- Priority engagement points
-{self.json_requirements}
+<instructions>
+Create a comprehensive synthesis that:
+1. Maps the scholarly landscape and debates
+2. Positions our project within this landscape
+3. Identifies specific engagement points
+4. Provides actionable development strategy
+5. Highlights key quotes and concepts to use
 
-2. Narrative Analysis (Markdown):
-- How papers and arguments relate
-- Development strategy
-- Risks and opportunities
-{self.markdown_requirements}
+Output both structured JSON and narrative Markdown analysis.
 
-For the JSON output, use this format:
+For the JSON output:
+{self.json_formatting_rules}
+
+The markdown can follow after the JSON is complete.
+</instructions>
+
 {self.json_format}
 
-For the Markdown output, use these sections:
-{self.markdown_sections}
+{self.markdown_template}
 
-Consider carefully:
-1. How papers relate to each other
-2. Which engagements are most important
-3. How to maintain appropriate scope
-4. What we need for next stages
-
-Previous Readings:
-{paper_readings}
-
-Provide your synthesis starting with the JSON output, followed by the Markdown analysis."""
+Ensure the synthesis is actionable and specific, with clear guidance for paper development."""
