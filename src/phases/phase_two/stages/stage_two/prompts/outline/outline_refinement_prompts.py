@@ -6,6 +6,8 @@ class OutlineRefinementPrompts:
     """Prompts for refining outline based on critique"""
 
     def __init__(self):
+        self.system_prompt = """You are an expert philosophy editor refining a paper outline for the journal Analysis. Your role is to implement structural improvements based on critique while maintaining what already works well. You must produce a clear outline that will guide downstream development in an automated pipeline."""
+
         self.context = """You are refining a high-level outline for a paper to be published in Analysis (4,000 word limit).
 This outline establishes the main sections and key structural elements that will scaffold later development.
 
@@ -61,22 +63,46 @@ Take time to think through how changes will affect the outline's ability to supp
         lit_synthesis: Dict,
     ) -> str:
         """Generate prompt for outline refinement"""
-        return f"""
+        return f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.2 (Framework Development).
+You have the current outline and critique from the previous iteration.
+Your refined outline will guide all subsequent paper development.
 {self.context}
+</context>
 
+<task>
+Refine the outline based on the critique provided.
+Implement structural improvements while maintaining what works well.
+Ensure the outline effectively supports the framework.
+</task>
+
+<current_framework>
 Current Framework:
 {json.dumps(framework, indent=2)}
+</current_framework>
 
+<current_outline>
 Current Outline:
 {outline}
+</current_outline>
 
+<recent_critique>
 Critique:
 {critique.get('content', '')}
+</recent_critique>
 
+<literature_context>
 Literature Context:
 {json.dumps(lit_synthesis, indent=2)}
+</literature_context>
 
+<requirements>
 Provide your refinement following this format:
 {self.output_format}
 
-Think carefully about how each change affects the outline's ability to support the framework's development."""
+Think carefully about how each change affects the outline's ability to support the framework's development.
+</requirements>"""
+
+    def get_system_prompt(self) -> str:
+        """Return the system prompt for API calls"""
+        return self.system_prompt

@@ -6,6 +6,8 @@ class OutlineDevelopmentPrompts:
     """Prompts for outline development"""
 
     def __init__(self):
+        self.system_prompt = """You are an expert philosophy researcher developing a paper outline for the journal Analysis. Your role is to create a clear structural blueprint that will guide paper development. You must work within the abstract and framework already established and produce output for an automated pipeline."""
+
         self.context = """You are developing an outline for a paper to be published in Analysis (4,000 word limit).
 Analysis favors clear, precise papers in the analytic tradition that make a single sharp philosophical contribution.
 
@@ -42,9 +44,20 @@ You can use scratch work to think through:
         self, abstract: str, main_thesis: str, core_contribution: str, key_moves: list
     ) -> str:
         """Generate prompt for outline development"""
-        return f"""
+        return f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.2 (Framework Development).
+You have the validated abstract and framework from earlier in this phase.
+Your outline will guide the detailed development in subsequent phases.
 {self.context}
+</context>
 
+<task>
+Create a structured outline that develops the abstract and framework into a complete paper structure.
+Ensure each key move has a clear place in the outline.
+Maintain focus on the main thesis throughout.
+</task>
+
+<framework_components>
 Abstract:
 {abstract}
 
@@ -56,9 +69,21 @@ Core Contribution:
 
 Key Moves:
 {json.dumps(key_moves, indent=2)}
+</framework_components>
 
+<requirements>
 {self.structure_requirements}
+</requirements>
 
+<output_format>
 Provide your response in the following format:
 {self.output_format}
-"""
+</output_format>
+
+<reminder>
+Remember: The outline must create a clear path from introduction through key moves to conclusion, all supporting the main thesis.
+</reminder>"""
+
+    def get_system_prompt(self) -> str:
+        """Return the system prompt for API calls"""
+        return self.system_prompt

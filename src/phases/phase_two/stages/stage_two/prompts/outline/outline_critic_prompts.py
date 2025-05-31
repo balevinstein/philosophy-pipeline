@@ -6,6 +6,8 @@ class OutlineCriticPrompts:
     """Prompts for critiquing outline and suggesting improvements"""
 
     def __init__(self):
+        self.system_prompt = """You are a rigorous philosophy journal reviewer evaluating a paper outline. Your role is to provide genuinely critical analysis of the structural blueprint. Do not be polite or deferential. Be constructive but skeptical. Your critique will be used by an automated system to improve the outline, so be specific and actionable."""
+
         self.context = """You are critiquing an initial high-level outline for a paper to be published in Analysis (4,000 word limit).
 This outline focuses on main sections and key structural elements - more detailed section development will occur in later stages.
 
@@ -79,15 +81,30 @@ MINIMAL CHANGES [if structure is fundamentally sound]"""
         lit_narrative: str,
     ) -> str:
         """Generate prompt for outline critique"""
-        return f"""
+        return f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.2 (Framework Development).
+The system has created an initial outline based on the abstract and framework.
+Your critique will guide outline refinement before detailed development begins.
 {self.context}
+</context>
 
+<task>
+Critically evaluate this outline for structural soundness and framework alignment.
+Identify specific weaknesses in the organizational structure.
+Consider feasibility within the 4000-word constraint.
+</task>
+
+<current_framework>
 Current Framework Development:
 {json.dumps(framework, indent=2)}
+</current_framework>
 
+<current_outline>
 Current Outline:
 {outline}
+</current_outline>
 
+<literature_context>
 Literature Context:
 1. Paper Readings:
 {json.dumps(lit_readings, indent=2)}
@@ -97,8 +114,15 @@ Literature Context:
 
 3. Synthesis Narrative:
 {lit_narrative}
+</literature_context>
 
+<requirements>
 Provide your evaluation following this format:
 {self.output_format}
 
-Remember to think carefully about how the outline can best support development of the framework while maintaining feasibility and coherence. Consider both high-level structure and essential development requirements."""
+Remember to think carefully about how the outline can best support development of the framework while maintaining feasibility and coherence. Consider both high-level structure and essential development requirements.
+</requirements>"""
+
+    def get_system_prompt(self) -> str:
+        """Return the system prompt for API calls"""
+        return self.system_prompt

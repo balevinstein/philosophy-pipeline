@@ -2,6 +2,7 @@ from typing import Dict, Any, List
 
 from src.phases.core.base_worker import WorkerInput, WorkerOutput
 from src.phases.core.worker_types import CriticWorker
+from src.phases.phase_three.stages.stage_two.prompts.paper_reader_prompts import PaperReaderPrompts
 
 
 class PaperReaderWorker(CriticWorker):
@@ -11,127 +12,14 @@ class PaperReaderWorker(CriticWorker):
         super().__init__(config)
         self._state = {"iterations": 0, "previous_analyses": []}
         self.stage_name = "paper_reader"
+        self.prompts = PaperReaderPrompts()
 
     def _construct_prompt(self, input_data: WorkerInput) -> str:
-        return self.construct_paper_analysis_prompt(
+        return self.prompts.construct_paper_analysis_prompt(
             draft_paper=input_data.context["draft_paper"],
             paper_overview=input_data.context["paper_overview"],
             sections_metadata=input_data.context["sections_metadata"]
         )
-
-    def construct_paper_analysis_prompt(self, draft_paper: str, paper_overview: Dict[str, Any], 
-                                      sections_metadata: List[Dict[str, Any]]) -> str:
-        """Generate prompt for analyzing the complete paper"""
-        
-        # Calculate paper statistics
-        total_words = len(draft_paper.split())
-        section_count = len(sections_metadata)
-        
-        return f"""
-You are an expert philosophy editor analyzing a complete draft paper for global presentation and writing quality. Your task is to identify paper-level issues that affect overall coherence, flow, and readability.
-
-PAPER OVERVIEW:
-Title: {paper_overview['thesis'][:100]}...
-Target Length: {paper_overview['target_words']} words
-Actual Length: {total_words} words
-Sections: {section_count}
-
-ANALYSIS FOCUS:
-Your analysis should focus on PRESENTATION and WRITING QUALITY, not intellectual content. The core arguments have been developed - you're evaluating how well they're presented as a unified paper.
-
-EVALUATION AREAS:
-
-1. GLOBAL ARGUMENT FLOW
-   - Does the paper build a coherent case from introduction to conclusion?
-   - Are key concepts introduced at the right time?
-   - Does each section clearly advance the main thesis?
-   - Are there logical gaps or jumps in the overall progression?
-
-2. SECTION TRANSITIONS
-   - Do sections connect smoothly to each other?
-   - Are there abrupt shifts or missing bridges?
-   - Do opening/closing paragraphs create good handoffs?
-   - Is the overall narrative flow clear?
-
-3. CONSISTENCY AND COHERENCE
-   - Is terminology used consistently throughout?
-   - Does the writing maintain consistent tone and style?
-   - Are there contradictions or tensions between sections?
-   - Is the thesis consistently supported throughout?
-
-4. REPETITION AND REDUNDANCY
-   - Are key points repeated unnecessarily across sections?
-   - Are examples or citations redundantly used?
-   - Could any content be consolidated or streamlined?
-   - Are transitions repetitive (e.g., "having established...")?
-
-5. PACING AND BALANCE
-   - Is appropriate depth given to each major component?
-   - Are any sections disproportionately long or short?
-   - Does the paper maintain reader engagement throughout?
-   - Is the conclusion satisfying given the buildup?
-
-6. PRESENTATION QUALITY
-   - Is the writing clear and accessible?
-   - Are technical terms properly introduced?
-   - Are examples well-integrated into arguments?
-   - Is the overall structure easy to follow?
-
-COMPLETE DRAFT PAPER:
-{draft_paper}
-
-OUTPUT FORMAT:
-
-# Global Analysis
-
-## Argument Flow Assessment
-[Evaluate how well the paper builds its case from start to finish]
-
-## Transition Quality Assessment
-[Analyze connections between sections and overall narrative flow]
-
-## Consistency Assessment
-[Check for consistent terminology, tone, and thesis support]
-
-## Repetition Analysis
-[Identify unnecessary repetition or redundancy]
-
-## Pacing and Balance Assessment
-[Evaluate word distribution and depth across sections]
-
-## Presentation Quality Assessment
-[Analyze clarity, accessibility, and overall readability]
-
-# Issues Identified
-
-## Major Issues
-[Significant problems that affect overall paper quality - limit to 3-5 most important]
-
-## Minor Issues
-[Smaller improvements that would enhance presentation - limit to 5-7 items]
-
-## Strengths
-[What works well in the current draft]
-
-# Integration Recommendations
-
-## Structural Improvements
-[Changes to section organization, transitions, or flow]
-
-## Content Consolidation
-[Opportunities to reduce repetition or improve efficiency]
-
-## Presentation Enhancements
-[Improvements to clarity, consistency, or accessibility]
-
-# Summary Assessment
-[Overall judgment: MAJOR INTEGRATION NEEDED, MINOR REFINEMENTS NEEDED, or MINIMAL CHANGES NEEDED]
-
-# Priority Actions
-[Top 3-5 most important changes for improving paper quality]
-
-Focus on actionable feedback that will improve the paper's presentation and coherence while respecting the existing intellectual content.
-"""
 
     def process_input(self, state: Dict[str, Any]) -> WorkerInput:
         """Prepare input for paper analysis"""

@@ -2,6 +2,7 @@ from typing import Dict, Any, List
 
 from src.phases.core.base_worker import WorkerInput, WorkerOutput
 from src.phases.core.worker_types import RefinementWorker
+from src.phases.phase_three.stages.stage_two.prompts.paper_integration_prompts import PaperIntegrationPrompts
 
 
 class PaperIntegrationWorker(RefinementWorker):
@@ -11,72 +12,14 @@ class PaperIntegrationWorker(RefinementWorker):
         super().__init__(config)
         self._state = {"iterations": 0, "integration_history": []}
         self.stage_name = "paper_integration"
+        self.prompts = PaperIntegrationPrompts()
 
     def _construct_prompt(self, input_data: WorkerInput) -> str:
-        return self.construct_integration_prompt(
+        return self.prompts.construct_integration_prompt(
             draft_paper=input_data.context["draft_paper"],
             paper_analysis=input_data.context["paper_analysis"],
             paper_overview=input_data.context["paper_overview"]
         )
-
-    def construct_integration_prompt(self, draft_paper: str, paper_analysis: str, 
-                                   paper_overview: Dict[str, Any]) -> str:
-        """Generate prompt for integrating improvements into the paper"""
-        
-        total_words = len(draft_paper.split())
-        
-        return f"""
-You are an expert philosophy editor implementing improvements to create a final, publication-ready paper. Your task is to integrate the recommended changes while preserving the core intellectual content.
-
-IMPORTANT CONTEXT: This is an automated API call in a paper generation pipeline. You cannot ask follow-up questions or request clarification. You must provide the COMPLETE final paper in this single response. Do not ask if I want you to continue or provide sections - deliver the full integrated paper immediately.
-
-PAPER OVERVIEW:
-Title: {paper_overview['thesis']}
-Target Length: {paper_overview['target_words']} words
-Current Length: {total_words} words
-Abstract: {paper_overview['abstract']}
-
-INTEGRATION PRINCIPLES:
-1. PRESERVE INTELLECTUAL CONTENT - Do not change core arguments, evidence, or philosophical positions
-2. IMPROVE PRESENTATION - Focus on flow, transitions, clarity, and coherence
-3. ELIMINATE REDUNDANCY - Remove unnecessary repetition while maintaining key points
-4. ENHANCE READABILITY - Improve accessibility without sacrificing rigor
-5. MAINTAIN THESIS FOCUS - Ensure every element clearly supports the main argument
-
-CURRENT DRAFT PAPER:
-{draft_paper}
-
-ANALYSIS AND RECOMMENDATIONS:
-{paper_analysis}
-
-INTEGRATION INSTRUCTIONS:
-
-1. STRUCTURAL IMPROVEMENTS
-   - Improve section transitions and overall flow
-   - Ensure clear progression from introduction to conclusion
-   - Fix any organizational issues identified in the analysis
-
-2. CONTENT CONSOLIDATION
-   - Eliminate unnecessary repetition across sections
-   - Streamline redundant explanations or examples
-   - Consolidate related points for better efficiency
-
-3. PRESENTATION ENHANCEMENTS
-   - Improve clarity and accessibility of complex ideas
-   - Ensure consistent terminology throughout
-   - Polish transitions between paragraphs and sections
-   - Enhance overall readability
-
-4. FINAL FORMATTING
-   - Clean up any formatting inconsistencies
-   - Ensure proper citation integration
-   - Polish language and style throughout
-
-OUTPUT FORMAT:
-Provide ONLY the complete final paper in markdown format. Start immediately with the title and continue through all sections. Do not include meta-commentary, summaries, or requests for continuation. The paper should be approximately {paper_overview['target_words']} words and must be complete and publication-ready.
-
-IMPORTANT: Create a concise, professional academic title (maximum 10 words) that captures the core contribution. Do NOT use the full thesis statement as the title.
-"""
 
     def process_input(self, state: Dict[str, Any]) -> WorkerInput:
         """Prepare input for paper integration"""

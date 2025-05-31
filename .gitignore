@@ -47,3 +47,22 @@ ENV/
 node_modules/
 jspm_packages/
 npm-debug.log
+
+# Temporary test scripts and comparisons
+test_phase_*_improvements.py
+test_phase_*_single_stage.py
+test_system_prompt_integration.py
+compare_phase_*_outputs.py
+test_archives/
+
+# Working notes and documentation
+phase_*_enhancement_progress.md
+advanced_prompt_patterns.md
+
+# Backup files and directories  
+*_backup.yaml
+outputs_pre_improvements/
+outputs_post_improvements/
+
+# Temporary test outputs
+test_phase_*_outputs/

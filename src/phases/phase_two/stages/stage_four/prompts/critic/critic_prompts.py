@@ -4,6 +4,9 @@ from typing import Dict, Any, List, Optional
 class OutlineCriticPrompts:
     """Prompts for critiquing detailed outline development in Phase II.4."""
 
+    def __init__(self):
+        self.system_prompt = """You are a rigorous philosophy journal reviewer evaluating paper outlines. Your role is to ensure outlines provide comprehensive blueprints for paper development. Be constructive but skeptical. Your critiques will guide refinement in an automated system."""
+
     def get_critique_prompt(
         self,
         outline_development: str,
@@ -103,68 +106,81 @@ This is iteration {iteration+1} of the outline development process. Please consi
 - Identify improvements already made and areas still needing attention
 """
         
-        prompt = f"""# Framework Integration Critique
+        prompt = f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
+You are critiquing the FRAMEWORK INTEGRATION phase, evaluating the foundational structure.
+Your critique will guide refinement to ensure proper accommodation of all key moves.
+The goal is an outline that serves as a comprehensive blueprint for Phase III writing.
+</context>
 
-## Task Description
-You are a philosophical writing expert evaluating the foundational structure for a philosophical paper. Your task is to critique the structural framework to ensure it properly accommodates all key moves, provides appropriate word count allocations, and creates a logical progression from introduction through conclusion.
-{previous_versions_text}
-## Outline to Critique
+<task>
+Critique the structural framework to ensure it properly accommodates all key moves.
+Evaluate word count allocations and logical progression.
+Assess whether the structure will support the paper's thesis and core contribution.
+Be rigorous but constructive in identifying weaknesses.
+</task>
+
+<input_data>
+OUTLINE TO CRITIQUE:
 ```
 {outline_development}
 ```
 
-## Context
-This outline should support a paper with the following thesis:
+MAIN THESIS:
 "{main_thesis}"
 
-The core contribution should be:
+CORE CONTRIBUTION:
 "{core_contribution}"
 
-The outline should incorporate these key argumentative moves:
+KEY ARGUMENTATIVE MOVES:
 {key_moves_list}
+{previous_versions_text}
+</input_data>
 
-## Critique Focus Areas
+<requirements>
 Evaluate the structural framework based on these specific criteria:
 
 1. **Key Move Accommodation**
-   - Does the structure properly accommodate all key moves?
-   - Is there explicit mapping of which sections develop which key moves?
-   - Are the key moves positioned in a logical sequence?
+   - Does structure properly accommodate all key moves?
+   - Is there explicit mapping of sections to key moves?
+   - Are key moves positioned in logical sequence?
 
 2. **Structural Organization**
-   - Is the outline properly organized with clear sections and subsections?
-   - Does the numbering system make logical sense?
-   - Is the hierarchical structure appropriate for a philosophical paper?
+   - Is outline organized with clear sections/subsections?
+   - Does numbering system make logical sense?
+   - Is hierarchical structure appropriate for philosophy paper?
 
 3. **Word Count Allocation**
    - Are word counts allocated appropriately across sections?
-   - Is sufficient space allocated to the most important arguments?
-   - Is the balance between introduction, main arguments, and conclusion appropriate?
+   - Is sufficient space allocated to most important arguments?
+   - Is balance between intro, main arguments, conclusion appropriate?
 
 4. **Logical Progression**
-   - Does the structure create a logical progression of ideas?
-   - Does the organization support the thesis and core contribution?
-   - Will this structure lead to a coherent philosophical argument?
+   - Does structure create logical progression of ideas?
+   - Does organization support thesis and core contribution?
+   - Will structure lead to coherent philosophical argument?
 
 5. **Completeness**
-   - Does the outline include all necessary sections (introduction, main arguments, objections, conclusion)?
-   - Is anything important missing from the structure?
-   - Is the foundational framework sufficiently detailed?
+   - Does outline include all necessary sections?
+   - Is anything important missing from structure?
+   - Is foundational framework sufficiently detailed?
+</requirements>
 
-## Provide Detailed Feedback
-For each focus area, provide specific observations, identifying both strengths and weaknesses. Be precise in your critique - point to specific sections or structural elements that need improvement.
+<output_format>
+# Detailed Feedback
+[For each criterion above, provide specific observations identifying strengths and weaknesses. Point to specific sections needing improvement.]
 
-## Summary Assessment
-Conclude with an overall assessment of the structural framework and specific recommendations for improvement. Choose one of these assessment categories:
+# Summary Assessment
+[Choose one category:]
+- MAJOR REVISION NEEDED: Structure needs significant reorganization
+- MINOR REFINEMENT NEEDED: Structure workable but needs important improvements
+- GOOD: Structure mostly effective with minor adjustments needed
+- VERY GOOD: Structure excellent with few improvements needed
+- EXCELLENT: Structure outstanding and ready for next phase
 
-- MAJOR REVISION NEEDED: The structure needs significant reorganization
-- MINOR REFINEMENT NEEDED: The structure is workable but needs important improvements
-- GOOD: The structure is mostly effective with minor adjustments needed
-- VERY GOOD: The structure is excellent with few improvements needed
-- EXCELLENT: The structure is outstanding and ready for the next phase
-
-Follow your assessment with specific, actionable recommendations for improvement.
-"""
+# Recommendations
+[Provide 3-5 specific, actionable recommendations for improvement]
+</output_format>"""
 
         return prompt
 
@@ -201,65 +217,78 @@ This is iteration {iteration+1} of the outline development process. Please consi
 - Identify improvements already made and areas still needing attention
 """
         
-        prompt = f"""# Literature Mapping Critique
+        prompt = f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
+You are critiquing the LITERATURE MAPPING phase, evaluating literature integration.
+Your critique will ensure proper scholarly engagement and positioning of arguments.
+The goal is clear guidance on how each source should be used in Phase III writing.
+</context>
 
-## Task Description
-You are a philosophical writing expert evaluating the literature mapping for a philosophical paper. Your task is to critique how literature has been mapped to different sections and how each source should be engaged.
-{previous_versions_text}
-## Literature Mapping to Critique
+<task>
+Critique how literature has been mapped to different sections.
+Evaluate whether sources are relevant and properly positioned.
+Assess the guidance on how each source should be engaged.
+Be rigorous in identifying gaps or misalignments.
+</task>
+
+<input_data>
+LITERATURE MAPPING TO CRITIQUE:
 ```
 {outline_development}
 ```
 
-## Context
-This mapping should support a paper with the following thesis:
+MAIN THESIS:
 "{main_thesis}"
 
-The core contribution should be:
+CORE CONTRIBUTION:
 "{core_contribution}"
+{previous_versions_text}
+</input_data>
 
-## Critique Focus Areas
+<requirements>
 Evaluate the literature mapping based on these specific criteria:
 
 1. **Comprehensiveness**
-   - Has literature been identified for all key sections of the outline?
-   - Is there a sufficient range of sources to support the philosophical arguments?
-   - Are there any sections that lack necessary literature support?
+   - Has literature been identified for all key sections?
+   - Is there sufficient range of sources for philosophical arguments?
+   - Are there sections lacking necessary literature support?
 
 2. **Relevance**
-   - Is the identified literature relevant to the sections it's mapped to?
-   - Does the literature directly support the arguments being made?
-   - Are the connections between literature and arguments clearly explained?
+   - Is identified literature relevant to its mapped sections?
+   - Does literature directly support arguments being made?
+   - Are connections between literature and arguments clear?
 
 3. **Engagement Guidance**
-   - Is there clear specification of how each source should be engaged?
-   - Is there guidance on which sources are supporting vs. contrasting?
+   - Is there clear specification of how to engage each source?
+   - Is guidance on supporting vs. contrasting sources clear?
    - Is there prioritization of primary vs. supporting sources?
 
 4. **Scholarly Integration**
-   - Does the mapping create opportunities for meaningful scholarly dialogue?
-   - Is there a balance between using literature as support and critically engaging with it?
-   - Does the literature mapping help position the paper within its field?
+   - Does mapping create opportunities for scholarly dialogue?
+   - Is there balance between using literature as support and critical engagement?
+   - Does mapping help position paper within its field?
 
 5. **Practical Usability**
-   - Would Phase III writers find this mapping clear and practical to follow?
-   - Is the organization logical and easy to navigate?
+   - Would Phase III writers find mapping clear and practical?
+   - Is organization logical and easy to navigate?
    - Is there sufficient detail about how to use each source?
+</requirements>
 
-## Provide Detailed Feedback
-For each focus area, provide specific observations, identifying both strengths and weaknesses. Be precise in your critique - point to specific mapping elements that need improvement.
+<output_format>
+# Detailed Feedback
+[For each criterion above, provide specific observations identifying strengths and weaknesses. Point to specific mapping elements needing improvement.]
 
-## Summary Assessment
-Conclude with an overall assessment of the literature mapping and specific recommendations for improvement. Choose one of these assessment categories:
+# Summary Assessment
+[Choose one category:]
+- MAJOR REVISION NEEDED: Literature mapping needs significant reorganization/expansion
+- MINOR REFINEMENT NEEDED: Mapping workable but needs important improvements
+- GOOD: Mapping mostly effective with minor adjustments needed
+- VERY GOOD: Mapping excellent with few improvements needed
+- EXCELLENT: Literature mapping outstanding and ready for next phase
 
-- MAJOR REVISION NEEDED: The literature mapping needs significant reorganization or expansion
-- MINOR REFINEMENT NEEDED: The mapping is workable but needs important improvements
-- GOOD: The mapping is mostly effective with minor adjustments needed
-- VERY GOOD: The mapping is excellent with few improvements needed
-- EXCELLENT: The literature mapping is outstanding and ready for the next phase
-
-Follow your assessment with specific, actionable recommendations for improvement.
-"""
+# Recommendations
+[Provide 3-5 specific, actionable recommendations for improvement]
+</output_format>"""
 
         return prompt
 
@@ -296,83 +325,97 @@ This is iteration {iteration+1} of the outline development process. Please consi
 - Identify improvements already made and areas still needing attention
 """
         
-        prompt = f"""# Content Development Critique
+        prompt = f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
+You are critiquing the CONTENT DEVELOPMENT phase, evaluating detailed content guidance.
+Your critique will ensure Phase III writers have complete, specific direction for writing.
+The goal is guidance so detailed that writers need not make significant content decisions.
+</context>
 
-## Task Description
-You are a philosophical writing expert evaluating the content guidance for a philosophical paper. Your task is to critique the detailed content guidance provided for each section to ensure it gives Phase III writers complete and specific direction for writing.
-{previous_versions_text}
-## Content Guidance to Critique
+<task>
+Critique the detailed content guidance provided for each section.
+Evaluate whether arguments are specified with clear premises and conclusions.
+Assess whether examples, objections, and responses are sufficiently detailed.
+Be rigorous in identifying vague or incomplete guidance.
+</task>
+
+<input_data>
+CONTENT GUIDANCE TO CRITIQUE:
 ```
 {outline_development}
 ```
 
-## Context
-This content guidance should support a paper with the following thesis:
+MAIN THESIS:
 "{main_thesis}"
 
-The core contribution should be:
+CORE CONTRIBUTION:
 "{core_contribution}"
+{previous_versions_text}
+</input_data>
 
-## Critique Focus Areas
+<requirements>
 Evaluate the content guidance based on these specific criteria:
 
 1. **Argument Specification**
-   - Are the primary arguments for each section specified with clear premises and conclusions?
-   - Is there sufficient detail about the logical structure of each argument?
-   - Would a Phase III writer understand exactly which points to make and how to develop them?
-   - Are the philosophical claims precise and well-articulated?
-   - Is the reasoning approach clearly specified?
+   - Are primary arguments specified with clear premises/conclusions?
+   - Is there sufficient detail about logical structure?
+   - Would Phase III writer understand exactly which points to make?
+   - Are philosophical claims precise and well-articulated?
+   - Is reasoning approach clearly specified?
 
 2. **Concept Definition**
    - Are key philosophical concepts explicitly identified?
-   - Is guidance provided on how to define and explain these concepts?
-   - Are technical terms clearly flagged with definitional guidance?
-   - Is the philosophical terminology appropriate and precise?
+   - Is guidance provided on how to define/explain concepts?
+   - Are technical terms flagged with definitional guidance?
+   - Is philosophical terminology appropriate and precise?
 
 3. **Example Integration**
    - Are specific examples clearly described with implementation details?
-   - Is there context for how examples should be presented and developed?
-   - Is it clear how examples support specific premises or conclusions?
-   - Is sufficient detail provided about how to construct each example?
+   - Is there context for how examples should be presented?
+   - Is it clear how examples support specific premises/conclusions?
+   - Is sufficient detail provided about constructing each example?
 
 4. **Literature Connection**
    - Are specific literature sources identified by name?
-   - Is there clear guidance on how to engage with each source?
-   - Is the engagement approach specified (support, critique, extend, etc.)?
+   - Is there clear guidance on engaging each source?
+   - Is engagement approach specified (support/critique/extend)?
    - Are key scholarly positions named and addressed?
 
 5. **Objection Handling**
-   - Are specific objections clearly articulated with their logical structure?
+   - Are specific objections articulated with logical structure?
    - Are detailed responses provided with clear counter-arguments?
-   - Is guidance given on how to present and address each objection?
-   - Are the strongest possible objections considered?
+   - Is guidance given on presenting/addressing each objection?
+   - Are strongest possible objections considered?
 
 6. **Content Specificity**
-   - Is the guidance concrete and specific rather than vague or general?
-   - Are there actionable details that a writer could implement directly?
-   - Is enough detail provided that a Phase III writer wouldn't need to make significant content decisions?
+   - Is guidance concrete and specific vs. vague/general?
+   - Are there actionable details writers could implement directly?
+   - Is enough detail provided to avoid significant content decisions?
    - Are there clear directives rather than open-ended suggestions?
 
 7. **Structure and Organization**
-   - Is the content properly organized with clear categories?
-   - Are the relationships between sections and subsections clear?
+   - Is content organized with clear categories?
+   - Are relationships between sections/subsections clear?
    - Are transitions between ideas explicitly addressed?
-   - Is there a logical flow to the content guidance?
+   - Is there logical flow to content guidance?
+</requirements>
 
-## Provide Detailed Feedback
-For each focus area, provide specific observations, identifying both strengths and weaknesses. Be precise in your critique - point to specific content elements that need improvement, and suggest how they could be enhanced.
+<output_format>
+# Detailed Feedback
+[For each criterion above, provide specific observations identifying strengths and weaknesses. Point to specific content elements needing improvement and suggest enhancements.]
 
-## Summary Assessment
-Conclude with an overall assessment of the content guidance and specific recommendations for improvement. Choose one of these assessment categories:
+# Summary Assessment
+[Choose one category:]
+- MAJOR REVISION NEEDED: Content guidance needs significant expansion/increased specificity
+- MINOR REFINEMENT NEEDED: Guidance workable but needs important details added
+- GOOD: Guidance mostly effective with minor additions needed
+- VERY GOOD: Guidance excellent with few improvements needed
+- EXCELLENT: Content guidance outstanding and ready for Phase III writers
 
-- MAJOR REVISION NEEDED: The content guidance needs significant expansion or increased specificity
-- MINOR REFINEMENT NEEDED: The guidance is workable but needs important details added
-- GOOD: The guidance is mostly effective with minor additions needed
-- VERY GOOD: The guidance is excellent with few improvements needed
-- EXCELLENT: The content guidance is outstanding and ready for Phase III writers
+# Recommendations
+[Provide 3-5 specific, actionable recommendations focusing on making guidance more specific, comprehensive, and directly implementable]
+</output_format>"""
 
-Follow your assessment with specific, actionable recommendations for improvement, focusing on how to make the content guidance more specific, comprehensive, and directly implementable by Phase III writers.
-"""
         return prompt
 
     def get_structural_validation_critique_prompt(
@@ -396,65 +439,77 @@ Follow your assessment with specific, actionable recommendations for improvement
         main_thesis = framework.get("main_thesis", "")
         core_contribution = framework.get("core_contribution", "")
         
-        prompt = f"""# Structural Validation Critique
+        prompt = f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
+You are critiquing the STRUCTURAL VALIDATION phase, evaluating the final comprehensive outline.
+Your critique will ensure the outline effectively delivers the paper's thesis through coherent structure.
+The goal is a validated outline ready to serve as a complete blueprint for Phase III.
+</context>
 
-## Task Description
-You are a philosophical writing expert evaluating the final validated outline for a philosophical paper. Your task is to critique the complete outline to ensure it effectively delivers the paper's thesis through a coherent, well-structured argument.
+<task>
+Critique the complete outline to ensure it creates a unified philosophical argument.
+Evaluate whether all sections work together to support the main thesis.
+Assess the balance, progression, and completeness of the final structure.
+Be rigorous in identifying any remaining weaknesses.
+</task>
 
-## Validated Outline to Critique
+<input_data>
+VALIDATED OUTLINE TO CRITIQUE:
 ```
 {outline_development}
 ```
 
-## Context
-This outline should support a paper with the following thesis:
+MAIN THESIS:
 "{main_thesis}"
 
-The core contribution should be:
+CORE CONTRIBUTION:
 "{core_contribution}"
+</input_data>
 
-## Critique Focus Areas
+<requirements>
 Evaluate the validated outline based on these specific criteria:
 
 1. **Overall Coherence**
-   - Does the outline create a unified, coherent philosophical argument?
-   - Do all sections work together to support the main thesis?
-   - Is there a clear logical progression from beginning to end?
+   - Does outline create unified, coherent philosophical argument?
+   - Do all sections work together to support main thesis?
+   - Is there clear logical progression from beginning to end?
 
 2. **Key Move Development**
    - Are all key moves properly developed and positioned?
    - Is there appropriate balance in how key moves are presented?
-   - Do the key moves build on each other effectively?
+   - Do key moves build on each other effectively?
 
 3. **Word Count Validation**
-   - Are the word count allocations appropriate for the complexity of each section?
+   - Are word count allocations appropriate for complexity of each section?
    - Is there sufficient space for all necessary arguments?
-   - Is the overall length appropriate for the intended publication?
+   - Is overall length appropriate for intended publication?
 
 4. **Introduction and Conclusion**
-   - Does the introduction effectively set up the paper's argument?
-   - Does the conclusion properly synthesize the paper's contribution?
-   - Do they work together to frame the paper effectively?
+   - Does introduction effectively set up paper's argument?
+   - Does conclusion properly synthesize paper's contribution?
+   - Do they work together to frame paper effectively?
 
 5. **Final Structure Completeness**
-   - Is the outline structure complete with all necessary elements?
-   - Is the level of detail appropriate for Phase III writers?
-   - Would this outline serve as a comprehensive blueprint for writing?
+   - Is outline structure complete with all necessary elements?
+   - Is level of detail appropriate for Phase III writers?
+   - Would this outline serve as comprehensive blueprint for writing?
+</requirements>
 
-## Provide Detailed Feedback
-For each focus area, provide specific observations, identifying both strengths and weaknesses. Be precise in your critique - point to specific elements of the validated outline that need improvement.
+<output_format>
+# Detailed Feedback
+[For each criterion above, provide specific observations identifying strengths and weaknesses. Point to specific elements needing improvement.]
 
-## Summary Assessment
-Conclude with an overall assessment of the validated outline and specific recommendations for improvement. Choose one of these assessment categories:
+# Summary Assessment
+[Choose one category:]
+- MAJOR REVISION NEEDED: Validated outline needs significant restructuring
+- MINOR REFINEMENT NEEDED: Outline workable but needs important improvements
+- GOOD: Outline mostly effective with minor adjustments needed
+- VERY GOOD: Outline excellent with few improvements needed
+- EXCELLENT: Validated outline outstanding and ready for next phase
 
-- MAJOR REVISION NEEDED: The validated outline needs significant restructuring
-- MINOR REFINEMENT NEEDED: The outline is workable but needs important improvements
-- GOOD: The outline is mostly effective with minor adjustments needed
-- VERY GOOD: The outline is excellent with few improvements needed
-- EXCELLENT: The validated outline is outstanding and ready for the next phase
-
-Follow your assessment with specific, actionable recommendations for improvement.
-"""
+# Recommendations
+[Provide 3-5 specific, actionable recommendations for improvement]
+</output_format>"""
 
         return prompt
 
@@ -496,4 +551,8 @@ Follow your assessment with specific, actionable recommendations for improvement
         """Legacy method - redirects to structural validation prompt"""
         return self.get_structural_validation_critique_prompt(
             outline_development, framework, developed_key_moves, iteration
-        ) 
+        )
+
+    def get_system_prompt(self) -> str:
+        """Return the system prompt for API calls"""
+        return self.system_prompt 

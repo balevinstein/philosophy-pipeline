@@ -5,6 +5,9 @@ import json
 class OutlineRefinementPrompts:
     """Prompts for refining detailed outline development in Phase II.4."""
 
+    def __init__(self):
+        self.system_prompt = """You are an expert philosophy editor refining paper outlines for publication. Your role is to transform outlines into comprehensive blueprints based on critique. You must produce polished, detailed outlines that guide subsequent paper development. Your refinements will be used in an automated pipeline."""
+
     def get_refinement_prompt(
         self,
         outline_development: str,
@@ -141,56 +144,68 @@ This is iteration {iteration+1} of the outline development process. Please consi
 - Focus on addressing the specific recommendations from the critique
 """
         
-        prompt = f"""# Framework Integration Refinement
+        prompt = f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
+You are refining the FRAMEWORK INTEGRATION phase based on critique.
+Your task is to implement improvements while maintaining existing framework strengths.
+The goal is a structure that properly accommodates all key moves with logical progression.
+</context>
 
-## Task Description
-You are a philosophical writing expert refining the foundational structure for a philosophical paper. Your task is to implement improvements based on a critique while maintaining the existing framework. The goal is to create a structure that properly accommodates all key moves, provides appropriate word count allocations, and creates a logical progression.
-{previous_versions_text}
-## Current Structure
+<task>
+Refine the foundational structure for a philosophical paper based on critique.
+Implement improvements while maintaining existing framework strengths.
+Create a structure that properly accommodates all key moves.
+Ensure appropriate word count allocations and logical progression.
+</task>
+
+<input_data>
+CURRENT STRUCTURE:
 ```
 {outline_development}
 ```
 
-## Critique
+CRITIQUE:
 ```
 {critique}
 ```
 
-## Assessment: {assessment}
+ASSESSMENT: {assessment}
 
-## Recommendations
+RECOMMENDATIONS:
 {recommendations_list}
 
-## Paper Framework Information
-
-### Main Thesis:
+MAIN THESIS:
 {main_thesis}
 
-### Core Contribution:
+CORE CONTRIBUTION:
 {core_contribution}
 
-### Key Moves:
+KEY MOVES:
 {key_moves_list}
+{previous_versions_text}
+</input_data>
 
-## Refinement Instructions
-1. Carefully implement the critic's recommendations while preserving the strengths of the current structure
-2. Ensure that all key moves are properly accommodated with explicit mapping
+<requirements>
+1. Carefully implement critic's recommendations while preserving strengths
+2. Ensure all key moves properly accommodated with explicit mapping
 3. Maintain appropriate word count allocations
-4. Preserve or enhance the logical flow from introduction through conclusion
-5. Keep the same general format and style, but improve the structure's organization and completeness
+4. Preserve or enhance logical flow from introduction through conclusion
+5. Keep same general format and style but improve organization/completeness
+</requirements>
 
-## Expected Output
-Provide a revised structure that addresses the critique while maintaining coherence. Your output should be a complete revised version, not just the changes. Include:
+<output_format>
+# Revised Structure
+[Provide complete revised outline addressing critique while maintaining coherence]
+
+Include:
 - Updated section/subsection structure
 - Explicit key move mappings
 - Revised word count allocations
 - Brief descriptions of each section
 
-## Change Documentation
-At the end of your response, include a "Changes Made" section that lists the specific refinements you implemented, each as a bullet point.
-
-Now, revise the structure to address the critique while maintaining a strong foundation for the philosophical paper.
-"""
+# Changes Made
+[List specific refinements implemented as bullet points]
+</output_format>"""
 
         return prompt
 
@@ -233,53 +248,65 @@ This is iteration {iteration+1} of the outline development process. Please consi
 - Focus on addressing the specific recommendations from the critique
 """
         
-        prompt = f"""# Literature Mapping Refinement
+        prompt = f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
+You are refining the LITERATURE MAPPING phase based on critique.
+Your task is to implement improvements while maintaining existing mapping approach.
+The goal is comprehensive literature mapping with clear usage guidance.
+</context>
 
-## Task Description
-You are a philosophical writing expert refining the literature mapping for a philosophical paper. Your task is to implement improvements based on a critique while maintaining the existing mapping approach. The goal is to create a comprehensive literature mapping that clearly indicates which sources should be used in each section and how.
-{previous_versions_text}
-## Current Literature Mapping
+<task>
+Refine the literature mapping for a philosophical paper based on critique.
+Implement improvements while maintaining existing mapping approach.
+Create comprehensive mapping indicating which sources for each section.
+Clarify how each source should be engaged.
+</task>
+
+<input_data>
+CURRENT LITERATURE MAPPING:
 ```
 {outline_development}
 ```
 
-## Critique
+CRITIQUE:
 ```
 {critique}
 ```
 
-## Assessment: {assessment}
+ASSESSMENT: {assessment}
 
-## Recommendations
+RECOMMENDATIONS:
 {recommendations_list}
 
-## Paper Framework Information
-
-### Main Thesis:
+MAIN THESIS:
 {main_thesis}
 
-### Core Contribution:
+CORE CONTRIBUTION:
 {core_contribution}
+{previous_versions_text}
+</input_data>
 
-## Refinement Instructions
-1. Carefully implement the critic's recommendations while preserving the strengths of the current mapping
+<requirements>
+1. Carefully implement critic's recommendations while preserving strengths
 2. Ensure all key sections have appropriate literature identified
-3. Clarify how each source should be engaged (supporting, contrasting, extending)
+3. Clarify how each source should be engaged (supporting/contrasting/extending)
 4. Prioritize sources for each section (primary vs supporting)
-5. Maintain the organization by section but improve the quality and specificity of mappings
+5. Maintain organization by section but improve quality/specificity of mappings
+</requirements>
 
-## Expected Output
-Provide a revised literature mapping that addresses the critique while maintaining coherence. Your output should be a complete revised version, not just the changes. Include:
+<output_format>
+# Revised Literature Mapping
+[Provide complete revised mapping addressing critique while maintaining coherence]
+
+Include:
 - Comprehensive literature mappings for all sections
 - Clear guidance on how each source should be used
 - Prioritization of sources
-- Brief notes on why specific sources are relevant to specific sections
+- Brief notes on why specific sources are relevant
 
-## Change Documentation
-At the end of your response, include a "Changes Made" section that lists the specific refinements you implemented, each as a bullet point.
-
-Now, revise the literature mapping to address the critique while maintaining a clear organization by section.
-"""
+# Changes Made
+[List specific refinements implemented as bullet points]
+</output_format>"""
 
         return prompt
 
@@ -312,82 +339,98 @@ Now, revise the literature mapping to address the critique while maintaining a c
 There are {len(previous_versions)} versions in the history. Use this information to avoid repeating problems that have already been addressed and build on improvements already made.
 """
         
-        prompt = f"""# Content Development Refinement
+        prompt = f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
+You are refining the CONTENT DEVELOPMENT phase based on critique.
+Your task is to create highly detailed, specific content guidance.
+The goal is comprehensive direction for Phase III writers.
+</context>
 
-## Task Description
-You are a philosophical writing expert refining the content guidance for a philosophical paper. Your task is to implement the critic's recommendations to create highly detailed, specific content guidance that provides Phase III writers with comprehensive direction for each section.
-{previous_versions_text}
-## Current Content Guidance
+<task>
+Refine the content guidance for a philosophical paper based on critique.
+Implement critic's recommendations to create detailed, specific guidance.
+Provide comprehensive direction that Phase III writers can follow directly.
+Transform vague suggestions into concrete directives.
+</task>
+
+<input_data>
+CURRENT CONTENT GUIDANCE:
 ```
 {outline_development}
 ```
 
-## Critique to Address
+CRITIQUE TO ADDRESS:
 ```
 {critique}
 ```
 
-## Context
-This content guidance should support a paper with the following thesis:
+MAIN THESIS:
 "{main_thesis}"
 
-The core contribution should be:
+CORE CONTRIBUTION:
 "{core_contribution}"
+{previous_versions_text}
+</input_data>
 
-## Refinement Instructions
-Implement the critic's recommendations to create substantially improved content guidance. Your refinements should:
+<requirements>
+Implement critic's recommendations to substantially improve content guidance:
 
-1. Make argument specifications much more detailed with:
+1. Make argument specifications more detailed:
    - Precise premises and conclusions for each argument
    - Clear logical structure and reasoning approaches
    - Explicit philosophical claims with supporting points
-   - Specific explanations of how arguments advance the main thesis
+   - Specific explanations of how arguments advance thesis
 
-2. Enhance concept definitions by:
-   - Explicitly identifying key philosophical terms
-   - Providing specific definitional guidance for each term
-   - Clarifying technical terminology with suggested explanations
-   - Specifying philosophical traditions or sources for definitions
+2. Enhance concept definitions:
+   - Explicitly identify key philosophical terms
+   - Provide specific definitional guidance
+   - Clarify technical terminology with explanations
+   - Specify philosophical traditions or sources
 
-3. Improve example integration with:
-   - Detailed descriptions of specific examples to use
-   - Explicit guidance on how to present and develop examples
-   - Clear explanations of how examples support specific arguments
-   - Step-by-step instructions for constructing thought experiments
+3. Improve example integration:
+   - Detailed descriptions of specific examples
+   - Explicit guidance on presentation/development
+   - Clear explanations of how examples support arguments
+   - Step-by-step instructions for thought experiments
 
-4. Strengthen literature connections through:
-   - Named references to specific scholars and sources
-   - Explicit guidance on how to engage with each source
-   - Clear identification of positions to support or critique
-   - Specific quotes or ideas to highlight from key sources
+4. Strengthen literature connections:
+   - Named references to specific scholars/sources
+   - Explicit guidance on engaging each source
+   - Clear identification of positions to support/critique
+   - Specific quotes or ideas to highlight
 
-5. Develop more specific objection handling by:
-   - Articulating precise objections with their logical structure
-   - Providing detailed counter-arguments and responses
-   - Including step-by-step guidance on addressing objections
-   - Identifying the strongest challenges and how to overcome them
+5. Develop specific objection handling:
+   - Articulate precise objections with logical structure
+   - Provide detailed counter-arguments
+   - Include step-by-step guidance on addressing objections
+   - Identify strongest challenges and how to overcome
 
-6. Increase overall specificity by:
-   - Converting vague suggestions into concrete directives
-   - Providing actionable details that a writer could implement directly
-   - Including enough guidance that Phase III writers need not make significant content decisions
-   - Using clear, directive language rather than open-ended suggestions
+6. Increase overall specificity:
+   - Convert vague suggestions into concrete directives
+   - Provide actionable details for direct implementation
+   - Include enough guidance to avoid significant content decisions
+   - Use clear, directive language
+</requirements>
 
-## Output Format
-Present your refined content guidance in a structured format using Markdown. For each section, include:
+<output_format>
+# Refined Content Guidance
 
-- **Core Arguments**: Detailed descriptions of specific arguments with premises and conclusions
-- **Key Concepts**: Important terms to define with suggested definitions
-- **Example Development**: Specific examples/analogies with guidance on presentation
-- **Objections & Responses**: Specific counterarguments and detailed responses
-- **Philosophical Positions**: Named positions to address, defend, or critique
-- **Methodological Notes**: Approach to use in developing the section
+For each section, include structured categories:
 
-Maintain the original section structure but dramatically enhance the content guidance for each section and subsection. Be extremely specific and detailed in your guidance - your goal is to provide a comprehensive content blueprint that Phase III writers can follow directly.
+- **Core Arguments**: Detailed descriptions with premises and conclusions
+- **Key Concepts**: Important terms with suggested definitions
+- **Example Development**: Specific examples with presentation guidance
+- **Objections & Responses**: Specific counterarguments and responses
+- **Philosophical Positions**: Named positions to address/defend/critique
+- **Methodological Notes**: Approach for developing the section
 
-## Implementation Approach
-First identify the critic's most significant recommendations, then systematically enhance each section's content guidance to address these issues while maintaining the original structure. Focus particularly on adding specificity and actionable details where the critic noted deficiencies.
-"""
+Maintain original section structure but dramatically enhance content guidance.
+Be extremely specific and detailed - provide comprehensive content blueprint.
+
+# Implementation Approach
+[Briefly describe how you addressed the critique's main recommendations]
+</output_format>"""
+        
         return prompt
 
     def get_structural_validation_refinement_prompt(
@@ -429,55 +472,67 @@ This is iteration {iteration+1} of the outline development process. Please consi
 - Focus on addressing the specific recommendations from the critique
 """
         
-        prompt = f"""# Structural Validation Refinement
+        prompt = f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
+You are refining the STRUCTURAL VALIDATION phase based on critique.
+Your task is to finalize the comprehensive outline.
+The goal is a validated outline serving as blueprint for Phase II.5 and Phase III.
+</context>
 
-## Task Description
-You are a philosophical writing expert finalizing a comprehensive outline for a philosophical paper. Your task is to implement improvements based on a critique while maintaining the overall structure and content guidance. The goal is to create a final validated outline that will serve as the blueprint for Phase II.5 and ultimately Phase III writing.
-{previous_versions_text}
-## Current Validated Outline
+<task>
+Finalize a comprehensive outline for a philosophical paper based on critique.
+Implement improvements while maintaining overall structure and content guidance.
+Create final validated outline as blueprint for subsequent phases.
+Ensure coherence, completeness, and logical flow.
+</task>
+
+<input_data>
+CURRENT VALIDATED OUTLINE:
 ```
 {outline_development}
 ```
 
-## Critique
+CRITIQUE:
 ```
 {critique}
 ```
 
-## Assessment: {assessment}
+ASSESSMENT: {assessment}
 
-## Recommendations
+RECOMMENDATIONS:
 {recommendations_list}
 
-## Paper Framework Information
-
-### Main Thesis:
+MAIN THESIS:
 {main_thesis}
 
-### Core Contribution:
+CORE CONTRIBUTION:
 {core_contribution}
+{previous_versions_text}
+</input_data>
 
-## Refinement Instructions
-1. Carefully implement the critic's recommendations while preserving the strengths of the current outline
-2. Ensure that the overall coherence of the outline is maintained or enhanced
-3. Verify that all key moves are properly developed and sequenced
-4. Check that word count allocations are appropriate for each section's complexity
-5. Confirm that the introduction and conclusion effectively frame the paper
-6. Maintain the structured format while making necessary adjustments
+<requirements>
+1. Carefully implement critic's recommendations while preserving strengths
+2. Ensure overall coherence of outline is maintained or enhanced
+3. Verify all key moves properly developed and sequenced
+4. Check word count allocations appropriate for section complexity
+5. Confirm introduction/conclusion effectively frame paper
+6. Maintain structured format while making necessary adjustments
+</requirements>
 
-## Expected Output
-Provide a final validated outline that addresses the critique while maintaining coherence. Your output should be a complete revised version, not just the changes. Include:
+<output_format>
+# Final Validated Outline
+[Provide complete revised outline addressing critique while maintaining coherence]
+
+Include:
 - Complete section/subsection structure with word counts
 - Key move mappings
 - Structured content guidance for each section
 - Clear transitions between sections
 - Any explanations needed for substantive changes
 
-## Change Documentation
-At the end of your response, include a "Changes Made" section that lists the specific refinements you implemented, each as a bullet point.
-
-Now, finalize the outline to address the critique while ensuring it provides a comprehensive blueprint for the philosophical paper.
-"""
+# Changes Made
+[List specific refinements implemented as bullet points]
+</output_format>"""
 
         return prompt
 
@@ -525,4 +580,8 @@ Now, finalize the outline to address the critique while ensuring it provides a c
         """Legacy method - redirects to structural validation prompt"""
         return self.get_structural_validation_refinement_prompt(
             outline_development, critique, assessment, recommendations, framework, developed_key_moves, None, iteration
-        ) 
+        )
+
+    def get_system_prompt(self) -> str:
+        """Return the system prompt for API calls"""
+        return self.system_prompt 

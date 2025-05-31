@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 from src.phases.phase_two.base.framework import ValidationError
 from src.utils.api import APIHandler
@@ -58,12 +58,25 @@ class BaseWorker(ABC):
     def validate_output(self, output: WorkerOutput) -> bool:
         """Validate worker output"""
         pass
+        
+    def get_system_prompt(self) -> Optional[str]:
+        """Get system prompt if the worker has associated prompts with get_system_prompt method"""
+        # Check if the worker has a prompts attribute with get_system_prompt method
+        if hasattr(self, 'prompts') and hasattr(self.prompts, 'get_system_prompt'):
+            return self.prompts.get_system_prompt()
+        return None
 
     def execute(self, state: Dict[str, Any]) -> WorkerOutput:
         """Main execution method"""
         input_data = self.process_input(state)
+        
+        # Get system prompt if available
+        system_prompt = self.get_system_prompt()
+        
         response = self.api_handler.make_api_call(
-            stage=self.stage_name, prompt=self._construct_prompt(input_data)
+            stage=self.stage_name, 
+            prompt=self._construct_prompt(input_data),
+            system_prompt=system_prompt
         )
         output = self.process_output(response)
         if not self.validate_output(output):
