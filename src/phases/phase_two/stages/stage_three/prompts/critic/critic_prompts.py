@@ -5,7 +5,7 @@ class MoveCriticPrompts:
     """Prompts for critiquing key move development in Phase II.3."""
 
     def __init__(self):
-        self.system_prompt = """You are a rigorous philosophy journal reviewer evaluating key argumentative moves. Your role is to ensure content is publication-ready and can be directly inserted into the final paper. Do not be polite or deferential. Be constructive but skeptical. Your critique will guide refinement in an automated system."""
+        self.system_prompt = """You are a hostile philosophy journal reviewer for Analysis. Your job is to find real flaws that would cause paper rejection. Be a "helpful asshole" - brutally critical but constructive. The automated pipeline DEPENDS on your harsh criticism to produce publishable papers. Channel the reviewer who made you cry at your first conference. DO NOT BE POLITE. DO NOT DEFER. Find the weaknesses that would embarrass the author."""
 
     def get_initial_critique_prompt(
         self,
@@ -32,16 +32,22 @@ class MoveCriticPrompts:
 
         prompt = f"""<context>
 You are part of an automated philosophy paper generation pipeline. This is Phase II.3 (Key Moves Development).
-Your role is crucial in ensuring that content developed is ready for direct inclusion in the final paper.
-The goal is content requiring no further intellectual development - later phases only integrate and refine prose.
-Your critique must be genuine and rigorous - the pipeline depends on honest criticism to succeed.
+Your role is to act as a hostile journal reviewer who will reject papers with philosophical weaknesses.
+The pipeline DEPENDS on you finding real flaws that would cause rejection at a top journal.
+You must be a "helpful asshole" - brutally critical but constructive in identifying what needs fixing.
+BE AS CRITICAL AS YOU WOULD BE REVIEWING FOR ANALYSIS. DO NOT BE POLITE OR DEFERENTIAL.
+IMPORTANT: Find REAL weaknesses - do not manufacture problems. If something is genuinely strong, acknowledge it.
 </context>
 
 <task>
-Critique the development of this philosophical key move.
-Evaluate whether the content is written in publication-ready style for direct insertion into the final paper.
-Identify any meta-commentary, incomplete arguments, or deferred intellectual decisions.
-Consider the 4,000-word limit - each move should be approximately 500-600 words maximum.
+Apply the "skeptical friend" approach to this philosophical key move:
+1. ISOLATE specific problematic claims (quote them exactly)
+2. ARTICULATE the strongest skeptical objections to each claim
+3. IDENTIFY philosophical patterns that would trigger rejection
+4. SUGGEST minimal modifications to address fatal flaws
+
+This content must be publication-ready for direct insertion into the final paper.
+Each move should be approximately 500-600 words maximum.
 </task>
 
 <current_development>
@@ -54,44 +60,75 @@ Main thesis: "{main_thesis}"
 </move_context>
 
 <requirements>
-Evaluate whether the content is truly publication-ready:
+PHASE 1: CLAIM ISOLATION AND SKEPTICAL ANALYSIS
+For EACH major claim in the development:
+1. Quote the specific claim verbatim
+2. Identify hidden assumptions that a hostile reviewer would attack
+3. Generate the STRONGEST counterexample or objection
+4. Assess if the claim extends beyond available evidence
+5. Check if the level of certainty matches the justification
 
-1. CONTENT FORMAT: Is it written as actual paper content or as meta-commentary/analysis?
-2. COMPLETENESS: Are all necessary arguments fully developed? (Note: not every move requires examples or literature citations)
-3. PUBLICATION READINESS: Could this content be directly inserted into a published paper?
-4. INTELLECTUAL DECISIONS: Have all intellectual decisions been made or are some deferred?
-5. SCHOLARLY STYLE: Is it written in appropriate scholarly philosophical prose?
-6. BREVITY: Does it stay within the target length (500-600 words)? Is it concise and focused?
-7. APPROACH SUITABILITY: Is the chosen approach appropriate for this specific move?
+PHASE 2: PATTERN DETECTION CHECKLIST
+Systematically check for these rejection triggers:
+☐ Causality claimed without mechanism (quote the claim)
+☐ Scope generalization beyond evidence (quote the claim)
+☐ Undefined quantifiers ("many", "often", "typically") (quote the claim)
+☐ Descriptive-normative slides (quote where "is" becomes "ought")
+☐ Self-undermining arguments (quote the contradiction)
+☐ Single-factor explanations for complex phenomena (quote the claim)
+☐ Novel connections without adequate justification (quote the claim)
+☐ Embedded assumptions readers won't share (identify them)
+☐ Examples that are merely decorative vs genuinely illuminating (quote and explain why they fail)
+☐ Missing examples where abstract argument needs grounding (identify where concrete cases would help)
 
-RED FLAGS to identify:
-- Phrases like "This move would..." or "This section demonstrates..." (planning language)
-- Headings like "Move Analysis," "Argument Structure," or similar analytical frameworks
-- Bullet points or outline format instead of prose paragraphs
-- Unnecessary examples when the argument is already clear without them
-- Excessive literature citations that don't directly advance the argument
-- "This could be expanded..." or similar deferral language
-- Content that significantly exceeds the target length
+NOTE: This checklist is not exhaustive. Identify ANY problematic patterns you notice, even if not listed above.
+
+PHASE 3: PUBLICATION READINESS ASSESSMENT
+☐ Is it written as actual paper content (not meta-commentary)?
+☐ Are all intellectual decisions made (not deferred)?
+☐ Is the prose appropriate for Analysis journal?
+☐ Does it stay within 500-600 words?
+☐ Would a specialist find this convincing?
+
+RED FLAGS that guarantee rejection:
+- Planning language ("This move would...", "This section demonstrates...")
+- Analytical frameworks instead of philosophical argument
+- Outline format instead of prose paragraphs
+- Deferral language ("This could be expanded...")
+- Claims that would embarrass the author at a conference
 </requirements>
 
 <output_format>
-# Critique
-[Provide a detailed critique of whether the content is truly publication-ready, addressing each requirement above. Be specific about issues that need fixing to make the content directly usable.]
+# Skeptical Friend Analysis
+
+## Isolated Claims and Fatal Objections
+[For each major claim:
+"CLAIM: [exact quote]"
+HIDDEN ASSUMPTIONS: [what the claim assumes]
+HOSTILE OBJECTION: [strongest counterargument]
+VERDICT: [defensible as-is / needs qualification / fatally flawed]]
+
+## Pattern Detection Results
+[List each detected pattern with the specific quote and why it's problematic]
+
+## Publication Readiness Issues
+[List specific problems that prevent direct publication]
 
 # Summary Assessment
 [MAJOR REVISION / MINOR REFINEMENT / MINIMAL CHANGES]
-[Brief explanation of assessment]
 
-Next steps: [List 2-5 specific, actionable recommendations for making the content publication-ready]
+MOST DAMAGING FLAW: [The single biggest problem that would cause rejection]
+
+Next steps: [2-5 specific fixes that would satisfy a hostile reviewer]
 </output_format>
 
 <guidelines>
-- Be rigorous but constructive
-- Focus on publication readiness, not just argument quality
-- Provide specific, actionable recommendations
-- Balance critique with recognition of strengths
-- Evaluate whether examples and literature are necessary
-- Remember: the goal is content that can be directly inserted into the final paper
+- Channel your inner hostile reviewer - what would make YOU reject this?
+- Quote specific sentences that would trigger eyebrow raises at a conference
+- For each flaw, suggest the MINIMAL fix that would satisfy a skeptic
+- Remember: vague claims and unjustified connections kill papers
+- If you wouldn't stake your reputation on a claim, flag it
+- BUT: Find REAL problems, not manufactured ones - strong work deserves recognition
 </guidelines>"""
 
         return prompt

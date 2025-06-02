@@ -65,10 +65,12 @@ class KeyMovesPrompts:
     ) -> str:
         critic_prompts = KeyMovesCriticPrompts()
         return critic_prompts.construct_prompt(
-            current_moves=current_moves,
+            key_moves=current_moves,
             framework=framework,
             outline=outline,
-            lit_readings=lit_readings,
-            lit_synthesis=lit_synthesis,
-            lit_narrative=lit_narrative,
+            literature={
+                "readings": lit_readings,
+                "synthesis": lit_synthesis,
+                "narrative": lit_narrative,
+            },
         )

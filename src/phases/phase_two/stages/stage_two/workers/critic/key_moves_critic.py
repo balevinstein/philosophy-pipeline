@@ -130,7 +130,9 @@ class KeyMovesCriticWorker(CriticWorker):
             return False
 
         # We'll require some key sections but allow flexibility in others
-        required_sections = ["Scratch Work", "Summary Assessment"]
+        # Accept either "Summary Assessment" or "Summary Recommendation"
+        required_sections = ["Scratch Work"]
+        required_summary_sections = ["Summary Assessment", "Summary Recommendation"]
 
         sections = content.split("# ")
         section_titles = [s.split("\n")[0].strip() for s in sections if s]
@@ -145,9 +147,22 @@ class KeyMovesCriticWorker(CriticWorker):
             print(f"Failed: Missing required sections: {missing_sections}")
             return False
 
+        # Check if we have at least one of the summary sections
+        has_summary = any(section in section_titles for section in required_summary_sections)
+        if not has_summary:
+            print(f"Failed: Missing summary section. Need one of: {required_summary_sections}")
+            return False
+
         # Verify we have a valid summary assessment
-        summary = content.split("# Summary Assessment")[-1].strip()
-        valid_assessments = ["MAJOR REVISION", "MINOR REFINEMENT", "MINIMAL CHANGES"]
+        summary = ""
+        for section_name in required_summary_sections:
+            if f"# {section_name}" in content:
+                summary = content.split(f"# {section_name}")[-1].strip()
+                break
+
+        valid_assessments = ["MAJOR REVISION", "MINOR REFINEMENT", "MINIMAL CHANGES", 
+                           "ACCEPT AS IS", "MAJOR REVISIONS", "MINOR REFINEMENTS", 
+                           "FUNDAMENTAL REWORK"]
         if not any(assessment in summary for assessment in valid_assessments):
             print("Failed: Invalid or missing summary assessment")
             return False

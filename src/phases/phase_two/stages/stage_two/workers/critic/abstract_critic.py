@@ -73,33 +73,70 @@ class AbstractCriticWorker(CriticWorker):
             self._state["iterations"] += 1
             self._state["previous_critiques"].append(response)
 
-            # Extract validation assessment
-            validation_section = response.split("# Validation Assessment")[1].split(
-                "#"
-            )[0]
-            validation_results = {
-                "scope_appropriate": "yes" in validation_section.lower(),
-                "clearly_articulated": "yes" in validation_section.lower(),
-                "sufficiently_original": "yes" in validation_section.lower(),
-                "feasibly_developable": "yes" in validation_section.lower(),
-            }
+            # Check which format we're dealing with
+            is_new_format = "# Skeptical Friend Analysis" in response
 
-            # Extract summary assessment
-            summary = self._extract_summary(response)
+            if is_new_format:
+                # For new format, extract key information differently
+                validation_results = {
+                    "scope_appropriate": "feasible" in response.lower(),
+                    "clearly_articulated": "clear" in response.lower() and "vague" not in response.lower(),
+                    "sufficiently_original": True,  # New format doesn't explicitly check this
+                    "feasibly_developable": "feasible" in response.lower(),
+                }
+                
+                # Extract summary assessment
+                summary = self._extract_summary(response)
+                
+                # Extract most damaging flaw
+                most_damaging = ""
+                if "MOST DAMAGING FLAW" in response:
+                    most_damaging = response.split("MOST DAMAGING FLAW")[1].split("\n")[0].strip()
+                
+                return WorkerOutput(
+                    modifications={
+                        "content": response.strip(),
+                        "validation_results": validation_results,
+                        "most_damaging_flaw": most_damaging,
+                        "iteration": self._state["iterations"],
+                    },
+                    notes={
+                        "summary_assessment": summary,
+                        "validation_status": validation_results,
+                        "format": "skeptical_friend",
+                    },
+                    status="completed",
+                )
+            else:
+                # Original format processing
+                # Extract validation assessment
+                validation_section = response.split("# Validation Assessment")[1].split(
+                    "#"
+                )[0]
+                validation_results = {
+                    "scope_appropriate": "yes" in validation_section.lower(),
+                    "clearly_articulated": "yes" in validation_section.lower(),
+                    "sufficiently_original": "yes" in validation_section.lower(),
+                    "feasibly_developable": "yes" in validation_section.lower(),
+                }
 
-            return WorkerOutput(
-                modifications={
-                    "content": response.strip(),
-                    "validation_results": validation_results,
-                    "framework_analysis": self._extract_framework_analysis(response),
-                    "iteration": self._state["iterations"],
-                },
-                notes={
-                    "summary_assessment": summary,
-                    "validation_status": validation_results,
-                },
-                status="completed",
-            )
+                # Extract summary assessment
+                summary = self._extract_summary(response)
+
+                return WorkerOutput(
+                    modifications={
+                        "content": response.strip(),
+                        "validation_results": validation_results,
+                        "framework_analysis": self._extract_framework_analysis(response),
+                        "iteration": self._state["iterations"],
+                    },
+                    notes={
+                        "summary_assessment": summary,
+                        "validation_status": validation_results,
+                        "format": "original",
+                    },
+                    status="completed",
+                )
 
         except Exception as e:
             return WorkerOutput(
@@ -117,8 +154,8 @@ class AbstractCriticWorker(CriticWorker):
         if not content:
             return False
 
-        # Check for required sections
-        required_sections = [
+        # Check for required sections (either old format OR new skeptical friend format)
+        old_format_sections = [
             "Scratch Work",
             "Abstract Analysis",
             "Framework Components Analysis",
@@ -127,12 +164,23 @@ class AbstractCriticWorker(CriticWorker):
             "Summary Assessment",
         ]
 
-        for section in required_sections:
-            if f"# {section}" not in content:
-                return False
+        new_format_sections = [
+            "Skeptical Friend Analysis",
+            "Abstract Claim Isolation",
+            "Pattern Detection Results",
+            "Framework Alignment Issues",
+            "Summary Assessment",
+        ]
 
-        # Check Framework Components subsections
-        if not all(
+        # Check if we have either the old format or the new format
+        has_old_format = all(f"# {section}" in content for section in old_format_sections)
+        has_new_format = all(f"# {section}" in content or f"## {section}" in content for section in new_format_sections)
+
+        if not (has_old_format or has_new_format):
+            return False
+
+        # If using old format, check Framework Components subsections
+        if has_old_format and not all(
             subsection in content
             for subsection in [
                 "## Main Thesis",
@@ -143,18 +191,7 @@ class AbstractCriticWorker(CriticWorker):
         ):
             return False
 
-        # Verify validation assessment completeness
-        validation_items = [
-            "Scope appropriate",
-            "Clearly articulated",
-            "Sufficiently original",
-            "Feasibly developable",
-        ]
-        validation_section = content.split("# Validation Assessment")[1].split("#")[0]
-        if not all(item in validation_section for item in validation_items):
-            return False
-
-        # Verify summary assessment is valid
+        # Verify summary assessment is valid (works for both formats)
         summary = content.split("# Summary Assessment")[-1].strip()
         valid_assessments = ["MAJOR REVISION", "MINOR REFINEMENT", "MINIMAL CHANGES"]
         if not any(assessment in summary for assessment in valid_assessments):
