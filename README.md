@@ -53,7 +53,7 @@ The pipeline recently generated: **"Attention Mechanisms and the Foundations of 
 - **Hybrid Architecture**: Python orchestration with Rivet for complex AI workflows
 - **Production Ready**: Full pipeline tested and working reliably
 
-Detailed system design available in `architecture-doc.md`
+Detailed system design available in `docs/architecture-doc.md`
 
 ## Getting Started
 
@@ -303,21 +303,14 @@ outputs/
 
 ```
 philosophy-pipeline/
-├── config/
-│   └── conceptual_config.yaml     # Pipeline configuration
-├── outputs/                       # Generated content (local only)
-├── papers/                        # PDF literature (add manually)
-├── rivet/                         # Rivet server and workflows
-├── src/
-│   ├── phases/
-│   │   ├── core/                  # Base worker types
-│   │   ├── phase_one/             # Topic generation
-│   │   ├── phase_two/             # Framework development
-│   │   └── phase_three/           # Paper writing and integration
-│   └── utils/                     # API and utility functions
-├── run_phase_*.py                 # Execution scripts
-├── architecture-doc.md            # Detailed system architecture
-└── requirements.txt
+├── docs/                    # Documentation
+│   ├── prompts/            # Prompt engineering guides
+│   └── archive/            # Archived documentation
+├── tests/                  # Test suite
+├── src/                    # Source code
+├── papers/                 # Literature PDFs
+├── outputs/               # Generated outputs
+└── config/                # Configuration files
 ```
 
 ## Configuration
@@ -391,3 +384,29 @@ The pipeline demonstrates that **systematic LLM-driven philosophical research is
 ## License
 
 [License information to be added]
+
+### Running Tests
+
+The test suite is located in the `tests/` directory. To run tests:
+
+```bash
+# Run all tests
+python -m pytest tests/
+
+# Run specific test file
+python -m pytest tests/test_key_moves_worker.py
+```
+
+### Project Structure
+
+```
+philosophy-pipeline/
+├── docs/                    # Documentation
+│   ├── prompts/            # Prompt engineering guides
+│   └── archive/            # Archived documentation
+├── tests/                  # Test suite
+├── src/                    # Source code
+├── papers/                 # Literature PDFs
+├── outputs/               # Generated outputs
+└── config/                # Configuration files
+```

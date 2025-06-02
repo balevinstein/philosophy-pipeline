@@ -361,6 +361,28 @@ The pipeline successfully demonstrates:
 4. **Interactive Refinement**: Human-in-the-loop refinement capabilities
 5. **Multi-Journal Targeting**: Adaptations for different publication venues
 
+## Project Organization
+
+### Directory Structure
+
+```
+philosophy-pipeline/
+├── docs/                    # Documentation
+│   ├── prompts/            # Prompt engineering guides
+│   └── archive/            # Archived documentation
+├── tests/                  # Test suite
+├── src/                    # Source code
+├── papers/                 # Literature PDFs
+├── outputs/               # Generated outputs
+└── config/                # Configuration files
+```
+
+### Documentation
+
+- **Architecture Documentation**: This file (`docs/architecture-doc.md`) provides complete system architecture details
+- **Prompt Engineering**: Located in `docs/prompts/`, contains guides and patterns for effective prompting
+- **Archived Documentation**: Completed mechanical improvements and other historical docs in `docs/archive/`
+
 ## Conclusion
 
 The AI-driven philosophy paper generator represents a **complete, working system** for automated academic paper generation. The architecture successfully balances:
