@@ -2,140 +2,215 @@ from typing import Dict, Any, List
 
 from src.phases.core.base_worker import WorkerInput, WorkerOutput
 from src.phases.core.worker_types import CriticWorker
-from src.phases.phase_three.stages.stage_two.prompts.paper_reader_prompts import PaperReaderPrompts
+from src.phases.phase_three.stages.stage_two.prompts.reader.paper_reader_prompts import PaperReaderPrompts
 
 
 class PaperReaderWorker(CriticWorker):
-    """Analyzes complete draft paper for global issues and presentation quality"""
+    """Worker for analyzing complete draft papers for global issues and presentation quality"""
     
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
+        self.prompts = PaperReaderPrompts()
         self._state = {"iterations": 0, "previous_analyses": []}
         self.stage_name = "paper_reader"
-        self.prompts = PaperReaderPrompts()
 
-    def _construct_prompt(self, input_data: WorkerInput) -> str:
-        return self.prompts.construct_paper_analysis_prompt(
-            draft_paper=input_data.context["draft_paper"],
-            paper_overview=input_data.context["paper_overview"],
-            sections_metadata=input_data.context["sections_metadata"]
+    def _construct_prompt(self, input_data: Dict[str, Any]) -> str:
+        """Construct the analysis prompt"""
+        return self.prompts.construct_analysis_prompt(
+            input_data["draft_paper"],
+            input_data["paper_overview"]
         )
 
-    def process_input(self, state: Dict[str, Any]) -> WorkerInput:
+    def get_system_prompt(self) -> str:
+        """Get the system prompt for API calls"""
+        return self.prompts.system_prompt
+
+    def process_input(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """Prepare input for paper analysis"""
-        return WorkerInput(
-            context={
-                "draft_paper": state["draft_paper"],
-                "paper_overview": state["paper_overview"],
-                "sections_metadata": state["sections_metadata"]
-            },
-            parameters={
-                "stage": "paper_reader",
-                "analysis_type": "global_integration"
-            }
-        )
+        return {
+            "draft_paper": input_data["draft_paper"],
+            "paper_overview": input_data["paper_overview"]
+        }
 
-    def process_output(self, api_response: str) -> WorkerOutput:
-        """Process the paper analysis response"""
+    def process_output(self, response: str) -> WorkerOutput:
+        """Process analysis response into structured output"""
         try:
-            # Extract key sections from the analysis
-            analysis_sections = self._parse_analysis_sections(api_response)
+            # Update state
+            self._state["iterations"] += 1
+            self._state["previous_analyses"].append(response)
+
+            # Extract summary assessment
+            summary_assessment = self._extract_summary_assessment(response)
             
-            # Determine assessment level
-            assessment = self._extract_assessment(api_response)
+            # Extract critical issues
+            critical_issues = self._extract_critical_issues(response)
             
             # Extract priority actions
-            priority_actions = self._extract_priority_actions(api_response)
+            priority_actions = self._extract_priority_actions(response)
             
+            # Extract strengths
+            strengths = self._extract_strengths(response)
+
             return WorkerOutput(
-                status="completed",
                 modifications={
-                    "analysis_content": api_response,
-                    "summary_assessment": assessment,
-                    "major_issues": analysis_sections.get("major_issues", []),
-                    "minor_issues": analysis_sections.get("minor_issues", []),
-                    "strengths": analysis_sections.get("strengths", []),
+                    "content": response.strip(),
+                    "analysis_content": response.strip(),  # Add alias for backwards compatibility
+                    "summary_assessment": summary_assessment,
+                    "critical_issues": critical_issues,
+                    "major_issues": critical_issues.get("major", []),  # Add flat access
+                    "minor_issues": critical_issues.get("minor", []),  # Add flat access
                     "priority_actions": priority_actions,
-                    "structural_improvements": analysis_sections.get("structural_improvements", []),
-                    "content_consolidation": analysis_sections.get("content_consolidation", []),
-                    "presentation_enhancements": analysis_sections.get("presentation_enhancements", [])
+                    "strengths": strengths,
+                    "iteration": self._state["iterations"],
                 },
-                notes="Paper analysis completed successfully"
+                notes={
+                    "assessment_level": summary_assessment,
+                    "major_issues_count": len(critical_issues.get("major", [])),
+                    "minor_issues_count": len(critical_issues.get("minor", [])),
+                },
+                status="completed",
             )
+
         except Exception as e:
             return WorkerOutput(
-                status="failed",
                 modifications={},
-                notes=f"Failed to process paper analysis: {str(e)}"
+                notes={"error": f"Failed to process analysis response: {str(e)}"},
+                status="failed",
             )
 
-    def _parse_analysis_sections(self, content: str) -> Dict[str, list]:
-        """Extract structured information from analysis"""
-        sections = {}
-        
-        # Basic parsing - look for bullet points under each major section
-        major_issues = self._extract_list_items(content, "## Major Issues")
-        minor_issues = self._extract_list_items(content, "## Minor Issues")
-        strengths = self._extract_list_items(content, "## Strengths")
-        structural_improvements = self._extract_list_items(content, "## Structural Improvements")
-        content_consolidation = self._extract_list_items(content, "## Content Consolidation")
-        presentation_enhancements = self._extract_list_items(content, "## Presentation Enhancements")
-        
-        return {
-            "major_issues": major_issues,
-            "minor_issues": minor_issues,
-            "strengths": strengths,
-            "structural_improvements": structural_improvements,
-            "content_consolidation": content_consolidation,
-            "presentation_enhancements": presentation_enhancements
-        }
+    def _extract_summary_assessment(self, response: str) -> str:
+        """Extract the summary assessment from the analysis"""
+        try:
+            summary_section = response.split("# Summary Assessment")[-1].strip()
+            
+            if "MAJOR REVISION NEEDED" in summary_section:
+                return "MAJOR_REVISION"
+            elif "MINOR REFINEMENT NEEDED" in summary_section:
+                return "MINOR_REFINEMENT"
+            elif "MINIMAL CHANGES NEEDED" in summary_section:
+                return "MINIMAL_CHANGES"
+            else:
+                return "UNCLEAR"
+        except:
+            return "UNCLEAR"
 
-    def _extract_list_items(self, content: str, section_header: str) -> list:
-        """Extract list items from a section"""
-        items = []
-        lines = content.split('\n')
-        in_section = False
-        
-        for line in lines:
-            if section_header in line:
-                in_section = True
-                continue
-            elif line.startswith('##') and in_section:
-                break
-            elif in_section and (line.startswith('- ') or line.startswith('* ')):
-                items.append(line[2:].strip())
-        
-        return items
+    def _extract_critical_issues(self, response: str) -> Dict[str, list]:
+        """Extract major and minor issues from the analysis"""
+        try:
+            issues_section = response.split("# Critical Issues Identified")[1].split("#")[0]
+            
+            major_issues = []
+            minor_issues = []
+            
+            if "## Major Issues" in issues_section:
+                major_content = issues_section.split("## Major Issues")[1].split("##")[0]
+                major_issues = [line.strip() for line in major_content.split("\n") if line.strip() and not line.startswith("[")]
+            
+            if "## Minor Issues" in issues_section:
+                minor_content = issues_section.split("## Minor Issues")[1].split("##")[0]
+                minor_issues = [line.strip() for line in minor_content.split("\n") if line.strip() and not line.startswith("[")]
+            
+            return {"major": major_issues, "minor": minor_issues}
+        except:
+            return {"major": [], "minor": []}
 
-    def _extract_assessment(self, content: str) -> str:
-        """Extract the summary assessment"""
-        if "MAJOR INTEGRATION NEEDED" in content:
-            return "MAJOR_INTEGRATION_NEEDED"
-        elif "MINOR REFINEMENTS NEEDED" in content:
-            return "MINOR_REFINEMENTS_NEEDED"
-        elif "MINIMAL CHANGES NEEDED" in content:
-            return "MINIMAL_CHANGES_NEEDED"
-        else:
-            return "ASSESSMENT_UNCLEAR"
+    def _extract_priority_actions(self, response: str) -> List[str]:
+        """Extract priority actions from the analysis"""
+        try:
+            # Look for priority actions section
+            if "# Priority Actions" in response:
+                actions_section = response.split("# Priority Actions")[1].split("#")[0]
+                actions = []
+                for line in actions_section.split("\n"):
+                    if line.strip() and (line.startswith('- ') or line.startswith('* ') or line.startswith('1.') or line.startswith('2.') or line.startswith('3.')):
+                        # Clean up the line
+                        clean_line = line.strip()
+                        # Remove list markers
+                        for marker in ['- ', '* ', '1. ', '2. ', '3. ', '4. ', '5. ']:
+                            if clean_line.startswith(marker):
+                                clean_line = clean_line[len(marker):].strip()
+                                break
+                        if clean_line:
+                            actions.append(clean_line)
+                return actions
+            else:
+                # If no priority actions section, extract from improvement recommendations
+                if "# Improvement Recommendations" in response:
+                    rec_section = response.split("# Improvement Recommendations")[1].split("#")[0]
+                    actions = []
+                    for line in rec_section.split("\n")[:5]:  # Take first 5 lines as priority
+                        if line.strip() and (line.startswith('- ') or line.startswith('* ')):
+                            actions.append(line[2:].strip())
+                    return actions
+            return []
+        except:
+            return []
 
-    def _extract_priority_actions(self, content: str) -> list:
-        """Extract priority actions"""
-        return self._extract_list_items(content, "# Priority Actions")
+    def _extract_strengths(self, response: str) -> List[str]:
+        """Extract strengths from the analysis"""
+        try:
+            # Look for strengths or positive elements
+            if "## Positive Elements" in response:
+                strengths_section = response.split("## Positive Elements")[1].split("##")[0]
+            elif "## Strengths" in response:
+                strengths_section = response.split("## Strengths")[1].split("##")[0]
+            else:
+                return []
+            
+            strengths = []
+            for line in strengths_section.split("\n"):
+                if line.strip() and (line.startswith('- ') or line.startswith('* ')):
+                    strengths.append(line[2:].strip())
+            return strengths
+        except:
+            return []
 
     def validate_output(self, output: WorkerOutput) -> bool:
-        """Validate the paper analysis output"""
-        if output.status != "completed":
+        """Verify output meets requirements"""
+        print("\nValidating paper analysis...")
+
+        if not output.modifications:
+            print("Failed: No modifications returned")
             return False
-            
-        required_fields = {
-            "analysis_content", "summary_assessment", "major_issues", 
-            "minor_issues", "priority_actions"
-        }
+
+        content = output.modifications.get("content", "")
+        if not content:
+            print("Failed: No content in analysis")
+            return False
+
+        # Check for required sections
+        required_sections = [
+            "# Scratch Work",
+            "# Global Analysis", 
+            "# Critical Issues Identified",
+            "# Integration Assessment",
+            "# Improvement Recommendations",
+            "# Summary Assessment",
+        ]
+
+        missing_sections = [section for section in required_sections if section not in content]
+        if missing_sections:
+            print(f"Failed: Missing required sections: {missing_sections}")
+            return False
+
+        # Check for subsections within Global Analysis
+        analysis_subsections = [
+            "## Thesis Development Assessment",
+            "## Argument Structure Assessment",
+            "## Literature Integration Assessment", 
+            "## Writing Quality Assessment",
+        ]
         
-        missing_fields = required_fields - set(output.modifications.keys())
-        if missing_fields:
-            print(f"Missing required fields: {missing_fields}")
+        missing_analysis = [sub for sub in analysis_subsections if sub not in content]
+        if missing_analysis:
+            print(f"Failed: Missing analysis subsections: {missing_analysis}")
             return False
-            
-        print("Paper analysis validation passed!")
+
+        # Verify summary assessment is valid
+        summary_assessment = output.modifications.get("summary_assessment", "")
+        if summary_assessment not in ["MAJOR_REVISION", "MINOR_REFINEMENT", "MINIMAL_CHANGES"]:
+            print(f"Failed: Invalid summary assessment: {summary_assessment}")
+            return False
+
+        print(f"Analysis validation passed! Assessment: {summary_assessment}")
         return True 
