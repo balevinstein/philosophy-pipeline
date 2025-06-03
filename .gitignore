@@ -69,3 +69,7 @@ outputs_post_improvements/
 
 # Temporary test outputs
 test_phase_*_outputs/
+
+# PDF files and extracted text
+Analysis_papers/
+text_extracts/
