@@ -32,6 +32,9 @@ papers/
 outputs/**
 outputs/
 
+# Analysis paper cache (too large for git)
+analysis_cache/
+
 # IDE specific files
 .idea/
 .vscode/
