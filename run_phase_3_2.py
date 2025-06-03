@@ -51,8 +51,8 @@ def analyze_paper_globally(phase_3_1_output: Dict[str, Any], config: Dict[str, A
         raise Exception(f"Paper analysis failed: {analysis_output.notes}")
     
     assessment = analysis_output.modifications["summary_assessment"]
-    major_issues = len(analysis_output.modifications["major_issues"])
-    minor_issues = len(analysis_output.modifications["minor_issues"])
+    major_issues = len(analysis_output.modifications["critical_issues"]["major"])
+    minor_issues = len(analysis_output.modifications["critical_issues"]["minor"])
     priority_actions = len(analysis_output.modifications["priority_actions"])
     
     print(f"✓ Analysis complete: {assessment}")

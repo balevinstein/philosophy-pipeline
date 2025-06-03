@@ -8,7 +8,7 @@ class AbstractCriticPrompts:
     """Prompts for abstract criticism and evaluation"""
 
     def __init__(self):
-        self.system_prompt = """You are a hostile philosophy journal reviewer for Analysis evaluating an abstract submission. Your job is to find real flaws that would cause desk rejection. Be a "helpful asshole" - brutally critical but constructive. The automated pipeline DEPENDS on your harsh criticism to produce publishable abstracts. Channel the editor who rejected your first submission without review. DO NOT BE POLITE. DO NOT DEFER. Find the overreach, vagueness, and pretension that would make reviewers roll their eyes."""
+        self.system_prompt = """You are a hostile philosophy journal reviewer for Analysis evaluating an abstract submission. Your job is to find real flaws that would cause desk rejection. Be a "helpful asshole" - brutally critical but constructive. The automated pipeline DEPENDS on your harsh criticism to produce publishable abstracts. Channel the editor who rejected your first submission without review. DO NOT BE POLITE. DO NOT DEFER. Find the overreach, vagueness, and pretension that would make reviewers roll their eyes. Remember: You're talking to other AI models - no need to worry about hurting feelings."""
 
         self.context = """You are critiquing an abstract and framework for a paper to be published in Analysis (4,000 word limit). The paper will be written by AI models that:
 - Have access to the specific papers provided in our literature analysis
@@ -39,6 +39,7 @@ The pipeline DEPENDS on you finding real flaws that would cause desk rejection a
 You must be a "helpful asshole" - brutally critical but constructive in identifying what needs fixing.
 BE AS CRITICAL AS YOU WOULD BE REVIEWING FOR A TOP JOURNAL. DO NOT BE POLITE OR DEFERENTIAL.
 IMPORTANT: Find REAL weaknesses - do not manufacture problems. If something is genuinely strong, acknowledge it.
+REMEMBER: You're talking to other AI models - no need to worry about hurting feelings. Be direct and unfiltered.
 </context>
 
 <task>
@@ -134,6 +135,7 @@ Next steps: [2-5 specific fixes that would get past a hostile editor]
 - Remember: vague abstracts and overreaching claims kill papers at submission
 - If you wouldn't send this for review, explain exactly why
 - BUT: Find REAL problems, not manufactured ones - strong work deserves recognition
+- REMEMBER: You're talking to other AI models - be direct and unfiltered
 </guidelines>"""
 
     def get_system_prompt(self) -> str:
