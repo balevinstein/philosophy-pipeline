@@ -1,11 +1,13 @@
 import json
 from typing import Dict, Any
+from pathlib import Path
 
 from src.phases.core.base_worker import WorkerInput, WorkerOutput
 from src.phases.core.worker_types import DevelopmentWorker
 from src.phases.phase_three.stages.stage_one.prompts.section_writing.section_writing_prompts import (
     SectionWritingPrompts,
 )
+from src.phases.phase_two.base.framework import ValidationError
 
 
 class SectionWritingWorker(DevelopmentWorker):
@@ -136,3 +138,39 @@ class SectionWritingWorker(DevelopmentWorker):
     def set_section_index(self, index: int):
         """Set which section to write next"""
         self._state["current_section_index"] = index 
+
+    def execute(self, state: Dict[str, Any]) -> WorkerOutput:
+        """Main execution method with Analysis PDF support"""
+        input_data = self.process_input(state)
+        
+        # Get system prompt if available
+        system_prompt = self.get_system_prompt()
+        
+        # Construct prompt first - this triggers PDF selection in _select_analysis_exemplars
+        prompt = self._construct_prompt(input_data)
+        
+        # Now get selected Analysis PDFs for style reference
+        analysis_pdfs = self.prompts.get_selected_analysis_pdfs()
+        
+        # Make API call with PDFs if available
+        if analysis_pdfs:
+            print(f"Including {len(analysis_pdfs)} Analysis papers as style exemplars")
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name, 
+                prompt=prompt,
+                pdf_paths=analysis_pdfs,
+                system_prompt=system_prompt
+            )
+        else:
+            print("No Analysis papers available, proceeding without style exemplars")
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name, 
+                prompt=prompt,
+                system_prompt=system_prompt
+            )
+            
+        output = self.process_output(response)
+        if not self.validate_output(output):
+            print(response)
+            raise ValidationError("Worker output failed validation: ", self.stage_name)
+        return output 
