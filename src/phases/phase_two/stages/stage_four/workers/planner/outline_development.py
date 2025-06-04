@@ -1,6 +1,7 @@
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
 import json
+from pathlib import Path
 
 from src.phases.core.base_worker import BaseWorker, WorkerInput, WorkerOutput
 from src.phases.phase_two.stages.stage_four.prompts.development.development_prompts import OutlineDevelopmentPrompts
@@ -13,6 +14,7 @@ class OutlineDevelopmentWorker(BaseWorker):
     Worker for developing the detailed outline according to the development plan.
     
     Processes the outline according to the current development phase.
+    Enhanced with Analysis PDF integration for structural guidance.
     """
     
     def __init__(self, config: Dict[str, Any]):
@@ -22,10 +24,32 @@ class OutlineDevelopmentWorker(BaseWorker):
         self.prompts = OutlineDevelopmentPrompts()
         self.api_handler = APIHandler(config)  # Initialize API handler
         self.stage_name = "detailed_outline_development"  # For compatibility with BaseWorker
+        self.selected_analysis_pdfs = []  # Store selected Analysis PDFs
+
+    def _get_analysis_pdfs(self, pdf_count: int = 1) -> list:
+        """Select Analysis PDFs for structural guidance"""
+        analysis_dir = Path("Analysis_papers")
+        if not analysis_dir.exists():
+            print(f"⚠️ Analysis papers directory not found at {analysis_dir}")
+            return []
+        
+        pdf_files = list(analysis_dir.glob("*.pdf"))
+        if not pdf_files:
+            print(f"⚠️ No PDF files found in {analysis_dir}")
+            return []
+        
+        # Select PDFs with preference for structural variety
+        selected_pdfs = pdf_files[:pdf_count]
+        
+        print(f"📑 Including {len(selected_pdfs)} Analysis paper(s) for {self.name} guidance:")
+        for pdf in selected_pdfs:
+            print(f"   • {pdf.name}")
+        
+        return selected_pdfs
     
     def run(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Run the outline development worker.
+        Run the outline development worker with Analysis PDF support.
         
         Args:
             input_data: Dictionary containing the input data for the worker
@@ -38,15 +62,28 @@ class OutlineDevelopmentWorker(BaseWorker):
         # Process input
         worker_input = self.process_input(input_data)
         
+        # Select Analysis PDFs for structural guidance
+        development_phase = input_data.get("development_phase", "framework_integration")
+        pdf_count = 1 if development_phase == "framework_integration" else 1  # Could vary by phase
+        analysis_pdfs = self._get_analysis_pdfs(pdf_count=pdf_count)
+        self.selected_analysis_pdfs = analysis_pdfs
+        
         # Construct prompt
         prompt = self._construct_prompt(worker_input)
         
-        # Call LLM
+        # Call LLM with Analysis PDFs if available
         print(f"\nExecuting LLM call for {self.name}...")
-        response = self.api_handler.make_api_call(
-            stage=self.stage_name,
-            prompt=prompt
-        )
+        if self.selected_analysis_pdfs:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                pdf_paths=self.selected_analysis_pdfs
+            )
+        else:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt
+            )
         
         # Process output
         output = self._process_llm_response(response)
