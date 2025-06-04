@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import time
 from pathlib import Path
 from typing import Dict, Any
 
@@ -31,7 +32,7 @@ def load_phase_3_1_output() -> Dict[str, Any]:
 
 
 def analyze_paper_globally(phase_3_1_output: Dict[str, Any], config: Dict[str, Any]) -> Dict[str, Any]:
-    """Analyze the complete paper for global issues and integration opportunities"""
+    """Analyze the complete paper for global issues"""
     
     print(f"\n🔍 Stage 1: Global Paper Analysis")
     print(f"Analyzing complete draft for flow, transitions, and coherence...")
@@ -41,8 +42,7 @@ def analyze_paper_globally(phase_3_1_output: Dict[str, Any], config: Dict[str, A
     # Prepare analysis state
     analysis_state = {
         "draft_paper": phase_3_1_output["draft_paper"],
-        "paper_overview": phase_3_1_output["paper_overview"],
-        "sections_metadata": phase_3_1_output["sections_metadata"]
+        "paper_overview": phase_3_1_output["paper_overview"]
     }
     
     # Execute analysis
@@ -50,15 +50,12 @@ def analyze_paper_globally(phase_3_1_output: Dict[str, Any], config: Dict[str, A
     if analysis_output.status != "completed":
         raise Exception(f"Paper analysis failed: {analysis_output.notes}")
     
-    assessment = analysis_output.modifications["summary_assessment"]
-    major_issues = len(analysis_output.modifications["critical_issues"]["major"])
-    minor_issues = len(analysis_output.modifications["critical_issues"]["minor"])
-    priority_actions = len(analysis_output.modifications["priority_actions"])
+    analysis_content = analysis_output.modifications["analysis_content"]
+    summary_assessment = analysis_output.modifications["summary_assessment"]
+    major_issues = len(analysis_output.modifications["major_issues"])
     
-    print(f"✓ Analysis complete: {assessment}")
-    print(f"  Major issues: {major_issues}")
-    print(f"  Minor issues: {minor_issues}")
-    print(f"  Priority actions: {priority_actions}")
+    print(f"✓ Analysis complete: {summary_assessment}")
+    print(f"  Major issues identified: {major_issues}")
     
     return analysis_output.modifications
 
@@ -98,66 +95,52 @@ def integrate_improvements(phase_3_1_output: Dict[str, Any], analysis_results: D
     return integration_output.modifications
 
 
-def save_final_paper(integration_results: Dict[str, Any], analysis_results: Dict[str, Any],
+def save_final_paper(integration_results: Dict[str, Any], analysis_results: Dict[str, Any], 
                     phase_3_1_output: Dict[str, Any]) -> str:
-    """Save the final paper and create summary metadata"""
+    """Save the final paper and metadata"""
     
     final_paper = integration_results["final_paper"]
     
-    # Save the final paper
+    # Save final paper
     final_paper_file = "./outputs/final_paper.md"
     with open(final_paper_file, "w") as f:
         f.write(final_paper)
     
-    # Debug: Save the full response content
-    response_content = integration_results.get("response_content", "")
-    if response_content:
-        with open("./outputs/debug_integration_response.txt", "w") as f:
-            f.write(response_content)
-        print(f"DEBUG: Saved full response to debug_integration_response.txt ({len(response_content)} chars)")
-    
-    # Create comprehensive metadata
-    final_metadata = {
-        "metadata": {
+    # Create metadata
+    metadata = {
+        "phase_3_2_metadata": {
             "timestamp": "2024-01-01T00:00:00",  # Would be actual timestamp
-            "phase": "III.2", 
-            "stage": "paper_integration",
-            "final_word_count": integration_results["final_word_count"],
-            "target_word_count": phase_3_1_output["paper_overview"]["target_words"],
-            "sections_count": len(phase_3_1_output["sections_metadata"]),
-            "global_assessment": analysis_results["summary_assessment"],
-            "improvements_made": len(integration_results["changes_made"])
-        },
-        "paper_overview": phase_3_1_output["paper_overview"],
-        "analysis_summary": {
-            "assessment": analysis_results["summary_assessment"],
+            "analysis_assessment": analysis_results["summary_assessment"],
             "major_issues_found": len(analysis_results["major_issues"]),
             "minor_issues_found": len(analysis_results["minor_issues"]),
-            "priority_actions": analysis_results["priority_actions"],
-            "strengths_identified": analysis_results["strengths"]
+            "integration_summary": integration_results["integration_summary"],
+            "changes_implemented": len(integration_results["changes_made"]),
+            "final_statistics": integration_results["final_statistics"]
         },
-        "integration_summary": {
-            "changes_made": integration_results["changes_made"],
-            "final_statistics": integration_results["final_statistics"],
-            "integration_notes": integration_results["integration_summary"]
-        },
-        "pipeline_history": {
-            "phase_3_1_sections_refined": phase_3_1_output["metadata"]["sections_refined"],
-            "phase_3_1_total_words": phase_3_1_output["metadata"]["total_words_written"],
-            "final_improvement": "Global integration and presentation enhancement"
+        "phase_3_1_metadata": phase_3_1_output["metadata"],
+        "paper_overview": phase_3_1_output["paper_overview"],
+        "word_count_progression": {
+            "phase_3_1_draft": phase_3_1_output["metadata"]["total_words"],
+            "final_paper": integration_results["final_word_count"],
+            "target": phase_3_1_output["paper_overview"]["target_words"]
         }
     }
     
     # Save metadata
     metadata_file = "./outputs/final_paper_metadata.json"
     with open(metadata_file, "w") as f:
-        json.dump(final_metadata, f, indent=2)
+        json.dump(metadata, f, indent=2)
+    
+    print(f"📄 Final paper: {final_paper_file}")
+    print(f"📊 Metadata: {metadata_file}")
     
     return final_paper_file
 
 
 def run_phase_3_2():
     """Run Phase III.2: Global Paper Integration and Final Polish"""
+    
+    start_time = time.time()
     
     print("\n" + "="*70)
     print("PHASE III.2: Global Paper Integration")
@@ -190,6 +173,9 @@ def run_phase_3_2():
         print("\n4. Saving final publication-ready paper...")
         final_paper_file = save_final_paper(integration_results, analysis_results, phase_3_1_output)
         
+        end_time = time.time()
+        duration = end_time - start_time
+        
         final_word_count = integration_results["final_word_count"]
         target_words = phase_3_1_output["paper_overview"]["target_words"]
         word_efficiency = (final_word_count / target_words) * 100
@@ -197,34 +183,25 @@ def run_phase_3_2():
         print(f"\n✓ Phase III.2 complete!")
         print(f"\n📋 FINAL PAPER SUMMARY:")
         print(f"   📄 Final paper: {final_paper_file}")
-        print(f"   📊 Word count: {final_word_count} ({word_efficiency:.1f}% of target)")
-        print(f"   ✨ Global assessment: {analysis_results['summary_assessment']}")
-        print(f"   🔧 Improvements made: {len(integration_results['changes_made'])}")
-        
-        print(f"\n📈 PIPELINE SUMMARY:")
-        print(f"   Phase III.1 → Phase III.2 improvement:")
-        print(f"   • Sections refined in III.1: {phase_3_1_output['metadata']['sections_refined']}")
-        print(f"   • Global improvements in III.2: {len(integration_results['changes_made'])}")
-        print(f"   • Final presentation quality: Publication-ready")
-        
-        # Show specific improvements made
-        print(f"\n🎯 KEY IMPROVEMENTS:")
-        for i, change in enumerate(integration_results["changes_made"][:5], 1):
-            print(f"   {i}. {change}")
-        if len(integration_results["changes_made"]) > 5:
-            print(f"   ... and {len(integration_results['changes_made']) - 5} more")
+        print(f"   📊 Final word count: {final_word_count} words")
+        print(f"   🎯 Target achievement: {word_efficiency:.1f}% of {target_words} word target")
+        print(f"   📈 Word progression: {phase_3_1_output['metadata']['total_words']} → {final_word_count}")
+        print(f"   🔧 Changes implemented: {len(integration_results['changes_made'])}")
+        print(f"   ⚡ Analysis assessment: {analysis_results['summary_assessment']}")
+        print(f"⏱️  Phase III.2 duration: {duration:.1f} seconds ({duration/60:.1f} minutes)")
         
         return {
             "final_paper_file": final_paper_file,
             "final_word_count": final_word_count,
-            "global_assessment": analysis_results["summary_assessment"],
-            "improvements_made": len(integration_results["changes_made"]),
+            "target_achievement": word_efficiency,
+            "analysis_assessment": analysis_results["summary_assessment"],
+            "changes_implemented": len(integration_results["changes_made"]),
             "success": True
         }
         
     except Exception as e:
-        print(f"\n❌ Error in Phase III.2: {str(e)}")
-        sys.exit(1)
+        print(f"\n❌ Phase III.2 failed: {str(e)}")
+        raise
 
 
 if __name__ == "__main__":

@@ -109,11 +109,12 @@ class PaperReaderWorker(CriticWorker):
         try:
             summary_section = response.split("# Summary Assessment")[-1].strip()
             
-            if "MAJOR REVISION NEEDED" in summary_section:
+            # Updated to match new Analysis prompt format
+            if "MAJOR_REVISION" in summary_section:
                 return "MAJOR_REVISION"
-            elif "MINOR REFINEMENT NEEDED" in summary_section:
+            elif "MINOR_REFINEMENT" in summary_section:
                 return "MINOR_REFINEMENT"
-            elif "MINIMAL CHANGES NEEDED" in summary_section:
+            elif "MINIMAL_CHANGES" in summary_section:
                 return "MINIMAL_CHANGES"
             else:
                 return "UNCLEAR"
