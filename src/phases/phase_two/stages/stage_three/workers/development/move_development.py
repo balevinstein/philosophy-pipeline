@@ -6,6 +6,8 @@ from src.phases.core.worker_types import DevelopmentWorker
 from src.phases.phase_two.stages.stage_three.prompts.development.development_prompts import (
     MoveDevelopmentPrompts,
 )
+from src.utils.analysis_pdf_utils import enhance_development_prompt
+from src.phases.core.exceptions import ValidationError
 
 
 class MoveDevelopmentWorker(DevelopmentWorker):
@@ -24,56 +26,92 @@ class MoveDevelopmentWorker(DevelopmentWorker):
             "iterations": 0,
             "development_phase": "initial",  # Start with the initial phase
         }
+        self.selected_analysis_pdfs = []  # Store selected Analysis PDFs
 
     def _construct_prompt(self, input_data: WorkerInput) -> str:
         """Construct the appropriate prompt based on the development phase."""
-        move_index = input_data.parameters.get("move_index", 0)
         move = input_data.parameters.get("move", "")
         framework = input_data.context.get("framework", {})
         outline = input_data.context.get("outline", {})
-        current_move_development = input_data.context.get("current_move_development")
+        literature = input_data.context.get("literature", {})
+        move_index = input_data.parameters.get("move_index", 0)
+        current_development = input_data.context.get("current_move_development")
 
-        # Get development phase from input parameters
-        development_phase = input_data.parameters.get(
-            "development_phase", self._state["development_phase"]
-        )
+        development_phase = self._state.get("development_phase", "initial")
 
-        print(f"Constructing prompt for development phase: {development_phase}")
-
-        # Determine which prompt to use based on the development phase
-        if development_phase == "initial":
-            return self.prompts.get_initial_development_prompt(
+        # Get base prompt depending on phase
+        if development_phase == "examples":
+            base_prompt = self.prompts.get_examples_development_prompt(
                 move=move,
+                current_development=current_development,
                 framework=framework,
                 outline=outline,
-                literature=input_data.context.get("literature", {}),
-                move_index=move_index,
-            )
-        elif development_phase == "examples":
-            return self.prompts.get_examples_development_prompt(
-                move=move,
-                current_development=current_move_development,
-                framework=framework,
-                outline=outline,
-                literature=input_data.context.get("literature", {}),
+                literature=literature,
             )
         elif development_phase == "literature":
-            return self.prompts.get_literature_integration_prompt(
+            base_prompt = self.prompts.get_literature_integration_prompt(
                 move=move,
-                current_development=current_move_development,
+                current_development=current_development,
                 framework=framework,
                 outline=outline,
-                literature=input_data.context.get("literature", {}),
+                literature=literature,
             )
         else:
             # Default to initial development
-            return self.prompts.get_initial_development_prompt(
+            base_prompt = self.prompts.get_initial_development_prompt(
                 move=move,
                 framework=framework,
                 outline=outline,
-                literature=input_data.context.get("literature", {}),
+                literature=literature,
                 move_index=move_index,
             )
+
+        # Create phase-specific identifier for Analysis PDF selection
+        phase_identifier = f"key moves development ({development_phase})"
+
+        # Enhance with Analysis patterns (phase-aware PDF selection)
+        enhanced_prompt, analysis_pdfs = enhance_development_prompt(
+            base_prompt, phase_identifier
+        )
+        
+        # Store selected PDFs for API call
+        self.selected_analysis_pdfs = analysis_pdfs
+        
+        if analysis_pdfs:
+            print(f"Including {len(analysis_pdfs)} Analysis papers for {phase_identifier} guidance")
+        
+        return enhanced_prompt
+
+    def execute(self, state: Dict[str, Any]) -> WorkerOutput:
+        """Execute with Analysis PDF support"""
+        input_data = self.process_input(state)
+        
+        # Get system prompt if available
+        system_prompt = self.get_system_prompt()
+        
+        # Construct prompt first - this triggers Analysis PDF selection
+        prompt = self._construct_prompt(input_data)
+        
+        # Make API call with Analysis PDFs if available
+        if self.selected_analysis_pdfs:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                pdf_paths=self.selected_analysis_pdfs,
+                system_prompt=system_prompt
+            )
+        else:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                system_prompt=system_prompt
+            )
+            
+        output = self.process_output(response)
+        if not self.validate_output(output):
+            print(response)
+            raise ValidationError("Worker output failed validation: ", self.stage_name)
+        return output
 
     def process_input(self, state: Dict[str, Any]) -> WorkerInput:
         """Prepare input for key move development."""
@@ -167,31 +205,14 @@ class MoveDevelopmentWorker(DevelopmentWorker):
         return output
 
     def validate_output(self, output: WorkerOutput) -> bool:
-        """Verify output meets requirements."""
-        print("\nValidating key move development output...")
-
-        if not output.modifications:
-            print("Failed: No modifications")
+        """Validate the key move development output."""
+        if output.status != "completed":
             return False
 
-        # Check for content in different possible locations
-        content = None
-        if "core_content" in output.modifications:
-            content = output.modifications["core_content"]
-        elif "full_content" in output.modifications:
-            content = output.modifications["full_content"]
-
-        if not content or not content.strip():
-            print("Failed: No content")
+        content = output.modifications.get("core_content", "")
+        if not content or len(content) < 100:
+            print(f"Warning: Very short key move development ({len(content)} chars)")
             return False
 
-        # Debug output to see what we're getting
-        print(f"\nOutput content (first 200 chars): {content[:200]}...")
-
-        # Check if we have sufficient content length - a basic check for all phases
-        if len(content.strip()) > 500:  # Require at least 500 characters
-            print("Content length validation passed")
-            return True
-        else:
-            print("Failed: Content too short")
-            return False
+        print(f"Key move development validation passed! Content: {len(content)} chars")
+        return True

@@ -1,4 +1,5 @@
 import os
+import time
 from pathlib import Path
 import subprocess
 
@@ -24,7 +25,9 @@ from src.utils.api import load_config
 
 def main():
     """Main execution for Phase 2"""
+    phase_start_time = time.time()
     print("Starting Phase II.2: Framework Development")
+    print("=" * 60)
     setup_logging()
 
     # Prevent sleep during execution
@@ -45,9 +48,11 @@ def main():
         "literature": literature,
     }
 
-    # Create and run workflows
-
-    # Abstract Workflow
+    # Workflow 1: Abstract Framework Development
+    print("\n1. Abstract Framework Development")
+    print("-" * 40)
+    abstract_start_time = time.time()
+    
     abstract_framework_workflow = create_abstract_framework_workflow(
         config,
         output_dir=framework_dev_dir,
@@ -56,31 +61,60 @@ def main():
     )
 
     abstract_framework_workflow.execute(abstract_initial_state)
+    
+    abstract_duration = time.time() - abstract_start_time
+    print(f"⏱️  Abstract Framework completed in {abstract_duration:.1f} seconds")
 
     framework = load_framework()
 
-    # Outline Workflow
+    # Workflow 2: Outline Development
+    print("\n2. Outline Development")
+    print("-" * 40)
+    outline_start_time = time.time()
+    
     outline_initial_state = {"framework": framework, "literature": literature}
     outline_workflow = create_outline_workflow(
         config, output_dir=framework_dev_dir, workflow_name="outline", max_cycles=3
     )
 
     outline = outline_workflow.execute(outline_initial_state)
+    
+    outline_duration = time.time() - outline_start_time
+    print(f"⏱️  Outline Development completed in {outline_duration:.1f} seconds")
 
     outline = load_outline()
 
+    # Workflow 3: Key Moves Identification
+    print("\n3. Key Moves Identification")
+    print("-" * 40)
+    key_moves_start_time = time.time()
+    
     key_moves_initial_state = {
         "outline": outline,
         "framework": framework,
         "literature": literature,
     }
 
-    # Key Moves Workflow
     key_moves_workflow = create_key_moves_workflow(
         config, output_dir=framework_dev_dir, workflow_name="key_moves", max_cycles=3
     )
 
     key_moves_workflow.execute(key_moves_initial_state)
+    
+    key_moves_duration = time.time() - key_moves_start_time
+    print(f"⏱️  Key Moves Identification completed in {key_moves_duration:.1f} seconds")
+
+    # Phase summary
+    total_duration = time.time() - phase_start_time
+    print("\n" + "=" * 60)
+    print("PHASE II.2 COMPLETION SUMMARY")
+    print("=" * 60)
+    print(f"⏱️  Total Phase II.2 duration: {total_duration:.1f} seconds ({total_duration/60:.1f} minutes)")
+    print(f"📊 Breakdown:")
+    print(f"   Abstract Framework: {abstract_duration:.1f}s")
+    print(f"   Outline Development: {outline_duration:.1f}s") 
+    print(f"   Key Moves: {key_moves_duration:.1f}s")
+    print("✅ Phase II.2: Framework Development completed successfully")
 
     return
 

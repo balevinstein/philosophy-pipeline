@@ -4,6 +4,7 @@ import os
 import sys
 import json
 import yaml
+import time
 
 from src.phases.phase_two.stages.stage_four.master_workflow import (
     DetailedOutlineDevelopmentWorkflow,
@@ -160,6 +161,7 @@ def main():
 
     # Run the workflow with the new phases
     print("\nStarting detailed outline development with four-phase approach...")
+    start_time = time.time()
     detailed_outline = workflow.execute(
         {
             "framework": framework,
@@ -168,6 +170,8 @@ def main():
             "literature": literature,
         }
     )
+    end_time = time.time()
+    total_duration = end_time - start_time
 
     # Save the final detailed outline
     final_output_file = os.path.join(output_dir, "detailed_outline_final.md")
@@ -185,6 +189,7 @@ def main():
         "metadata": {
             "timestamp": datetime.now().isoformat(),
             "phases": workflow.development_phases,
+            "total_duration": total_duration,
         },
     }
     with open(final_json_file, "w") as f:
@@ -206,12 +211,35 @@ def main():
         "phases": workflow.development_phases,
         "iterations_per_phase": workflow.get_phase_iterations(),
         "final_output_path": final_output_file,
+        "total_duration": total_duration,
     }
 
     metadata_file = os.path.join(output_dir, "metadata.json")
     with open(metadata_file, "w") as f:
         json.dump(metadata, f, indent=2)
     print(f"Run metadata saved to {metadata_file}")
+
+    # Phase completion summary
+    print("\n" + "=" * 60)
+    print("PHASE II.4 COMPLETION SUMMARY")
+    print("=" * 60)
+    print(f"⏱️  Total Phase II.4 duration: {total_duration:.1f} seconds ({total_duration/60:.1f} minutes)")
+    
+    # Get phase timings if available
+    phase_iterations = workflow.get_phase_iterations()
+    if hasattr(workflow, '_phase_durations') and workflow._phase_durations:
+        print(f"📊 Phase breakdown:")
+        for phase, duration in workflow._phase_durations.items():
+            iterations = phase_iterations.get(phase, 'unknown')
+            print(f"   {phase}: {duration:.1f}s ({iterations} iterations)")
+    else:
+        print(f"📊 Completed {len(workflow.development_phases)} phases:")
+        for i, phase in enumerate(workflow.development_phases, 1):
+            iterations = phase_iterations.get(phase, 'unknown')
+            print(f"   {i}. {phase} ({iterations} iterations)")
+    
+    print("✅ Phase II.4: Detailed Outline Development completed successfully")
+    print("📄 Ready for Phase III: Paper Writing")
 
     print("\n===== Detailed Outline Development Complete =====\n")
 
