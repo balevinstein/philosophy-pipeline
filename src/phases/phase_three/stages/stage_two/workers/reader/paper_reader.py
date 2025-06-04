@@ -1,18 +1,44 @@
 from typing import Dict, Any, List
+from pathlib import Path
 
 from src.phases.core.base_worker import WorkerInput, WorkerOutput
 from src.phases.core.worker_types import CriticWorker
-from src.phases.phase_three.stages.stage_two.prompts.reader.paper_reader_prompts import PaperReaderPrompts
+from src.phases.phase_three.stages.stage_two.prompts.paper_reader_prompts import PaperReaderPrompts
 
 
 class PaperReaderWorker(CriticWorker):
-    """Worker for analyzing complete draft papers for global issues and presentation quality"""
+    """Worker for analyzing complete draft papers for global issues and presentation quality
+    
+    Enhanced with Analysis PDF integration for publication quality assessment.
+    """
     
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         self.prompts = PaperReaderPrompts()
-        self._state = {"iterations": 0, "previous_analyses": []}
+        self._state = {"iterations": 0, "analysis_history": []}
         self.stage_name = "paper_reader"
+        self.selected_analysis_pdfs = []  # Store selected Analysis PDFs
+
+    def _get_analysis_pdfs(self, pdf_count: int = 1) -> list:
+        """Select Analysis PDFs for publication quality assessment"""
+        analysis_dir = Path("Analysis_papers")
+        if not analysis_dir.exists():
+            print(f"⚠️ Analysis papers directory not found at {analysis_dir}")
+            return []
+        
+        pdf_files = list(analysis_dir.glob("*.pdf"))
+        if not pdf_files:
+            print(f"⚠️ No PDF files found in {analysis_dir}")
+            return []
+        
+        # Select PDFs with preference for quality assessment examples
+        selected_pdfs = pdf_files[:pdf_count]
+        
+        print(f"📑 Including {len(selected_pdfs)} Analysis paper(s) for {self.stage_name} quality assessment:")
+        for pdf in selected_pdfs:
+            print(f"   • {pdf.name}")
+        
+        return selected_pdfs
 
     def _construct_prompt(self, input_data: Dict[str, Any]) -> str:
         """Construct the analysis prompt"""
@@ -37,7 +63,7 @@ class PaperReaderWorker(CriticWorker):
         try:
             # Update state
             self._state["iterations"] += 1
-            self._state["previous_analyses"].append(response)
+            self._state["analysis_history"].append(response)
 
             # Extract summary assessment
             summary_assessment = self._extract_summary_assessment(response)
@@ -213,4 +239,42 @@ class PaperReaderWorker(CriticWorker):
             return False
 
         print(f"Analysis validation passed! Assessment: {summary_assessment}")
-        return True 
+        return True
+
+    def execute(self, state: Dict[str, Any]) -> WorkerOutput:
+        """Main execution method with Analysis PDF support for quality assessment"""
+        input_data = self.process_input(state)
+        
+        # Select Analysis PDFs for publication quality standards
+        analysis_pdfs = self._get_analysis_pdfs(pdf_count=1)
+        self.selected_analysis_pdfs = analysis_pdfs
+        
+        # Construct prompt
+        prompt = self._construct_prompt(input_data)
+        
+        # Get system prompt if available
+        system_prompt = self.get_system_prompt() if hasattr(self, 'get_system_prompt') else None
+        
+        # Call LLM with Analysis PDFs if available
+        print(f"\n🔍 Executing {self.stage_name} with Analysis quality standards...")
+        if self.selected_analysis_pdfs:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                pdf_paths=self.selected_analysis_pdfs,
+                system_prompt=system_prompt
+            )
+        else:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                system_prompt=system_prompt
+            )
+        
+        # Process output
+        output = self.process_output(response)
+        
+        if not self.validate_output(output):
+            print(f"⚠️ {self.stage_name} output validation failed")
+        
+        return output 
