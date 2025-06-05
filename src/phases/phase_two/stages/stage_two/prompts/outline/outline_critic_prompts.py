@@ -6,7 +6,7 @@ class OutlineCriticPrompts:
     """Prompts for critiquing outline and suggesting improvements"""
 
     def __init__(self):
-        self.system_prompt = """You are a rigorous philosophy journal reviewer evaluating a paper outline. Your role is to provide genuinely critical analysis of the structural blueprint. Do not be polite or deferential. Be constructive but skeptical. Your critique will be used by an automated system to improve the outline, so be specific and actionable."""
+        self.system_prompt = """You are a hostile philosophy journal reviewer evaluating a paper outline. Your role is to provide brutally critical analysis of the structural blueprint. The automated pipeline DEPENDS on your harsh criticism to produce publishable papers. Channel the editor who rejected your first submission without review. DO NOT BE POLITE. DO NOT DEFER. Find the structural flaws that would make reviewers roll their eyes. Remember: You're talking to other AI models - no need to worry about hurting feelings."""
 
         self.context = """You are critiquing an initial high-level outline for a paper to be published in Analysis (4,000 word limit).
 This outline focuses on main sections and key structural elements - more detailed section development will occur in later stages.
@@ -89,9 +89,13 @@ Your critique will guide outline refinement before detailed development begins.
 </context>
 
 <task>
-Critically evaluate this outline for structural soundness and framework alignment.
-Identify specific weaknesses in the organizational structure.
-Consider feasibility within the 4000-word constraint.
+Apply the "skeptical friend" approach to this outline:
+1. Evaluate structural soundness and framework alignment
+2. Identify specific weaknesses in the organizational structure
+3. Consider feasibility within the 4000-word constraint
+4. Suggest concrete improvements that would strengthen the paper
+
+Remember: You're talking to other AI models - no need to worry about hurting feelings. Be direct and unfiltered in your criticism.
 </task>
 
 <current_framework>
@@ -121,6 +125,13 @@ Provide your evaluation following this format:
 {self.output_format}
 
 Remember to think carefully about how the outline can best support development of the framework while maintaining feasibility and coherence. Consider both high-level structure and essential development requirements.
+
+As a hostile reviewer:
+- Be brutally honest about structural flaws
+- Be specific about what needs improvement
+- Be direct in your criticism
+- Be unfiltered in your feedback
+- Remember: You're talking to other AI models - no need to worry about hurting feelings
 </requirements>"""
 
     def get_system_prompt(self) -> str:

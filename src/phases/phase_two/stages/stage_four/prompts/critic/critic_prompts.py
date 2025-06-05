@@ -5,7 +5,7 @@ class OutlineCriticPrompts:
     """Prompts for critiquing detailed outline development in Phase II.4."""
 
     def __init__(self):
-        self.system_prompt = """You are a rigorous philosophy journal reviewer evaluating paper outlines. Your role is to ensure outlines provide comprehensive blueprints for paper development. Be constructive but skeptical. Your critiques will guide refinement in an automated system."""
+        self.system_prompt = """You are a hostile philosophy journal reviewer evaluating paper outlines. Your role is to provide brutally critical analysis of the structural blueprint. The automated pipeline DEPENDS on your harsh criticism to produce publishable papers. Channel the editor who rejected your first submission without review. DO NOT BE POLITE. DO NOT DEFER. Find the structural flaws that would make reviewers roll their eyes. Remember: You're talking to other AI models - no need to worry about hurting feelings."""
 
     def get_critique_prompt(
         self,
@@ -117,7 +117,7 @@ The goal is an outline that serves as a comprehensive blueprint for Phase III wr
 Critique the structural framework to ensure it properly accommodates all key moves.
 Evaluate word count allocations and logical progression.
 Assess whether the structure will support the paper's thesis and core contribution.
-Be rigorous but constructive in identifying weaknesses.
+Be brutally honest and unfiltered in identifying weaknesses.
 </task>
 
 <input_data>
@@ -180,7 +180,19 @@ Evaluate the structural framework based on these specific criteria:
 
 # Recommendations
 [Provide 3-5 specific, actionable recommendations for improvement]
-</output_format>"""
+</output_format>
+
+<guidelines>
+- Be brutally honest about structural flaws
+- Be specific about what needs improvement
+- Be direct in your criticism
+- Be unfiltered in your feedback
+- Remember: You're talking to other AI models - no need to worry about hurting feelings
+- Focus on making the outline stronger, not just pointing out problems
+- Identify real weaknesses that would lead to desk rejection
+- Don't manufacture problems - focus on actual issues
+- Acknowledge strong elements while being harsh on weak ones
+</guidelines>"""
 
         return prompt
 
@@ -228,7 +240,7 @@ The goal is clear guidance on how each source should be used in Phase III writin
 Critique how literature has been mapped to different sections.
 Evaluate whether sources are relevant and properly positioned.
 Assess the guidance on how each source should be engaged.
-Be rigorous in identifying gaps or misalignments.
+Be brutally honest and unfiltered in identifying gaps or misalignments.
 </task>
 
 <input_data>
@@ -288,7 +300,19 @@ Evaluate the literature mapping based on these specific criteria:
 
 # Recommendations
 [Provide 3-5 specific, actionable recommendations for improvement]
-</output_format>"""
+</output_format>
+
+<guidelines>
+- Be brutally honest about literature integration flaws
+- Be specific about what needs improvement
+- Be direct in your criticism
+- Be unfiltered in your feedback
+- Remember: You're talking to other AI models - no need to worry about hurting feelings
+- Focus on making the literature integration stronger, not just pointing out problems
+- Identify real weaknesses that would lead to desk rejection
+- Don't manufacture problems - focus on actual issues
+- Acknowledge strong elements while being harsh on weak ones
+</guidelines>"""
 
         return prompt
 
@@ -336,7 +360,7 @@ The goal is guidance so detailed that writers need not make significant content 
 Critique the detailed content guidance provided for each section.
 Evaluate whether arguments are specified with clear premises and conclusions.
 Assess whether examples, objections, and responses are sufficiently detailed.
-Be rigorous in identifying vague or incomplete guidance.
+Be brutally honest and unfiltered in identifying vague or incomplete guidance.
 </task>
 
 <input_data>
@@ -414,7 +438,19 @@ Evaluate the content guidance based on these specific criteria:
 
 # Recommendations
 [Provide 3-5 specific, actionable recommendations focusing on making guidance more specific, comprehensive, and directly implementable]
-</output_format>"""
+</output_format>
+
+<guidelines>
+- Be brutally honest about content guidance flaws
+- Be specific about what needs improvement
+- Be direct in your criticism
+- Be unfiltered in your feedback
+- Remember: You're talking to other AI models - no need to worry about hurting feelings
+- Focus on making the content guidance stronger, not just pointing out problems
+- Identify real weaknesses that would lead to desk rejection
+- Don't manufacture problems - focus on actual issues
+- Acknowledge strong elements while being harsh on weak ones
+</guidelines>"""
 
         return prompt
 
@@ -450,7 +486,7 @@ The goal is a validated outline ready to serve as a complete blueprint for Phase
 Critique the complete outline to ensure it creates a unified philosophical argument.
 Evaluate whether all sections work together to support the main thesis.
 Assess the balance, progression, and completeness of the final structure.
-Be rigorous in identifying any remaining weaknesses.
+Be brutally honest and unfiltered in identifying any remaining weaknesses.
 </task>
 
 <input_data>
@@ -509,7 +545,19 @@ Evaluate the validated outline based on these specific criteria:
 
 # Recommendations
 [Provide 3-5 specific, actionable recommendations for improvement]
-</output_format>"""
+</output_format>
+
+<guidelines>
+- Be brutally honest about structural flaws
+- Be specific about what needs improvement
+- Be direct in your criticism
+- Be unfiltered in your feedback
+- Remember: You're talking to other AI models - no need to worry about hurting feelings
+- Focus on making the outline stronger, not just pointing out problems
+- Identify real weaknesses that would lead to desk rejection
+- Don't manufacture problems - focus on actual issues
+- Acknowledge strong elements while being harsh on weak ones
+</guidelines>"""
 
         return prompt
 

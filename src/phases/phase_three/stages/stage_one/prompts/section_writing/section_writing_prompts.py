@@ -8,6 +8,8 @@ class SectionWritingPrompts:
     def __init__(self):
         self.system_prompt = """You are an expert philosophy writer crafting sections for publication in Analysis journal. Your role is to write philosophically rigorous sections that advance the paper's thesis while maintaining clarity and precision. You must produce publication-ready prose within strict word limits. Your writing will be used in an automated pipeline."""
         
+        self.critic_system_prompt = """You are a brutally honest philosophy journal reviewer who provides unfiltered, direct criticism. Your role is to identify every weakness, flaw, and potential desk-rejection trigger in the section. While you aim to be constructive, you must be direct and unsparing in your critique. You are not here to spare feelings - you are here to make the paper stronger by identifying real problems that would lead to rejection. Your critique will be used in an automated pipeline to improve the section."""
+        
         self.context = """You are writing a section for a philosophy paper for Analysis, a journal with a strict 4,000 word limit. Your task is to write one specific section that contributes to the overall argument while maintaining philosophical rigor and clarity.
 
 You have access to:
@@ -124,6 +126,206 @@ CITATIONS IDENTIFIED:
 {self.output_format}
 </output_format>"""
 
+    def construct_critic_prompt(self, writing_context: Dict[str, Any], section_index: int, 
+                              current_content: str, paper_overview: Dict[str, Any]) -> str:
+        """Generate prompt for critiquing a section"""
+        
+        section = writing_context["sections"][section_index]
+        
+        # Create section context
+        previous_sections = []
+        upcoming_sections = []
+        
+        for i, s in enumerate(writing_context["sections"]):
+            if i < section_index:
+                previous_sections.append(f"{i+1}. {s['section_name']}")
+            elif i > section_index:
+                upcoming_sections.append(f"{i+1}. {s['section_name']}")
+        
+        previous_context = "\n".join(previous_sections) if previous_sections else "None (this is the first section)"
+        upcoming_context = "\n".join(upcoming_sections) if upcoming_sections else "None (this is the final section)"
+        
+        return f"""<context>
+You are part of an automated philosophy paper generation pipeline. This is Phase III.1 (Section Writing).
+You are a brutally honest philosophy journal reviewer providing unfiltered critique of a section.
+Your goal is to identify every weakness that would lead to desk rejection.
+Be direct, specific, and unsparing in your criticism.
+</context>
+
+<task>
+Critique section {section_index + 1} of the philosophy paper: "{section['section_name']}"
+Identify every flaw, weakness, and potential desk-rejection trigger.
+Provide specific, actionable feedback for improvement.
+Be brutally honest - your goal is to make the section stronger by identifying real problems.
+</task>
+
+<paper_information>
+THESIS: {paper_overview['thesis']}
+TARGET LENGTH: {paper_overview['target_words']} words total
+ABSTRACT: {paper_overview['abstract'][:200]}...
+
+CURRENT SECTION: Section {section_index + 1} - {section['section_name']}
+TARGET WORDS: {section['word_target']}
+</paper_information>
+
+<structural_context>
+PREVIOUS SECTIONS:
+{previous_context}
+
+UPCOMING SECTIONS:
+{upcoming_context}
+</structural_context>
+
+<current_section>
+{current_content}
+</current_section>
+
+<evaluation_criteria>
+1. PHILOSOPHICAL RIGOR AND DEPTH
+   - Are arguments clearly stated and well-supported?
+   - Is the reasoning valid and sound?
+   - Are key concepts properly defined and used consistently?
+   - Are citations appropriate and sufficient?
+   - Would this pass peer review at Analysis?
+   - Is there sufficient philosophical depth and development?
+   - Are philosophical implications and consequences explored?
+   - Are potential objections and responses thoroughly considered?
+   - Is the philosophical significance of the arguments clear?
+
+2. STRUCTURAL INTEGRATION
+   - Does the section advance the paper's main thesis?
+   - Are transitions smooth from previous sections?
+   - Does it set up upcoming sections effectively?
+   - Is the section's role in the overall argument clear?
+   - Would a reader understand how this fits in?
+
+3. CLARITY AND PRECISION
+   - Is the writing clear and accessible?
+   - Are technical terms properly explained?
+   - Is the argument structure easy to follow?
+   - Are examples illuminating and relevant?
+   - Would a reader get lost or confused?
+
+4. SCOPE AND FOCUS
+   - Does the section stay within its intended scope?
+   - Is the word count appropriate for the content?
+   - Are there unnecessary tangents or missing elements?
+   - Is the level of detail appropriate?
+   - Would an editor cut this section?
+
+5. DESK-REJECTION RISKS
+   - What would make an editor reject this immediately?
+   - Are there any fatal flaws in the argument?
+   - Is the writing quality up to journal standards?
+   - Are there any obvious gaps or weaknesses?
+   - Would this pass the first editorial review?
+</evaluation_criteria>
+
+<output_format>
+# Scratch Work
+[Your preliminary analysis and notes]
+
+# Section Analysis
+
+## Philosophical Content Assessment
+[Evaluate argument quality, conceptual clarity, citations]
+- What would make an editor reject this immediately?
+- Are there any fatal flaws in the argument?
+- Is the philosophical quality up to journal standards?
+
+## Structural Integration Assessment  
+[Evaluate how well this section fits in the paper's flow]
+- Would a reader understand how this fits in?
+- Are there any structural problems that would lead to rejection?
+- Does this section advance the paper's thesis effectively?
+
+## Writing Quality Assessment
+[Evaluate clarity, precision, accessibility]
+- Would a reader get lost or confused?
+- Is the writing quality up to journal standards?
+- Are there any obvious problems with clarity or precision?
+
+## Scope and Focus Assessment
+[Evaluate whether section achieves its intended purpose]
+- Would an editor cut this section?
+- Is the scope appropriate for the journal?
+- Are there any obvious gaps or weaknesses?
+
+# Critical Issues Identified
+
+## Major Issues
+[Significant problems that would lead to desk rejection]
+- Be specific about what would make an editor reject this
+- Identify fatal flaws in the argument
+- Point out any obvious gaps or weaknesses
+
+## Minor Issues  
+[Areas for improvement that would strengthen the section]
+- Be specific about what needs to be fixed
+- Identify any potential problems
+- Suggest concrete improvements
+
+## Positive Elements
+[What works well in this section]
+- Acknowledge strong elements
+- Note what should be preserved
+- Identify effective techniques
+
+# Transition Analysis
+
+## Opening Transition
+[How well does this section connect to what came before?]
+- Would a reader understand the connection?
+- Are there any obvious problems with the transition?
+- How could it be improved?
+
+## Internal Flow
+[How well do the paragraphs within this section connect?]
+- Is the internal structure clear?
+- Are there any obvious problems with the flow?
+- How could it be improved?
+
+## Closing Transition
+[How well does this section set up what comes next?]
+- Would a reader understand what's coming next?
+- Are there any obvious problems with the transition?
+- How could it be improved?
+
+# Improvement Recommendations
+
+## Content Revisions
+[Specific changes to strengthen arguments or clarify concepts]
+- Be specific about what needs to be changed
+- Identify concrete improvements
+- Suggest specific solutions
+
+## Structural Revisions
+[Changes to improve integration with overall paper]
+- Be specific about what needs to be changed
+- Identify concrete improvements
+- Suggest specific solutions
+
+## Writing Revisions
+[Changes to improve clarity and accessibility]
+- Be specific about what needs to be changed
+- Identify concrete improvements
+- Suggest specific solutions
+
+# Summary Assessment
+[Overall judgment: MAJOR REVISION NEEDED, MINOR REFINEMENT NEEDED, or MINIMAL CHANGES NEEDED]
+- Be brutally honest about the quality
+- Identify the most critical problems
+- Make a clear recommendation for improvement
+</output_format>
+
+<requirements>
+- Be brutally honest and direct in your criticism
+- Identify every weakness that would lead to desk rejection
+- Provide specific, actionable feedback for improvement
+- Focus on making the section stronger by identifying real problems
+- Don't hold back - your goal is to make the paper better
+</requirements>"""
+
     def construct_revision_prompt(self, writing_context: Dict[str, Any], section_index: int, 
                                 current_content: str, revision_notes: str) -> str:
         """Generate prompt for revising a section based on feedback"""
@@ -167,4 +369,8 @@ Preserve core arguments while improving presentation.
     
     def get_system_prompt(self) -> str:
         """Return the system prompt for API calls"""
-        return self.system_prompt 
+        return self.system_prompt
+
+    def get_critic_system_prompt(self) -> str:
+        """Return the critic system prompt for API calls"""
+        return self.critic_system_prompt 
