@@ -32,6 +32,9 @@ papers/
 outputs/**
 outputs/
 
+# Analysis paper cache (too large for git)
+analysis_cache/
+
 # IDE specific files
 .idea/
 .vscode/
@@ -66,3 +69,7 @@ outputs_post_improvements/
 
 # Temporary test outputs
 test_phase_*_outputs/
+
+# PDF files and extracted text
+Analysis_papers/
+text_extracts/

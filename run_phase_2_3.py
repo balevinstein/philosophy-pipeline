@@ -1,4 +1,5 @@
 from pathlib import Path
+import time
 
 from run_utils import (
     caffeinate,
@@ -17,6 +18,11 @@ from src.utils.api import load_config
 def main():
     """Main execution for Phase II.3: Key Moves Development"""
     print("Starting Phase II.3: Key Moves Development")
+    print("=" * 60)
+    
+    # Start timing
+    phase_start_time = time.time()
+    
     setup_logging()
 
     # Prevent sleep during execution
@@ -47,9 +53,17 @@ def main():
         literature=literature,
     )
 
-    print(f"Completed development of {len(developed_moves)} key moves")
-    print(f"Output saved to {key_moves_dev_dir}/all_developed_moves.json")
-    print(f"Human-readable version saved to {key_moves_dev_dir}/all_developed_moves.md")
+    # Calculate total time
+    phase_end_time = time.time()
+    total_duration = phase_end_time - phase_start_time
+
+    print("=" * 60)
+    print("PHASE II.3 COMPLETION SUMMARY")
+    print("=" * 60)
+    print(f"⏱️  Total Phase II.3 duration: {total_duration:.1f} seconds ({total_duration/60:.1f} minutes)")
+    print(f"✅ Completed development of {len(developed_moves)} key moves")
+    print(f"📊 Output saved to {key_moves_dev_dir}/all_developed_moves.json")
+    print(f"📝 Human-readable version saved to {key_moves_dev_dir}/all_developed_moves.md")
 
     return
 

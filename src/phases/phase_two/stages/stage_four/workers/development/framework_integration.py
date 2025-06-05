@@ -1,11 +1,13 @@
 from typing import Dict, Any
 from datetime import datetime
+from pathlib import Path
 
 from src.phases.core.base_worker import WorkerInput, WorkerOutput
 from src.phases.core.worker_types import DevelopmentWorker
 from src.phases.phase_two.stages.stage_four.prompts.development.framework_integration_prompts import (
     FrameworkIntegrationPrompt,
 )
+from src.phases.core.exceptions import ValidationError
 
 
 class FrameworkIntegrationWorker(DevelopmentWorker):
@@ -15,12 +17,36 @@ class FrameworkIntegrationWorker(DevelopmentWorker):
     This worker analyzes the abstract framework and key moves to create a logical
     section/subsection structure that properly accommodates all key moves, with
     explicit mapping of key moves to sections and appropriate word count allocations.
+    
+    Enhanced with Analysis PDF integration for structural guidance.
     """
 
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         self.prompts = FrameworkIntegrationPrompt()
         self.stage_name = "framework_integration"
+        self.selected_analysis_pdfs = []  # Store selected Analysis PDFs
+
+    def _get_analysis_pdfs(self, pdf_count: int = 1) -> list:
+        """Select Analysis PDFs for structural guidance"""
+        analysis_dir = Path("Analysis_papers")
+        if not analysis_dir.exists():
+            print(f"⚠️ Analysis papers directory not found at {analysis_dir}")
+            return []
+        
+        pdf_files = list(analysis_dir.glob("*.pdf"))
+        if not pdf_files:
+            print(f"⚠️ No PDF files found in {analysis_dir}")
+            return []
+        
+        # Select PDFs with preference for structural variety
+        selected_pdfs = pdf_files[:pdf_count]
+        
+        print(f"📑 Including {len(selected_pdfs)} Analysis paper(s) for structural guidance:")
+        for pdf in selected_pdfs:
+            print(f"   • {pdf.name}")
+        
+        return selected_pdfs
 
     def _construct_prompt(self, input_data: WorkerInput) -> str:
         """Construct the prompt for framework integration."""
@@ -36,6 +62,37 @@ class FrameworkIntegrationWorker(DevelopmentWorker):
             literature=literature,
         )
 
+    def execute(self, state: Dict[str, Any]) -> WorkerOutput:
+        """Execute with Analysis PDF support"""
+        input_data = self.process_input(state)
+        
+        # Get system prompt if available
+        system_prompt = self.get_system_prompt()
+        
+        # Construct prompt - PDFs already selected in process_input
+        prompt = self._construct_prompt(input_data)
+        
+        # Make API call with Analysis PDFs if available
+        if self.selected_analysis_pdfs:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                pdf_paths=self.selected_analysis_pdfs,
+                system_prompt=system_prompt
+            )
+        else:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                system_prompt=system_prompt
+            )
+            
+        output = self.process_output(response)
+        if not self.validate_output(output):
+            print(response)
+            raise ValidationError("Worker output failed validation: ", self.stage_name)
+        return output
+
     def process_input(self, state: Dict[str, Any]) -> WorkerInput:
         """Prepare input for framework integration."""
         print("\nPreparing input for framework integration...")
@@ -44,6 +101,10 @@ class FrameworkIntegrationWorker(DevelopmentWorker):
         # Validate required inputs
         if "framework" not in state or "outline" not in state or "developed_key_moves" not in state:
             raise ValueError("Missing required state: framework, outline, developed_key_moves")
+        
+        # Select Analysis PDFs for structural guidance
+        analysis_pdfs = self._get_analysis_pdfs(pdf_count=1)
+        self.selected_analysis_pdfs = analysis_pdfs
         
         return WorkerInput(
             context={

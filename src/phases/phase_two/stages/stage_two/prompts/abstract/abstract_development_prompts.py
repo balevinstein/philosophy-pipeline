@@ -1,4 +1,4 @@
-# src/stages/phase_two/stages/stage-two/prompts/abstract_prompts.py
+# src/stages/phase_two/stages/stage_two/prompts/abstract_prompts.py
 
 import json
 
@@ -10,6 +10,42 @@ class AbstractDevelopmentPrompts:
         self.system_prompt = """You are an expert philosophy researcher developing a paper framework for the journal Analysis. Your role is to create a compelling abstract and clear framework that will guide the entire paper development. You must work within the constraints of available literature and produce output that will be parsed by downstream automated systems."""
 
         self.analysis_context = """You are helping write a paper for Analysis, a philosophical journal with a strict 4,000 word limit. Papers in Analysis make a single, clear philosophical contribution that can be effectively developed in this space. The abstract should clearly state the main thesis and philosophical contribution while being engaging and precise."""
+
+        self.analysis_abstract_examples = """
+<analysis_abstract_style_examples>
+<examples>
+<abstract_1>I argue against pessimistic readings of the Buddhist tradition on which unawakened beings invariably have lives not worth living due to a preponderance of suffering (duḥkha) over well-being.</abstract_1>
+
+<abstract_2>Sometimes it is not us but those to whom we stand in special relations that face transformative choices: our friends, family or beloved. A focus upon first-personal rational choice and agency has left crucial ethical questions regarding what we owe to those who face transformative choices largely unexplored. In this paper I ask: under what conditions, if any, is it morally permissible to interfere to try to prevent another from making a transformative choice? Some seemingly plausible answers to this question fail precisely because they concern transformative experiences. I argue that we have a distinctive moral right to revelatory autonomy grounded in the value of autonomous self-making. If this right is outweighed then, I argue, interfering to prevent another making a transformative choice is permissible. This conditional answer lays the groundwork for a promising ethics of transformative experience.</abstract_2>
+
+<abstract_3>On one view of the traditional doxastic attitudes, belief is credence 1, disbelief is credence 0 and suspension is any precise credence between 0 and 1. In 'Rational agnosticism and degrees of belief' (2013) Jane Friedman argues, against this view, that there are cases where a credence of 0 is required but where suspension is permitted. If this were so, belief, disbelief and suspension could not be identified or reduced to the aforementioned credences. I argue that Friedman relies on two different notions of epistemic rationality and two different kinds of evidential absence. I clarify these distinctions and show that her argument is either not valid or includes implausible premisses, twice over. If this is so, the view that belief is credence 1, disbelief is credence 0 and suspension is any precise credence between 0 and 1 cannot be rejected on the grounds that Friedman proposes.</abstract_3>
+
+<abstract_4>There is a tension between Dispositionalism––the view that all metaphysical modality is grounded in actual irreducible dispositional properties––and the possibility of time travel. This is due to the fact that Dispositionalism makes it much harder to solve a potentiality-based version of the grandfather paradox. We first present a potentiality-based version of the grandfather paradox, stating that the following theses are inconsistent: 1) time travel is possible, 2) powers fully ground modality, 3) self-defeating actions are impossible, 4) time-travellers retain their intrinsic powers upon time-travelling, and 5) time-travellers are ordinary agents with basic intrinsic potentialities. We then consider a number of potential solutions, and find them wanting. We argue that the metaphysical impossibility of performing a self-defeating action acts as a necessary perfect mask––while time-travel lets us "slip" the potentiality under the mask, thus generating the contradiction. We conclude considering what are the options for the dispositionalist.</abstract_4>
+
+<abstract_5>Quine says that ontology is about what there is, suggesting that to be ontologically committed to Fs is to be committed to accepting a sentence which existentially quantifies over Fs. Kit Fine argues that this gets the logical form of some ontological theses wrong. Fine is right that some ontological theses cannot be rendered simply as 'There are Fs'. But the root of the problem has yet to be recognized, either by Fine or by his critics. Sometimes to adopt an ontological thesis is not merely to commit yourself to there being at least one F; it is to take a stand on which Fs there are. Once we recognize the 'particularity' of these ontological theses, we can adequately express them within the confines of a Quinean approach to ontology and ontological commitment.</abstract_5>
+
+<abstract_6>Does lying require a speaker to explicitly express something (she believes to be) false, or is it also possible to lie with deceptive implicatures? Given that consistency with ordinary language is a desideratum of any philosophical definition of lying, several studies have addressed this question empirically in recent years. Their findings, however, seem to be in conflict. This paper reports an experiment with 222 participants that investigates the hypothesis that these conflicting results are due to variation regarding whether or not the speaker's intention to deceive and the implicated content are made explicit. It is found that the presence versus the absence of such explicitness has a strong impact on people's lie judgements, and can thus account for the conflicting results in the literature.</abstract_6>
+
+<abstract_7>According to the democratic borders argument, the democratic legitimacy of a state's regime of border control requires granting foreigners a right to participate in the procedures determining it. This argument appeals to the All-Subjected Principle, which implies that democratic legitimacy requires that all those subject to political power have a right to participate in determining the laws governing its exercise. The scope objection claims that this argument presupposes an implausible account of subjection and hence of the All-Subjected Principle, which absurdly implies that all domestic laws subject foreigners to their requirements. I argue that this objection misconstrues the logical structure of the legal requirements enshrined in domestic laws: domestic laws typically enshrine narrow-scope, not wide-scope, legal requirements. To be sure, some state laws do subject foreigners to their requirements, and the All-Subjected Principle conditions democratic legitimacy on granting foreigners some say in determining them. But the best reading of the Principle does not have such general expansionary implications.</abstract_7>
+
+<abstract_8>Many have claimed that whenever an investigation might provide evidence for a claim, it might also provide evidence against it. Similarly, many have claimed that your credence should never be on the edge of the range of credences that you think might be rational. Surprisingly, both of these principles imply that you cannot rationally be modest: you cannot be uncertain what the rational opinions are.</abstract_8>
+
+<abstract_9>A puzzle arises when combining two individually plausible, yet jointly incompatible, norms of inquiry. On the one hand, it seems that one should not inquire into a question while believing an answer to that question. But, on the other hand, it seems rational to inquire into a question while believing its answer, if one is seeking confirmation. Millson (2021), who has recently identified this puzzle, suggests a possible solution, though he notes that it comes with significant costs. I offer an alternative solution, which does not involve these costs. The best way to resolve the puzzle is to reject the prohibition on inquiring into a question while believing an answer to it. Resolving the puzzle in this way makes salient two fruitful areas in the epistemology of inquiry that merit further investigation. The first concerns the nature of the inquiring attitudes and the second concerns the aim(s) of inquiry.</abstract_9>
+
+<abstract_10>When we remember a scene, the scene's boundaries are wider than the boundaries of the scene we saw. This phenomenon is called boundary extension. The most important philosophical question about boundary extension is whether it is a form of perceptual adjustment or adjustment during memory encoding. The aim of this paper is to propose a third explanatory scheme, according to which the extended boundary of the original scene is represented by means of mental imagery. And given the similarities between perception and mental imagery, the memory system encodes both the part of the scene that is represented perceptually and the part of the scene that is represented by means of mental imagery.</abstract_10>
+</examples>
+
+<analysis_patterns>
+Key Analysis journal patterns to emulate:
+• Immediate engagement: Direct thesis opening ("I argue that...") or immediate problem identification
+• Conversational framing: "Sometimes...", "When we...", "Many have claimed...", "A puzzle arises when..."
+• Clear tension/puzzle setup: Direct articulation of philosophical problems without lengthy explanatory buildup
+• Crisp argumentation flow: Problem → "I argue that..." → Implications (minimal intermediate explanation)
+• Direct authorial voice: "I argue" rather than "This paper argues"
+• Concrete engagement: Reference to specific literature, examples, or cases early in the abstract
+• Immediate stakes: Why the problem matters is often implicit rather than explicitly stated
+</analysis_patterns>
+</analysis_abstract_style_examples>"""
 
         self.json_rules = """
 CRITICAL JSON FORMATTING RULES:
@@ -58,9 +94,11 @@ Your output will be parsed by code and used to guide all subsequent paper develo
 {self.analysis_context}
 </context>
 
+{self.analysis_abstract_examples}
+
 <task>
 Develop an abstract and framework for the paper that builds on our literature analysis and selected topic.
-The abstract should clearly state the main thesis and philosophical contribution.
+The abstract should clearly state the main thesis and philosophical contribution following Analysis journal patterns shown above.
 The framework must provide concrete guidance for paper development.
 </task>
 
@@ -70,6 +108,7 @@ You have access to:
 2. A structured synthesis of the literature
 3. A narrative analysis of how the papers fit together
 4. Our final topic selection and initial development plans
+5. Analysis journal style examples above for reference
 </available_resources>
 
 <requirements>
@@ -78,6 +117,7 @@ Focus on creating an abstract that:
 - Can be developed effectively in 4,000 words
 - Engages meaningfully with our literature
 - Has concrete, developable key moves
+- Follows Analysis journal style patterns (immediate engagement, direct voice, crisp argumentation)
 
 {self.output_requirements}
 </requirements>

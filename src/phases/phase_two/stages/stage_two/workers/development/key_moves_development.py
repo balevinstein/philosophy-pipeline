@@ -5,6 +5,8 @@ from src.phases.core.worker_types import DevelopmentWorker
 from src.phases.phase_two.stages.stage_two.prompts.key_moves.key_moves_prompts import (
     KeyMovesPrompts,
 )
+from src.utils.analysis_pdf_utils import enhance_development_prompt
+from src.phases.core.exceptions import ValidationError
 
 
 class KeyMovesDevelopmentWorker(DevelopmentWorker):
@@ -19,14 +21,60 @@ class KeyMovesDevelopmentWorker(DevelopmentWorker):
             "analyzed_moves": {},  # Store analysis results by move
             "development_phase": "argument",
         }
+        self.selected_analysis_pdfs = []  # Store selected Analysis PDFs
 
     def _construct_prompt(self, input_data: WorkerInput) -> str:
-        return self.prompts.get_development_argument_prompt(
+        # Get base prompt
+        base_prompt = self.prompts.get_development_argument_prompt(
             move=input_data.parameters["move"],
             abstract=input_data.context.get("abstract"),
             outline=input_data.context.get("outline"),
             prior_moves=self._state.get("analyzed_moves"),
         )
+        
+        # Enhance with Analysis patterns
+        enhanced_prompt, analysis_pdfs = enhance_development_prompt(
+            base_prompt, "key moves identification and philosophical argument patterns"
+        )
+        
+        # Store selected PDFs for API call
+        self.selected_analysis_pdfs = analysis_pdfs
+        
+        if analysis_pdfs:
+            print(f"Including {len(analysis_pdfs)} Analysis papers for philosophical moves guidance")
+        
+        return enhanced_prompt
+
+    def execute(self, state: Dict[str, Any]) -> WorkerOutput:
+        """Execute with Analysis PDF support"""
+        input_data = self.process_input(state)
+        
+        # Get system prompt if available
+        system_prompt = self.get_system_prompt()
+        
+        # Construct prompt first - this triggers Analysis PDF selection
+        prompt = self._construct_prompt(input_data)
+        
+        # Make API call with Analysis PDFs if available
+        if self.selected_analysis_pdfs:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                pdf_paths=self.selected_analysis_pdfs,
+                system_prompt=system_prompt
+            )
+        else:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                system_prompt=system_prompt
+            )
+            
+        output = self.process_output(response)
+        if not self.validate_output(output):
+            print(response)
+            raise ValidationError("Worker output failed validation: ", self.stage_name)
+        return output
 
     def process_input(self, state: Dict[str, Any]) -> WorkerInput:
         """Prepare input for key moves analysis"""

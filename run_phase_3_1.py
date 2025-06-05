@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import time
 from pathlib import Path
 from typing import Dict, Any, List
 
@@ -70,7 +71,11 @@ def process_section_with_critique(writing_context: Dict[str, Any], section_index
     print(f"✓ Critique complete: {assessment}")
     print(f"  Major issues: {major_issues}, Minor issues: {minor_issues}")
     
-    # STAGE 3: Refine based on critique (if needed)
+    # STAGE 3: Refine the section (if needed)
+    final_content = initial_content
+    final_word_count = initial_word_count
+    changes_made = []
+    
     if assessment in ["MAJOR_REVISION", "MINOR_REFINEMENT"]:
         print(f"\n✨ Stage 3: Refining section based on critique...")
         refiner = SectionRefinementWorker(config)
@@ -84,117 +89,90 @@ def process_section_with_critique(writing_context: Dict[str, Any], section_index
         
         refinement_output = refiner.execute(refinement_state)
         if refinement_output.status != "completed":
-            print(f"⚠️  Refinement failed: {refinement_output.notes}")
-            print("Using initial version instead...")
-            final_section = write_output.modifications
-        else:
-            # Use refined version
-            final_section = {
-                "section_content": refinement_output.modifications["refined_section_content"],
-                "word_count": refinement_output.modifications["word_count"],
-                "content_bank_usage": refinement_output.modifications["content_bank_usage"],
-                "section_notes": refinement_output.modifications["refinement_notes"],
-                "transition_points": refinement_output.modifications["transition_points"],
-                "changes_made": refinement_output.modifications["changes_made"],
-                "refined": True
-            }
-            
-            changes_count = len(refinement_output.modifications["changes_made"])
-            refined_word_count = refinement_output.modifications["word_count"]
-            print(f"✓ Refinement complete: {refined_word_count} words, {changes_count} changes made")
+            raise Exception(f"Refinement failed: {refinement_output.notes}")
+        
+        final_content = refinement_output.modifications["section_content"]
+        final_word_count = refinement_output.modifications["word_count"]
+        changes_made = refinement_output.modifications.get("changes_made", [])
+        
+        print(f"✓ Refinement complete: {final_word_count} words, {len(changes_made)} changes made")
     else:
-        print(f"\n✅ Stage 3: Minimal changes needed - using initial version")
-        final_section = write_output.modifications
-        final_section["refined"] = False
+        print(f"\n✨ Stage 3: Skipping refinement (assessment: {assessment})")
     
-    # Add critique metadata
-    final_section["critique_assessment"] = assessment
-    final_section["major_issues_found"] = major_issues
-    final_section["minor_issues_found"] = minor_issues
-    
-    final_word_count = final_section["word_count"]
-    print(f"\n🎯 Section {section_index + 1} complete: {final_word_count} words")
-    
-    return final_section
+    return {
+        "section_content": final_content,
+        "word_count": final_word_count,
+        "initial_word_count": initial_word_count,
+        "assessment": assessment,
+        "major_issues": major_issues,
+        "minor_issues": minor_issues,
+        "changes_made": changes_made,
+        "refined": assessment in ["MAJOR_REVISION", "MINOR_REFINEMENT"]
+    }
 
 
-def save_section_progress(sections_processed: List[Dict[str, Any]], writing_context: Dict[str, Any]):
-    """Save progress after each section with critique metadata"""
+def save_progress(writing_context: Dict[str, Any], sections_data: List[Dict[str, Any]]) -> None:
+    """Save progress to phase_3_1_progress.json"""
     
-    # Calculate statistics
-    total_words = sum(s.get("word_count", 0) for s in sections_processed)
-    refined_count = sum(1 for s in sections_processed if s.get("refined", False))
-    major_issues_total = sum(s.get("major_issues_found", 0) for s in sections_processed)
+    sections_completed = len(sections_data)
+    total_words = sum(section["word_count"] for section in sections_data)
+    sections_refined = sum(1 for section in sections_data if section["refined"])
     
-    # Create comprehensive output structure
-    paper_progress = {
-        "metadata": {
-            "timestamp": "2024-01-01T00:00:00",  # Would be actual timestamp
-            "phase": "III.1",
-            "stage": "section_writing_with_critique",
-            "sections_completed": len(sections_processed),
-            "total_sections": len(writing_context["sections"]),
-            "total_words_written": total_words,
-            "target_total_words": writing_context["paper_overview"]["target_words"],
-            "sections_refined": refined_count,
-            "total_major_issues": major_issues_total
-        },
+    progress_data = {
         "paper_overview": writing_context["paper_overview"],
-        "sections": []
+        "sections": [
+            {
+                "section_name": writing_context["sections"][i]["section_name"],
+                "target_words": writing_context["sections"][i]["word_target"],
+                "actual_words": sections_data[i]["word_count"],
+                "initial_words": sections_data[i]["initial_word_count"],
+                "assessment": sections_data[i]["assessment"],
+                "major_issues": sections_data[i]["major_issues"],
+                "minor_issues": sections_data[i]["minor_issues"],
+                "changes_made": len(sections_data[i]["changes_made"]),
+                "refined": sections_data[i]["refined"]
+            }
+            for i in range(len(sections_data))
+        ],
+        "metadata": {
+            "sections_completed": sections_completed,
+            "total_sections": len(writing_context["sections"]),
+            "total_words": total_words,
+            "target_words": writing_context["paper_overview"]["target_words"],
+            "sections_refined": sections_refined,
+            "completion_percentage": (sections_completed / len(writing_context["sections"])) * 100
+        }
     }
     
-    # Add each completed section
-    for i, section_data in enumerate(sections_processed):
-        if section_data:  # Only add completed sections
-            section_info = writing_context["sections"][i].copy()
-            section_info.update({
-                "section_index": i,
-                "content": section_data["section_content"],
-                "actual_word_count": section_data["word_count"],
-                "content_bank_usage": section_data["content_bank_usage"],
-                "notes": section_data["section_notes"],
-                "transitions": section_data["transition_points"],
-                "was_refined": section_data.get("refined", False),
-                "critique_assessment": section_data.get("critique_assessment", "UNKNOWN"),
-                "major_issues_found": section_data.get("major_issues_found", 0),
-                "minor_issues_found": section_data.get("minor_issues_found", 0),
-                "changes_made": section_data.get("changes_made", [])
-            })
-            paper_progress["sections"].append(section_info)
+    with open("./outputs/phase_3_1_progress.json", "w") as f:
+        json.dump(progress_data, f, indent=2)
     
-    # Save progress
-    progress_file = "./outputs/phase_3_1_progress.json"
-    with open(progress_file, "w") as f:
-        json.dump(paper_progress, f, indent=2)
-    
-    print(f"\n📄 Progress saved to: {progress_file}")
-    print(f"   Sections completed: {len(sections_processed)}/{len(writing_context['sections'])}")
+    print(f"📄 Progress saved to: ./outputs/phase_3_1_progress.json")
+    print(f"   Sections completed: {sections_completed}/{len(writing_context['sections'])}")
     print(f"   Words written: {total_words}")
-    print(f"   Sections refined: {refined_count}")
+    print(f"   Sections refined: {sections_refined}")
 
 
-def create_draft_paper(sections_processed: List[Dict[str, Any]], writing_context: Dict[str, Any]) -> str:
-    """Combine all sections into a complete draft paper"""
+def create_complete_draft(writing_context: Dict[str, Any], sections_data: List[Dict[str, Any]]) -> str:
+    """Create the complete draft paper from all sections"""
     
-    paper_parts = []
+    # Start with the paper title (from thesis)
+    paper_title = writing_context["paper_overview"]["thesis"]
     
-    # Add title and abstract - use full thesis, not truncated
-    paper_parts.append(f"# {writing_context['paper_overview']['thesis']}\n")
-    paper_parts.append("## Abstract\n")
-    paper_parts.append(f"{writing_context['paper_overview']['abstract']}\n")
+    # Build the complete paper
+    paper_parts = [f"# {paper_title}"]
     
-    # Add each section
-    for i, section_data in enumerate(sections_processed):
-        if section_data:
-            section_name = writing_context["sections"][i]["section_name"]
-            paper_parts.append(f"\n## {section_name}\n")
-            paper_parts.append(f"{section_data['section_content']}\n")
+    for i, section_data in enumerate(sections_data):
+        section_content = section_data["section_content"]
+        paper_parts.append(section_content)
     
-    return "\n".join(paper_parts)
+    return "\n\n".join(paper_parts)
 
 
 def run_phase_3_1():
     """Run Phase III.1: Section-by-section writing with critique and refinement"""
+    
+    start_time = time.time()
     
     print("\n" + "="*70)
     print("PHASE III.1: Section-by-Section Writing")
@@ -219,37 +197,38 @@ def run_phase_3_1():
         total_words = 0
         total_refined = 0
         
-        for i in range(len(sections)):
-            try:
-                section_result = process_section_with_critique(writing_context, i, config)
-                sections_processed.append(section_result)
-                
-                words_this_section = section_result.get("word_count", 0)
-                total_words += words_this_section
-                
-                if section_result.get("refined", False):
-                    total_refined += 1
-                
-                print(f"   ✓ Section {i+1} complete: {words_this_section} words")
-                print(f"   ✓ Running total: {total_words} words")
-                
-                # Save progress after each section
-                save_section_progress(sections_processed, writing_context)
-                
-            except Exception as e:
-                print(f"\n❌ Error processing section {i+1}: {str(e)}")
-                print("Saving progress up to this point...")
-                save_section_progress(sections_processed, writing_context)
-                sys.exit(1)
+        for i, section in enumerate(sections):
+            section_data = process_section_with_critique(writing_context, i, config)
+            sections_processed.append(section_data)
+            
+            # Update running totals
+            total_words += section_data["word_count"]
+            if section_data["refined"]:
+                total_refined += 1
+            
+            # Calculate target difference
+            target = section["word_target"]
+            actual = section_data["word_count"]
+            diff = actual - target
+            diff_str = f"+{diff}" if diff > 0 else str(diff)
+            
+            print(f"\n🎯 Section {i + 1} complete: {actual} words")
+            print(f"   ✓ Section {i + 1} complete: {actual} words")
+            print(f"   ✓ Running total: {total_words} words")
+            
+            # Save progress after each section
+            save_progress(writing_context, sections_processed)
         
-        # Create complete draft
-        print(f"\n2. Creating complete draft paper...")
-        draft_paper = create_draft_paper(sections_processed, writing_context)
+        # Create complete draft paper
+        print("\n2. Creating complete draft paper...")
+        complete_draft = create_complete_draft(writing_context, sections_processed)
         
-        # Save final draft
-        draft_file = "./outputs/phase_3_1_draft.md"
-        with open(draft_file, "w") as f:
-            f.write(draft_paper)
+        # Save the draft
+        with open("./outputs/phase_3_1_draft.md", "w") as f:
+            f.write(complete_draft)
+        
+        end_time = time.time()
+        duration = end_time - start_time
         
         print(f"\n✓ Phase III.1 complete!")
         print(f"\n📋 FINAL SUMMARY:")
@@ -257,31 +236,23 @@ def run_phase_3_1():
         print(f"   Total words: {total_words}")
         print(f"   Target words: {writing_context['paper_overview']['target_words']}")
         print(f"   Sections refined: {total_refined}")
-        print(f"   Draft saved to: {draft_file}")
+        print(f"   Draft saved to: ./outputs/phase_3_1_draft.md")
+        print(f"⏱️  Phase III.1 duration: {duration:.1f} seconds ({duration/60:.1f} minutes)")
         
-        # Calculate word distribution and refinement stats
+        # Print section analysis
         print(f"\n📊 SECTION ANALYSIS:")
-        for i, section_data in enumerate(sections_processed):
-            section_name = sections[i]["section_name"]
-            actual_words = section_data.get("word_count", 0)
-            target_words = sections[i]["word_target"]
-            diff = actual_words - target_words
-            refined = "✨" if section_data.get("refined", False) else "📝"
-            assessment = section_data.get("critique_assessment", "UNKNOWN")
+        for i, (section, section_data) in enumerate(zip(sections, sections_processed)):
+            target = section["word_target"]
+            actual = section_data["word_count"]
+            diff = actual - target
+            diff_str = f"+{diff}" if diff > 0 else str(diff)
+            assessment = section_data["assessment"]
             
-            print(f"   {refined} {section_name}: {actual_words} words (target: {target_words}, diff: {diff:+d}) [{assessment}]")
-        
-        return {
-            "sections_processed": len(sections_processed),
-            "total_words": total_words,
-            "sections_refined": total_refined,
-            "draft_file": draft_file,
-            "success": True
-        }
+            print(f"   ✨ {section['section_name']}: {actual} words (target: {target}, diff: {diff_str}) [{assessment}]")
         
     except Exception as e:
-        print(f"\n❌ Error in Phase III.1: {str(e)}")
-        sys.exit(1)
+        print(f"\n❌ Phase III.1 failed: {str(e)}")
+        raise
 
 
 if __name__ == "__main__":

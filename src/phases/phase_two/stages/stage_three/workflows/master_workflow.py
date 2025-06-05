@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 import logging
+import time
 from typing import Dict, Any, List
 import datetime
 
@@ -46,10 +47,15 @@ def process_all_key_moves(
         raise ValueError("No key moves found in framework")
 
     developed_moves = []
+    move_timings = []
 
     # Process each key move sequentially
     for i in range(min(len(moves_list), 2)):  # Only process first 2 moves
         move = moves_list[i]  # Get the actual move text
+        move_start_time = time.time()
+        
+        print(f"\n{i+1}. Key Move {i+1} Development")
+        print("-" * 40)
         logging.info(f"Processing key move {i+1}/{len(moves_list)}: {move}")
 
         # Create a workflow for this specific move
@@ -60,11 +66,15 @@ def process_all_key_moves(
 
         # Dictionary to store the results of each phase
         phase_results = {}
+        phase_timings = {}
         previous_phase_result = None
         refinement_history = []
 
         # Process each development phase sequentially
         for phase_idx, phase in enumerate(development_phases):
+            phase_start_time = time.time()
+            
+            print(f"\nExecuting step: {phase} development")
             logging.info(f"Processing development phase: {phase}")
 
             # For phases after initial, use the previous phase's result
@@ -195,6 +205,12 @@ def process_all_key_moves(
                 # Update the previous phase result for the next phase
                 previous_phase_result = final_refinement
 
+                # Calculate and store phase timing
+                phase_end_time = time.time()
+                phase_duration = phase_end_time - phase_start_time
+                phase_timings[phase] = phase_duration
+                
+                print(f"⏱️  {phase.title()} development completed in {phase_duration:.1f} seconds")
                 logging.info(f"Completed {phase} phase for key move {i+1}")
 
             except Exception as e:
@@ -257,6 +273,11 @@ def process_all_key_moves(
                     # Store this phase's error result
                     phase_results[phase] = f"Error in {phase} phase: {str(e)}"
 
+                # Calculate phase timing even for errors
+                phase_end_time = time.time()
+                phase_duration = phase_end_time - phase_start_time
+                phase_timings[phase] = phase_duration
+
                 # If this is the first phase and it failed, we can't continue with this move
                 if phase == "initial" and phase not in phase_results:
                     logging.error(
@@ -273,6 +294,15 @@ def process_all_key_moves(
                     )
                     break
 
+        # Calculate total move timing
+        move_end_time = time.time()
+        move_duration = move_end_time - move_start_time
+        move_timings.append({
+            "move_index": i,
+            "total_duration": move_duration,
+            "phase_timings": phase_timings
+        })
+
         # Combine all phase results for this move into a clean, structured format
         move_result = {
             "key_move_index": i,
@@ -287,6 +317,10 @@ def process_all_key_moves(
                 phase_results.get("examples", phase_results.get("initial", "")),
             ),
             "refinement_history": refinement_history,
+            "timings": {
+                "total_duration": move_duration,
+                "phase_durations": phase_timings
+            }
         }
 
         # Save the complete move result
@@ -295,6 +329,11 @@ def process_all_key_moves(
             json.dump(move_result, f, indent=2)
 
         developed_moves.append(move_result)
+
+        print(f"⏱️  Key Move {i+1} completed in {move_duration:.1f} seconds ({move_duration/60:.1f} minutes)")
+        print(f"📊 Phase breakdown:")
+        for phase_name, phase_time in phase_timings.items():
+            print(f"   {phase_name.title()}: {phase_time:.1f}s")
 
         logging.info(f"Completed all phases for key move {i+1}")
 
@@ -345,6 +384,11 @@ def process_all_key_moves(
                 else ""
             ),
             "processing_date": str(datetime.datetime.now()),
+            "timing_summary": {
+                "total_moves": len(developed_moves),
+                "move_timings": move_timings,
+                "total_duration": sum(timing["total_duration"] for timing in move_timings)
+            }
         },
     }
 

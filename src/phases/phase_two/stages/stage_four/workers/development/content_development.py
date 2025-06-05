@@ -6,6 +6,8 @@ from src.phases.core.worker_types import DevelopmentWorker
 from src.phases.phase_two.stages.stage_four.prompts.development.content_development_prompts import (
     ContentDevelopmentPrompt,
 )
+from src.utils.analysis_pdf_utils import enhance_development_prompt
+from src.phases.core.exceptions import ValidationError
 
 
 class ContentDevelopmentWorker(DevelopmentWorker):
@@ -22,6 +24,7 @@ class ContentDevelopmentWorker(DevelopmentWorker):
         super().__init__(config)
         self.prompts = ContentDevelopmentPrompt()
         self.stage_name = "content_development"
+        self.selected_analysis_pdfs = []  # Store selected Analysis PDFs
 
     def _construct_prompt(self, input_data: WorkerInput) -> str:
         """Construct the prompt for content development."""
@@ -48,13 +51,58 @@ class ContentDevelopmentWorker(DevelopmentWorker):
                 print(f"Abstract framework contains main_thesis: {'main_thesis' in af}")
                 print(f"Abstract framework contains core_contribution: {'core_contribution' in af}")
         
-        return self.prompts.get_prompt(
+        # Get base prompt
+        base_prompt = self.prompts.get_prompt(
             framework=framework,
             initial_outline=outline,
             current_outline=current_outline,
             developed_key_moves=developed_key_moves,
             literature=literature,
         )
+        
+        # Enhance with Analysis patterns
+        enhanced_prompt, analysis_pdfs = enhance_development_prompt(
+            base_prompt, "detailed outline content development"
+        )
+        
+        # Store selected PDFs for API call
+        self.selected_analysis_pdfs = analysis_pdfs
+        
+        if analysis_pdfs:
+            print(f"Including {len(analysis_pdfs)} Analysis papers for outline content development guidance")
+        
+        return enhanced_prompt
+
+    def execute(self, state: Dict[str, Any]) -> WorkerOutput:
+        """Execute with Analysis PDF support"""
+        input_data = self.process_input(state)
+        
+        # Get system prompt if available
+        system_prompt = self.get_system_prompt()
+        
+        # Construct prompt first - this triggers Analysis PDF selection
+        prompt = self._construct_prompt(input_data)
+        
+        # Make API call with Analysis PDFs if available
+        if self.selected_analysis_pdfs:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                pdf_paths=self.selected_analysis_pdfs,
+                system_prompt=system_prompt
+            )
+        else:
+            response = self.api_handler.make_api_call(
+                stage=self.stage_name,
+                prompt=prompt,
+                system_prompt=system_prompt
+            )
+            
+        output = self.process_output(response)
+        if not self.validate_output(output):
+            print(response)
+            raise ValidationError("Worker output failed validation: ", self.stage_name)
+        return output
 
     def process_input(self, state: Dict[str, Any]) -> WorkerInput:
         """Prepare input for content development."""

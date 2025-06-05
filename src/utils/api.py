@@ -146,6 +146,51 @@ class APIHandler:
 
         return make_call()
 
+    def _call_anthropic_with_pdfs(
+        self, prompt: str, pdf_paths: list[Path], config: Dict[str, Any], system_prompt: Optional[str] = None
+    ) -> str:
+        """Make Anthropic API call with multiple PDF support"""
+
+        @self._retry_with_rate_limit
+        def make_call():
+            try:
+                # Construct message content with multiple PDFs
+                content = []
+                
+                # Add each PDF as a document
+                for pdf_path in pdf_paths:
+                    pdf_data = self._encode_pdf(pdf_path)
+                    content.append({
+                        "type": "document",
+                        "source": {
+                            "type": "base64",
+                            "media_type": "application/pdf",
+                            "data": pdf_data,
+                        },
+                    })
+                
+                # Add the text prompt last
+                content.append({"type": "text", "text": prompt})
+
+                # Make API call with optional system prompt
+                kwargs = {
+                    "model": config["model"],
+                    "max_tokens": config["max_tokens"],
+                    "messages": [{"role": "user", "content": content}],
+                }
+                
+                if system_prompt:
+                    kwargs["system"] = system_prompt
+                
+                response = self.anthropic_client.messages.create(**kwargs)
+                return response.content[0].text
+
+            except Exception as e:
+                print(f"Anthropic API call with PDFs failed: {e}")
+                raise
+
+        return make_call()
+
     @retry(
         stop=stop_after_attempt(3),
         wait=wait_exponential(multiplier=1, min=4, max=10),
@@ -256,15 +301,19 @@ class APIHandler:
         return make_call()
 
     def make_api_call(
-        self, stage: str, prompt: str, pdf_path: Optional[Path] = None, system_prompt: Optional[str] = None
+        self, stage: str, prompt: str, pdf_path: Optional[Path] = None, pdf_paths: Optional[list[Path]] = None, system_prompt: Optional[str] = None
     ) -> str:
         """Make API call to appropriate provider based on stage"""
         model_config = self.config["models"][stage]
 
         if model_config["provider"] == "openai":
+            if pdf_path or pdf_paths:
+                print("Warning: OpenAI provider doesn't support PDF inputs, ignoring PDF parameters")
             return self._call_openai(prompt, model_config, system_prompt)
         elif model_config["provider"] == "anthropic":
-            if pdf_path:
+            if pdf_paths:
+                return self._call_anthropic_with_pdfs(prompt, pdf_paths, model_config, system_prompt)
+            elif pdf_path:
                 return self._call_anthropic_with_pdf(prompt, pdf_path, model_config, system_prompt)
             return self._call_anthropic(prompt, model_config, system_prompt)
         else:

@@ -1,0 +1,44 @@
+[
+  {
+    "paper_title": "Two kinds of failure in joint action: On disrespect and directed duties",
+    "type": "thought_experiment",
+    "purpose": "Demonstrates the distinction between two kinds of failures in joint action - failing to do one's part versus acting disrespectfully",
+    "context": "This is the central example used to establish the paper's main theoretical distinction",
+    "text": "James and Paula are taking a walk together. James is ranting about the government but quickly realizes that Paula shows signs of discomfort. He immediately apologizes and continues the earlier, more successful, conversation about philosophy. But then James speeds up. This goes against Paula's intention to take a relaxing walk. 'Slow down, James! I don't want to walk so fast', she demands. John keeps walking and eventually, he is so far ahead of her that the ordinary concept of walking together no longer applies to them. Paula is confused. Did James not owe it to her to slow down? Did he not respect her enough to at least say goodbye?"
+  },
+  {
+    "paper_title": "Two kinds of failure in joint action: On disrespect and directed duties",
+    "type": "test_case",
+    "purpose": "Tests whether the distinction is merely one of degree rather than kind by flipping the scenario to show how mistakes can transform from innocent to disrespectful",
+    "context": "Used to address the objection that the two failures are just different degrees of the same phenomenon",
+    "text": "Imagine that James, instead of changing the topic, continues his rant, causing Paula to feel visibly uncomfortable. However, when he starts walking too fast and Paula tells him to slow down, he slows down immediately and even apologizes. But he keeps ranting. Has James's failure to act cooperatively by ranting suddenly become a case of disrespect as well as a failure to do his part relative to the joint intention to take an enjoyable, relaxing walk in the sun?"
+  },
+  {
+    "paper_title": "Two kinds of failure in joint action: On disrespect and directed duties",
+    "type": "counterexample",
+    "purpose": "Challenges the view that all failures in joint action constitute moral wrongdoing by showing innocent mistakes don't wrong one's partner",
+    "context": "Used to argue against treating all joint action failures as instances of wronging",
+    "text": "For example, if I build a flat-pack bed with my partner and, for some innocent reason, I use the wrong screw, I cause some frustration, but I do not wrong my partner. Such mistakes are bound to happen in any joint action. I do not need an excuse in such a case; I can admit that I made a mistake, say 'sorry' to signal that it was not due to a lack of cooperative intention, and we move on."
+  },
+  {
+    "paper_title": "Two kinds of failure in joint action: On disrespect and directed duties",
+    "type": "test_case",
+    "purpose": "Shows that disrespect can occur even when joint intentions are fulfilled perfectly, demonstrating the independence of the two types of failure",
+    "context": "Used to prove the distinction is one of kind rather than degree",
+    "text": "The simplest example of the phenomenon of disrespect within a well-functioning joint action involves joint actions under coercion. If I force you to converse with me about the government, for example, because I have coercive power over you, I disrespect you because I disregard your rights and interests, say your right to act autonomously. You and I still share the intention to converse about the government but the only reason we share this intention is that I force you to."
+  },
+  {
+    "paper_title": "Two kinds of failure in joint action: On disrespect and directed duties",
+    "type": "real_world_case",
+    "purpose": "Illustrates how the respect-based analysis explains experimental findings about notification versus permission in ending joint actions",
+    "context": "Applied to make sense of empirical findings that challenge existing theories",
+    "text": "Imagine I walk with you to work regularly, but we have never made any promises regarding this joint activity. We both change our minds and want the regular joint action to end. What I can do to end the practice is this: I notify you that I will not be coming anymore. I do not notify you because of some joint commitment or irreducible joint intention. I do it out of respect for your legitimate claims against me, which, again, are not grounded in the joint intention."
+  },
+  {
+    "paper_title": "Two kinds of failure in joint action: On disrespect and directed duties",
+    "type": "test_case",
+    "purpose": "Tests the theory's ability to handle Gilbert's challenging case of coerced joint action by showing how the coercer loses claims to respectful treatment",
+    "context": "Used to address a key objection to reductionist accounts of joint intention",
+    "text": "For example, if a thief forces me to tell them the combination for the safe while threatening me with a gun, we can phrase this as a form of demand that is justified by the joint intention to help the criminal to open the safe, which we are coerced into against our desires and interests. However, the coercer has no grounds besides the joint intention on which they can make demands... By forcing me to engage in an immoral joint action, the criminal disrespects me in such a fundamental way that if the gun turns out to be fake, I have of course no obligations towards this person to notify or to seek permission to leave."
+  }
+]
