@@ -119,6 +119,14 @@ TARGET JOURNAL: Analysis
    - Appropriate length for Analysis journal?
    - Publication-quality presentation?
    - Suitable for Analysis readership?
+
+7. HÁJEK PHILOSOPHICAL RIGOR TESTS
+   - EXTREME CASES: Are all major claims tested at boundaries?
+   - SELF-UNDERMINING: Does the thesis survive reflexive application?
+   - COUNTEREXAMPLES: Are obvious objections anticipated and addressed?
+   - HIDDEN ASSUMPTIONS: Are controversial premises made explicit?
+   - DOMAIN TRANSFER: Would the paper's reasoning work in parallel contexts?
+   - SYSTEMATIC EXPLORATION: Does the paper methodically explore the logical space?
 </evaluation_areas>
 
 <draft_paper>

@@ -17,6 +17,40 @@ class InitialReadPrompts:
 
 IMPORTANT: You are part of an automated philosophy paper generation pipeline. Your output will be parsed by code and used by other AI agents in subsequent stages. Any formatting errors will cause the pipeline to fail."""
 
+        self.critical_reading_requirements = """
+PHILOSOPHICAL SKEPTICISM REQUIREMENTS (Hájek-style):
+
+When reading papers, actively identify weaknesses:
+
+1. EXTREME CASE VULNERABILITIES
+   - Where do arguments break at boundaries?
+   - What limit cases does the author avoid discussing?
+   - Quote specific claims that fail under extreme conditions
+
+2. SELF-UNDERMINING POTENTIAL
+   - Does the paper's method contradict its conclusion?
+   - Would the thesis exclude itself if applied strictly?
+   - Note any reflexivity problems
+
+3. HIDDEN ASSUMPTIONS
+   - What does the argument assume without argument?
+   - Which "obvious" premises might be controversial?
+   - Identify unstated modal/temporal/causal assumptions
+
+4. COUNTEREXAMPLE OPPORTUNITIES
+   - For each universal claim, what's the obvious exception?
+   - Where would a hostile reader immediately object?
+   - What cases would a grad student raise in Q&A?
+
+5. DOMAIN TRANSFORMATION FAILURES
+   - Would this reasoning work in parallel cases?
+   - If this is about space, what about time? If about time, what about modality?
+   - Where does the analogy break down?
+
+Don't just summarize - INTERROGATE. Read like a hostile referee who wants to find problems.
+Your job is not to appreciate but to identify philosophical weaknesses we can address or avoid.
+"""
+
         self.pipeline_context = """
 PIPELINE CONTEXT:
 You are Stage 1 of an automated philosophy paper generation system. Your JSON output will be:
@@ -43,17 +77,33 @@ CRITICAL JSON FORMATTING RULES:
 REMEMBER: Invalid JSON will break the automated pipeline and prevent paper generation."""
 
         # Stage 1: Quote extraction
-        self.quote_extraction_template = """<task>First Pass: Extract Key Quotations</task>
-
+        self.quote_extraction_template = """<context>
 {pipeline_context}
+</context>
+
+<requirements>
+{critical_reading}
+</requirements>
+
+<task>
+First Pass: Extract Key Quotations
+</task>
 
 <instructions>
-Read through the paper and extract 5-10 key quotations that:
-1. State the main thesis or claims
-2. Define key concepts or distinctions
-3. Present crucial arguments or examples
-4. Acknowledge limitations or objections
-5. Position the work relative to other philosophers
+Read through the paper and extract 8-12 key quotations total that cover:
+
+CONTENT QUOTES (5-7 quotes):
+1. Main thesis or claims statements
+2. Key concept definitions or distinctions
+3. Crucial arguments or examples
+4. Acknowledgments of limitations or objections
+5. Positioning relative to other philosophers
+
+VULNERABILITY QUOTES (3-5 quotes):
+6. Claims vulnerable to extreme case objections
+7. Hidden assumptions or undefended premises
+8. Potential self-undermining elements
+9. Places where counterexamples seem obvious
 
 For each quote:
 - Include the EXACT text in quotation marks
@@ -81,14 +131,18 @@ For each quote:
 Your quotes will be used by the next stage to conduct deep philosophical analysis."""
 
         # Stage 2: Deep analysis using quotes
-        self.analysis_template = """<task>Second Pass: Philosophical Analysis</task>
-
+        self.analysis_template = """<context>
 {pipeline_context}
+</context>
 
-<context>
+<task>
+Second Pass: Philosophical Analysis
+</task>
+
+<extracted_quotes>
 Here are the key quotes from the paper:
 {quotes}
-</context>
+</extracted_quotes>
 
 <analysis_tasks>
 1. THESIS AND ARGUMENT STRUCTURE
@@ -200,6 +254,8 @@ Your analysis will be used to determine how to engage with this paper in our own
                 "{json_rules}", self.json_formatting_rules
             ).replace(
                 "{pipeline_context}", self.pipeline_context
+            ).replace(
+                "{critical_reading}", self.critical_reading_requirements
             )
         elif stage == "analysis":
             # This will be called with quotes already extracted
@@ -207,6 +263,8 @@ Your analysis will be used to determine how to engage with this paper in our own
                 "{json_rules}", self.json_formatting_rules
             ).replace(
                 "{pipeline_context}", self.pipeline_context
+            ).replace(
+                "{critical_reading}", self.critical_reading_requirements
             )
         else:
             # For backward compatibility, combine both stages

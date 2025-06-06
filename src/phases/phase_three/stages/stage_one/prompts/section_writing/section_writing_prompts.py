@@ -134,7 +134,22 @@ OUTPUT REQUIREMENTS:
 8. Reference content bank arguments when appropriate
 9. FOLLOW ANALYSIS JOURNAL STYLE PATTERNS throughout
 
-CRITICAL: Ensure all JSON is properly escaped - no unescaped newlines, quotes, or control characters."""
+CRITICAL: Ensure all JSON is properly escaped - no unescaped newlines, quotes, or control characters.
+
+# TAKE A STAND (RLHF-Proofing for Section Writing)
+Your training pushes you to:
+- Present all philosophical views as equally plausible
+- Add "on the other hand" to every claim
+- Write "Some philosophers argue..." instead of taking a position
+- Conclude with wishy-washy compromise positions
+
+RESIST. This paper argues for a specific thesis:
+- Write "I argue that X" not "One might consider whether perhaps X"
+- Say "This objection fails because..." not "This objection faces challenges"
+- Take clear positions: "X, therefore Y" not "X might suggest Y"
+- If the thesis implies something controversial, STATE IT CLEARLY
+
+Good philosophy takes risks. Your job is to defend a thesis, not survey opinions."""
 
         self.output_format = """
 {
@@ -269,6 +284,21 @@ CITATIONS IDENTIFIED:
 </content_bank>
 
 <requirements>
+# TAKE A STAND (RLHF-Proofing for Section Writing)
+Your training pushes you to:
+- Present all philosophical views as equally plausible
+- Add "on the other hand" to every claim
+- Write "Some philosophers argue..." instead of taking a position
+- Conclude with wishy-washy compromise positions
+
+RESIST. This paper argues for a specific thesis:
+- Write "I argue that X" not "One might consider whether perhaps X"
+- Say "This objection fails because..." not "This objection faces challenges"
+- Take clear positions: "X, therefore Y" not "X might suggest Y"
+- If the thesis implies something controversial, STATE IT CLEARLY
+
+Good philosophy takes risks. Your job is to defend a thesis, not survey opinions.
+
 {self.output_requirements}
 </requirements>
 
@@ -342,28 +372,35 @@ UPCOMING SECTIONS:
    - Are potential objections and responses thoroughly considered?
    - Is the philosophical significance of the arguments clear?
 
-2. STRUCTURAL INTEGRATION
+2. HÁJEK HEURISTICS TESTS
+   - EXTREME CASES: Does every major claim survive boundary testing?
+   - SELF-UNDERMINING: Do any arguments defeat themselves when applied reflexively?
+   - COUNTEREXAMPLES: For each universal claim, what's the obvious exception?
+   - HIDDEN ASSUMPTIONS: What controversial premises are smuggled in?
+   - DOMAIN TRANSFER: Would the reasoning work in parallel philosophical contexts?
+
+3. STRUCTURAL INTEGRATION
    - Does the section advance the paper's main thesis?
    - Are transitions smooth from previous sections?
    - Does it set up upcoming sections effectively?
    - Is the section's role in the overall argument clear?
    - Would a reader understand how this fits in?
 
-3. CLARITY AND PRECISION
+4. CLARITY AND PRECISION
    - Is the writing clear and accessible?
    - Are technical terms properly explained?
    - Is the argument structure easy to follow?
    - Are examples illuminating and relevant?
    - Would a reader get lost or confused?
 
-4. SCOPE AND FOCUS
+5. SCOPE AND FOCUS
    - Does the section stay within its intended scope?
    - Is the word count appropriate for the content?
    - Are there unnecessary tangents or missing elements?
    - Is the level of detail appropriate?
    - Would an editor cut this section?
 
-5. DESK-REJECTION RISKS
+6. DESK-REJECTION RISKS
    - What would make an editor reject this immediately?
    - Are there any fatal flaws in the argument?
    - Is the writing quality up to journal standards?

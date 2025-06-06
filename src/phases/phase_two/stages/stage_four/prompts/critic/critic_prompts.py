@@ -164,6 +164,14 @@ Evaluate the structural framework based on these specific criteria:
    - Does outline include all necessary sections?
    - Is anything important missing from structure?
    - Is foundational framework sufficiently detailed?
+
+6. **HÁJEK HEURISTICS APPLICATION**
+   For EACH major structural decision:
+   - **Extreme Case Test**: Does this structure handle extreme versions of the thesis?
+   - **Self-Undermining Check**: Does the outline structure undermine its own purpose?
+   - **Missing Obvious Elements**: What would a hostile reviewer immediately ask for?
+   - **Structural Counterexamples**: Are there papers with this structure that fail?
+   - **Hidden Assumptions**: What controversial organizational choices are being made?
 </requirements>
 
 <output_format>
@@ -284,6 +292,14 @@ Evaluate the literature mapping based on these specific criteria:
    - Would Phase III writers find mapping clear and practical?
    - Is organization logical and easy to navigate?
    - Is there sufficient detail about how to use each source?
+
+6. **HÁJEK HEURISTICS APPLICATION**
+   For EACH major structural decision:
+   - **Extreme Case Test**: Does this structure handle extreme versions of the thesis?
+   - **Self-Undermining Check**: Does the outline structure undermine its own purpose?
+   - **Missing Obvious Elements**: What would a hostile reviewer immediately ask for?
+   - **Structural Counterexamples**: Are there papers with this structure that fail?
+   - **Hidden Assumptions**: What controversial organizational choices are being made?
 </requirements>
 
 <output_format>
@@ -422,6 +438,14 @@ Evaluate the content guidance based on these specific criteria:
    - Are relationships between sections/subsections clear?
    - Are transitions between ideas explicitly addressed?
    - Is there logical flow to content guidance?
+
+6. **HÁJEK HEURISTICS APPLICATION**
+   For EACH major structural decision:
+   - **Extreme Case Test**: Does this structure handle extreme versions of the thesis?
+   - **Self-Undermining Check**: Does the outline structure undermine its own purpose?
+   - **Missing Obvious Elements**: What would a hostile reviewer immediately ask for?
+   - **Structural Counterexamples**: Are there papers with this structure that fail?
+   - **Hidden Assumptions**: What controversial organizational choices are being made?
 </requirements>
 
 <output_format>
@@ -529,6 +553,15 @@ Evaluate the validated outline based on these specific criteria:
    - Is outline structure complete with all necessary elements?
    - Is level of detail appropriate for Phase III writers?
    - Would this outline serve as comprehensive blueprint for writing?
+
+6. **HÁJEK HEURISTICS APPLICATION**
+   For EACH major structural decision:
+   - **Extreme Case Test**: Does this structure handle extreme versions of the thesis?
+   - **Self-Undermining Check**: Does the outline structure undermine its own purpose?
+   - **Missing Obvious Elements**: What would a hostile reviewer immediately ask for?
+   - **Structural Counterexamples**: Are there papers with this structure that fail?
+   - **Hidden Assumptions**: What controversial organizational choices are being made?
+
 </requirements>
 
 <output_format>

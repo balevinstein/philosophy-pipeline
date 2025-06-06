@@ -37,6 +37,15 @@ Consider feasibility within the paper's constraints.
 Assess how well moves work together to support the thesis.
 </task>
 
+<hájek_heuristics>
+For EACH key move, apply these philosophical rigor tests:
+- EXTREME CASE TEST: Does this move handle boundary cases?
+- SELF-UNDERMINING CHECK: Does the move defeat itself when applied reflexively?
+- COUNTEREXAMPLE GENERATION: What obvious objection would a grad student raise?
+- HIDDEN ASSUMPTIONS: What controversial premises are smuggled in?
+- DOMAIN TRANSFER: Would this reasoning work in parallel contexts?
+</hájek_heuristics>
+
 <framework>
 Paper Framework:
 {framework}

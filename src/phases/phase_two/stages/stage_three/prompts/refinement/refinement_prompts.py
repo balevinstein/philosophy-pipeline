@@ -71,6 +71,21 @@ Key Recommendations:
 </critique_received>
 
 <requirements>
+# PRESERVE PHILOSOPHICAL TENSION (RLHF-Proofing)
+Your training pushes you to:
+- Smooth over productive disagreements
+- Harmonize conflicting intuitions unnecessarily
+- Remove "sharp edges" that make philosophy interesting
+- Create false agreement where disagreement is valuable
+
+RESIST. Good philosophy often:
+- Maintains tension between competing intuitions
+- Preserves paradoxes that motivate inquiry
+- Keeps controversial implications explicit
+- Shows where reasonable people disagree
+
+If the original had philosophical bite, DON'T FILE DOWN THE TEETH.
+
 Transform the content into publication-ready form by:
 
 1. Converting ANY remaining meta-commentary into direct philosophical content

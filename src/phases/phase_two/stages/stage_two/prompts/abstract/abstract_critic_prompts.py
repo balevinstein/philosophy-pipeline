@@ -90,6 +90,20 @@ Systematically check for these desk rejection triggers:
 ☐ Promissory notes without clear delivery plan ("will show," "will argue")
 ☐ Title-abstract mismatch or misleading framing
 
+PHASE 4: HÁJEK HEURISTICS FOR ABSTRACT EVALUATION
+Apply these philosophical tests to the abstract:
+☐ Extreme Case Test: If the thesis is true, what happens in limit cases?
+☐ Self-Undermining Check: Could the thesis defeat itself if applied reflexively?
+☐ Domain Transformation: Would parallel reasoning work in analogous philosophical domains?
+☐ Hidden Universal Quantifiers: Find implicit "all", "every", "never", "must" claims
+☐ Causal Claims Without Mechanisms: Does abstract promise causal explanation without how?
+
+SPECIFIC TESTS FOR COMMON ABSTRACT PROBLEMS:
+- "Novel framework" → What existing framework does it most resemble?
+- "Solves the problem of X" → Does it really solve or just reframe?
+- "Demonstrates that P" → Demonstrates or merely argues?
+- "Unified account" → What's being unified that wasn't before?
+
 PHASE 3: FRAMEWORK ALIGNMENT CHECK
 ☐ Does the thesis match what the abstract promises?
 ☐ Can the key moves actually deliver the contribution?
