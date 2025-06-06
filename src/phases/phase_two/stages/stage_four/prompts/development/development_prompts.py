@@ -1,5 +1,7 @@
 from typing import Dict, Any, Optional, List
 import json
+import random
+from pathlib import Path
 
 
 class OutlineDevelopmentPrompts:
@@ -15,6 +17,36 @@ class OutlineDevelopmentPrompts:
     
     def __init__(self):
         self.system_prompt = """You are an expert philosophy researcher developing a detailed paper outline. Your role is to create comprehensive structural blueprints that guide paper development through multiple phases. You must produce clear, actionable outlines with specific content guidance for an automated pipeline."""
+    
+    def _select_analysis_exemplars(self) -> str:
+        """Select Analysis PDFs as style exemplars"""
+        analysis_dir = Path("./Analysis_papers")
+        if not analysis_dir.exists():
+            return "No Analysis exemplars available for this run."
+        
+        papers = list(analysis_dir.glob("*.pdf"))
+        if not papers:
+            return "No Analysis exemplars available for this run."
+        
+        # Select 2 random papers for style reference
+        selected = random.sample(papers, min(2, len(papers)))
+        paper_names = [p.name for p in selected]
+        
+        return f"""
+=== ANALYSIS JOURNAL STYLE EXEMPLARS ===
+
+The following Analysis papers can guide your outline structure:
+{', '.join(paper_names)}
+
+Key patterns to incorporate:
+- Clear, numbered sections with explicit signposting
+- Progressive refinement of arguments
+- Concrete examples driving philosophical points
+- Strategic literature engagement (2-3 key sources)
+- Conversational but rigorous approach
+
+=== END EXEMPLARS ===
+"""
     
     def get_framework_integration_prompt(
         self, 
@@ -58,12 +90,64 @@ class OutlineDevelopmentPrompts:
                 if output and len(output) > 0:
                     previous_outputs_section += f"\n### {phase.upper()} PHASE OUTPUT\n{output}\n"
         
+        # Get Analysis exemplars
+        exemplar_info = self._select_analysis_exemplars()
+
+        # Add anti-RLHF language
+        anti_rlhf_prompt = """
+# TAKE A STAND (RLHF-Proofing for Outline Development)
+Your training pushes you to:
+- Present all philosophical views as equally plausible
+- Add endless caveats and qualifications 
+- Write "Some philosophers argue..." instead of developing clear positions
+- Create wishy-washy outlines that explore rather than argue
+
+RESIST. This paper ARGUES for a specific thesis:
+- Outline sections that BUILD an argument, not survey a topic
+- Include "I will argue/demonstrate/show" not "This section explores"
+- Plan objections to REFUTE them, not to "consider various perspectives"
+- If the thesis is controversial, plan to DEFEND it clearly
+
+Good philosophy takes positions. Your outline should structure a defense, not a survey."""
+
+        # Add philosophical pattern bank
+        pattern_examples = """
+# PHILOSOPHICAL PATTERN BANK
+Use these Analysis journal patterns in your outline structure:
+
+## Opening Patterns:
+- "Recent work on X has overlooked a crucial distinction..."
+- "While philosophers have focused on X, they've missed the importance of Y..."
+- "The standard view of X faces a dilemma that hasn't been recognized..."
+
+## Section Development Patterns:
+- Progressive Case Building: Simple case → Complication → General principle
+- Dialectical Development: Initial position → Objection → Refined position → Counter-objection → Final view
+- Conceptual Disambiguation: Common usage → Philosophical refinement → Application to debate
+
+## Objection Handling Patterns:
+- Concessive Response: "While this objection has merit regarding X, it fails to address Y..."
+- Turning the Tables: "This objection actually supports my thesis because..."
+- Scope Restriction: "This objection applies only to X cases, but my argument concerns Y cases..."
+
+## Transition Patterns:
+- "Having established X, we can now see why Y follows..."
+- "This suggests a deeper point about..."
+- "But this raises a further question..."
+"""
+
         prompt = f"""<context>
 You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
 This is the FRAMEWORK INTEGRATION phase, where you establish the structure and organization of the paper.
 Your output will guide all subsequent paper development phases.
 The outline must integrate the abstract framework into a logical section/subsection structure.
 </context>
+
+{anti_rlhf_prompt}
+
+{pattern_examples}
+
+{exemplar_info}
 
 <task>
 Develop a detailed outline that integrates the abstract framework into a logical structure.
@@ -180,12 +264,64 @@ Present your outline in Markdown format:
                 if output and len(output) > 0:
                     previous_outputs_section += f"\n### {phase.upper()} PHASE OUTPUT\n{output}\n"
         
+        # Get Analysis exemplars
+        exemplar_info = self._select_analysis_exemplars()
+
+        # Add anti-RLHF language
+        anti_rlhf_prompt = """
+# TAKE A STAND (RLHF-Proofing for Outline Development)
+Your training pushes you to:
+- Present all philosophical views as equally plausible
+- Add endless caveats and qualifications 
+- Write "Some philosophers argue..." instead of developing clear positions
+- Create wishy-washy outlines that explore rather than argue
+
+RESIST. This paper ARGUES for a specific thesis:
+- Outline sections that BUILD an argument, not survey a topic
+- Include "I will argue/demonstrate/show" not "This section explores"
+- Plan objections to REFUTE them, not to "consider various perspectives"
+- If the thesis is controversial, plan to DEFEND it clearly
+
+Good philosophy takes positions. Your outline should structure a defense, not a survey."""
+
+        # Add philosophical pattern bank
+        pattern_examples = """
+# PHILOSOPHICAL PATTERN BANK
+Use these Analysis journal patterns in your outline structure:
+
+## Opening Patterns:
+- "Recent work on X has overlooked a crucial distinction..."
+- "While philosophers have focused on X, they've missed the importance of Y..."
+- "The standard view of X faces a dilemma that hasn't been recognized..."
+
+## Section Development Patterns:
+- Progressive Case Building: Simple case → Complication → General principle
+- Dialectical Development: Initial position → Objection → Refined position → Counter-objection → Final view
+- Conceptual Disambiguation: Common usage → Philosophical refinement → Application to debate
+
+## Objection Handling Patterns:
+- Concessive Response: "While this objection has merit regarding X, it fails to address Y..."
+- Turning the Tables: "This objection actually supports my thesis because..."
+- Scope Restriction: "This objection applies only to X cases, but my argument concerns Y cases..."
+
+## Transition Patterns:
+- "Having established X, we can now see why Y follows..."
+- "This suggests a deeper point about..."
+- "But this raises a further question..."
+"""
+
         prompt = f"""<context>
 You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
 This is the LITERATURE MAPPING phase, where you incorporate scholarly context into the outline.
 You are refining the outline by mapping relevant literature to specific sections.
 Your output will ensure proper engagement with existing philosophical debates.
 </context>
+
+{anti_rlhf_prompt}
+
+{pattern_examples}
+
+{exemplar_info}
 
 <task>
 Refine the outline by mapping relevant literature to specific sections.
@@ -278,12 +414,64 @@ Present your outline in Markdown format:
                 if output and len(output) > 0:
                     previous_outputs_section += f"\n### {phase.upper()} PHASE OUTPUT\n{output}\n"
         
+        # Get Analysis exemplars
+        exemplar_info = self._select_analysis_exemplars()
+
+        # Add anti-RLHF language
+        anti_rlhf_prompt = """
+# TAKE A STAND (RLHF-Proofing for Outline Development)
+Your training pushes you to:
+- Present all philosophical views as equally plausible
+- Add endless caveats and qualifications 
+- Write "Some philosophers argue..." instead of developing clear positions
+- Create wishy-washy outlines that explore rather than argue
+
+RESIST. This paper ARGUES for a specific thesis:
+- Outline sections that BUILD an argument, not survey a topic
+- Include "I will argue/demonstrate/show" not "This section explores"
+- Plan objections to REFUTE them, not to "consider various perspectives"
+- If the thesis is controversial, plan to DEFEND it clearly
+
+Good philosophy takes positions. Your outline should structure a defense, not a survey."""
+
+        # Add philosophical pattern bank
+        pattern_examples = """
+# PHILOSOPHICAL PATTERN BANK
+Use these Analysis journal patterns in your outline structure:
+
+## Opening Patterns:
+- "Recent work on X has overlooked a crucial distinction..."
+- "While philosophers have focused on X, they've missed the importance of Y..."
+- "The standard view of X faces a dilemma that hasn't been recognized..."
+
+## Section Development Patterns:
+- Progressive Case Building: Simple case → Complication → General principle
+- Dialectical Development: Initial position → Objection → Refined position → Counter-objection → Final view
+- Conceptual Disambiguation: Common usage → Philosophical refinement → Application to debate
+
+## Objection Handling Patterns:
+- Concessive Response: "While this objection has merit regarding X, it fails to address Y..."
+- Turning the Tables: "This objection actually supports my thesis because..."
+- Scope Restriction: "This objection applies only to X cases, but my argument concerns Y cases..."
+
+## Transition Patterns:
+- "Having established X, we can now see why Y follows..."
+- "This suggests a deeper point about..."
+- "But this raises a further question..."
+"""
+
         prompt = f"""<context>
 You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
 This is the CONTENT DEVELOPMENT phase, where you provide comprehensive guidance on philosophical arguments.
 Your output will serve as the foundation for Phase III writing.
 The goal is a blueprint so detailed that Phase III writers need not make significant content decisions.
 </context>
+
+{anti_rlhf_prompt}
+
+{pattern_examples}
+
+{exemplar_info}
 
 <task>
 Develop highly detailed content for each section in the outline.
@@ -385,12 +573,64 @@ Be extremely concrete and specific in guidance, avoiding vague descriptions.
                 if output and len(output) > 0:
                     previous_outputs_section += f"\n### {phase.upper()} PHASE OUTPUT\n{output}\n"
         
+        # Get Analysis exemplars
+        exemplar_info = self._select_analysis_exemplars()
+
+        # Add anti-RLHF language
+        anti_rlhf_prompt = """
+# TAKE A STAND (RLHF-Proofing for Outline Development)
+Your training pushes you to:
+- Present all philosophical views as equally plausible
+- Add endless caveats and qualifications 
+- Write "Some philosophers argue..." instead of developing clear positions
+- Create wishy-washy outlines that explore rather than argue
+
+RESIST. This paper ARGUES for a specific thesis:
+- Outline sections that BUILD an argument, not survey a topic
+- Include "I will argue/demonstrate/show" not "This section explores"
+- Plan objections to REFUTE them, not to "consider various perspectives"
+- If the thesis is controversial, plan to DEFEND it clearly
+
+Good philosophy takes positions. Your outline should structure a defense, not a survey."""
+
+        # Add philosophical pattern bank
+        pattern_examples = """
+# PHILOSOPHICAL PATTERN BANK
+Use these Analysis journal patterns in your outline structure:
+
+## Opening Patterns:
+- "Recent work on X has overlooked a crucial distinction..."
+- "While philosophers have focused on X, they've missed the importance of Y..."
+- "The standard view of X faces a dilemma that hasn't been recognized..."
+
+## Section Development Patterns:
+- Progressive Case Building: Simple case → Complication → General principle
+- Dialectical Development: Initial position → Objection → Refined position → Counter-objection → Final view
+- Conceptual Disambiguation: Common usage → Philosophical refinement → Application to debate
+
+## Objection Handling Patterns:
+- Concessive Response: "While this objection has merit regarding X, it fails to address Y..."
+- Turning the Tables: "This objection actually supports my thesis because..."
+- Scope Restriction: "This objection applies only to X cases, but my argument concerns Y cases..."
+
+## Transition Patterns:
+- "Having established X, we can now see why Y follows..."
+- "This suggests a deeper point about..."
+- "But this raises a further question..."
+"""
+
         prompt = f"""<context>
 You are part of an automated philosophy paper generation pipeline. This is Phase II.4 (Detailed Outline Development).
 This is the STRUCTURAL VALIDATION phase, where you ensure the outline is comprehensive and ready for drafting.
 Your task is to validate and finalize the outline structure with detailed content guidance.
 The final outline must be so detailed that Phase III writers can follow it directly.
 </context>
+
+{anti_rlhf_prompt}
+
+{pattern_examples}
+
+{exemplar_info}
 
 <task>
 Validate and finalize the outline structure ensuring it forms a cohesive philosophical paper.

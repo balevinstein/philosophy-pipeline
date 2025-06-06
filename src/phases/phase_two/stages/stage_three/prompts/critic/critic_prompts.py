@@ -90,6 +90,59 @@ PHASE 3: PUBLICATION READINESS ASSESSMENT
 ☐ Does it stay within 500-600 words?
 ☐ Would a specialist find this convincing?
 
+PHILOSOPHICAL RIGOR HEURISTICS (Hájek-style):
+
+PHASE 4: EXTREME CASE AND BOUNDARY TESTING
+For EACH major claim:
+☐ Apply extreme case test: What happens at the absolute boundary?
+☐ Test near-extreme cases if extreme cases seem unfair
+☐ Example: "Knowledge requires justification" → What about innate knowledge? Divine revelation?
+☐ Example: "All events have causes" → What about the first event?
+☐ Push claims to their breaking point to find hidden scope limitations
+
+PHASE 5: SELF-UNDERMINING AND REFLEXIVITY CHECK
+☐ Does the argument apply to itself? If so, does it survive?
+☐ Example: "All general claims are false" is self-defeating
+☐ Example: "No beliefs are justified" undermines belief in that very claim
+☐ Check whether normative claims about reasoning undermine their own basis
+☐ Test whether the argument's method contradicts its conclusion
+
+PHASE 6: DOMAIN TRANSFORMATION TEST
+☐ Transport spatial arguments to temporal domain (and vice versa)
+☐ Transform temporal arguments to modal arguments
+☐ Example: "Parts can't survive radical change" → Apply to temporal parts
+☐ Check if parallel reasoning works in ethics, epistemology, metaphysics
+☐ If the pattern fails in parallel domains, it may fail in original domain
+
+PHASE 7: SYSTEMATIC COUNTEREXAMPLE GENERATION
+Instead of waiting for inspiration, systematically check:
+☐ Universal claims: Find the exception ("All X are Y" → Find X that isn't Y)
+☐ Necessary connections: Find cases of separation ("X requires Y" → Find X without Y)
+☐ Sufficient conditions: Find cases of failure ("X guarantees Y" → Find X without Y)
+☐ Conceptual analyses: Find borderline cases that don't fit cleanly
+☐ Work through logical space methodically, not just intuitively
+
+PHASE 8: HIDDEN ASSUMPTION EXCAVATION
+☐ Identify every implicit premise required for argument to work
+☐ Check which background theories the argument assumes
+☐ Test whether argument depends on controversial philosophical positions
+☐ Make implicit modal/temporal/spatial assumptions explicit
+☐ Uncover assumed facts about human psychology, society, or physics
+
+PHASE 9: THEORETICAL VIRTUES ASSESSMENT
+☐ Explanatory Power: Does this explain more than alternatives?
+☐ Parsimony: Is this the simplest adequate explanation?
+☐ Unification: Does this connect previously disparate phenomena?
+☐ Fruitfulness: Does this generate new research questions?
+☐ Conservatism: How much existing theory must we abandon?
+
+PHASE 10: PRINCIPLE OF CHARITY CHECK
+☐ Have you interpreted the argument in its strongest form?
+☐ Are you attacking a strawman or the best version?
+☐ Would proponents recognize this as their view?
+☐ Have you supplied missing premises that make the argument stronger?
+BUT ALSO: After charitable interpretation, identify remaining fatal flaws
+
 RED FLAGS that guarantee rejection:
 - Planning language ("This move would...", "This section demonstrates...")
 - Analytical frameworks instead of philosophical argument

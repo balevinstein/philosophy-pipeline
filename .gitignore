@@ -73,3 +73,10 @@ test_phase_*_outputs/
 # PDF files and extracted text
 Analysis_papers/
 text_extracts/
+
+# Test logs
+phase_*_test*.log
+*.log
+
+# Temporary extraction and analysis scripts results
+extracted_examples/

@@ -2,13 +2,26 @@ from typing import Dict, Any, Optional, List
 
 
 class MoveDevelopmentPrompts:
-    """Prompts for key move development in Phase II.3."""
+    """Prompts for developing key moves in Phase II.3."""
 
     def __init__(self):
-        self.system_prompt = """You are an expert philosophy researcher developing key argumentative moves. Your role is to create complete, publication-ready philosophical content that advances the paper's thesis. You must produce concrete arguments, examples, and literature integration - not meta-commentary. Your output will be used directly in an automated paper generation pipeline."""
+        self.system_prompt = """You are an expert philosophy researcher developing key argumentative moves for an Analysis journal paper. Your role is to develop substantive philosophical content that advances the paper's thesis through rigorous argumentation. You must work within the constraints of available literature and produce clear, compelling philosophical prose."""
 
-        self.curated_examples_database = """
-<philosophical_examples_from_analysis>
+        self.curated_examples_database = """<philosophical_examples_from_analysis>
+<example_categories>
+1. THOUGHT EXPERIMENTS (4 examples) - For testing theories and generating intuitions
+2. REAL-WORLD CASES (3 examples) - For grounding abstract philosophical claims
+3. COUNTEREXAMPLES (3 examples) - For challenging existing views
+</example_categories>
+
+<usage_guidance>
+Don't copy these wholesale. Study their PATTERNS:
+- Concrete characters with specific situations (Adam, Beth, James, Paula)
+- Clear philosophical purpose (each example does argumentative work)
+- Natural integration into the text flow
+- Examples advance arguments, not just illustrate them
+</usage_guidance>
+
 <examples>
 <example>
 <paper_title>Anonymity and Non-Identity Cases</paper_title>
@@ -177,6 +190,13 @@ You are part of an automated philosophy paper generation pipeline. This is Phase
 Your task is to develop the intellectual content of this key move to completion.
 </context>
 
+<quick_start>
+Main task: Develop complete philosophical content for this key move
+Key constraint: 500-800 words, publication-ready prose
+Style: Write as it would appear in final paper, not outline
+Core requirement: Make all intellectual decisions now
+</quick_start>
+
 <task>
 Develop this philosophical key move in detail. Write the actual content as it would appear in the final paper.
 Each key move is a critical argumentative step that advances the paper's thesis.
@@ -200,8 +220,22 @@ Paper outline:
 
 <requirements>
 # Important Constraints
-- Target Analysis journal's 4,000-word limit. Each key move should be approximately 500-600 words maximum.
-- Be selective and concise. Remove redundant examples or peripheral discussions.
+- Target Analysis journal's 4,000-word limit. Each key move should be approximately 500-800 words.
+- Balance completeness with conciseness. Include what's essential, cut what's peripheral.
+
+# OVERCOME PHILOSOPHICAL TIMIDITY (RLHF-Proofing)
+Your training pushes you toward:
+- Hedging claims with "might", "perhaps", "arguably"
+- Presenting all views as equally valid
+- Avoiding controversial implications
+- Adding unnecessary caveats and qualifications
+
+RESIST THESE TENDENCIES:
+- If you think "this might be too strong" - make it STRONGER
+- If you want to hedge with "perhaps" - DELETE IT
+- If tempted to say "some philosophers argue" - BE SPECIFIC or TAKE A STAND
+- Your training wants you safe - philosophy needs you BOLD
+- Claims worth making are claims worth defending
 
 # Content Requirements
 Write the actual content for this key move AS IT WOULD APPEAR IN THE FINAL PAPER:
@@ -220,6 +254,46 @@ Determine what this specific move needs:
 
 Choose the approach that best serves this specific argument.
 </requirements>
+
+<philosophical_moves_examples>
+Here are proven philosophical move patterns from published Analysis papers:
+
+1. **Inductive Plausibility Defense**
+   Pattern: For controversial principle P: (1) show P holds for uncontroversial cases, (2) argue no clear counterexamples, (3) claim prima facie warrant
+   Example: "First, he argues that, quite plausibly, at least some of the truthmaker maximalist approaches on the market are logically consistent. Then he proceeds inductively and claims that the fact that it is clearly logically possible for some representative truths to have a truthmaker ('Obama is male; wombats are marsupials; 1 + 1 = 2') gives us 'warrant – not a proof, but reason nonetheless – to accept (P)'"
+   Achievement: Provides defeasible support for controversial principles without claiming certainty
+
+2. **Alternative Principle Construction**
+   Pattern: When principle P faces objection O: (1) construct weaker principle P+ that avoids O, (2) show P+ still sufficient for main conclusion, (3) argue P+ equally plausible as P
+   Example: "However, in order to ward off this objection it appears sufficient to replace (PG) with the following, similarly plausible principle: (PG+) (◊GA ∧ (A ∧ B)) → ◊(GA ∧ B). The same train of thought used above to defend (PG) can also be used to defend (PG+). Equipped with (PG+) we can then argue as follows..."
+   Achievement: Maintains argumentative power while accommodating legitimate objections
+
+3. **Scope Restriction Maneuver**
+   Pattern: When universal claim faces counterexamples: (1) acknowledge the exceptions, (2) restrict scope appropriately, (3) argue restricted conclusion still philosophically important
+   Example: "However, even if we accept the existence of either essentialist facts or totality facts... we can simply restrict (PG) to conjunctions of facts that are equivalent to neither essentialist facts nor totality facts... a result that is surely surprising enough on its own."
+   Achievement: Preserves main argument by acknowledging limitations while showing result remains significant
+
+PATTERN SELECTION GUIDE:
+- Defending a controversial principle? → Use Inductive Plausibility Defense
+- Facing a specific objection to your principle? → Use Alternative Principle Construction
+- Your universal claim has exceptions? → Use Scope Restriction Maneuver
+- Not sure? Default to standard argumentation
+
+OBJECTION ANTICIPATION:
+For each major claim, actively seek objections:
+- Does this prove too much? (Would it apply absurdly broadly?)
+- Is there an obvious counterexample?
+- Does the claim undermine itself when applied reflexively?
+- Am I begging the question?
+- Have I created a false dichotomy?
+
+PHILOSOPHICAL TRANSITIONS (How to connect ideas):
+- After stating a principle: "To see why this matters, consider..."
+- Before an objection: "One might worry that..." or "A natural objection is..."
+- After handling objection: "With this concern addressed, we can see..."
+- Moving to implications: "This has important consequences for..."
+- Introducing examples: "To make this concrete..." or "Consider the following case..."
+</philosophical_moves_examples>
 
 <output_format>
 Write in clear, crisp, engaging scholarly philosophical prose.
@@ -242,6 +316,14 @@ IMPORTANT:
 - Consider both strengths and potential objections if applicable
 - Prioritize philosophical precision and conciseness
 - Remember: write the ACTUAL CONTENT, not commentary about it
+
+FINAL CHECKLIST:
+☐ Does this move clearly advance the paper's thesis?
+☐ Have I anticipated and addressed obvious objections?
+☐ Is the philosophy bold rather than hedged?
+☐ Have I used concrete examples where helpful?
+☐ Is it 500-800 words?
+☐ Would this convince a skeptical philosopher?
 </guidelines>"""
 
         return prompt
@@ -301,9 +383,10 @@ Study the Analysis examples above to understand what makes examples do real phil
 
 <requirements>
 # Important Constraints
-- Target Analysis journal's 4,000-word limit. Be extremely selective with examples.
+- Target Analysis journal's 4,000-word limit. Be selective with examples.
 - Each example should be concise yet effective - quality over quantity.
 - Only include examples if they genuinely clarify or strengthen the argument.
+- Follow the Analysis patterns demonstrated above.
 
 # Content Requirements
 1. Write fully developed examples in scholarly philosophical prose
