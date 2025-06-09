@@ -72,8 +72,7 @@ class APIHandler:
         # In APIHandler.__init__
         self.anthropic_client = anthropic.Client(
             api_key=self.anthropic_key,
-            # Add any required headers through client configuration
-            default_headers={"anthropic-beta": "pdfs-2024-09-25"},
+            # We no longer need the beta header for PDFs
         )
         if config is None:
             self.config = self.load_config()  # Load default if none provided
@@ -300,21 +299,45 @@ class APIHandler:
 
         return make_call()
 
-    def make_api_call(
-        self, stage: str, prompt: str, pdf_path: Optional[Path] = None, pdf_paths: Optional[list[Path]] = None, system_prompt: Optional[str] = None
+    def _call_anthropic_with_texts(
+        self, prompt: str, text_paths: list[Path], config: Dict[str, Any], system_prompt: Optional[str] = None
     ) -> str:
-        """Make API call to appropriate provider based on stage"""
+        """Make Anthropic API call with multiple text file support"""
+        
+        full_prompt = ""
+        for i, text_path in enumerate(text_paths):
+            with open(text_path, 'r', encoding='utf-8') as f:
+                text_content = f.read()
+            full_prompt += f"<analysis_paper_example_{i+1}>\n{text_content}\n</analysis_paper_example_{i+1}>\n\n"
+
+        full_prompt += prompt
+
+        # This now becomes a standard call, since the text is in the prompt
+        return self._call_anthropic(full_prompt, config, system_prompt)
+
+    def make_api_call(
+        self, stage: str, prompt: str, text_paths: Optional[list[Path]] = None, pdf_path: Optional[Path] = None, pdf_paths: Optional[list[Path]] = None, system_prompt: Optional[str] = None
+    ) -> tuple[str, float]:
+        """Make API call to appropriate provider based on stage and return duration."""
+        start_time = time.time()
         model_config = self.config["models"][stage]
 
         if model_config["provider"] == "openai":
-            if pdf_path or pdf_paths:
-                print("Warning: OpenAI provider doesn't support PDF inputs, ignoring PDF parameters")
-            return self._call_openai(prompt, model_config, system_prompt)
+            if text_paths or pdf_path or pdf_paths:
+                print("Warning: OpenAI provider doesn't support text/PDF file inputs, ignoring file parameters")
+            response_text = self._call_openai(prompt, model_config, system_prompt)
         elif model_config["provider"] == "anthropic":
-            if pdf_paths:
-                return self._call_anthropic_with_pdfs(prompt, pdf_paths, model_config, system_prompt)
-            elif pdf_path:
-                return self._call_anthropic_with_pdf(prompt, pdf_path, model_config, system_prompt)
-            return self._call_anthropic(prompt, model_config, system_prompt)
+            if pdf_path:
+                response_text = self._call_anthropic_with_pdf(prompt, pdf_path, model_config, system_prompt)
+            elif pdf_paths:
+                response_text = self._call_anthropic_with_pdfs(prompt, pdf_paths, model_config, system_prompt)
+            elif text_paths:
+                response_text = self._call_anthropic_with_texts(prompt, text_paths, model_config, system_prompt)
+            else:
+                response_text = self._call_anthropic(prompt, model_config, system_prompt)
         else:
             raise ValueError(f"Unknown provider: {model_config['provider']}")
+        
+        duration = time.time() - start_time
+        self.logger.info(f"API call for stage '{stage}' took {duration:.2f} seconds.")
+        return response_text, duration

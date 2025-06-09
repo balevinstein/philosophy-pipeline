@@ -114,9 +114,9 @@ class JSONHandler:
         # This regex finds quoted strings and replaces newlines within them
         def fix_multiline(match):
             content = match.group(1)
-            # Replace newlines with spaces
-            content = content.replace('\n', ' ').replace('\r', ' ')
-            # Collapse multiple spaces
+            # Replace common control characters with a space
+            content = re.sub(r'[\n\r\t]', ' ', content)
+            # Collapse multiple spaces to a single space
             content = re.sub(r'\s+', ' ', content)
             return f'"{content}"'
         

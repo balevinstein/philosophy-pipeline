@@ -40,6 +40,14 @@ class PipelineArchiver:
             "outputs/key_moves_development/key_moves_development/all_developed_moves.json": "key_moves.json",
             "outputs/detailed_outline/detailed_outline_final.json": "detailed_outline.json",
             
+            # Phase II.5 Consolidation
+            "outputs/phase_2_5_consolidated_context.json": "phase_2_5_consolidated_context.json",
+            "outputs/debug_consolidation_response.txt": "debug_consolidation_response.txt",
+            
+            # Phase II.6 Review
+            "outputs/paper_vision_review/referee_report.json": "paper_vision_review/referee_report.json",
+            "outputs/paper_vision_review/final_writing_plan.json": "paper_vision_review/final_writing_plan.json",
+            
             # Phase 3 drafts
             "outputs/phase_3_1_draft.md": "phase_3_1_draft.md",
             "outputs/phase_3_1_progress.json": "phase_3_1_progress.json",

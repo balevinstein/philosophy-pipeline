@@ -85,14 +85,14 @@ class ContentDevelopmentWorker(DevelopmentWorker):
         
         # Make API call with Analysis PDFs if available
         if self.selected_analysis_pdfs:
-            response = self.api_handler.make_api_call(
+            response, duration = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
-                pdf_paths=self.selected_analysis_pdfs,
+                text_paths=self.selected_analysis_pdfs,
                 system_prompt=system_prompt
             )
         else:
-            response = self.api_handler.make_api_call(
+            response, duration = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
                 system_prompt=system_prompt

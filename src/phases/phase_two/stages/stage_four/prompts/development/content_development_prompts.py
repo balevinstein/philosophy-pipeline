@@ -69,6 +69,14 @@ Using the outline structure from the framework integration phase and the literat
 4. Provide clear signposting for the logical flow within each section
 5. Ensure all aspects of key moves are properly incorporated
 
+## THESIS ADHERENCE (Anti-Drift)
+Your content guidance must support this thesis: "{main_thesis}"
+- Frame arguments to build support for the thesis
+- Choose examples that strengthen the thesis case
+- Address counterarguments in ways that defend the thesis
+- Ensure the logical flow leads readers toward accepting the thesis
+- Do NOT create guidance that would undermine the thesis argument
+
 ## Expected Output Format
 For each section, provide structured bullet points with the following categories:
 

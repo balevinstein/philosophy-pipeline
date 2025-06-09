@@ -40,6 +40,10 @@ class PaperIntegrationWorker(RefinementWorker):
         
         return selected_pdfs
 
+    def get_system_prompt(self) -> str:
+        """Return the system prompt for API calls"""
+        return self.prompts.system_prompt
+
     def execute(self, state: Dict[str, Any]) -> WorkerOutput:
         """Main execution method with Analysis PDF support for final polish"""
         input_data = self.process_input(state)
@@ -57,14 +61,14 @@ class PaperIntegrationWorker(RefinementWorker):
         # Call LLM with Analysis PDFs if available
         print(f"\n🔧 Executing {self.stage_name} with Analysis guidance...")
         if self.selected_analysis_pdfs:
-            response = self.api_handler.make_api_call(
+            response, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
                 pdf_paths=self.selected_analysis_pdfs,
                 system_prompt=system_prompt
             )
         else:
-            response = self.api_handler.make_api_call(
+            response, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
                 system_prompt=system_prompt
