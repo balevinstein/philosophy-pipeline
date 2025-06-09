@@ -141,12 +141,20 @@ class MoveRefinementWorker(RefinementWorker):
             },
         )
 
-    def process_output(self, response: str) -> WorkerOutput:
+    def process_output(self, response) -> WorkerOutput:
         """Process response into structured output."""
         try:
             print("\nProcessing refinement response...")
+            
+            # Handle API response tuple (response_text, duration)
+            if isinstance(response, tuple):
+                response_text, duration = response
+                print(f"Refinement API call took {duration:.2f} seconds")
+            else:
+                response_text = response
+            
             # Print the first 200 characters to help with debugging
-            print(f"Response preview: {response[:200]}...")
+            print(f"Response preview: {response_text[:200]}...")
 
             # Split into sections
             sections = {}
@@ -154,7 +162,7 @@ class MoveRefinementWorker(RefinementWorker):
             current_content = []
             section_markers = ["# ", "## "]  # Look for both H1 and H2 headings
 
-            for line in response.split("\n"):
+            for line in response_text.split("\n"):
                 is_section_header = False
                 for marker in section_markers:
                     if line.startswith(marker):
@@ -174,16 +182,16 @@ class MoveRefinementWorker(RefinementWorker):
                 sections[current_section] = "\n".join(current_content).strip()
 
             # If we couldn't find any sections, create default ones
-            if not sections and response.strip():
+            if not sections and response_text.strip():
                 # Try to split the response into development and changes
-                parts = response.split("Refinement Changes", 1)
+                parts = response_text.split("Refinement Changes", 1)
                 if len(parts) > 1:
                     sections["Refined Development"] = parts[0].strip()
                     sections["Refinement Changes"] = (
                         "Refinement Changes" + parts[1].strip()
                     )
                 else:
-                    sections["Refined Development"] = response.strip()
+                    sections["Refined Development"] = response_text.strip()
                     sections["Refinement Changes"] = (
                         "- Implemented refinements based on critique"
                     )
@@ -250,13 +258,13 @@ class MoveRefinementWorker(RefinementWorker):
             # If something fails, return a basic output that will pass validation
             return WorkerOutput(
                 modifications={
-                    "full_content": response.strip(),
-                    "core_content": response.strip(),
+                    "full_content": response_text.strip(),
+                    "core_content": response_text.strip(),
                     "sections": {
-                        "Refined Development": response.strip(),
+                        "Refined Development": response_text.strip(),
                         "Refinement Changes": "- Implemented refinements based on critique",
                     },
-                    "refined_development": response.strip(),
+                    "refined_development": response_text.strip(),
                     "changes_made": ["Implemented refinements based on critique"],
                     "formatted_changes": "- Implemented refinements based on critique",
                     "iteration": self._state["iterations"],

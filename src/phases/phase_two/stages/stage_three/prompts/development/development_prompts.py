@@ -161,6 +161,7 @@ Key patterns for Analysis journal examples:
         outline: Dict[str, Any],
         literature: Dict[str, Any],
         move_index: int,
+        previously_developed_moves: List[Dict[str, Any]] = None,
     ) -> str:
         """
         Construct prompt for initial development of a key move.
@@ -177,6 +178,30 @@ Key patterns for Analysis journal examples:
         # Get literature synthesis
         lit_synthesis = literature.get("synthesis", {})
         lit_narrative = literature.get("narrative", "")
+
+        # Format previously developed moves if available
+        previous_moves_context = ""
+        if previously_developed_moves:
+            previous_moves_context = """
+<previously_developed_moves>
+Here are the key moves already developed. Your move must complement and build on these without contradicting them:
+
+"""
+            for prev_move in previously_developed_moves:
+                move_text = prev_move.get("key_move_text", "")
+                move_content = prev_move.get("final_content", "")
+                if not move_content:
+                    move_content = prev_move.get("development", {}).get("initial", "")
+                previous_moves_context += f"Move {prev_move.get('key_move_index', 0) + 1}: {move_text}\n"
+                previous_moves_context += f"Content:\n{move_content}\n\n"
+            previous_moves_context += """
+INTEGRATION REQUIREMENTS:
+- Build on these moves without repeating their arguments
+- Ensure your move advances the overall argument coherently
+- Avoid contradicting claims made in previous moves
+- If you must qualify or challenge a previous move, do so explicitly and constructively
+</previously_developed_moves>
+"""
 
         prompt = f"""<context>
 You are part of an automated philosophy paper generation pipeline. This is Phase II.3 (Key Moves Development).
@@ -218,10 +243,25 @@ Paper outline:
 ```
 </input_data>
 
+{previous_moves_context}
+
 <requirements>
 # Important Constraints
 - Target Analysis journal's 4,000-word limit. Each key move should be approximately 500-800 words.
 - Balance completeness with conciseness. Include what's essential, cut what's peripheral.
+
+# THESIS ADHERENCE STRATEGY (Anti-Drift)
+Your PRIMARY job: Develop the strongest possible argument supporting this thesis:
+"{main_thesis}"
+
+SOLDIER MODE: The thesis is FIXED. Your job is execution, not strategy.
+- Find the best available arguments supporting this thesis
+- Develop the thesis as strongly as possible within available evidence
+- Do NOT question the thesis or suggest modifications
+- Work within the constraints of what you're given
+- If arguments seem weak, develop them as compellingly as possible anyway
+
+Remember: Not every paper needs to be perfect. Your goal is the best version of THIS argument.
 
 # OVERCOME PHILOSOPHICAL TIMIDITY (RLHF-Proofing)
 Your training pushes you toward:
@@ -388,7 +428,17 @@ Study the Analysis examples above to understand what makes examples do real phil
 - Only include examples if they genuinely clarify or strengthen the argument.
 - Follow the Analysis patterns demonstrated above.
 
-# Content Requirements
+# THESIS ADHERENCE STRATEGY (Anti-Drift)
+Your PRIMARY job: Develop examples that support this thesis (extracted from framework):
+Main thesis: {framework.get("main_thesis", "See framework for thesis")}
+
+SOLDIER MODE: The thesis is FIXED. Your examples must support it.
+- Choose examples that strengthen the thesis argument
+- If examples seem to work against the thesis, modify them or choose different ones
+- Do NOT use examples that undermine or contradict the thesis
+- Focus on examples that make the thesis more convincing
+
+# Content Requirements  
 1. Write fully developed examples in scholarly philosophical prose
 2. Present examples as they would appear in the published paper
 3. Integrate examples naturally within the philosophical argument
@@ -498,6 +548,16 @@ Integrate relevant literature into this key move AS IT WOULD APPEAR IN THE FINAL
 Write scholarly philosophical prose that naturally incorporates literature.
 Position the move properly within the philosophical landscape.
 Be highly selective - only cite what's truly necessary.
+
+# THESIS ADHERENCE STRATEGY (Anti-Drift)
+Your PRIMARY job: Integrate literature in ways that support this thesis (extracted from framework):
+Main thesis: {framework.get("main_thesis", "See framework for thesis")}
+
+SOLDIER MODE: The thesis is FIXED. Your literature integration must support it.
+- Cite works that strengthen the thesis argument
+- Present literature in ways that advance the thesis
+- If literature seems to contradict the thesis, either don't cite it or explain why the thesis survives the challenge
+- Focus on literature engagement that makes the thesis more credible
 </task>
 
 <current_development>

@@ -6,6 +6,7 @@ from src.phases.core.worker_types import RefinementWorker
 from src.phases.phase_three.stages.stage_one.prompts.section_writing.section_writing_prompts import (
     SectionWritingPrompts,
 )
+from src.phases.phase_two.base.framework import ValidationError
 
 
 class SectionRefinementWorker(RefinementWorker):
@@ -24,6 +25,16 @@ class SectionRefinementWorker(RefinementWorker):
             critique=input_data.context["current_critique"],
             paper_overview=input_data.context["paper_overview"]
         )
+
+    def get_system_prompt(self) -> str:
+        """Return the system prompt for API calls"""
+        # Use a default refinement system prompt since the method doesn't exist in prompts
+        return """You are an expert philosophy paper editor specializing in Analysis-style papers. Your role is to refine sections based on critic feedback while maintaining philosophical rigor and clear argumentation. Focus on:
+- Addressing all major issues identified by the critic
+- Improving clarity and precision of philosophical arguments
+- Maintaining appropriate academic tone while being conversational
+- Ensuring smooth integration with the overall paper structure
+- Meeting word count targets while preserving essential content"""
 
     def construct_refinement_prompt(self, writing_context: Dict[str, Any], section_index: int,
                                   current_content: str, critique: str, paper_overview: Dict[str, Any]) -> str:
@@ -266,4 +277,23 @@ Focus on creating a substantially improved section that directly addresses the c
         print(f"Content bank usage: {len(output.modifications.get('content_bank_usage', []))} items")
         
         print("Refinement validation passed!")
-        return True 
+        return True
+        
+    def execute(self, state: Dict[str, Any]) -> WorkerOutput:
+        """Execute the refinement worker with proper tuple unpacking"""
+        input_data = self.process_input(state)
+        prompt = self._construct_prompt(input_data)
+        system_prompt = self.get_system_prompt()
+        
+        # Make API call and unpack tuple
+        response, _ = self.api_handler.make_api_call(
+            stage=self.stage_name,
+            prompt=prompt,
+            system_prompt=system_prompt
+        )
+        
+        output = self.process_output(response)
+        if not self.validate_output(output):
+            print(response)
+            raise ValidationError("Worker output failed validation: ", self.stage_name)
+        return output 

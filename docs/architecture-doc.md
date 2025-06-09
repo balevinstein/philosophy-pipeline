@@ -66,55 +66,90 @@ This document describes the complete architecture for the AI-driven philosophy p
    - Move integration and section/subsection planning
    - **Output**: `outputs/detailed_outline/detailed_outline_final.md`, `outputs/detailed_outline/detailed_outline_final.json`
 
-5. **II.5: Context Consolidation** [COMPLETED]
-   - Hybrid Python/Rivet integration for context merging
-   - Consolidates all Phase II outputs into unified structure
-   - Prepares comprehensive context for Phase III
-   - **Output**: `outputs/phase_3_context.json`
+5. **II.5: Intelligent Consolidation** [COMPLETED]
+   - **Comprehensive Diagnostic Analysis**: Applies all quality standards from earlier phases
+   - **Quality Standard Integration**:
+     - Hájek heuristics (5 tests: extreme case, self-undermining, counterexample, hidden assumptions, domain transfer)
+     - Analysis journal patterns (Hook→Thesis→Roadmap, Claim→Example→Analysis)
+     - Anti-RLHF checks (hedging, equivocation, both-sidesism detection)
+     - Philosophical skepticism (boundary vulnerabilities, conceptual precision)
+   - **Thesis-Argument Alignment**: Validates all components support main thesis
+   - **Gap and Redundancy Analysis**: Identifies missing elements and repetitions
+   - **Priority Recommendations**: Actionable fixes ranked by importance
+   - **Inter-Move Awareness**: Enhanced II.3 to pass previously developed moves for coherence
+   - **Implementation**: Complete rewrite using APIHandler, proper config loading
+   - **Output**: `outputs/phase_2_5_consolidated_context.json`, `outputs/debug_consolidation_response.txt`
 
-6. **II.6: Writing Context Optimization** [COMPLETED]
-   - **Critical bridge between Phase II development and Phase III writing**
-   - Restructures consolidated context specifically for section-by-section writing
-   - Creates writing-optimized data structures for efficient paper generation
-   
-   **Core Functions**:
-   - **Section Structure Extraction**: Parses detailed outline to create section-by-section writing targets
-   - **Content Bank Creation**: Organizes developed arguments, examples, and citations for easy access
-   - **Word Target Allocation**: Assigns appropriate word counts per section (totaling 4000 words)
-   - **Writing Guidance Generation**: Creates specific content guidance for each section
+6. **II.6: Holistic Review** [COMPLETED]
+   - **Two-Stage Process**: 
+     - Stage 1: Expert philosophical referee critique (hostile but helpful reviewer)
+     - Stage 2: Concrete revision planning with specific fixes
+   - **Forest-Level Analysis**: Sees overall patterns beyond technical details
+   - **Fatal Flaw Detection**: Identifies thesis-undermining issues early
+   - **Revision Roadmap**: Move-by-move revision strategies with priority ordering
+   - **Executive Decisions**: Recommends thesis refinement, move restructuring, cuts
+   - **Enhanced Prompts**: Explicit Hájek test evaluation, anti-RLHF compliance checks
+   - **Output**: `outputs/paper_[id]/phase_2_6_holistic_review/review_output.json`
+
+7. **II.7: Targeted Refinement** [COMPLETED]
+   - **Implementation Phase**: Executes the revision plan from II.6
+   - **Refinement Strategies**:
+     - Refine: Minor adjustments to existing content
+     - Redevelop: Complete rewrite maintaining core insight
+     - Merge: Combine redundant moves
+     - Cut: Remove fatally flawed content
+   - **Quality Validation**: Re-runs all quality checks on refined content
+   - **Thesis Evolution**: Updates thesis and contribution based on refinements
+   - **Move Management**: Tracks status (retained, redeveloped, merged, cut)
+   - **Output**: `outputs/phase_2_7_refined_context.json` with refined moves and updated thesis
+
+8. **II.8: Writing Context Optimization** [COMPLETED]
+   - **Critical bridge between Phase II refinement and Phase III writing**
+   - **Writing Aid Generation**:
+     - 4-5 introduction hooks (example, paradox, challenge, scenario, puzzle)
+     - Section transitions for smooth flow
+     - Analysis-style phrase banks (6 categories)
+     - Move integration guidance
+     - Conclusion clinchers
+   - **Content Organization**:
+     - Move-to-section mapping
+     - Citation placement guidance
+     - Section blueprints with word targets
+   - **Implementation**: 5 separate API calls for comprehensive writing aids
+   - **Integration**: Transforms Phase III.1 input format for backward compatibility
    
    **Output Structure**:
    ```json
    {
-     "paper_overview": {
-       "thesis": "Main thesis statement",
-       "abstract": "Paper abstract", 
-       "target_words": 4000,
-       "sections_count": 7
+     "paper_metadata": {
+       "thesis": "Final refined thesis",
+       "core_contribution": "Final contribution statement",
+       "target_journal": "Analysis",
+       "word_target": 4000
      },
-     "sections": [
-       {
-         "section_name": "Introduction",
-         "content_guidance": "Detailed writing guidance...",
-         "word_target": 600
-       }
-     ],
-     "content_bank": {
-       "arguments": ["Developed arguments from Phase II.3"],
-       "examples": ["Case studies and examples"],
-       "citations": ["Extracted citation references"]
-     }
+     "writing_aids": {
+       "introduction_hooks": [{"hook_type": "...", "text": "...", "transition_to_thesis": "..."}],
+       "section_transitions": {"into_section_2": "...", "from_section_2": "..."},
+       "phrase_banks": {"introducing_objections": [...], "making_claims": [...], ...},
+       "conclusion_clinchers": [...]
+     },
+     "content_organization": {
+       "move_to_section_mapping": {"section_2": [0, 1], ...},
+       "move_integration_guidance": [...],
+       "citation_placement": {...}
+     },
+     "section_blueprints": [...]
    }
    ```
    
-   **Why II.6 is Essential**:
-   - **Context Optimization**: Phase II.5 creates comprehensive context; II.6 optimizes it for actual writing
-   - **Section-Level Focus**: Transforms outline into actionable section-by-section writing instructions
-   - **Content Accessibility**: Makes developed arguments and examples easily accessible to writers
-   - **Word Management**: Ensures proper word allocation across sections for target length
-   - **Writing Efficiency**: Provides structured guidance that enables coherent section development
+   **Why II.8 is Essential**:
+   - **Professional Polish**: Provides publication-ready phrasing and transitions
+   - **Writing Efficiency**: All materials prepared in advance for smooth writing
+   - **Style Consistency**: Maintains Analysis journal tone throughout
+   - **Integration Support**: Guides how to weave moves into coherent narrative
+   - **Quality Assurance**: Pre-planned structure prevents drift during writing
    
-   **Output**: `outputs/phase_3_writing_context.json`
+   **Output**: `outputs/phase_2_8_writing_context.json`, `outputs/phase_2_8_optimization_summary.json`
 
 ### Phase III: Paper Writing & Integration [COMPLETED]
 
@@ -223,7 +258,7 @@ The Analysis journal integration represents a comprehensive architectural transf
 - **Phase II.2** (AbstractDevelopmentWorker): Analysis abstract patterns and conversational tone
 - **Phase II.3** (KeyMovesWorker): Curated philosophical examples database integration
 - **Phase II.4** (OutlineDevelopmentWorker): Analysis structural patterns with **critical bug fix**
-- **Phase II.6** (Writing Context): Analysis-aware consolidation
+- **Phase II.8** (Writing Context Optimization): Analysis-aware content preparation
 - **Phase III.1** (SectionWritingWorker): Analysis writing style and voice patterns  
 - **Phase III.2** (PaperReaderWorker, PaperIntegrationWorker): Analysis publication standards
 
@@ -285,8 +320,8 @@ def execute(self, state: Dict[str, Any]) -> WorkerOutput:
 
 **Testing Methodology**:
 - **Phase II.4**: 53.1-minute full test with PDF integration working across all 4 phases
-- **Phase III.1**: Complete section writing with Analysis guidance (25 minutes)
-- **Phase III.2**: Global analysis and integration with Analysis standards (2 minutes)
+- **Phase III.1**: Complete section writing with Analysis guidance (12 minutes)
+- **Phase III.2**: Global analysis and integration with Analysis standards (2.8 minutes)
 - **End-to-End**: Complete pipeline validation from Phase II.2 through III.2
 
 **Quality Validation**:
@@ -444,11 +479,10 @@ models:
 ### Data Flow Architecture
 
 ```
-Phase I.1 → Phase I.2 → Phase II.1 → Phase II.2 → Phase II.3 → Phase II.4 → Phase II.5 → Phase II.6 → Phase III.1 → Phase III.2
-    ↓           ↓           ↓           ↓           ↓           ↓           ↓           ↓           ↓           ↓
-final_      literature_  literature_  framework_  developed_  detailed_   phase_3_    phase_3_    complete_   final_
-selection   research    synthesis   development key_moves   outline     context     writing_    draft       paper
-                                                                       context
+Phase I.1 → Phase I.2 → Phase II.1 → Phase II.2 → Phase II.3 → Phase II.4 → Phase II.5 → Phase II.6 → Phase II.7 → Phase II.8 → Phase III.1 → Phase III.2
+    ↓           ↓           ↓           ↓           ↓           ↓           ↓              ↓              ↓           ↓           ↓           ↓
+final_      literature_  literature_  framework_  developed_  detailed_   consolidated_   review_      refined_    writing_    complete_   final_
+selection   research    synthesis   development key_moves   outline     context         results      context     context     draft       paper
 ```
 
 ### Storage and Output Management
@@ -464,11 +498,13 @@ selection   research    synthesis   development key_moves   outline     context 
 - **Phase II.2**: ~10 minutes (framework development with validation)
 - **Phase II.3**: ~45 minutes (key moves development, 2 moves × 3 phases × 3 iterations)
 - **Phase II.4**: ~53 minutes (detailed outline development with Analysis PDF integration)
-- **Phase II.5**: ~2 minutes (context consolidation via Rivet integration)
-- **Phase II.6**: ~3 minutes (writing context optimization and restructuring)
-- **Phase III.1**: ~25 minutes (section-by-section writing with critique/refinement and Analysis style guidance)
-- **Phase III.2**: ~2 minutes (global integration and final paper generation with Analysis publication standards)
-- **Total Pipeline**: **~145 minutes** for complete Analysis-style philosophy paper generation
+- **Phase II.5**: ~85 seconds (intelligent consolidation with comprehensive diagnostics)
+- **Phase II.6**: ~90 seconds (two-stage holistic review and revision planning)
+- **Phase II.7**: ~20 seconds (targeted refinement of moves and thesis)
+- **Phase II.8**: ~92 seconds (writing aid generation with 5 API calls)
+- **Phase III.1**: ~12 minutes (section-by-section writing with critique/refinement)
+- **Phase III.2**: ~2.8 minutes (global integration and final paper generation)
+- **Total Pipeline**: **~130 minutes** for complete Analysis-style philosophy paper generation
 
 ## Quality Metrics & Output Standards
 
@@ -592,6 +628,6 @@ The AI-driven philosophy paper generator represents a **complete, working system
 - **Quality Control**: Multi-stage critique and refinement ensuring academic standards
 - **Professional Output**: Publication-ready papers with proper academic structure
 - **Philosophical Rigor**: Maintains theoretical coherence and argumentative depth
-- **Practical Feasibility**: ~145-minute generation time for complete papers
+- **Practical Feasibility**: ~130-minute generation time for complete papers
 
 The system demonstrates that **systematic LLM-driven philosophical research is feasible** with appropriate architecture, quality control mechanisms, and careful attention to academic standards. The complete end-to-end pipeline provides a solid foundation for advancing automated academic paper generation in philosophy and potentially other disciplines.

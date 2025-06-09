@@ -155,7 +155,7 @@ class SectionWritingWorker(DevelopmentWorker):
         # Make API call with PDFs if available
         if analysis_pdfs:
             print(f"Including {len(analysis_pdfs)} Analysis papers as style exemplars")
-            response = self.api_handler.make_api_call(
+            response, _ = self.api_handler.make_api_call(
                 stage=self.stage_name, 
                 prompt=prompt,
                 pdf_paths=analysis_pdfs,
@@ -163,7 +163,7 @@ class SectionWritingWorker(DevelopmentWorker):
             )
         else:
             print("No Analysis papers available, proceeding without style exemplars")
-            response = self.api_handler.make_api_call(
+            response, _ = self.api_handler.make_api_call(
                 stage=self.stage_name, 
                 prompt=prompt,
                 system_prompt=system_prompt

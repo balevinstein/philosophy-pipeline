@@ -56,7 +56,9 @@ class OutlineCriticWorker(CriticWorker):
         # The config has a model configuration for detailed_outline_critic
         model_stage = "detailed_outline_critic"
         
-        return self.api_handler.make_api_call(model_stage, prompt)
+        # API handler returns (response_text, duration) tuple, we only need the response text
+        response_text, _ = self.api_handler.make_api_call(model_stage, prompt)
+        return response_text
 
     def _construct_prompt(self, input_data: WorkerInput) -> str:
         """Construct the appropriate critique prompt based on the development phase."""

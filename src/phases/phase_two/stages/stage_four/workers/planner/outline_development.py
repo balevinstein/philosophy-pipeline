@@ -74,19 +74,19 @@ class OutlineDevelopmentWorker(BaseWorker):
         # Call LLM with Analysis PDFs if available
         print(f"\nExecuting LLM call for {self.name}...")
         if self.selected_analysis_pdfs:
-            response = self.api_handler.make_api_call(
+            response_text, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
                 pdf_paths=self.selected_analysis_pdfs
             )
         else:
-            response = self.api_handler.make_api_call(
+            response_text, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt
             )
         
         # Process output
-        output = self._process_llm_response(response)
+        output = self._process_llm_response(response_text)
         print(f"Processed {self.name} output.")
         
         return output
