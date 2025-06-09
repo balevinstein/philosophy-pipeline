@@ -36,6 +36,7 @@ class MoveDevelopmentWorker(DevelopmentWorker):
         literature = input_data.context.get("literature", {})
         move_index = input_data.parameters.get("move_index", 0)
         current_development = input_data.context.get("current_move_development")
+        previously_developed_moves = input_data.context.get("previously_developed_moves", None)
 
         development_phase = self._state.get("development_phase", "initial")
 
@@ -64,6 +65,7 @@ class MoveDevelopmentWorker(DevelopmentWorker):
                 outline=outline,
                 literature=literature,
                 move_index=move_index,
+                previously_developed_moves=previously_developed_moves,
             )
 
         # Create phase-specific identifier for Analysis PDF selection
@@ -94,14 +96,14 @@ class MoveDevelopmentWorker(DevelopmentWorker):
         
         # Make API call with Analysis PDFs if available
         if self.selected_analysis_pdfs:
-            response = self.api_handler.make_api_call(
+            response, duration = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
-                pdf_paths=self.selected_analysis_pdfs,
+                text_paths=self.selected_analysis_pdfs,  # Changed from pdf_paths to text_paths
                 system_prompt=system_prompt
             )
         else:
-            response = self.api_handler.make_api_call(
+            response, duration = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
                 system_prompt=system_prompt
@@ -154,6 +156,11 @@ class MoveDevelopmentWorker(DevelopmentWorker):
         current_move = moves_list[move_index]
         print(f"Processing move {move_index+1}: {current_move}")
 
+        # Get previously developed moves if available
+        previously_developed_moves = state.get("previously_developed_moves", None)
+        if previously_developed_moves:
+            print(f"Found {len(previously_developed_moves)} previously developed moves for context")
+
         return WorkerInput(
             context={
                 "framework": state["framework"],
@@ -161,6 +168,7 @@ class MoveDevelopmentWorker(DevelopmentWorker):
                 "key_moves": state["key_moves"],
                 "literature": state.get("literature", {}),
                 "current_move_development": current_move_development,  # May be None for initial phase
+                "previously_developed_moves": previously_developed_moves,  # Add this for inter-move awareness
             },
             parameters={
                 "move_index": move_index,

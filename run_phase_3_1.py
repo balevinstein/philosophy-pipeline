@@ -12,12 +12,61 @@ from src.utils.api import load_config
 
 
 def load_writing_context() -> Dict[str, Any]:
-    """Load the writing context created by Phase II.6"""
+    """Load the writing context created by Phase II.8"""
     try:
-        with open("./outputs/phase_3_writing_context.json") as f:
-            return json.load(f)
+        with open("./outputs/phase_2_8_writing_context.json") as f:
+            context = json.load(f)
+            # Transform the new structure to match what Phase III expects
+            transformed_context = {
+                "paper_overview": {
+                    "thesis": context["paper_metadata"]["thesis"],
+                    "abstract": f"{context['paper_metadata']['thesis']} {context['paper_metadata']['core_contribution']}",
+                    "target_words": context["paper_metadata"]["word_target"],
+                    "sections_count": len(context["section_blueprints"])
+                },
+                "sections": [],
+                "content_bank": {
+                    "arguments": [
+                        {
+                            "move_text": move.get("key_move_text", ""),
+                            "content": move.get("refined_content", ""),
+                            "move_index": i,
+                            "status": move.get("status", "Unknown")
+                        }
+                        for i, move in enumerate(context.get("refined_moves", []))
+                    ],
+                    "examples": [],  # We'll extract these from moves if needed
+                    "citations": []  # We'll use citation_placement from content_organization
+                },
+                "writing_aids": context.get("writing_aids", {}),
+                "content_organization": context.get("content_organization", {}),
+                "literature_synthesis": context.get("literature_context", {})
+            }
+            
+            # Transform section blueprints into sections
+            for blueprint in context.get("section_blueprints", []):
+                section = {
+                    "section_name": blueprint["title"],
+                    "content_guidance": blueprint["content_guidance"],
+                    "word_target": blueprint["word_target"],
+                    "transition_in": blueprint.get("transition_in", ""),
+                    "transition_out": blueprint.get("transition_out", ""),
+                    "suggested_moves": blueprint.get("suggested_moves", [])
+                }
+                transformed_context["sections"].append(section)
+                
+            # Add introduction hooks if available
+            if "introduction_hooks" in context.get("writing_aids", {}):
+                transformed_context["introduction_hooks"] = context["writing_aids"]["introduction_hooks"]
+                
+            # Add phrase banks
+            if "phrase_banks" in context.get("writing_aids", {}):
+                transformed_context["phrase_banks"] = context["writing_aids"]["phrase_banks"]
+                
+            return transformed_context
+            
     except FileNotFoundError:
-        raise ValueError("Could not find phase_3_writing_context.json. Run Phase II.6 first.")
+        raise ValueError("Could not find phase_2_8_writing_context.json. Run Phase II.8 first.")
 
 
 def process_section_with_critique(writing_context: Dict[str, Any], section_index: int, config: Dict[str, Any]) -> Dict[str, Any]:
@@ -91,7 +140,7 @@ def process_section_with_critique(writing_context: Dict[str, Any], section_index
         if refinement_output.status != "completed":
             raise Exception(f"Refinement failed: {refinement_output.notes}")
         
-        final_content = refinement_output.modifications["section_content"]
+        final_content = refinement_output.modifications["refined_section_content"]
         final_word_count = refinement_output.modifications["word_count"]
         changes_made = refinement_output.modifications.get("changes_made", [])
         

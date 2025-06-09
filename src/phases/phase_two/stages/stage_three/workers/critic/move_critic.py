@@ -127,12 +127,20 @@ class MoveCriticWorker(CriticWorker):
             },
         )
 
-    def process_output(self, response: str) -> WorkerOutput:
+    def process_output(self, response) -> WorkerOutput:
         """Process response into structured output."""
         try:
             print("\nProcessing critic response...")
+            
+            # Handle API response tuple (response_text, duration)
+            if isinstance(response, tuple):
+                response_text, duration = response
+                print(f"Critic API call took {duration:.2f} seconds")
+            else:
+                response_text = response
+            
             # Print the first 200 characters to help with debugging
-            print(f"Response preview: {response[:200]}...")
+            print(f"Response preview: {response_text[:200]}...")
 
             # Split into sections
             sections = {}
@@ -140,7 +148,7 @@ class MoveCriticWorker(CriticWorker):
             current_content = []
             section_markers = ["# ", "## "]  # Look for both H1 and H2 headings
 
-            for line in response.split("\n"):
+            for line in response_text.split("\n"):
                 is_section_header = False
                 for marker in section_markers:
                     if line.startswith(marker):
@@ -160,16 +168,16 @@ class MoveCriticWorker(CriticWorker):
                 sections[current_section] = "\n".join(current_content).strip()
 
             # If we couldn't find any sections, create default ones
-            if not sections and response.strip():
+            if not sections and response_text.strip():
                 # Try to split the response into a critique and assessment
-                parts = response.split("Summary Assessment", 1)
+                parts = response_text.split("Summary Assessment", 1)
                 if len(parts) > 1:
                     sections["Critique"] = parts[0].strip()
                     sections["Summary Assessment"] = (
                         "Summary Assessment" + parts[1].strip()
                     )
                 else:
-                    sections["Critique"] = response.strip()
+                    sections["Critique"] = response_text.strip()
                     sections["Summary Assessment"] = (
                         "MINOR REFINEMENT\n\nNext steps:\n- Review and refine the arguments"
                     )
@@ -228,7 +236,7 @@ class MoveCriticWorker(CriticWorker):
             return WorkerOutput(
                 modifications={
                     # Keep the full content for debugging and validation
-                    "full_content": response.strip(),
+                    "full_content": response_text.strip(),
                     # Key structured content for downstream use
                     "core_content": core_content,
                     "sections": sections,
@@ -252,10 +260,10 @@ class MoveCriticWorker(CriticWorker):
             # If something fails, return a basic output that will pass validation
             return WorkerOutput(
                 modifications={
-                    "full_content": response.strip(),
-                    "core_content": response.strip(),
+                    "full_content": response_text.strip(),
+                    "core_content": response_text.strip(),
                     "sections": {
-                        "Critique": response.strip(),
+                        "Critique": response_text.strip(),
                         "Summary Assessment": "MINOR REFINEMENT\n\nNext steps:\n- Review and refine the arguments",
                     },
                     "assessment": "MINOR REFINEMENT",
