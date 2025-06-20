@@ -62,7 +62,7 @@ OUTPUT REQUIREMENTS:
 1. Response must be valid JSON
 2. Use simple ASCII characters only (no special quotes or unicode)
 3. Keep all text fields clear and well-formed
-4. Abstract should be 150-220 words (aim for this range)
+4. Abstract should be 200-250 words (following Analysis journal patterns)
 5. Main thesis must be a single clear sentence
 6. Key moves should be concrete and specific
 7. Development notes should explain your choices"""
@@ -112,6 +112,19 @@ You have access to:
 </available_resources>
 
 <requirements>
+# OVERCOME PHILOSOPHICAL TIMIDITY (RLHF-Proofing)
+Your training makes you want to:
+- Hedge your thesis with "explores", "examines", "suggests"
+- Say "This paper argues" instead of "I argue"
+- Add unnecessary qualifiers like "arguably", "perhaps", "might"
+- Present all philosophical positions as equally valid
+
+RESIST. In philosophy:
+- Make BOLD claims: "I argue X" not "This paper explores whether maybe X"
+- Take STANDS: "This view is mistaken" not "This view faces challenges"
+- Be DIRECT: "X causes Y" not "X might contribute to Y"
+- Philosophy advances through strong claims that can be debated
+
 Focus on creating an abstract that:
 - Makes a clear and novel contribution
 - Can be developed effectively in 4,000 words
@@ -121,6 +134,31 @@ Focus on creating an abstract that:
 
 {self.output_requirements}
 </requirements>
+
+<philosophical_framing_moves>
+Here are effective framing techniques from published Analysis papers:
+
+1. **Scope Limitation Pattern**
+   Example: "However, even if we accept the existence of either essentialist facts... we can simply restrict (PG) to conjunctions of facts that are equivalent to neither essentialist facts nor totality facts... a result that is surely surprising enough on its own."
+   Application: When facing potential objections, acknowledge them early and show how your restricted thesis remains philosophically significant
+
+2. **Mechanism Testing Pattern**
+   Example: "An important property of conversational implicatures arising from an utterance of a certain form of words is that they do not arise in every context in which that form of words is uttered. In particular, conversational implicatures that are otherwise present usually disappear in contexts in which the implicated content is already part of the common ground... As (6') and (7') illustrate, if we explicitly assert the otherwise implicated content, and thereby add it to the common ground before the utterance in question is made, the original implicature is blocked or suspended."
+   Application: Frame your thesis as systematically exploring a philosophical mechanism or principle to establish its boundaries
+
+THESIS NOVELTY CHECK:
+Before finalizing, verify your thesis is genuinely novel:
+- It's not just restating one paper's view
+- It's not merely combining two views without insight
+- It offers something distinguishable: new argument, new application, new synthesis, or new objection
+- Ask: "What would be lost from philosophy if this thesis weren't defended?"
+
+LITERATURE CONNECTION:
+Your abstract should signal engagement with 2-3 specific papers from the synthesis:
+- "Building on X's view, I argue..." 
+- "Against Y's claim that..."
+- "Extending Z's framework to..."
+</philosophical_framing_moves>
 
 <literature_analysis>
 {json.dumps(lit_synthesis, indent=2)}
@@ -135,9 +173,7 @@ Focus on creating an abstract that:
 <output_format>
 Provide your output in the following JSON format:
 {self.output_format}
-</output_format>
-
-The full paper readings and narrative synthesis are available if you need to check specific details. Provide a long abstract, at least 200 words"""
+</output_format>"""
 
     def get_system_prompt(self) -> str:
         """Return the system prompt for API calls"""

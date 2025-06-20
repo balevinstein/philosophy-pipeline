@@ -50,7 +50,7 @@ def process_all_key_moves(
     move_timings = []
 
     # Process each key move sequentially
-    for i in range(min(len(moves_list), 2)):  # Only process first 2 moves
+    for i in range(len(moves_list)):  # Process all moves
         move = moves_list[i]  # Get the actual move text
         move_start_time = time.time()
         

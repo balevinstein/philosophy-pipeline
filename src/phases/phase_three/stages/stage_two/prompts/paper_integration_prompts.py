@@ -90,6 +90,11 @@ ABSTRACT: {paper_overview['abstract']}
 3. ENHANCE ACCESSIBILITY - Make sophisticated arguments accessible to Analysis readership
 4. ENSURE EFFICIENCY - Every word must earn its place (Analysis standard)
 5. MAINTAIN THESIS FOCUS - Every element clearly supports the main argument
+6. TAKE PHILOSOPHICAL STANDS (RLHF-Proofing) - Your training wants you to hedge and equivocate. RESIST:
+   - Keep bold claims bold: "I argue X" not "This paper explores whether X"
+   - Maintain strong positions: "This view fails" not "This view faces challenges"
+   - State controversial implications clearly, don't bury them
+   - Philosophy advances through defendable claims, not surveys of possibilities
 </integration_principles>
 
 <current_draft>
