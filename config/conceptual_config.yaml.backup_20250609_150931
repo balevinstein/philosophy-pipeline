@@ -1,0 +1,349 @@
+models:
+  idea_generation:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  topic_evaluation:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  literature_assessment:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  development_testing:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  topic_refinement:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.6
+  topic_analysis:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  conceptual_development:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  topic_selection:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.3
+  phase_two_setup:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  literature_processing:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+    pdf_settings:
+      cache_enabled: true
+      max_pages: 100
+      max_size_mb: 32
+  initialreader:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.3
+  projectspecificreader:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  literaturesynthesizer:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  abstract_development:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  outline_development:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  abstract_critic:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.3
+  abstract_refinement:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  outline_critic:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.3
+  outline_refinement:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  key_moves_development:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  key_moves_critic:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.3
+  key_moves_refinement:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  move_development:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  move_critic:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.3
+  move_refinement:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  detailed_outline_planning:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  detailed_outline_development:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  detailed_outline_critic:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.3
+  detailed_outline_refinement:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  section_writing:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.7
+  section_critic:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.3
+  section_refinement:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.5
+  paper_reader:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 8192
+    temperature: 0.3
+  paper_integration:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    max_tokens: 32000
+    temperature: 0.5
+  phase_2_4:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.4
+    max_tokens: 8192
+  phase_2_5_review:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.1
+    max_tokens: 8192
+  phase_2_5_plan:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.5
+    max_tokens: 32000
+  phase_2_5_consolidation:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.3
+    max_tokens: 8192
+  phase_2_7_redevelopment:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.5
+    max_tokens: 8192
+  phase_2_8_hooks:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.7
+    max_tokens: 4096
+  phase_2_8_transitions:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.5
+    max_tokens: 4096
+  phase_2_8_integration:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.5
+    max_tokens: 8192
+  phase_2_8_phrases:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.6
+    max_tokens: 4096
+  phase_2_8_conclusion:
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    temperature: 0.7
+    max_tokens: 4096
+  phase_3_1:
+    provider: anthropic
+paths:
+  base_dir: ./outputs
+  generated_topics: conceptual_topics.json
+  topics_culled: culled_topics.json
+  topic_development: conceptual_topic_development.json
+  topic_analysis: topic_analysis.json
+  development: conceptual_development.json
+  final_selection: final_selection.json
+  papers_dir: ./papers
+  literature_output:
+    initial_readings: initial_paper_readings.json
+    project_readings: project_specific_readings.json
+    synthesis:
+      json: literature_synthesis.json
+      markdown: literature_synthesis.md
+parameters:
+  num_initial_topics: 6
+  cull_min: 2
+  cull_max: 4
+  max_selected_topics: 2
+  development_stages: 3
+  min_examples_per_topic: 2
+  max_technical_score: 0.3
+  required_elements:
+  - core_conceptual_contribution
+  - illustrative_examples
+  - development_path
+  - potential_objections
+  literature_processing:
+    max_retries: 3
+    min_wait: 4
+    max_wait: 60
+  development_cycles:
+    abstract_num_cycles: 3
+    outline_num_cycles: 3
+    key_moves_num_cycles: 3
+    key_move_max_cycles: 3
+    outline_max_cycles: 3
+api:
+  model: claude-sonnet-4-20250514
+  max_tokens: 8000
+  temperature: 0.1
+workers:
+  topic_researcher:
+    model: claude-sonnet-4-20250514
+    max_tokens: 4000
+    temperature: 0.2
+  topic_critic:
+    model: claude-sonnet-4-20250514
+    max_tokens: 4000
+    temperature: 0.1
+  selection_processor:
+    model: claude-sonnet-4-20250514
+    max_tokens: 4000
+    temperature: 0.1
+  framework_developer:
+    model: claude-sonnet-4-20250514
+    max_tokens: 6000
+    temperature: 0.1
+  framework_critic:
+    model: claude-sonnet-4-20250514
+    max_tokens: 4000
+    temperature: 0.1
+  framework_refinement:
+    model: claude-sonnet-4-20250514
+    max_tokens: 6000
+    temperature: 0.1
+  key_moves_developer:
+    model: claude-sonnet-4-20250514
+    max_tokens: 6000
+    temperature: 0.1
+  key_moves_critic:
+    model: claude-sonnet-4-20250514
+    max_tokens: 4000
+    temperature: 0.1
+  key_moves_refinement:
+    model: claude-sonnet-4-20250514
+    max_tokens: 6000
+    temperature: 0.1
+  detailed_outline_developer:
+    model: claude-sonnet-4-20250514
+    max_tokens: 6000
+    temperature: 0.1
+  detailed_outline_critic:
+    model: claude-sonnet-4-20250514
+    max_tokens: 4000
+    temperature: 0.1
+  detailed_outline_refinement:
+    model: claude-sonnet-4-20250514
+    max_tokens: 6000
+    temperature: 0.1
+  literature_researcher:
+    model: claude-sonnet-4-20250514
+    max_tokens: 6000
+    temperature: 0.2
+  literature_synthesizer:
+    model: claude-sonnet-4-20250514
+    max_tokens: 6000
+    temperature: 0.1
+  section_writer:
+    model: claude-sonnet-4-20250514
+    max_tokens: 8000
+    temperature: 0.1
+  section_critic:
+    model: claude-sonnet-4-20250514
+    max_tokens: 6000
+    temperature: 0.1
+  section_refinement:
+    model: claude-sonnet-4-20250514
+    max_tokens: 8000
+    temperature: 0.1
+  paper_reader:
+    model: claude-sonnet-4-20250514
+    max_tokens: 8000
+    temperature: 0.1
+  paper_integration:
+    model: claude-sonnet-4-20250514
+    max_tokens: 8000
+    temperature: 0.1
+outputs:
+  save_intermediate: true
+  create_backups: true

@@ -71,7 +71,7 @@ class InitialReader(PhaseIIWorker):
         
         # Stage 1: Extract quotes
         print("  Stage 1: Extracting key quotes...")
-        quote_response = self.api_handler.make_api_call(
+        quote_response, _ = self.api_handler.make_api_call(
             stage="initialreader",
             prompt=self._construct_prompt(input_data, stage="quotes"),
             pdf_path=input_data.context["paper_path"],
@@ -89,7 +89,7 @@ class InitialReader(PhaseIIWorker):
             stage="analysis"
         ).replace("{quotes}", quotes_formatted)
         
-        analysis_response = self.api_handler.make_api_call(
+        analysis_response, _ = self.api_handler.make_api_call(
             stage="initialreader",
             prompt=analysis_prompt,
             pdf_path=input_data.context["paper_path"],
@@ -164,7 +164,7 @@ class ProjectSpecificReader(PhaseIIWorker):
 
     def run(self, state: Dict[str, Any]) -> WorkerOutput:
         input_data = self.prepare_input(state)
-        response = self.api_handler.make_api_call(
+        response, _ = self.api_handler.make_api_call(
             stage="projectspecificreader", 
             prompt=self._construct_prompt(input_data),
             system_prompt=self.prompts.get_system_prompt()
@@ -303,7 +303,7 @@ class LiteratureSynthesizer(PhaseIIWorker):
 
     def run(self, state: Dict[str, Any]) -> WorkerOutput:
         input_data = self.prepare_input(state)
-        response = self.api_handler.make_api_call(
+        response, _ = self.api_handler.make_api_call(
             stage="literaturesynthesizer", 
             prompt=self._construct_prompt(input_data),
             system_prompt=self.prompts.get_system_prompt()

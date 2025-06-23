@@ -1,0 +1,98 @@
+Here is the complete extracted text content of the PDF, formatted with paragraph breaks:
+
+Moderate pragmatic invariantism and contextual implicature cancellation
+Michael Blome-Tillmann
+
+1. Moderate pragmatic invariantism
+
+According to Moderate Pragmatic Invariantism (MPI), an utterance of the form of 'x knows p' semantically expresses (1) and pragmatically implicates (2):
+
+(1) x can rule out every epistemically relevant alternative to p.
+(2) x can rule out every conversationally salient alternative to p.
+
+MPI thus defined has been promised to provide us with one of the most simple and powerful explanations of a vexing philosophical problem: our seemingly conflicting intuitions in examples such as Keith DeRose's (1992) Bank Case or Stewart Cohen's (1999) Airport Case. But the view has also attracted criticism, for, as Cohen (1999: 60) has pointed out, the implicature postulated by the defenders of MPI cannot be cancelled in a straightforward way. The standard response to this challenge has been to argue that implicature cancellations can sometimes, as Jessica Brown (2006: 428) puts it, be 'uncomfortable', and especially so in cases in which we 'tend to confuse what's literally said by an utterance with what it pragmatically conveys'. I shall grant the defender of MPI that the implicature in question is cancellable and aim to turn this very feature of conversational implicatures – their cancellability – against them.
+
+To get a closer grasp of MPI's purported solution to the Bank Case problem let us consider the second, or 'High Stakes', version of the Bank Case here. Imagine Hannah and Sarah have the following conversation:
+
+(3) High Stakes:
+H: I've been at the bank two weeks ago on a Saturday, and it was open.
+S: Banks sometimes do change their hours.
+H: You're right. I don't know that the bank will be open on Saturday.
+
+According to our intuitions (which are corroborated by a significant amount of empirical data (see, for instance, Grindrod et al. 2019)), Hannah speaks truly in her last utterance in (3). How does MPI aim to account for this datum?
+
+As has been pointed out frequently in the literature (see, for instance, DeRose 1999: 11, 2002: 191, MacFarlane 2005), MPI as defined above must be extended to cover the data from (3), since (1) and (2) leave it unanswered why, according to MPI, it would be pragmatically appropriate to deny 'knowledge' in High Stakes. To this end, Patrick Rysiew (2001, 2007) and Jessica Brown (2006), two of the main defenders of MPI, have added to their view that an utterance of the form 'x does not know p' pragmatically implicates the negation of (1). Thus, Hannah's last utterance in (3) semantically expresses the falsehood (4) but conversationally implicates the truth (5):
+
+(4) Hannah cannot rule out every epistemically relevant alternative to the bank being open on Saturday.
+(5) Hannah cannot rule out every conversationally salient alternative to the bank being open on Saturday.
+
+According to the defenders of MPI, our intuitions in (3) track the truth-value of the implicature (5) rather than the truth-value of what is semantically expressed or said – that is, (4).
+
+The resulting view has been criticized for being ad hoc, but it is, in fact, rather plausible. Consider, for illustration, some recognized cases of implicature, where the bracketed sentence expresses the conversationally implicated content:
+
+(6) A: Is Karl a good philosopher?
+B: He's got a beautiful handwriting.
+[Karl is not a good philosopher.]
+
+(7) A: Are you going to the party tonight?
+B: I don't like parties.
+[B will not go to the party tonight.]
+
+(8) H: I've been at the bank two weeks ago on a Saturday, and it was open.
+S: Banks do change their hours.
+H: You're right. I don't know that the bank will be open on Saturday.
+[H cannot rule out that the bank has changed its hours recently.]
+
+The bracketed contents in (6)–(8) are, intuitively, conveyed by the relevant utterances or suggested in some other way, but they are not part of what is said. These intuitions are hard to deny. Moreover, it can easily be illustrated that all of these inferences are smoothly cancellable, and thus clearly nonsemantic:
+
+(6') He's got a beautiful handwriting; and he's a great philosopher, too.
+(7') I don't like parties, but I'll go to this one.
+(8') I don't know that the bank will be open on Saturday, but I can rule out that it has changed its hours recently.
+
+Thus, Hannah's utterance in (3) very plausibly carries the implicature in (8), and it is very plausibly cancellable, too – just like the non-controversial implicatures in (6) and (7). On the face of it, MPI's explanation of High Stakes is very promising indeed.
+
+2. Contextual suspension of implicatures
+
+An important property of conversational implicatures arising from an utterance of a certain form of words is that they do not arise in every context in which that form of words is uttered (see Grice 1975, Blome-Tillmann 2008). In particular, conversational implicatures that are otherwise present usually disappear in contexts in which the implicated content is already part of the common ground:
+
+(6") A: Is Karl a good philosopher?
+B: No, he isn't. But he's got a beautiful handwriting.
+
+(7") A: Are you going to the party tonight?
+B: No, I won't go. I don't like parties.
+
+As (6") and (7") illustrate, if we explicitly assert the otherwise implicated content, and thereby add it to the common ground before the utterance in question is made, the original implicature is blocked or suspended. This phenomenon is not further surprising, for if the otherwise implicated content has just been asserted, and thus been added to the common ground, conveying it again by means of an implicature would be redundant and unnecessary.
+
+Interestingly, the very phenomenon just described can also be observed with respect to (8):
+
+(8") H: I've been at the bank two weeks ago on a Saturday, and it was open.
+S: Banks do change their hours.
+H: You're right. I can't rule that out. I don't know that the bank will be open on Saturday.
+
+Hannah's 'knowledge'-denial in (8") intuitively does not convey that she cannot rule out that the bank has changed its hours. That is so because, in (8"), the proposition that Hannah cannot rule out that the bank has changed its hours recently is explicitly stated, and thus has been added to the common ground before Hannah utters her 'knowledge'-denial. Thus, (8") relates to (8) just as (6") relates to (6), and (7") to (7). The implicature at issue behaves in exactly the same way as other examples of recognized implicature.
+
+Is this good news for the defenders of MPI? It is decisively bad news. The crucial point about (8") is that Hannah's (allegedly false) knowledge denial does not carry the (true) implicature that Hannah cannot rule out that the bank has changed its hours. But if it does not carry that (true) implicature, then MPI's explanation of our truth-value intuitions is not available with respect to (8"). Remember that, with respect to (8), our intuitions were meant to track the truth-value of the implicature (true) rather than the truth-value of what is said (false). In (8") there is no implicature that could take over this role, so our intuitions about the 'knowledge'-attribution in (8") must track the truth-value of what is said. But what is said is, according to MPI, false.
+
+To drive the point home let me spell out the original High Stakes case and amend it along the lines suggested in (8"). Here is High Stakes* (adapted from Stanley 2005: 3–4):
+
+High Stakes*
+Hannah and her wife Sarah are driving home on a Friday afternoon. They plan to stop at the bank on the way home to deposit their paycheques. Since they have an impending bill coming due, and very little in their account, it is very important that they deposit their paycheques by Saturday. Hannah notes that she was at the bank two weeks before on a Saturday morning, and it was open. But, as Sarah points out, banks do change their hours. Hannah says, 'I guess you're right. I can't rule out that they've changed their hours in the meantime. So I don't know that the bank will be open tomorrow.'
+
+Intuitively, Hannah's 'knowledge'-denial in High Stakes* does not convey the proposition that she cannot rule out that the bank has changed its hours. For if it did, then her 'knowledge'-denial should appear redundant or repetitive – it should implicate the very same proposition that has just been explicitly stated. But in uttering her 'knowledge'-denial Hannah does not communicate again essentially the same information as she did with her previous assertion.
+
+Could Hannah's 'knowledge'-denial nevertheless carry the implicature at issue, even though it does not seem that way at first sight? There are cases in which a proposition is explicitly stated and then, in a follow-up speech act, immediately implicated. Here are two examples:
+
+(9) You're very special to me. You're the cream in my coffee!
+(10) I've been waiting for a very long time. In fact, I've been waiting for ages!
+
+These speech acts have a clear air of redundancy. By asserting the second sentence in (9) the speaker figuratively conveys what she has already explicitly stated – that the addressee is very special to her. And by asserting the second sentence in (10) the speaker figuratively conveys what she has already explicitly stated – that she has been waiting for a very long time. Since Hannah's utterance in High Stakes* is not repetitive or redundant in the same manner as (9) and (10) are, I conclude that Hannah's 'knowledge'-denial in High Stakes* does not conversationally implicate or convey in any other sense that Hannah cannot rule out that the bank has changed its hours. As a consequence, MPI's explanation of the bank case data fails.
+
+References [list of references follows]
+
+[Title of next paper:]
+Strict propriety is weak
+Catrin Campbell-Moore and Benjamin A. Levinstein
+
+1. Our main point
+
+Considerations of accuracy – the epistemic good of having credences close to truth-values – have led to the justification of a host of epistemic norms, including probabilism, conditionalization, the Principal Principle and the Principle of Indifference.

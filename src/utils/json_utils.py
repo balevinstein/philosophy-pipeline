@@ -110,6 +110,10 @@ class JSONHandler:
         for old, new in quote_replacements.items():
             s = s.replace(old, new)
             
+        # Strip ALL control characters first (more aggressive approach)
+        # Keep only printable ASCII + space
+        s = ''.join(char if ord(char) >= 32 or char in '\n\r\t' else ' ' for char in s)
+        
         # Fix line breaks within quoted strings
         # This regex finds quoted strings and replaces newlines within them
         def fix_multiline(match):

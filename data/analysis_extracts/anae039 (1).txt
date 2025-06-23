@@ -1,0 +1,92 @@
+Here is the complete text content of the PDF document:
+
+Analysis Vol. XX | Number XX | XX 2024 | 1–10 
+doi: https://doi.org/10.1093/analys/anae039
+
+An impossibility theorem for Base Rate Tracking and Equalized Odds
+
+Rush Stewart, Benjamin Eva, Shanna Slank and Reuben Stern
+
+Abstract
+
+There is a theorem that shows that it is impossible for an algorithm to jointly satisfy the statistical fairness criteria of Calibration and Equalized Odds nontrivially. But what about the recently advocated alternative to Calibration, Base Rate Tracking? Here we show that Base Rate Tracking is strictly weaker than Calibration, and then take up the question of whether it is possible to jointly satisfy Base Rate Tracking and Equalized Odds in non-trivial scenarios. We show that it is not, thereby establishing an even more general impossibility theorem.
+
+Keywords: AI ethics, algorithmic fairness, bias, base rate tracking, calibration, equalized odds
+
+1. Introduction
+
+What does it mean for a predictive algorithm to treat groups fairly? One influential approach to answering this question involves identifying statistical criteria of algorithmic fairness, that is, necessary conditions that must be satisfied by the statistical profile of an algorithm's predictions in order for the algorithm to count as 'fair'. Three prominent alleged examples of such criteria are Calibration, Equalized Odds and Base Rate Tracking. Kleinberg et al. (2017) famously proved that Calibration is incompatible with Equalized Odds in all realistic cases. We show below that Calibration implies Base Rate Tracking, and then take up the question of whether Base Rate Tracking is likewise incompatible with Equalized Odds. Our answer takes the form of a general impossibility result regarding the mutual satisfiability of Base Rate Tracking and Equalized Odds. We take this result to show that Base Rate Tracking and Equalized Odds cannot both be necessary conditions for the fairness of a predictive algorithm. Since our result weakens the assumptions of the result due to Kleinberg et al., ours is a generalization of their result.
+
+2. The framework and the criteria 
+
+We begin by introducing the basic formal framework in which the fairness criteria will be articulated. First, we assume that there exists a finite population N of individuals, each of which either has some relevant property y or not. We model this with the random variable Y : N → {0, 1} such that Y(i) = 1 if i has the property, and Y(i) = 0 otherwise. An assessor is a function h : N → [0, 1] assigning numbers to individuals. We interpret h(i) as the probability that an algorithm assigns to individual i having the property y. We call h(i) the 'risk score' assigned to individual i by h.
+
+To facilitate talking about proportions or frequencies, it will be helpful to define a uniform probability distribution P over N. For instance, the quantity P(Y = 1) = μ represents the proportion of people in N that have property y. We call μ the base rate for y in N. Any population N can be divided into different groups. For example, we could divide a population into distinct racial groups, or sex groups or age groups. We will work with partitions of N into groups so that each individual belongs to exactly one group. Given a partition π = {G1, ..., Gm} of N, Pk = P(·|Gk) is the uniform probability distribution on Gk for k = 1, ..., m. The quantity Pk(Y = 1) = μk, for example, is the base rate for y in group k.
+
+We let EG(h) denote the expected value of h for members of G. The expectation EG is defined in terms of the probability distribution PG. Because PG is uniform, EG(h) represents the average value of h for members of G, that is, the average risk score for G. Finally, we define the generalized false positive rate f+G(h) = EG(h|Y = 0) and the generalized false negative rate f-G(h) = EG(1 - h|Y = 1). The quantity f+G(h) is the average risk score among the members of G that do not have property y. Similarly, f-G(h) is the average of the quantity 1 minus the risk score among the members of G that do have property y.
+
+With this framework in hand, we can introduce the three candidate statistical criteria of algorithmic fairness mentioned previously. To illustrate the conceptual motivation for each condition, we consider a special case in which π is a partition of the population into racial groups, and G and G' represent the Asian and Hispanic subpopulations, respectively. First, we have Base Rate Tracking.
+
+(Base Rate Tracking) For an assessor h of N and any groups G, G' in the relevant partition π of N, EG(h) - μG = EG'(h) - μG'.
+
+In the context of the special setting mentioned just above, suppose that while the base rates for y are almost identical for both Asian and Hispanic populations, the average risk score that h assigns to Asians is much higher. This would be a clear violation of Base Rate Tracking, which requires that the deviation of the average risk score from the base rate in a group is the same for all groups. Equivalently, the difference between the average risk scores assigned to those two groups should be equal to the difference between the base rates of those groups. Essentially, the thought behind Base Rate Tracking is that an assessor is fair only if the average assessment within any group is driven by prevalence of the property within that group to the same extent that it is for all groups. To put it another way, groups should be treated differently only to the extent that they are relevantly different, where what counts as relevantly different is captured by the difference in the base rates.
+
+The next criterion is Calibration.
+
+(Calibration) For an assessor h of N and any group G in the relevant partition π of N, PG(Y = 1|h = p) = p for all p ∈ [0, 1] such that PG(h = p) > 0.
+
+Calibration requires that, for any possible risk score p, the percentage of Hispanic subjects assigned risk score p who actually have the relevant property should be equal to p. And the same goes for the percentage of Asian subjects with risk score p who actually have the relevant property. So defined, Calibration implies a weaker property sometimes called Predictive Equity: the percentage of Hispanic subjects assigned risk score p who have property y is the same as the percentage of Asian subjects assigned risk score p who have property y. Thus if 20% of Hispanic subjects assigned a risk score of 0.8 in fact have property y but 90% of Asian subjects assigned a risk score of 0.8 have property y, then the assessor violates Predictive Equity. Roughly, the idea is that any given risk score should have the same evidential import for each relevant group: for example, a risk score of 0.8 should mean the same for Asians as it does for Hispanics. If Asians with a risk score of 0.8 have the relevant property at a much lower rate than Hispanics with a risk score of 0.8, then the risk score 0.8 seems to mean different things for those two groups, and that seems problematic.
+
+To Predictive Equity's requirement that these percentages must be equal across groups, Calibration adds that these percentages must be equal to the value p. For example, suppose that 20% of Hispanics assigned a risk score of 0.8 and 20% of Asians assigned a risk score of 0.8 are recidivists. While this does not violate Predictive Equity, it does violate Calibration. Again Calibration requires not only that the percentage of recidivists assigned a score of 0.8 is the same for both groups, but that, in either group, 80% of those assigned a score of 0.8 are recidivists. On the one hand, one might view Predictive Equity as concerned exclusively with equal treatment of groups, whereas Calibration adds a sort of accuracy requirement. We return briefly to this view at the close of the paper. On the other hand, one might view Calibration's additional requirement as demanding an additional sort of fairness. Stewart (2022) discusses a motivation for Calibration in terms of prohibiting forms of over- and under-confidence in the riskiness of different groups. In the example under discussion, the assessor is uniformly over-confident in both Asian and Hispanic recidivism, which is arguably unfair.
+
+Finally, we have Equalized Odds.
+
+(Equalized Odds) For an assessor h of N and any groups G, G' in the relevant partition π of N, f+G(h) = f+G'(h) and f-G(h) = f-G'(h) (whenever those terms are defined).
+
+Equalized Odds requires that the generalized false negative rates and generalized false positive rates should be the same for the Asian subpopulation and the Hispanic subpopulation. That is, the average risk score for Hispanics who lack property y is the same as the average risk score for Asians who lack property y, and the average risk score for Hispanics who have property y is the same as the average risk score for Asians that have property y. In the case at hand, Equalized Odds prohibits cases in which, say, Asian subjects who do not reoffend are routinely given higher risk scores than their Hispanic, non-recidivist counterparts. In other words, it prohibits the algorithm from making more favourable mistakes for one group than it does for the other.
+
+To get a feel for how these criteria relate to one another, consider the example illustrated in Table 1, in which there is a population of 6 individuals, partitioned into two racial groups (Asian and Hispanic). Individuals that have the property y are indicated with an asterisk. The base rate for the Asian group is 2/3, while the base rate for the Hispanic group is 1/3. The average risk scores assigned to the groups align perfectly with the corresponding base rates: all Asians are assigned a risk score of 2/3 and all Hispanics are assigned a risk score of 1/3. In this case, Calibration is perfectly satisfied, but Equalized Odds is violated because (i) the generalized false positive rate for Asians is f+Asian(h) = EAsian(h|Y = 0) = 2/3 while the generalized false positive rate for Hispanics is 1/3, and (ii) the generalized false negative rate for Asians is f-Asian(h) = EAsian(1 - h|Y = 1) = 1/3 while the generalized false negative rate for Hispanics is 2/3. In light of the results of Kleinberg et al. (2017), it is unsurprising that Equalized Odds is violated in this case. We know that Equalized Odds and Calibration can be jointly satisfied only when either (i) the base rates of the relevant groups are equal, or (ii) h is perfect. Since neither of those conditions is satisfied and Calibration is, Equalized Odds cannot possibly be satisfied. Any advocate of the necessity of Calibration must make peace with the ubiquitous violation of Equalized Odds, and vice-versa.
+
+Note that Base Rate Tracking is also satisfied in Table 1. This illustrates that Base Rate Tracking is compatible with Calibration in non-trivial cases. Table 2 illustrates a slight variation on the case in Table 1, wherein Base Rate Tracking is satisfied but Calibration and Equalized Odds are both violated. So what is the precise logical relationship between Base Rate Tracking and Calibration? We can show that Calibration implies Base Rate Tracking but, by Table 2, not the converse.
+
+(Proposition 1) If an assessor h for a population N satisfies Calibration for a partition π of N, then h satisfies Base Rate Tracking for π. The converse implication does not obtain.
+
+In light of Kleinberg et al.'s impossibility theorem, we have good reason to seek ways to weaken Calibration or Equalized Odds if we think that both conditions are getting at important fairness properties that our algorithms ought to satisfy. Proposition 1 says that Base Rate Tracking weakens Calibration. So are there any non-trivial cases in which Base Rate Tracking and Equalized Odds are both satisfied? Or must the advocate of Equalized Odds eschew not only Calibration but also its weaker counterpart, Base Rate Tracking?
+
+3. The result
+
+We can now state the central result and the main contribution of this paper.
+
+(Theorem) If an assessor h for a population N satisfies Base Rate Tracking and Equalized Odds for some partition π of N, then either h is perfect or the base rates for all groups in π are identical.
+
+This result is analogous to the results for Calibration obtained by Kleinberg et al. (2017). Actually, the theorem generalizes Kleinberg et al.'s result by relaxing Calibration to Base Rate Tracking. It establishes that it is impossible to jointly satisfy Base Rate Tracking and Equalized Odds in all non-trivial cases, that is, in all cases in which the base rates of the relevant groups are unequal and the algorithm is not perfect. So the advocate of Equalized Odds has to surrender both Base Rate Tracking and Calibration.
+
+Eva indicates one possible escape route worth considering. Base Rate Tracking is defined in terms of the difference of certain quantities. But we could just as well consider alternative functional forms. For instance, as Eva writes,
+
+"one might plausibly reformulate Base Rate Tracking in terms of the ratios of average risk scores and base rates, rather than the differences. The resultant formulation is clearly and importantly distinct from the [difference formulation], although it has the same motivation and is equally able to diagnose the intrinsic unfairness of the predictions [in the specific examples under consideration]." (2022: 260, slight formatting revisions for consistency)
+
+So we might consider Base Rate Tracking in ratio form.
+
+(Ratio Base Rate Tracking) For an assessor h of N and any groups G, G' in the relevant partition π of N, EG(h)/μG = EG'(h)/μG' (whenever both ratios are defined).
+
+Ratio Base Rate Tracking also follows from Calibration (this is immediate from equation (1) in the proof of Proposition 1 in the appendix to this paper). But note that, while the assessor in Table 2 satisfies Base Rate Tracking, it does not satisfy Ratio Base Rate Tracking. So Eva is right that the ratio form of the condition is importantly distinct from the difference form. Is it possible to satisfy this condition and Equalized Odds outside of trivial scenarios? No.
+
+(Proposition 2) If an assessor h for a population N satisfies Ratio Base Rate Tracking and Equalized Odds for some partition π of N, then either h is perfect or the base rates for all groups in π are identical.
+
+So the escape route is blocked, and the impossibility result is robust to the choice of form of Base Rate Tracking.
+
+Like Predictive Equity, (Ratio) Base Rate Tracking relaxes some of the stringency of Calibration while retaining an aspect of Calibration explicitly concerned with equal treatment of relevant groups. To the extent that Calibration requires something over and above a form of fair treatment – such as a sort of accuracy, as one of the interpretations we mentioned in introducing Calibration has it – one might worry that the property is not a compelling candidate criterion of fairness. This issue is substantial and requires more attention than we can give it here. But it might suggest that an impossibility result that is framed in terms of Predictive Equity or (Ratio) Base Rate Tracking rather than Calibration, like our Theorem and Proposition 2, is even more straightforwardly relevant to the issue of the joint satisfaction of fairness criteria than the original Kleinberg et al. result. So, in addition to strengthening that result, our results plausibly bear more directly on the opening question about the meaning of 'algorithmic fairness'.
+
+Funding
+
+Rush gratefully acknowledges funding from the Digital Futures Institute at King's College London.
+
+[Author affiliations and contact information]
+
+Appendix
+
+[Technical proofs and additional notes]
+
+References
+
+[List of academic references]

@@ -1,0 +1,623 @@
+[
+  {
+    "paper_info": {
+      "title": "Primitive conditional probabilities, subset relations and comparative regularity",
+      "author": "Joshua Thong",
+      "main_thesis": "Proposals by de Finetti, H\u00e1jek, and Easwaran for differentiating possible from impossible events using conditional credences and subset relations fail because they deliver wrong verdicts for disjoint possible events with equal positive credence."
+    },
+    "philosophical_moves": [
+      {
+        "move_name": "Intuitive Motivation Through Paradox",
+        "quote": "However, an impossible event, denoted by \u2205, is also assigned 0 credence, that is, Cr(\u2205) = 0. Is S therefore equally confident in {i} as in \u2205, that is, is she equally confident in ticket i winning as in an impossible event obtaining? To say yes seems counter-intuitive. After all, the former event is still possible, that is, it can still happen, while the latter can never happen.",
+        "location": "Introduction, paragraph 2",
+        "categories": [
+          "dialectical",
+          "conceptual"
+        ],
+        "setup_required": "A concrete example (infinite lottery) where possible events get 0 credence",
+        "mechanism": "Highlights counterintuitive consequence of standard probability theory to motivate need for alternative approaches",
+        "achievement": "Establishes the philosophical problem and makes it vivid for the reader",
+        "transferable_pattern": "Use concrete cases to expose counterintuitive implications of formal theories",
+        "domain_specificity": "General - works across philosophy where formal theories have counterintuitive consequences",
+        "effectiveness": "High - makes abstract problem concrete and compelling",
+        "originality": "Standard",
+        "notes": "Classic move of using intuitive cases to motivate theoretical problems",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      },
+      {
+        "move_name": "Comprehensive Target Identification",
+        "quote": "Of particular interest to this paper are de Finetti (1975: 566\u201367), H\u00e1jek (2012) and Easwaran (2014), who argued that S is more confident in any possible event than in an impossible event but insisted that rational credences remain real-valued... Consider the following proposals. (Proper Containment) A \u227a B iff Cr(A) < Cr(B) or A \u2286 B. (Conditionality) A \u227a B iff Cr(A, A \u222a B) < Cr(B, A \u222a B). (Symmetric Difference) A \u227a B iff Cr(A - B, A\u2206B) < Cr(B - A, A\u2206B).",
+        "location": "Introduction, final paragraphs",
+        "categories": [
+          "structural",
+          "dialectical"
+        ],
+        "setup_required": "Survey of relevant literature and identification of common position",
+        "mechanism": "Groups related proposals together to create unified target for criticism",
+        "achievement": "Establishes clear dialectical landscape and specific targets for refutation",
+        "transferable_pattern": "Group similar proposals/positions to create unified target for systematic criticism",
+        "domain_specificity": "General - works across philosophy for organizing critical engagement",
+        "effectiveness": "High - provides clear structure for the critical argument to follow",
+        "originality": "Standard",
+        "notes": "Efficient way to handle multiple related targets without repetitive argumentation",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      },
+      {
+        "move_name": "Counterexample Through Constructed Case",
+        "quote": "Since [0.1, 0.2] \u223c [0.8, 0.9], [0.1, 0.2) \u227a [0.8, 0.9] for a regular \u227c. For a real-valued Cr representing a fair lottery over [0, 1], Cr([0.1, 0.2)) = Cr([0.8, 0.9]) = 0.1... Therefore, according to Proper Containment, Conditionality and Symmetric Difference, [0.1, 0.2) \u2280 [0.8, 0.9], which is the wrong verdict.",
+        "location": "Section 2, counterexample construction",
+        "categories": [
+          "example",
+          "dialectical"
+        ],
+        "setup_required": "Formal constraints on comparative confidence orderings and fair lottery setup",
+        "mechanism": "Constructs specific mathematical case where all three proposals give wrong result",
+        "achievement": "Definitively refutes all three target proposals simultaneously",
+        "transferable_pattern": "Construct precise mathematical case that systematically violates multiple related proposals",
+        "domain_specificity": "Medium - requires mathematical/formal context but pattern transfers",
+        "effectiveness": "High - decisive refutation of all targets",
+        "originality": "Standard technique, novel application",
+        "notes": "Particularly effective because it refutes multiple proposals at once",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      },
+      {
+        "move_name": "Constraint Enumeration and Justification",
+        "quote": "Hereafter, I assume that \u227c respects the following four constraints... (Non-Negativity) \u2205 \u227c A. (Non-Triviality) \u2205 \u227a \u03a9. (Transitivity) If A \u227c B and B \u227c C, then A \u227c C. (Comparative Additivity) Let A \u2229 C = B \u2229 C = \u2205. Then A \u227c B iff A \u222a C \u227c B \u222a C. These four constraints are common across all major axiomatizations of comparative confidence orderings...",
+        "location": "Section 2, beginning",
+        "categories": [
+          "structural",
+          "literature"
+        ],
+        "setup_required": "Survey of relevant literature on comparative confidence orderings",
+        "mechanism": "Lists widely accepted formal constraints to establish non-controversial foundation",
+        "achievement": "Creates uncontroversial foundation that opponents cannot reject",
+        "transferable_pattern": "Ground criticism in widely accepted formal constraints from the literature",
+        "domain_specificity": "Medium - works in formal contexts with established literatures",
+        "effectiveness": "High - makes criticism harder to dismiss",
+        "originality": "Standard",
+        "notes": "Smart dialectical move to ground criticism in opponent's own commitments",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      },
+      {
+        "move_name": "Preemptive Scope Limitation",
+        "quote": "Importantly, the counterexample in the next section is not intended to be a knockdown argument against the position held by the three authors above. After all, for all we know, there may be a fourth proposal that fares better than the three above... While the counterexample in the next section shows that R(Cr, A, B) is not, for instance, the statement 'Cr(A, A \u222a B) < Cr(B, A \u222a B)' as per Conditionality, it still leaves open the possibility that there is some other statement...",
+        "location": "End of Section 1",
+        "categories": [
+          "structural",
+          "dialectical"
+        ],
+        "setup_required": "Completed setup of targets for criticism",
+        "mechanism": "Explicitly limits scope of criticism to avoid overreach while maintaining significance",
+        "achievement": "Prevents opponents from dismissing argument as overreaching while preserving critical force",
+        "transferable_pattern": "Preemptively limit scope of criticism to specific targets while acknowledging possibility of alternatives",
+        "domain_specificity": "General - works across philosophy for managing dialectical expectations",
+        "effectiveness": "High - shows philosophical sophistication and prevents easy dismissal",
+        "originality": "Standard but well-executed",
+        "notes": "Demonstrates awareness of dialectical landscape and prevents straw-manning charges",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      },
+      {
+        "move_name": "Burden Shifting Through Demonstrated Failure",
+        "quote": "Having said that, what is clear is that this paper leaves de Finetti (1975), H\u00e1jek (2012) and Easwaran (2014) with an important puzzle. If they want to maintain that S's comparative confidence ordering can be represented by nothing more than set-theoretic relations and her real-valued unconditional or conditional credences, then the onus is on them to demonstrate the existence of an appropriate relation R(Cr, A, B)...",
+        "location": "End of Section 1",
+        "categories": [
+          "dialectical",
+          "structural"
+        ],
+        "setup_required": "Demonstration that existing proposals fail",
+        "mechanism": "After showing specific failures, shifts burden to opponents to find working alternative",
+        "achievement": "Places constructive burden on opponents while maintaining critical stance",
+        "transferable_pattern": "After refuting specific proposals, shift burden to opponents to provide working alternative",
+        "domain_specificity": "General - works across philosophy for managing dialectical burden",
+        "effectiveness": "High - puts opponents in defensive position",
+        "originality": "Standard",
+        "notes": "Effective way to maintain critical pressure after specific refutations",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      },
+      {
+        "move_name": "Alternative Solution Acknowledgment",
+        "quote": "Here is a straightforward way of ensuring that A \u227a B, where A and B are the events mentioned in the previous paragraph. We can always require rational credences to be regular. Call Cr regular iff Cr(A) > 0 for all nonempty A in the domain of Cr... But of course, to ensure that rational credences are always regular in turn, the requirement that rational credences are real-valued must be dropped.",
+        "location": "Section 2, after counterexample",
+        "categories": [
+          "dialectical",
+          "structural"
+        ],
+        "setup_required": "Demonstrated failure of target proposals",
+        "mechanism": "Shows there is a solution to the original problem but at a cost the opponents won't accept",
+        "achievement": "Demonstrates understanding of dialectical landscape and reinforces opponents' dilemma",
+        "transferable_pattern": "After criticism, show alternative solution exists but requires abandoning key commitment",
+        "domain_specificity": "General - works where opponents have competing commitments",
+        "effectiveness": "High - shows sophistication and reinforces the dialectical bind",
+        "originality": "Standard",
+        "notes": "Demonstrates fairness by acknowledging solutions while showing their costs",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      },
+      {
+        "move_name": "Escape Route Provision",
+        "quote": "Perhaps they should be content with a partial representation of S's comparative confidence ordering, for example if Cr(A, A \u222a B) < Cr(B, A \u222a B), then A \u227a B; this is just the right-to-left direction of Conditionality. Recall that the counterexample above is against the left-to-right directions of all three proposals in \u00a71. So dropping that direction is one escape route.",
+        "location": "Section 2, near end",
+        "categories": [
+          "dialectical",
+          "structural"
+        ],
+        "setup_required": "Completed counterexample showing failure of biconditionals",
+        "mechanism": "Offers opponents a way to save part of their position by weakening their claims",
+        "achievement": "Shows constructive engagement while maintaining critical force",
+        "transferable_pattern": "After refuting strong claims, offer weaker versions that might survive criticism",
+        "domain_specificity": "General - works across philosophy for constructive criticism",
+        "effectiveness": "Medium - shows fairness but may weaken critical impact",
+        "originality": "Standard",
+        "notes": "Balances criticism with constructive suggestions",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      },
+      {
+        "move_name": "Auxiliary Target Demolition",
+        "quote": "However, my counterexample shows that both replacements are false. This is because [0.8, 0.9] \u227b [0.1, 0.2), yet [0.1, 0.2) \u2288 [0.8, 0.9], Cr([0.8, 0.9]) = Cr([0.1, 0.2)) and Cr([0.8, 0.9], [0.1, 0.2) \u222a [0.8, 0.9]) = Cr([0.1, 0.2), [0.1, 0.2) \u222a [0.8, 0.9]) for a real-valued Cr. Thus Easwaran's attack on the argument above is unsuccessful.",
+        "location": "Final paragraph",
+        "categories": [
+          "dialectical",
+          "example"
+        ],
+        "setup_required": "Counterexample already constructed for main targets",
+        "mechanism": "Shows that same counterexample refutes related argument by same author",
+        "achievement": "Demonstrates broader implications of the counterexample",
+        "transferable_pattern": "After developing counterexample for main target, show it applies to related arguments",
+        "domain_specificity": "General - works when counterexamples have multiple applications",
+        "effectiveness": "Medium - adds value but somewhat tangential to main argument",
+        "originality": "Standard",
+        "notes": "Efficient use of same counterexample for multiple targets",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      },
+      {
+        "move_name": "Technical Apparatus Introduction",
+        "quote": "In order to examine proposals put forth by de Finetti (1975), H\u00e1jek (2012) and Easwaran (2014), technical notions are needed. Hereafter, let A \u227c B represent the statement 'S is at most as confident in A as in B', where A and B are events. Call \u227c S's comparative confidence ordering. Let F be the domain of \u227c... (Definition 1) Let A, B \u2208 F. 1. A \u223c B := (A \u227c B) \u2227 (B \u227c A)...",
+        "location": "Section 1, middle",
+        "categories": [
+          "structural",
+          "conceptual"
+        ],
+        "setup_required": "Identification of target proposals needing formal analysis",
+        "mechanism": "Introduces formal notation and definitions needed for precise analysis",
+        "achievement": "Creates framework for rigorous examination of target proposals",
+        "transferable_pattern": "Introduce minimal technical apparatus needed for precise analysis of target claims",
+        "domain_specificity": "Medium - works in contexts requiring formal precision",
+        "effectiveness": "High - enables precise analysis",
+        "originality": "Standard",
+        "notes": "Necessary groundwork for formal counterexample construction",
+        "source_paper": "Primitive conditional probabilities, subset relations and comparative regularity",
+        "source_author": "Joshua Thong"
+      }
+    ],
+    "emerging_patterns": [
+      "Strategic dialectical management: Multiple moves work together to manage opponents' responses (scope limitation, burden shifting, escape routes)",
+      "Formal precision as dialectical weapon: Technical apparatus enables decisive counterexamples that are hard to dismiss",
+      "Comprehensive target engagement: Rather than attacking proposals piecemeal, groups them for systematic refutation",
+      "Constructive criticism: Balances refutation with acknowledgment of alternatives and potential escape routes",
+      "Counterexample multiplication: Single well-constructed case serves multiple critical purposes"
+    ],
+    "source_file": "anad099 (1).txt"
+  },
+  {
+    "paper_info": {
+      "title": "Microaggression and ambiguous experience",
+      "author": "Luke Brunning",
+      "main_thesis": "Ambiguity is not constitutive of microaggression but rather an optional aggravating feature, supporting a structural account over Rini's experience-based account."
+    },
+    "philosophical_moves": [
+      {
+        "move_name": "Conceptual Distinction Through Multiple Interpretations",
+        "quote": "Sarah faces two questions, one concerning the status of this type of remark, the other as a token. Viewed as a type of remark, Sarah can consider its wider social impact, function or meaning in asking 'what does that remark mean?' Viewed as a token statement, Sarah can ask 'what did Mark mean by that?'",
+        "location": "Section 2.1",
+        "categories": [
+          "conceptual"
+        ],
+        "setup_required": "A case where ambiguity about oppression could have multiple sources",
+        "mechanism": "Distinguishes between type-level and token-level interpretation to show ambiguity can exist at different levels",
+        "achievement": "Reveals that Rini's account is underspecified about which kind of ambiguity matters",
+        "transferable_pattern": "When facing an ambiguous concept, distinguish between different levels or types of interpretation that could generate the ambiguity",
+        "domain_specificity": "General - applicable to any concept that can be interpreted at multiple levels",
+        "effectiveness": "High - precisely identifies a key weakness in the target theory",
+        "originality": "Standard distinction technique but well-applied",
+        "notes": "Sets up the foundation for showing ambiguity is not always present or necessary",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      },
+      {
+        "move_name": "Counterexample Through Clarity Cases",
+        "quote": "More interestingly, what if Sarah is clear that the question 'Where are you really from?' does help sustain oppression? If so, she does not experience ambiguity in that sense... On Rini's ambiguous-experience account we would have to say Sarah is not a victim of a microaggression. But if not, then how are we to understand, and morally label, what Mark has done?",
+        "location": "Section 2.1",
+        "categories": [
+          "dialectical",
+          "example"
+        ],
+        "setup_required": "A clear case where someone recognizes oppression without ambiguity",
+        "mechanism": "Shows that the opponent's definition excludes paradigm cases, creating a theoretical gap",
+        "achievement": "Demonstrates that requiring ambiguity excludes clear cases of microaggression",
+        "transferable_pattern": "Show that a proposed necessary condition excludes paradigm cases of the phenomenon",
+        "domain_specificity": "General - works for any definitional project",
+        "effectiveness": "High - creates serious pressure on the necessity claim",
+        "originality": "Standard counterexample technique",
+        "notes": "Particularly effective because it uses the opponent's own example against them",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      },
+      {
+        "move_name": "Apology Practice as Theoretical Test",
+        "quote": "Our intuitions about how to make amends to someone can help us appreciate our action's wrong-making features... Typically, we seem to want microaggressors to realize the social implications of their speech or actions... It would seem strange, I suggest, if Mark's apology were to focus instead on the fact that he caused Sarah to experience ambiguity.",
+        "location": "Section 2.2",
+        "categories": [
+          "dialectical",
+          "structural"
+        ],
+        "setup_required": "A theory about what makes actions wrong",
+        "mechanism": "Uses our practices of apology and repair to test what we really think makes actions wrong",
+        "achievement": "Shows mismatch between Rini's theory and our actual moral practices",
+        "transferable_pattern": "Test a theory about wrongness by examining what we think needs to be apologized for",
+        "domain_specificity": "Ethics - specifically theories of wrongdoing",
+        "effectiveness": "High - reveals deep tension between theory and practice",
+        "originality": "Novel application of apology practices as theoretical test",
+        "notes": "Clever use of moral phenomenology to test theoretical claims",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      },
+      {
+        "move_name": "Gettier-Style External Cause Cases",
+        "quote": "The ambiguous-experience account risks encompassing Gettier-style cases where someone experiences a remark in an ambiguous way, the remark is actually connected to oppressive structures but the cause of their ambiguity experience is unrelated to oppression and has an external cause.",
+        "location": "Section 2.3",
+        "categories": [
+          "dialectical",
+          "example"
+        ],
+        "setup_required": "A theory that depends on subjective experience",
+        "mechanism": "Shows that external factors can produce the required experience for wrong reasons",
+        "achievement": "Demonstrates that experience-based accounts can misclassify cases",
+        "transferable_pattern": "When a theory depends on subjective states, show how external factors can produce those states inappropriately",
+        "domain_specificity": "General - applicable to any experience-based theory",
+        "effectiveness": "High - shows systematic problem with experience-based approaches",
+        "originality": "Creative application of Gettier-case structure to ethics",
+        "notes": "Borrows epistemological techniques for ethical analysis",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      },
+      {
+        "move_name": "Third-Party Intervention Cases",
+        "quote": "Tom's intervention helps to corroborate the experience of Simone and Jane... But notice that his intervention dispels Simone's sense of ambiguity about what she's experiencing, which, if the ambiguous-experience account is correct, means that Simone is not subject to a microaggression.",
+        "location": "Section 2.4",
+        "categories": [
+          "dialectical",
+          "example"
+        ],
+        "setup_required": "A theory making wrongness depend on victim's experience",
+        "mechanism": "Shows how third parties can change the experience and thus change whether wrongness occurred",
+        "achievement": "Reveals that external factors can alter the moral status of past actions",
+        "transferable_pattern": "Test experience-based theories by showing how third parties can change the relevant experience",
+        "domain_specificity": "Ethics - especially theories depending on victim experience",
+        "effectiveness": "High - shows counterintuitive implications",
+        "originality": "Novel extension of third-party cases to test definitional boundaries",
+        "notes": "Particularly effective because it uses an expert from the oppressed community",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      },
+      {
+        "move_name": "Analogy to Reveal Methodological Error",
+        "quote": "This is like an account of meaning that seeks to reject the idea that what words mean is determined by the speaker's intentions by suggesting that what words mean is settled by what the hearer infers. It misses out the fact that there can be a meaning to words that is understood in a social context irrespective of intention or what is understood at a particular time.",
+        "location": "Section 3",
+        "categories": [
+          "dialectical",
+          "example"
+        ],
+        "setup_required": "A theory that overcorrects by swinging between extremes",
+        "mechanism": "Uses analogy to philosophy of language to show the methodological error",
+        "achievement": "Reveals that rejecting one extreme shouldn't lead to embracing the opposite extreme",
+        "transferable_pattern": "When someone overcorrects by moving from one extreme to another, use analogy to show the middle ground",
+        "domain_specificity": "General - applicable to any domain with similar structure",
+        "effectiveness": "High - clearly illustrates the methodological problem",
+        "originality": "Standard analogy technique but well-chosen",
+        "notes": "Effective because philosophy of language provides clear parallel structure",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      },
+      {
+        "move_name": "Standing Distinction to Deflect Objection",
+        "quote": "Rini is certainly right that as a matter of good moral practice we should often be reluctant to intervene and challenge the experiences of other people, especially in situations where we are not members of a relevant social group or otherwise lack good standing. But recognition of this fact should not influence our underlying account of what microaggressions are.",
+        "location": "Section 3",
+        "categories": [
+          "dialectical",
+          "conceptual"
+        ],
+        "setup_required": "An opponent's objection based on practical or political considerations",
+        "mechanism": "Concedes the practical point but distinguishes it from the theoretical question",
+        "achievement": "Deflects political objection while maintaining theoretical critique",
+        "transferable_pattern": "Distinguish between practical/political considerations and theoretical questions to avoid conflation",
+        "domain_specificity": "General - applicable whenever practical and theoretical considerations might be conflated",
+        "effectiveness": "High - acknowledges legitimate concern while maintaining argument",
+        "originality": "Standard distinction but diplomatically handled",
+        "notes": "Shows sensitivity to political dimensions while maintaining philosophical rigor",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      },
+      {
+        "move_name": "Community Knowledge vs Individual Experience",
+        "quote": "Members of the community, like Tom, can explain the connections between hair-touching, racial stereotypes and other dimensions of oppression and help people view certain token actions as instances of more broadly oppressive types... She might be right to think that she lacks standing to question a Black women's experiences (as I also do), but this might not be true of other Black women or members of other minority groups.",
+        "location": "Section 3",
+        "categories": [
+          "conceptual",
+          "dialectical"
+        ],
+        "setup_required": "A theory that privileges individual experience over community knowledge",
+        "mechanism": "Shows how community knowledge can correct individual perspectives while respecting standpoint epistemology",
+        "achievement": "Provides alternative that respects oppressed people's expertise without individualism",
+        "transferable_pattern": "When facing individual vs community knowledge tension, show how community members can have standing that outsiders lack",
+        "domain_specificity": "Social epistemology and ethics of oppression",
+        "effectiveness": "High - provides constructive alternative to pure individualism",
+        "originality": "Novel application of standpoint epistemology to definitional questions",
+        "notes": "Sophisticated handling of epistemic and political dimensions",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      },
+      {
+        "move_name": "Aggravating Feature Reframing",
+        "quote": "As a result, it is better to view experiences of ambiguity as an aggravating dimension of many instances of microaggression, and as one of the collective harms that repeated microaggressions can engender within oppressed groups.",
+        "location": "Section 3 and Conclusion",
+        "categories": [
+          "structural",
+          "conceptual"
+        ],
+        "setup_required": "A feature that sometimes accompanies a phenomenon but isn't essential",
+        "mechanism": "Reframes a proposed necessary condition as an optional aggravating factor",
+        "achievement": "Preserves insights about ambiguity while rejecting its centrality",
+        "transferable_pattern": "When a feature is important but not essential, reframe it as an aggravating rather than constitutive element",
+        "domain_specificity": "General - applicable to any definitional project",
+        "effectiveness": "High - charitable way to preserve opponent's insights",
+        "originality": "Standard charitable interpretation technique",
+        "notes": "Shows how to be critical while preserving what's valuable in opponent's view",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      },
+      {
+        "move_name": "Indirect Support Through Elimination",
+        "quote": "Taken together, my argument indirectly supports a structural approach to microaggression. Experiences of ambiguity can still play an aggravating role in making microaggressions worse for some people, but we can capture that insight without suggesting ambiguity is a constitutive feature of microaggression.",
+        "location": "Conclusion",
+        "categories": [
+          "structural",
+          "dialectical"
+        ],
+        "setup_required": "Multiple criticisms of one theory and an alternative theory available",
+        "mechanism": "Uses elimination of one theory to provide indirect support for alternative",
+        "achievement": "Supports preferred theory without directly arguing for it",
+        "transferable_pattern": "Support your preferred theory by systematically undermining alternatives",
+        "domain_specificity": "General - applicable whenever there are competing theories",
+        "effectiveness": "Medium - indirect support is weaker than direct argument",
+        "originality": "Standard elimination technique",
+        "notes": "Conservative approach that focuses on criticism rather than positive argument",
+        "source_paper": "Microaggression and ambiguous experience",
+        "source_author": "Luke Brunning"
+      }
+    ],
+    "emerging_patterns": [
+      "Systematic case-based testing of necessary conditions through counterexamples",
+      "Using moral practices (like apology) to test theoretical claims about wrongness",
+      "Exploiting tensions between individual experience and community knowledge",
+      "Charitable reframing of opponent's insights while rejecting their central claims",
+      "Distinguishing levels of analysis (type vs token, practical vs theoretical) to reveal ambiguities",
+      "Using analogies from other philosophical domains to reveal methodological errors"
+    ],
+    "source_file": "anae044 (1).txt"
+  },
+  {
+    "paper_info": {
+      "title": "Two kinds of failure in joint action: On disrespect and directed duties",
+      "author": "Guido L\u00f6hr",
+      "main_thesis": "There are two distinct kinds of failure in joint action: failing to do one's part (contribution failure) and failing to respect collaborators (disrespect failure)."
+    },
+    "philosophical_moves": [
+      {
+        "move_name": "Diagnostic Distinction Introduction",
+        "quote": "I identify two kinds of failure in joint action. First, we can fail to 'do our part', that is, fail to contribute to fulfilling the joint intention. Second, we can fail to respect our collaborators. Recognizing the distinct natures of both normative relations helps us overcome a key challenge to a reductionist theory of collective intentionality posed by Margaret Gilbert.",
+        "location": "Abstract/Introduction",
+        "categories": [
+          "conceptual",
+          "structural"
+        ],
+        "setup_required": "An existing theoretical debate with competing positions and unresolved problems",
+        "mechanism": "Introduces a fundamental distinction that cuts across existing categories to reframe the entire debate",
+        "achievement": "Provides a new analytical framework that promises to resolve standing theoretical problems",
+        "transferable_pattern": "When faced with theoretical deadlock, introduce a distinction that cuts orthogonally to existing debate categories",
+        "domain_specificity": "General - could work in any area with competing theories and unresolved problems",
+        "effectiveness": "High - sets up the entire paper's argumentative strategy",
+        "originality": "Novel - this specific distinction hasn't been clearly articulated before",
+        "notes": "Classic philosophical move of introducing a distinction to break theoretical deadlock",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      },
+      {
+        "move_name": "Extended Narrative Case Construction",
+        "quote": "James and Paula are taking a walk together. James is ranting about the government but quickly realizes that Paula shows signs of discomfort. He immediately apologizes and continues the earlier, more successful, conversation about philosophy. But then James speeds up... Paula is confused. Did James not owe it to her to slow down? Did he not respect her enough to at least say goodbye?",
+        "location": "Section 2",
+        "categories": [
+          "example",
+          "conceptual"
+        ],
+        "setup_required": "A theoretical distinction that needs concrete illustration",
+        "mechanism": "Creates a detailed, multi-stage narrative that allows different theoretical interpretations to be tested against intuitive responses",
+        "achievement": "Makes abstract theoretical distinctions concrete and intuitive while setting up data for analysis",
+        "transferable_pattern": "Use extended, multi-stage cases that allow different aspects of a theoretical distinction to be illustrated separately",
+        "domain_specificity": "General - works across philosophical domains",
+        "effectiveness": "High - provides rich material for subsequent analysis",
+        "originality": "Standard technique but well-executed",
+        "notes": "The case is designed to generate multiple failure types in sequence",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      },
+      {
+        "move_name": "Three-Feature Argument Structure",
+        "quote": "What exactly is the difference between the first and the second kind of failure? At least three features tell them apart. The first is a difference in grounding... The second piece of evidence for a distinction pertains to the observation that both kinds of failures render different reactive attitudes appropriate... A third piece of evidence is that reactive actions like apologizing in response to each failure serve different functions.",
+        "location": "Section 2",
+        "categories": [
+          "structural",
+          "conceptual"
+        ],
+        "setup_required": "A proposed distinction that needs systematic defense",
+        "mechanism": "Organizes evidence into exactly three categories, each providing independent support for the distinction",
+        "achievement": "Creates systematic, memorable support structure while avoiding both under- and over-argumentation",
+        "transferable_pattern": "When defending a conceptual distinction, organize evidence into exactly three independent lines of support",
+        "domain_specificity": "General - works across philosophical domains",
+        "effectiveness": "High - provides clear, systematic organization",
+        "originality": "Standard structural technique",
+        "notes": "Three seems to be the optimal number for systematic yet memorable argument structure",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      },
+      {
+        "move_name": "Reactive Attitudes Criterion",
+        "quote": "Reactive attitudes like anger and resentment have long been used to track moral wrongdoing (Strawson 2008). Simply disappearing without notification or permission can make moral reactive attitudes and actions appropriate. It would be appropriate for Paula to resent James... In the case of the first failure, it would be inappropriate if Paula were to resent James even before he apologizes and changes the subject.",
+        "location": "Section 2",
+        "categories": [
+          "conceptual",
+          "literature"
+        ],
+        "setup_required": "An established philosophical tradition connecting reactive attitudes to moral categories",
+        "mechanism": "Uses appropriateness of different reactive attitudes as a diagnostic test for different types of normative failure",
+        "achievement": "Provides an independent criterion for the proposed distinction based on established philosophical theory",
+        "transferable_pattern": "Use appropriateness conditions for reactive attitudes as diagnostic tests for normative distinctions",
+        "domain_specificity": "Ethics/moral philosophy primarily, but could extend to other normative domains",
+        "effectiveness": "High - leverages established theory to support new distinction",
+        "originality": "Variation - novel application of established technique",
+        "notes": "Particularly powerful because it connects to Strawsonian tradition in moral philosophy",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      },
+      {
+        "move_name": "Objection by Degree Reduction",
+        "quote": "Did we encounter a difference in degree rather than kind? A simpler explanation might be that we are looking at two failures of the same kind of contralateral commitments... that merely differ in the degree of harm caused, whether or not there was an immediate repair.",
+        "location": "Section 3",
+        "categories": [
+          "dialectical"
+        ],
+        "setup_required": "A proposed distinction between two phenomena",
+        "mechanism": "Anticipates the natural reductionist objection that apparent differences in kind are really just differences in degree",
+        "achievement": "Shows awareness of standard philosophical objection patterns and sets up defense",
+        "transferable_pattern": "When proposing distinctions in kind, anticipate and address the 'really just degree' objection",
+        "domain_specificity": "General - this objection pattern appears across all philosophical domains",
+        "effectiveness": "High - essential defensive move",
+        "originality": "Standard dialectical move",
+        "notes": "Almost mandatory when making kind/degree distinctions in philosophy",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      },
+      {
+        "move_name": "Explosion/Inflation Objection",
+        "quote": "My response is that such a view would exaggerate the 'wrongness' of an expected and abundant morally innocent type of failure. It would cause an explosion of wronging in joint action. When I do something wrong relative to our joint intention but immediately corrected my behaviour, I make a mistake, but I do not wrong my collaborator.",
+        "location": "Section 3",
+        "categories": [
+          "dialectical",
+          "conceptual"
+        ],
+        "setup_required": "A theoretical position that would classify many ordinary actions as wrongdoing",
+        "mechanism": "Shows that the opposing view leads to implausible over-classification of ordinary, innocent behavior as morally problematic",
+        "achievement": "Demonstrates theoretical costs of not accepting the proposed distinction",
+        "transferable_pattern": "When defending distinctions, show that collapsing them leads to problematic 'explosion' of unwanted classifications",
+        "domain_specificity": "General - works wherever over-classification is a concern",
+        "effectiveness": "High - intuitive and compelling objection",
+        "originality": "Standard technique but well-applied",
+        "notes": "Particularly effective because it appeals to common-sense intuitions about ordinary behavior",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      },
+      {
+        "move_name": "Scenario Inversion Test",
+        "quote": "To illustrate what I mean, we can flip the original scenario around, as suggested by a reviewer. Imagine that James, instead of changing the topic, continues his rant, causing Paula to feel visibly uncomfortable. However, when he starts walking too fast and Paula tells him to slow down, he slows down immediately and even apologizes. But he keeps ranting.",
+        "location": "Section 3",
+        "categories": [
+          "example",
+          "conceptual"
+        ],
+        "setup_required": "An original case that illustrates a distinction",
+        "mechanism": "Creates a modified version of the original case where the elements are rearranged to test whether the distinction still holds",
+        "achievement": "Provides additional evidence for the robustness of the proposed distinction across different configurations",
+        "transferable_pattern": "Test conceptual distinctions by systematically varying elements in your original cases",
+        "domain_specificity": "General - works across philosophical domains",
+        "effectiveness": "Medium - adds supporting evidence but not dramatically new",
+        "originality": "Standard technique",
+        "notes": "Good way to stress-test proposed distinctions",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      },
+      {
+        "move_name": "Independence Demonstration Through Extreme Cases",
+        "quote": "Therefore another piece of evidence for a difference in kind rather than degree is that we can easily imagine cases of disrespect where the person who disrespects their collaborator never makes the first mistake and contributes extremely well to the joint intention... The simplest example of the phenomenon of disrespect within a well-functioning joint action involves joint actions under coercion.",
+        "location": "Section 3",
+        "categories": [
+          "example",
+          "conceptual"
+        ],
+        "setup_required": "Two proposed categories that might be conflated",
+        "mechanism": "Shows that one category can be maximally present while the other is completely absent, proving their independence",
+        "achievement": "Provides decisive evidence that the categories are truly distinct rather than different aspects of the same phenomenon",
+        "transferable_pattern": "Prove independence of categories by showing cases where one is maximal and the other minimal/absent",
+        "domain_specificity": "General - works across philosophical domains",
+        "effectiveness": "High - provides strong evidence for independence",
+        "originality": "Standard logical technique",
+        "notes": "Particularly powerful for showing that proposed distinctions capture genuinely different phenomena",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      },
+      {
+        "move_name": "Theoretical Problem-Solving Payoff",
+        "quote": "The value of the proposed distinction depends on the contribution it can make to the empirical and theoretical debate on normativity in joint action... I argue that Gilbert's intuition of non-moral obligations to do one's part, for example under coercion, tracks the first kind of failure... Thus Bratman can argue that, even if the joint intention no longer exists, we may still owe it to the others to continue",
+        "location": "Section 4",
+        "categories": [
+          "structural",
+          "literature"
+        ],
+        "setup_required": "A theoretical distinction that has been defended, and existing theoretical problems",
+        "mechanism": "Shows how the proposed distinction allows existing theoretical positions to handle previously problematic cases",
+        "achievement": "Demonstrates the theoretical utility of the distinction by solving standing problems",
+        "transferable_pattern": "After defending a conceptual distinction, show how it enables solutions to existing theoretical problems",
+        "domain_specificity": "General - works across philosophical domains",
+        "effectiveness": "High - shows practical theoretical value",
+        "originality": "Standard technique for showing theoretical utility",
+        "notes": "Essential for showing that conceptual work has genuine theoretical payoff",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      },
+      {
+        "move_name": "Empirical Prediction From Theory",
+        "quote": "I predict that lay people will share this intuition. My distinction allows us to see that leaving is not a form of wronging (moral or otherwise). Leaving does not require any special justification as there was no obligation to the criminal to begin with.",
+        "location": "Section 4",
+        "categories": [
+          "structural",
+          "conceptual"
+        ],
+        "setup_required": "A theoretical framework that makes contact with empirical research",
+        "mechanism": "Derives specific empirical predictions from the theoretical distinction to test its adequacy",
+        "achievement": "Makes the theory empirically testable and shows confidence in its predictive power",
+        "transferable_pattern": "When developing theory that connects to empirical work, generate specific testable predictions",
+        "domain_specificity": "General - works wherever theory connects to empirical research",
+        "effectiveness": "Medium - adds empirical dimension but prediction is fairly obvious",
+        "originality": "Standard technique in empirically-informed philosophy",
+        "notes": "Important for connecting theoretical work to experimental philosophy",
+        "source_paper": "Two kinds of failure in joint action: On disrespect and directed duties",
+        "source_author": "Guido L\u00f6hr"
+      }
+    ],
+    "emerging_patterns": [
+      "Distinction-based problem solving: Introduce a conceptual distinction to break theoretical deadlock",
+      "Multi-staged case construction: Use complex narratives that allow different aspects of a theory to be tested",
+      "Systematic defense structure: Organize evidence into exactly three independent lines of support",
+      "Diagnostic criteria from established theory: Use appropriateness conditions from existing philosophical traditions as tests",
+      "Independence proofs through extreme cases: Show categories are distinct by maximizing one while minimizing the other",
+      "Theoretical payoff demonstration: Show how conceptual work solves existing problems in the literature"
+    ],
+    "source_file": "anae045 (1).txt"
+  }
+]

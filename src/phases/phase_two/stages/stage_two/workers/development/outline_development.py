@@ -50,16 +50,16 @@ class OutlineDevelopmentWorker(DevelopmentWorker):
         # Construct prompt first - this triggers Analysis PDF selection
         prompt = self._construct_prompt(input_data)
         
-        # Make API call with Analysis PDFs if available
+        # Make API call with Analysis text extracts if available
         if self.selected_analysis_pdfs:
-            response = self.api_handler.make_api_call(
+            response, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
-                pdf_paths=self.selected_analysis_pdfs,
+                text_paths=self.selected_analysis_pdfs,
                 system_prompt=system_prompt
             )
         else:
-            response = self.api_handler.make_api_call(
+            response, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
                 system_prompt=system_prompt

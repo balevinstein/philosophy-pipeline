@@ -4,23 +4,13 @@ import sys
 from pathlib import Path
 from typing import Dict, Any
 import time
-import yaml
 
 # Add the project root to the Python path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
 from src.phases.phase_two.stages.stage_seven.workers.refinement_worker import RefinementWorker
-
-
-def load_config():
-    """Load configuration from config file"""
-    config_path = Path("config/conceptual_config.yaml")
-    if not config_path.exists():
-        raise FileNotFoundError(f"Config file not found: {config_path}")
-    
-    with open(config_path, 'r') as f:
-        return yaml.safe_load(f)
+from run_utils import load_config
 
 
 def load_phase_outputs() -> Dict[str, Any]:
@@ -52,7 +42,7 @@ def load_phase_outputs() -> Dict[str, Any]:
     
     # Load move examples
     try:
-        with open("./outputs/curated_moves/injectable_examples.json", encoding='utf-8') as f:
+        with open("./data/philosophical_moves/injectable_examples.json", encoding='utf-8') as f:
             outputs["move_examples"] = json.load(f)
         print("   ✓ Loaded philosophical move examples")
     except FileNotFoundError:

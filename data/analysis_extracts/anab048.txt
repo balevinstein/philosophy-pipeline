@@ -1,0 +1,132 @@
+Here is the complete text content of the paper, formatted with paragraph breaks:
+
+A note on the Wilhelmine Inconsistency
+
+Jon Erling Litland
+
+1. Introduction
+
+Wilhelm (2021) has recently shown that certain widely accepted grounding principles are inconsistent with standard principles of propositional identity; call this the Wilhelmine Inconsistency. The proof of the inconsistency is unimpeachable, but what is its import? This note argues that – unlike the puzzles of ground (Fine 2010) and the Russell-Myhill paradoxes for ground (Fritz forthcoming) – the Wilhelmine Inconsistency should not worry grounding enthusiasts. This is established by sketching two natural ground-theoretic accounts of propositional identity, and showing that on one account a grounding principle is clearly incorrect, and that on the other account the principles of propositional identity are clearly incorrect. Both accounts are conservative in the sense that all the standard grounding principles for conjunction and disjunction are retained.
+
+First, the inconsistency.
+
+2. The Wilhelmine Inconsistency
+
+Let us follow Wilhelm in using → for the relation of immediate partial ground; x → y thus means that x immediately partially grounds y. Let us also follow him in using ≈ for the relation of propositional identity, which we assume satisfies Leibniz's Law. The following are standard principles about the grounding of conjunctions and disjunctions:
+
+(&+) z → (x & y) iff (x & y and z ≈ x or z ≈ y)
+(&−) z → ∼(x & y) iff (z and z ≈ ∼x or z ≈ ∼y) 
+(∨+) z → (x ∨ y) iff (z and z ≈ x or z ≈ y)
+(∨−) z → ∼(x ∨ y) iff (∼(x & y) and z ≈ ∼x or z ≈ ∼y)
+
+As Wilhelm notes these principles are standardly accepted in the literature on ground (although they are not universally accepted – see e.g. Poggiolesi 2016, 2018). But they conflict with the following propositional identity principles:
+
+(∨-defines-&) (x & y) ≈ ∼(∼x ∨ ∼y)
+(&-defines-∨) (x ∨ y) ≈ ∼(∼x & ∼y)
+
+The core of the Wilhelmine Inconsistency is:
+
+(Claim 1) It follows from (&+), (∨-defines-&) and (∨−) that every proposition is identical to its double negation.
+
+(Claim 2) It follows from (&−), (&-defines-∨) and (∨+) that every proposition is identical to its double negation.
+
+As long as at least one true proposition does not ground itself, Claim 1 and Claim 2 contradict the following widely held principle about the grounds of negations:
+
+(∼∼) z →∼∼x iff z and z ≈ x
+
+Proof of Claim 1: Let x be any true proposition. Then by (&+) we have x → (x & x). By (∨-defines-&) and Leibniz's Law for ≈ we have x → ∼(∼x ∨ ∼x). Thus by (∨−) we have x≈∼∼x. Since x was arbitrary we can conclude that every true proposition is identical to its double negation. (A parallel proof establishes Claim 2.)
+
+3. Two ground-theoretic identity criteria
+
+The Wilhelmine Inconsistency undoubtedly constrains what principles of propositional identity can be combined with which principles of ground: but is the Wilhelmine Inconsistency problematic for grounding enthusiasts? Only if every natural conception of ground and propositional identity lead us to all the above principles. And that is simply not so. Some conceptions of ground reject the ideology required for the statement of the principles – for instance by rejecting the notion of immediate ground; other conceptions of ground reject Leibniz's Law in full generality; and some conceptions of ground do not retain all of (&+), (&−), (∨+) and (∨−) (see e.g. Poggiolesi 2016, 2018).
+
+The purpose of this note is to show that there are natural and well-motivated conceptions of ground and propositional identity that accept the notion of immediate ground, accept Leibniz's Law in full generality and retain all of (&+), (&−), (∨+) and (∨−). To avoid inconsistency we thus have to reject either (∨-defines-&) and (&-defines-∨) or (∼∼). We show how this can be done in a principled manner by developing two natural ground-theoretic criteria of propositional identity. One leads to rejecting (∼∼); the other leads to rejecting (∨-defines-&) and (&-defines-∨).
+
+Before we sketch our two identity criteria, it will be helpful to digress briefly into what ground-theoretic identity criteria could say about ungrounded propositions.
+
+3.1 The common background
+
+A naïve ground-theoretic identity-criterion holds that propositions are individuated by specifying their immediate possible grounds: two propositions are identical iff they have exactly the same immediate full grounds. But since all ungrounded propositions have the same grounds – none! – this naïve identity criterion yields the absurd consequence that there is only one ungrounded proposition. We cannot establish priority monism so easily! (Having no grounds must, of course, be sharply distinguished from being zero-grounded (Fine 2010: 47–48).)
+
+A natural response is to take a disjunctive approach: the identities of ungrounded propositions are simply taken for granted, and the criterion of identity only applies to grounded propositions. (Analogously: in the iterative conception of set the identities of the urelemente are simply taken for granted and the identity criterion – that is: the axiom of extensionality – only applies to sets.) A second natural response is to introduce a notion of loose immediate ground by saying that Γ loosely immediately grounds p iff either (i) Γ immediately grounds p or (ii) p is ungrounded and Γ is the plurality that contains exactly p. We could then state our identity criterion in terms of loose immediate ground. A third natural response is to distinguish ungrounded propositions in terms of their constituents, thereby adopting a structured view of propositions. We could proceed in either of these ways; however, on certain natural – though not entirely uncontroversial – assumptions a more elegant approach is available.
+
+To account for negation we need the notion of (immediate) antiground, where the immediate antigrounds for a proposition p are the immediate grounds for the negation of p. One might think of antiground in terms of exclusion: the obtaining of an antiground for p excludes that p obtains. For the sake of illustration, if a is an object and C is a fully determinate shade of colour one might take the immediate antigrounds for Ca to be exactly the propositions Da, where D is a different fully determinate shade of colour.
+
+While ungrounded propositions cannot be individuated in terms of their grounds, they could be individuated in terms of their antigrounds as long as the following holds: if p, q are two ungrounded propositions with exactly the same antigrounds then p ≈ q. This amounts to holding that while all ungrounded propositions are grounded alike, they are all antigrounded in their own way. In what follows we will make this assumption. If this assumption fails we can fall back on giving disjunctive identity criteria or formulating the criteria in terms of loose ground; we leave the details to the reader.
+
+3.2 The unstructured criterion 
+
+We can now state the first identity criterion: a proposition is individuated by specifying its immediate full grounds and antigrounds. More precisely, let us write G(p,Γ) to mean that Γ immediately fully grounds p; and let us write A(p,Γ) to mean that Γ immediately fully antigrounds p. The identity criterion is then:
+
+(UI) p ≈ q ↔ ∀Γ(G(p,Γ) ↔ G(q,Γ)) & ∀Γ(A(p,Γ) ↔ A(q,Γ))
+
+On this account we should not think of the logical operations as constituents of complex propositions, but rather as operations mapping propositions to propositions. Here is how the negation operation works. The negation of a proposition p is the unique proposition ∼p such that for all Γ: Γ grounds ∼p iff Γ antigrounds p and Γ antigrounds ∼p iff Γ grounds p. Clearly, this view results in p ≈ ∼∼p and thus the rejection of (∼∼).
+
+The conjunction operation & maps two propositions p, q to the unique proposition p & q the immediate full grounds of which are exactly p, q (taken together); and the antigrounds of which are ∼p and ∼q (separately). The disjunction operation maps the propositions p, q to the unique proposition p ∨ q the grounds of which are p and q separately, and the antigrounds of which are ∼p, ∼q taken together. This ensures that (&+), (&−), (∨+) and (∨−) hold.
+
+Moreover, the conjunction and disjunction operations naturally satisfy (&-defines-∨) and (∨-defines-&). For consider the grounds for ∼(∼p ∨ ∼q). Since ∼(∼p ∨ ∼q) is the proposition that has as its immediate grounds exactly the antigrounds for ∼p ∨ ∼q, its immediate grounds are exactly ∼∼p, ∼∼q taken together. But by the above we know that ∼∼p is the same proposition as p, and ∼∼q is the same proposition as q; thus ∼(∼p ∨ ∼q) has exactly the same grounds as p & q. Similarly, the antigrounds for ∼(∼p ∨ ∼q) are exactly the grounds for ∼p ∨ ∼q. That is, ∼p and ∼q respectively. The grounds and antigrounds of ∼(∼p ∨ ∼q) are thus exactly the grounds and antigrounds of p & q and so p & q and ∼(∼p ∨ ∼q) are the same proposition by the identity criterion UI.
+
+The resulting view yields a kind of bipolar account of propositions. A proposition p and its negation are just two ways of looking at a single division in logical space. This account is, of course, reminiscent of a truthmaker account of propositions on which propositions having the same truthmakers and falsemakers are identified; but – since we accept the ideology of immediate ground – we can draw finer distinctions. Unlike the truthmaker theorist we distinguish between p & (q & r) and (p & q) & r: the former is immediately grounded in q & r, while the latter is not.
+
+So far we have only considered what this view tells us about the grounds of propositions that are formed by applying the logical operations. While this is not the place to discuss non-logical cases in detail, the following case will illuminate the difference between the present unstructured account and the structured account to follow. It is standardly held that a set exists if and only if, and because, its members do. So consider a set s and the proposition Es that s exists. The ground for Es is the collection of propositions [Ea,Eb,Ec...] where a, b, c are all and only the members of s; each of the propositions ∼Ea, ∼Eb, ... is an antiground for Es. Note that a consequence of this view is that if s, t are two distinct sets then Es and Et are distinct propositions.
+
+More has to be done fully to develop this view. However, I trust that enough has been said to show that UI is part of a principled view of ground and propositional identity that rejects (∼∼).
+
+3.3 A structured criterion
+
+Instead of rejecting (∼∼) we can reject both (&-defines-∨) and (∨-defines-&). This is very natural for those who hold that the relata of ground 'are structured entities built up from worldy items – objects, relations, connectives, quantifiers – in roughly the way sentences are built up from words' (Rosen 2010: 114). For, on such views, the proposition p & q can be distinguished from ∼(∼p ∨ ∼q) by the former having conjunction and the second having negation as its dominant operation. The identity criterion for propositions is structural: two propositions are identical if they are composed of the same constituents in the same way.
+
+Importantly, it is not enough merely to reject (&-defines-∨) and (∨-defines-&); we also have to show that this view justifies (&+), (&−), (∨+) and (∨−) and (∼∼). To do this we will again provide a ground-theoretic criterion of identity. In UI above we used (anti)ground to directly individuate propositions. On the present structured account ground and antiground enter the picture in the definitions of the logical operations themselves – the idea being that a logical operation is defined by the contribution it makes to how propositions containing it are grounded and antigrounded. In a slogan: logical operations are individuated by their Grounding Profile.
+
+The clause for negation is straightforward. Negation is that operation ∼ such that for all propositions p (i) the immediate grounds for are exactly the antigrounds for p; and (ii) the unique antiground for ∼p is exactly p. These conditions justify (∼∼). For something is a ground for ∼∼p iff it is an antiground for ∼p; but the only antiground for ∼p is p. What differentiates this from the unstructured account above is that on this structured account p itself is an antiground for ∼p, whereas on the unstructured account the antigrounds for ∼p are just the grounds for p. The difference is especially stark when p is ungrounded. On the unstructured account ∼p has no antigrounds; on the structured account it does.
+
+We then say that conjunction is that operation & such that the grounds for a proposition p & q are exactly p, q (taken together) and the antigrounds are exactly ∼p, ∼q (separately); these clauses immediately justify (&+) and (&−). Disjunction, in turn, is that operation ∨ such that the grounds for a proposition p ∨ q are exactly p, q (taken separately) and the antigrounds are exactly ∼p, ∼q (taken together); these clauses justify (∨+) and (∨−).
+
+Let us briefly return to the grounds for set existence. First, the focus on the grounds of logically complex propositions might give the impression that the grounds for a proposition of the form Ra will always be a function of the relation (or operation) R. The case of set existence shows that this is not so: that the grounds of E({a,b}) are what they are is a function of the nature of {a,b} and not (or not just) a function of the nature of E. 
+
+Second, the structured account arguably has an advantage in its treatment of set existence. Let a, b be two objects that do not have a part in common and consider the fusion c = a + b. The natural view about the existence of fusions is that c is grounded in the existence of a, b (taken together) and antigrounded in each of ∼Ea and ∼Eb. According to the unstructured view the proposition that c exists is then identical to the proposition that {a, b} exists. On the structured view, on the other hand, these two propositions are readily distinguished by their having different constituents.
+
+Finally, while Wilhelm does not explicitly argue for (∨-defines-&) and (&-defines-∨), one might perhaps extract an argument from his observation that the former defines conjunction in terms of disjunction while the latter does the opposite. To explore this suggestion let us define an operation &? as follows.
+
+&? ≈ λpq. ∼(∼p ∨ ∼q)
+
+It follows that
+
+p &? q ≈ ∼(∼p ∨ ∼q)
+
+That is, we have (∨-defines-&) for &?. And now one might worry: together with (∨−) and (&+), (∨-defines-&) suffices to establish that every proposition is identical to its double negation. However, there is no cause for worry since the principle (&+) (for &?) fails. If p &? q ≈ ∼(∼p ∨ ∼q), the grounds for p &? q will be exactly ∼∼p and ∼∼q. And according to the structured account ∼∼p and ∼∼q are not identical to p, q.
+
+More has to be done fully to develop this structured view; but hopefully we have done enough to show that this is a principled account of ground and propositional identity that keeps (∼∼) but rejects (∨-defines-&) and (&-defines-∨).
+
+4. Conclusion
+
+Since both the structured and unstructured accounts provide principled ways of responding to the Wilhelmine Inconsistency, grounding enthusiasts need not worry too much about this inconsistency: either they can drop the claim that double negations of propositions are grounded in those propositions, or they can drop the identifications of conjunctions with certain negated disjunctions and disjunctions with certain negated conjunctions. Of course, the defender of ground cannot rest content with this – for two reasons. First, the structured and unstructured accounts are in conflict: one ultimately has to choose between them. Second, one has to show how the accounts deal with the other puzzles of ground. Doing either is beyond the scope of this note; here we have only shown that there are principled ways of responding to the Wilhelmine Inconsistency.
+
+Department of Philosophy
+University of Texas at Austin 
+USA
+jon.litland@utexas.edu
+
+References
+
+Berker, S. 2018. The unity of grounding. Mind 127: 729–99.
+
+Correia, F. and A. Skiles. 2019. Grounding, essence, and identity. Philosophy and Phenomenological Research 98: 642–70.
+
+Dorr, C. 2016. To be F is to be G. Philosophical Perspectives 30: 39–134.
+
+Fine, K. 2010. Some puzzles of ground. Notre Dame Journal of Formal Logic 51: 97–118.
+
+Fine, K. 2012. Guide to ground. In Metaphysical Grounding, eds. F. Correia and B. Schnieder, 37–80. Cambridge: Cambridge University Press.
+
+Fritz, P. forthcoming. Ground and grain. Philosophy and Phenomenological Research.
+
+Lovett, A. 2020. The logic of ground. Journal of Philosophical Logic 49: 13–49.
+
+Poggiolesi, F. 2016. On defining the notion of complete and immediate formal grounding. Synthese 193: 3147–67.
+
+Poggiolesi, F. 2018. On constructing a logic for the notion of complete and immediate formal grounding. Synthese 195: 1231–54.
+
+Rosen, G. 2010. Metaphysical dependence: grounding and reduction. In Modality: Metaphysics, Logic, and Epistemology, eds. B. Hale and A. Hoffmann, 109–35. Oxford: Oxford University Press.
+
+Wilhelm, I. 2021. Grounding and propositional identity. Analysis 81: 80–81.

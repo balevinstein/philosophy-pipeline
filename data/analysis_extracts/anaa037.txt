@@ -1,0 +1,170 @@
+Here is the complete text content of the paper, formatted with paragraph breaks:
+
+Sneddon, A. 2009. Alternative motivation: a new challenge to moral judgment internalism. Philosophical Explorations 12: 41–53.
+
+Sorensen, R. 2007. Bald-faced lies! Lying without the intent to deceive. Pacific Philosophical Quarterly 88: 251–64.
+
+Sorensen, R. 2010. Knowledge-lies. Analysis 70: 608–15.
+
+Spartacus. 1960. Dir. Stanley Kubrick. Universal International. Film.
+
+An argument against causal decision theory
+Jack Spencer
+
+1. Introduction
+
+Critics of causal decision theory (CDT) have put forward various alleged counterexamples: cases in which, they claim, rationality and the recommendations of CDT diverge (see e.g. Hunter and Richter 1978, Weirich 2004, Egan 2007, Ahmed 2013, 2014a, 2014b and Hare and Hedden 2016). For the most part, proponents of CDT have been unconvinced, viewing the intuitions the alleged counterexamples elicit with a mixture of suspicion and opposition. The dispute is thus at an impasse, and one worries that unless there is some way to move beyond judgements about cases, the dispute will devolve into an unproductive clash of intuitions.
+
+My goal in this paper is move beyond the impasse. I criticize CDT, not by appeal to judgements about cases, but by explicit argument. I formulate a principle of preference, which I call the Guaranteed Principle. I argue that the preferences of rational agents satisfy the Guaranteed Principle, that the preferences of agents who embody CDT do not, and hence that CDT is false.
+
+2. The Guaranteed Principle
+
+Say that a decision guarantees $n if the agent knows that some particular option made available by the decision would yield $n if chosen; and say that a decision forces $n if the agent knows that every option made available by the decision would yield $n if chosen. If we assume that agents satisfy certain simplifying assumptions, care only about money and value dollars linearly, then we can formulate the Guaranteed Principle as follows:
+
+(Guaranteed Principle) A rational agent always strictly prefers a decision that guarantees $n to a decision that forces $m < $n.
+
+The motivation for the Guaranteed Principle is straightforward: a rational agent never strictly prefers fewer options. If d1 is a decision that forces $n, and d2 is just like d1 except that it makes additional options available, then a rational agent weakly prefers d2 to d1. And a rational agent strictly prefers d1 to some decision, d0, which forces $m < $n. So, by transitivity, we get the Guaranteed Principle.
+
+The Guaranteed Principle does not hold of imperfect agents, nor of agents who expect to be imperfect. Take an extreme illustration. Suppose that the least choiceworthy option made available by a decision that guarantees $n is very bad indeed, and suppose that I have a lesion that makes me choose from among the least choiceworthy options when I face decisions of that sort. Then, as a way of protecting myself from my disposition to choose irrationally, I should prefer the decision that forces $m to the decision that guarantees $n > $m.
+
+But the Guaranteed Principle does not purport to hold true of imperfect agents. It is restricted to (perfectly) rational agents: the idealized agents that are the subject matter of decision theory. If an agent fully expects to choose from among the most choiceworthy options, as rational agents always do, then the agent must strictly prefer a decision that guarantees $n to a decision that forces $m < $n.
+
+3. An alleged counterexample to CDT
+
+I am going to use the Guaranteed Principle to argue that a particular alleged counterexample to CDT succeeds. The example I will focus on is the following one, from Spencer and Wells (2019: 34):
+
+(The Frustrater) There is an envelope and two opaque boxes, A and B. The agent has three options: she can take A, B or the envelope (aA, aB or aE). The envelope contains $40. The two boxes together contain $100. How the money is distributed between the boxes depends on a prediction made yesterday by the Frustrater, a reliable predictor who seeks to frustrate. If the Frustrater predicted that the agent would take A, then B contains $100. If the Frustrater predicted that the agent would take B, then A contains $100. If the Frustrater predicted that the agent would take the envelope, each box contains $50. The agent knows all of this.
+
+There is a strong intuition that rationality requires taking the envelope. CDT, however, does not recommend the envelope.
+
+According to CDT, an agent should always choose so as to maximize U. Let W = {w1,...,wn} be the set of possible worlds; let C be the agent's credence function; and let u be the agent's utility function. We then can define the V-value of any proposition p:
+
+V(p) = ∑W C(w|p)u(w).
+
+Note that V obeys the rule of averaging: if Z is a set of propositions that C-partitions p – in other words, if exactly one member of Z is true at every p-world to which C assigns nonzero probability – then V(p) = ∑Z C(z|p)V(pz). Let A = {a1,...,am} be the set of options, and let K = {k1,...,kj} be the set of dependency hypotheses, where a dependency hypothesis is a maximally specific proposition about how things the agent cares about do and do not depend causally on their present choice (Cf. Lewis 1981: 11). The U-value of any a ∈ A, then, is:
+
+U(a) = ∑K ∑W C(k)C(w|ak)u(w) = ∑K C(k)V(ak).
+
+The agent facing The Frustrater knows that the envelope contains $40, so, equating dollars and units of value, U(aE) = 40. The agent does not know how the money is distributed between the boxes, but knows that the boxes together contain $100. Therefore, no matter how the agent divides her credence, U(aA) + U(aB) = 100. Two numbers smaller than 40 cannot sum to 100, so, no matter how the agent divides her credence, aA and/or aB maximize U.
+
+Some find the intuition elicited by The Frustrater sufficiently compelling. They need no further argument. The case, itself, convinces them to reject CDT.
+
+But I know – both from the literature and from personal experience – that some remain unconvinced (see e.g. Joyce 2018). So it is worth trying to undergird the intuition with argument.
+
+4. An argument against CDT 
+
+Say that an agent embodies a decision theory just if the agent knows that she always chooses an option recommended by the decision theory. An agent who embodies CDT knows that she always chooses a U-maximizing option. I am going to argue that rational agents do not embody CDT.
+
+To get the argument going, consider the following elaboration of The Frustrater:
+
+(Two Rooms) An agent must enter either Room #1 or Room #2. If she enters Room #1, she gets $35. If she enters Room #2, she faces The Frustrater. The agent knows all of this.
+
+The 'decision' in Room #1 forces $35. The decision in Room #2 – namely, The Frustrater – guarantees $40. The Guaranteed Principle thus entails that a rational agent strictly prefers Room #2 to Room #1.
+
+If CDT is true, then a rational agent embodies CDT. So we have the first premiss of the argument, which is a claim of material implication:
+
+(P1) If CDT is true, then an agent who embodies CDT strictly prefers Room #2 to Room #1.
+
+The second premiss is a claim about the pairwise preferences of an agent who embodies CDT:
+
+(P2) An agent who embodies CDT strictly prefers Room #1 to Room #2.
+
+To see that (P2) is true, we need to run through some calculations.
+
+Let a1 and a2 be the options of entering Room #1 and Room #2, respectively. There are three relevant dependency hypotheses: either A contains $100, B contains $100 or each box contains $50 (kA, kB or kE). We know that U(a1) = 35, since Room #1 forces $35. What U(a2) is depends on how the agent divides her credence:
+
+(1) U(a2) = C(kA)V(a2kA) + C(kB)V(a2kB) + C(kE)V(a2kE).
+
+Let aA, aB and aE be the options available in Room #2, and let us assume that each entails a2. The agent is certain that she will choose A or B if she enters Room #2, so {aA,aB} C-partitions the following propositions: a2kA, a2kB and a2kE. Therefore, by the rule of averaging,
+
+(2) V(a2kA) = C(aA|a2kA)V(aAkA) + C(aB|a2kA)V(aBkA);
+
+(3) V(a2kB) = C(aA|a2kB)V(aAkB) + C(aB|a2kB)V(aBkB); and
+
+(4) V(a2kE) = C(aA|a2kE)V(aAkE) + C(aB|a2kE)V(aBkE).
+
+Both V(aAkA) and V(aBkB) equal 100, since the agent gets $100 if aAkA or aBkB. Both V(aBkA) and V(aAkB) equal 0, since the agent gets $0 if aBkA or aAkB. And both V(aAkE) and V(aBkE) equal 50, since the agent gets $50 if aAkE or aBkE. Therefore,
+
+(5) V(a2kA) = C(aA|a2kA)(100) + C(aB|a2kA)(0);
+
+(6) V(a2kB) = C(aA|a2kB)(0) + C(aB|a2kB)(100); and
+
+(7) V(a2kE) = C(aA|a2kE)(50) + C(aB|a2kE)(50).
+
+Plugging (5)-(7) back into (1), we get:
+
+(8) U(a2) = C(kA)(C(aA|a2kA)(100) + C(aB|a2kA)(0)) + C(kB)(C(aA|a2kB)(0) + C(aB|a2kB)(100)) + C(kE)(C(aA|a2kE)(50) + C(aB|a2kE)(50)).
+
+What these credences and conditional credences are depends on how reliable the agent takes the Frustrater to be. In a more realistic case, the agent might take the Frustrater to be rather, but not extraordinarily, reliable. But let us suppose, to make things simple, that the agent takes the Frustrater to be almost perfectly reliable. In that case, the agent is virtually certain that some box contains $100, and virtually certain that she will take a box that contains $0 if she enters Room #2 – in other words, C(kE) ≈ 0, C(aA|a2kA) ≈ 0 and C(aB|a2kB) ≈ 0. It therefore follows that:
+
+(9) U(a2) ≈ 0.
+
+If there were diachronic (conjunctive, long-arm) options, then we might be able to reconcile CDT with the Guaranteed Principle. An agent facing Two Rooms would have four diachronic options: a1, aA, aB and aE. If we assign each of these a U-value, the ones that maximize U are aA and/or aB, since U(a1) = 35, U(aE) = 40, and U(aA) + U(aB) = 100. It is not completely clear what preferences among decisions are if there are diachronic options; but if we think of decisions as containing only synchronic options, and we think of diachronic options as having synchronic options as parts, then we could say that an agent strictly prefers decision di to decision dj just if some synchronic option in di is a part of some diachronic option that is strictly preferred to every diachronic option that has any synchronic option in dj as a part. An agent who embodies CDT strictly prefers aA and/or aB to a1. So, if there were diachronic options, an agent who embodies CDT would, in this sense, strictly prefer Room #2 to Room #1, and the conflict between CDT and the Guaranteed Principle would be removed. But, unfortunately for CDT, there are no such things. An agent deciding between Room #1 and Room #2 faces a straight choice between two (real, synchronic) options. And if the agent embodies CDT, the agent will choose Room #1, since U(a1) > U(a2).
+
+Therefore, (P2) is true.
+
+The two premisses of the argument entail the falsity of CDT. I have argued that both premisses are true. So I think that we have here a sound argument against CDT.
+
+And it is not hard to see where CDT goes wrong. It is not irrational for an agent who embodies CDT to strictly prefer Room #1 to Room #2 – that is not where the mistake lies. After all, agents who embody CDT almost always get $0 upon facing The Frustrater, and $35 is better than $0. The mistake lies in embodying CDT, and, specifically, in being disposed to choose so as to maximize U upon facing The Frustrater. An agent who knows that she will choose so as to maximize U upon facing The Frustrater knows that she has a strong disposition to choose an empty box, and it is rational for her to protect herself from this choice-making disposition by violating the Guaranteed Principle and strictly preferring Room #1 to Room #2.
+
+But a rational agent, unlike an agent who embodies CDT, never needs to protect herself from her own choice-making dispositions. A rational agent facing Two Rooms fully expects to take the envelope upon entering Room #2 and therefore satisfies the Guaranteed Principle, strictly preferring Room #2 to Room #1.
+
+5. Diachronic exploitation
+
+Cases like Two Rooms reveal that the preferences of agents who embody CDT violate the Guaranteed Principle. Such cases also reveal that agents who embody CDT are diachronically exploitable. But, though I think the falsity of CDT follows from its conflict with the Guaranteed Principle, I do not think the falsity of CDT follows from the diachronic exploitability of agents who embody CDT.
+
+Say that a sequence of options made available by a sequence of decisions ensures $n if the agent knows that if she took the sequence – that is, chose each option in the sequence – she would get $n; and say that an agent facing a sequence of decisions is diachronically exploited just if (1) there is a sequence of options available to the agent that ensures $n and (2) the agent takes a sequence that ensures $m < $n.
+
+In Two Rooms, the sequence of entering Room #2 and taking the envelope ensures $40. But an agent who embodies CDT takes the 'sequence' of entering Room #1, which ensures $35. So, as past critics of CDT have pointed out, agents who embody CDT are diachronically exploitable (see Ahmed 2014a, Oesterheld and Conitzer MS).
+
+But there are cases that convince me that diachronic exploitability and perfect rationality are compatible. One example is the following:
+
+(Ahmed's Insurance) There is a transparent box and an opaque box. The agent has two options: she can take either only the opaque box or both boxes (a1 or a2). The transparent box contains $10. What the opaque box contains depends on a prediction made yesterday by a reliable predictor. If the predictor predicted that the agent would take both boxes, the opaque box contains -$50, a debt the agent must repay. If the predictor predicted that the agent would take only the opaque box, the opaque box contains $50. At the second stage, before looking into the opaque box, the agent faces a second decision. She can either bet $75 at 1:3 that the predictor predicted correctly or bet $25 at 3:1 that the predictor predicted incorrectly (b1 or b2). The agent knows all of this from the outset.
+
+There are two relevant dependency hypotheses: either the opaque box contains $50 or -$50 (k50 or k-50). The agent can thus foresee the eight possible outcomes of the four possible sequences:
+
+k50 k-50  
+a1b1 $75 -$125  
+a1b2 $25 $25  
+a2b1 -$15 -$15  
+a2b2 $135 -$65
+
+The sequence a1b2 ensures $25; the sequence a2b1 ensures -$15; and an agent who embodies CDT is likely to take the sure-loss sequence, a2b1. The agent knows that the predictor is much more than 75% reliable whichever option is chosen. So, no matter what the agent chooses at the first stage, CDT – like any sane decision theory – recommends b1: that the agent bet that the predictor predicted correctly at the second stage. Since the agent who embodies CDT knows that she will choose b1 at the second stage, the U-value of taking both boxes is -15, the sure-loss value of a2b1, and the U-value of taking only the opaque box is:
+
+U(a1) = C(k50)V(a1b1k50) + C(k-50)V(a1b1k-50) = C(k50)(75) + C(k-50)(-125).
+
+Whether U(a2) or U(a1) is greater depends on how the agent divides her credence between k50 and k-50. But suppose that the agent divides her credence equally, as she very well might. Then,
+
+U(a1) = (0.5)(75) + (0.5)(-125) = -25 < -15 = U(a2).
+
+The agent will thus take the sure-loss sequence, a2b1, even though a sure-gain sequence was available.
+
+But, so far as I can tell, there is nothing irrational about taking the sure-loss sequence. To see why, it is helpful to represent the sequential decision as an intrapersonal game played between two time-slices of the agent. Let C be the credence function of the first slice, and let us suppose that the credence function of the second slice comes from C via conditionalizing on the option chosen at the first stage. Let t be the proposition that the predictor predicted correctly and suppose that C(t) = C(t|a1) = C(t|a2) = 0.9. Let us also continue to suppose that C(k50) = C(k-50). We then can represent Ahmed's Insurance as a two-player game, using the U-values as the payoffs. In each cell, axby, of the payoff matrix below, the first coordinate is U(axby) from the perspective of the first slice, that is, C(k50)V(axbyk50) + C(k-50)V(axbyk-50), and the second coordinate is U(axby) from the perspective of the second slice, that is, C(k50|ax)V(axbyk50) + C(k-50|ax)V(axbyk-50):
+
+b1 b2  
+a1 (-25, 55) (25, 25)  
+a2 (-15, -15) (35, -45)
+
+As the payoff matrix makes clear, the game takes the form of a prisoner's dilemma. Both slices want to maximize the U-value of the joint strategy played. The first slice maximizes the U-value of the joint strategy played by taking both boxes, no matter what the second slice does. The second slice maximizes the U-value of the joint strategy played by betting that the predictor predicted correctly, no matter what the first slice does. The two choices together lead to diachronic exploitation. But it seems to me as it will seem to many proponents of CDT: that both choices are rational.
+
+It is worth noting that the game-theoretic perspective that helps proponents of CDT respond to the threat posed by Ahmed's Insurance does not help proponents of CDT respond to the threat posed by Two Rooms. Suppose that the agent facing Two Rooms thinks that A and B are equally likely to contain $100. Then, if we again use the U-values of sequences as the payoffs, we get the following trivial payoff matrix:
+
+A B E  
+Room #1 (35, 35) (35, 35) (35, 35)  
+Room #2 (50, 50) (50, 50) (40, 40)
+
+This payoff matrix does not explain why an agent who embodies CDT strictly prefers Room #1 to Room #2. In fact, it only makes the preference more puzzling; for both slices agree that the U-value of every joint strategy available in Room #2 exceeds the U-value of every joint strategy available in Room #1.
+
+6. Conclusion
+
+I have argued that the preferences of rational agents satisfy the Guaranteed Principle, that the preferences of agents who embody CDT do not, and hence that CDT is false. In so doing, I have argued that a particular alleged counterexample to CDT – namely, The Frustrater – really is a counterexample.
+
+Department of Linguistics and Philosophy
+Massachusetts Institute of Technology 
+77 Massachusetts Ave, 32d-808
+Cambridge, MA 02139, USA
+jackspen@mit.edu
+
+References
+
+[References section omitted for brevity]

@@ -12,7 +12,7 @@ class AnalysisPatternIntegrator:
     """Handles Analysis paper integration for conceptual development phases"""
     
     def __init__(self):
-        self.analysis_dir = Path("./analysis_cache/extracted_texts")
+        self.analysis_dir = Path("./data/analysis_extracts")
         self.selected_texts = []
         
     def get_files_for_phase(self, phase: str) -> int:

@@ -1,0 +1,127 @@
+Here is the complete text content of the paper, formatted with paragraph breaks:
+
+Ross, J. and M. Schroeder. 2014. Belief, credence, and pragmatic encroachment. Philosophy and Phenomenological Research 88: 259–88.
+
+Smithies, D. 2012. The normative role of knowledge. Noûs 46: 265–88.
+
+Staffel, J. 2013. Can there be reasoning with degrees of belief? Synthese 190: 3535–51.
+
+Staffel, J. 2019. How do beliefs simplify reasoning? Noûs 53: 937–62.
+
+Tang, W.H. 2015. Belief and cognitive limitations. Philosophical Studies 172: 249–60.
+
+Weatherson, B. 2005. Can we do without pragmatic encroachment? Philosophical Perspectives 19: 417–43.
+
+Wedgwood, R. 2012. Outright belief. Dialectica 66: 309–29.
+
+Weisberg, J. 2020. Belief in psyontology. Philosophers' Imprint 20: 1–27.
+
+Williamson, T. 2000. Knowledge and Its Limits. Oxford: Oxford University Press.
+
+Against philosophical proofs against common sense
+Louis Doulas and Evan Welchance
+
+1. A philosophical proof against common sense
+
+Many philosophers think that common sense knowledge survives sophisticated philosophical proofs against it. It is much more certain that things move than it is that the premisses of Zeno's counterarguments are true. What goes for Zeno's arguments against motion arguably goes for philosophical arguments against causation, time, tables, human beings, knowledge and more.
+
+Recently, however, Bryan Frances (2021) has advanced a philosophical proof that he thinks common sense cannot survive. His proof exploits various philosophical paradoxes to show how common sense engenders contradiction. Consider, for example, the following set of sentences:
+
+Anyone with less than 1¢ is not rich.
+If anyone with less than 1¢ is not rich, then anyone with less than 2¢ is not rich.
+...
+If anyone with less than (1014 – 1)¢ is not rich, then anyone with less than 1014¢ is not rich.
+It is not the case that anyone with less than 1014¢ is not rich.
+
+This is the Sorites Paradox. These claims ('the Cs') are mutually inconsistent. The final claim contradicts the conclusion derived from the antecedent claims, 'Anyone with less than 1014¢ is not rich'. So one of the Cs must be false. And yet, Frances argues, all of them are commonsensical. So a common sense claim is false. So philosophy can overturn common sense and thus common sense methodology is unstable. QED.
+
+This is Frances's philosophical proof against common sense, albeit in highly schematic form. His official proof, however, is highly elaborate and features six detailed premisses. We refrain from reproducing them here. Since our contentions are with Frances's first premiss, that is what we will focus on:
+
+(1) There exists an interpretation and group of familiar elementary inference rules of sentential logic such that (i) each so-interpreted C is commonsensical, and (ii) from just the so-interpreted Cs there is a derivation of a pair of contradictory claims using just those rules of inference.
+
+Frances analyses commonsensicality in the following way: P is commonsensical for a certain large community at a time t if and only if virtually all members of that community at t who understand P well are strongly disposed to give P a high credence (2021: 19). For Frances's proof, the relevant community is the contemporary philosophical community: common sense amongst contemporary philosophers. Moreover, one need not be a complete specialist to 'understand P well', but neither must one be completely naïve. (This is an important point and one we will return to in §2.) For example, Frances says that despite seeming obviously true, the proposition 'There are twice as many positive integers as there are even positive integers' does not count as commonsensical for contemporary philosophers because enough of us have some acquaintance with elementary number theory to reject it on that basis (2021: 19).
+
+As it turns out, Frances thinks that the only competent way of rejecting the soundness of his proof is to reject (1); but '(1) is about as certain as any philosophical claim ever gets' (2021: 22).
+
+We disagree. We maintain that condition (i) is false. In particular, there are middle Cs such that it is not the case that virtually all philosophers would assign them a high credence. Frances's argument is therefore unsound. This is what we will argue in the next section (§2). We then go on to dispute an alternative implication of the proof and close by presenting Frances with a dilemma (§3).
+
+2. Against the proof
+
+Again, we think that condition (i) is false, which means that we deny that some C is commonsensical: say, some middle C. But, says Frances (2021: 20), denying any middle C would entail the falsity of a proposition that is eminently commonsensical:
+
+(R) There are not two people who differ by only a few cents and yet just one of them is rich.
+
+The proposition (R) is entailed by the denial of any middle C. But Frances claims that (R) goes against common sense. If asked to judge one way or another, virtually all contemporary philosophers will be strongly disposed to assign (R) a high credence. So virtually all contemporary philosophers will also be strongly disposed to assign high credences to the middle Cs rather than their negations. Thus, the middle Cs are all commonsensical (again, amongst contemporary philosophers).
+
+But consider now the prevalence of vagueness in natural language. Virtually all contemporary philosophers are familiar with the concept of borderlinearity. There are certain numbers of pennies such that, if a person possessed that number of pennies, they would not be definitely rich or definitely not rich. Let i¢ (where 1 < i < 1014) be a constant which denotes such an amount. Thus the following statement is vague:
+
+(I) Anyone with less than i¢ is not rich.
+
+(I) involves a borderline case of richness, so it is not the case that virtually all contemporary philosophers who understand (I) will be strongly disposed to give (I) a high credence. They will not be sure whether anyone with less than i¢ is rich or not. If anything, they will most likely be disposed to give (I) a middling credence.
+
+But there will also be middle Cs in the Sorites that involve borderline cases of richness:
+
+(I′) If anyone with less than (i – 1)¢ is not rich, then anyone with less than i¢ is not rich.
+
+Because it is a middle C, Frances must maintain that (I′) is commonsensical; to deny it would mean denying (R), which clashes with common sense on his account. But recall why Frances excludes propositions such as 'There are twice as many positive integers as there are even positive integers' from counting as commonsensical despite seeming obviously true: enough contemporary philosophers have some acquaintance with elementary number theory to know that such propositions are false. Thus, in Frances's terms, such propositions are not commonsensical, for virtually everyone within the contemporary philosophical community who understands them will be strongly disposed to assign them a low credence – namely, 0.
+
+We contend that (R) is like the proposition about integers above. Enough contemporary philosophers have the requisite amount of acquaintance with different theories of vagueness to know that, according to those theories, (R) is false despite seeming obviously true. Indeed, many of those theories seek to explain why (R) seems true, despite its falsity. Thus, (R) is not a proposition such that virtually everyone within the contemporary philosophical community who understands it will be strongly disposed to assign it a high credence. Hence, (R) is not commonsensical in Frances's sense.
+
+Frances reasons in the following way: (I′) implies (R). But (R) goes against common sense. So (I′) is commonsensical. However, if (R) is not commonsensical in Frances's sense, as we have argued, then (R) does not go against common sense. This undermines his motivation for maintaining that (I′) is commonsensical.
+
+Moreover, (I′) is vague. Note first that the consequent of (I′) – namely, (I) – is vague; (I) involves a borderline case of richness. We claimed above that (I) warrants a middling credence. But if (I′)'s antecedent is either definitely true or vague, then for all we know (I′) could have a true antecedent and a false conclusion. Given that (I′) is a vague claim, it too would seem to warrant at most a middling credence. It would certainly be inadvisable to assign (I′) a high credence. Thus, it is not the case that virtually all philosophers who understand (I′) would be strongly disposed to give it a high credence. So (I′) is not commonsensical. Therefore, Frances's first premiss is false.
+
+Even if one was inclined to assign (I′) a high credence on the basis of (R), we do not think that virtually all philosophers would be strongly disposed to do so. We think our reasons for assigning (I′) a middling credence are compelling; they stem from a prior understanding of borderlinearity. Plus, many contemporary philosophers think that (R) is false. So we think that others would judge similarly. But barring virtual unanimity on (I′)'s credence, it should not be counted as commonsensical on Frances's analysis. So even if our reasoning is not unanimously held, Frances's argument still fails.
+
+Frances has a trick up his sleeve: his revenge proof (2021: 22–24). He argues that his first premiss, that is, (1) above, is commonsensical: virtually all members of the contemporary philosophical community agree that there is a way of interpreting the Sorites claims such that they are all commonsensical and lead to paradox. We have argued that Frances's first premiss is false. But then, Frances retorts, we have shown that (1) is a false common sense claim. Even further, there is a good philosophical argument to the effect that some commonsensical claim is not true – namely, the conclusion of his first argument. So, he claims, his conclusion still stands.
+
+For this argument to run, Frances has to maintain that (1) is commonsensical relative to the contemporary philosophical community. He claims that to deny this is 'to deny a stubborn, empirical, non-normative fact ... that the vast majority of philosophers familiar with the sorites think that the Cs can have their obvious logical characteristics and still be commonsensical' (2021: 24).
+
+But this reply does not work. Frances claims that virtually all philosophers who understand (1) would be strongly disposed to give it a high credence. But (1) implies the controversial claim that (I′) is commonsensical. Philosophers do often talk of the Sorites as if all of its premisses are 'commonsensical'. But clearly they are not all using 'commonsensical' in Frances's sense. As discussed above, there are strong considerations to which many philosophers would agree in favour of attributing a middling credence to (I′). So it is not the case that virtually all philosophers would be strongly disposed to maintain that all of the Cs are commonsensical. So (1) is not commonsensical.
+
+3. Kinds of common sense
+
+If Frances's argument had worked, what would it have shown? His conclusion, recall, is that some common sense propositions are false.
+
+But which common sense propositions? Frances carves up common sense into different categories. There are common sense propositions such as 'Some people are rich' or 'Here is a hand' which make up the Everyday Life Claims (ELCs). And then there are common sense propositions such as the Sorites Cs and mereological propositions such as 'If a tree is composed of atoms, then there is a group of atoms that composes it' which make up the Philosophical Claims (PCs).
+
+Does Frances's proof target ELCs or PCs? As Frances sees it, he need not settle the matter. For if his proof entails that there are false PCs, then most of us are bad at philosophy since 'a great many of us endorse those false claims in our work' (2021: 26). And if his proof entails that there are false ELCs, then Moorean methodology is unstable and must therefore be abandoned.
+
+So Frances presents us with a challenge. In this section, we will show how that challenge falls short. First, we will argue that Frances's proof entails only that there are false PCs and that this renders his proof dialectically ineffective against the Moorean. We will then show why this does not imply that philosophers are bad at philosophy. This leaves Frances with a challenge of his own.
+
+We think that Frances's proof targets PCs only. Here is our argument:
+
+(i) Consider a set of commonsensical claims that lead to paradox. If Frances's argument is sound, then at least one of the Cs is false.
+(ii) The Cs will either consist of PCs alone or PCs and ELCs.
+(iii) If the former, then a PC is false.
+(iv) If the latter, then a PC is false.
+(v) Therefore, if Frances's argument is sound, then a PC, not an ELC, is false.
+
+We take (iv) to be the most controversial premiss here. Below we motivate it and along the way show that Frances's proof is dialectically ineffective against the Moorean, even if successful.
+
+Premiss (iv) states that if the Cs consist of PCs and ELCs, then a PC is false. Why? It comes down to the fact that PCs are not the paradigm of common sense for the Moorean. Indeed, the Moorean should be willing to grant that there are plenty of false propositions that are (or were) commonsensical in Frances's sense. Take, for instance, the proposition the Sun orbits the Earth. Surely this proposition was commonsensical in Frances's sense for most Eleatics. So it was commonsensical (again, in Frances's sense) for that community at that time. The Moorean will think the same goes for many other commonsensical beliefs that we now consider false.
+
+Mooreans can grant this because they do not think such propositions belong to common sense's 'Hard Core' (the term originates with Kelly (2008: 54)). Hard Core propositions count as commonsensical for everyone, no matter the culture or epoch they inhabit. Thus, the Hard Core is not just commonsensical at certain times for certain communities. Rather, propositions that belong to the Hard Core are, we might say, the 'most' commonsensical: the greatest number of people – philosophers and non-philosophers alike – assign them the highest credence.
+
+Note that propositions such as 'Things move' and 'Here is a hand' are ELCs. So it is clear that ELCs belong to the Hard Core. But do PCs? We doubt it (see Lycan 2007: 95, n. 30). To illustrate, consider what we take to be some commonsensical PCs:
+
+There are not different ways of being;
+There are no vague objects;
+It is impossible for an object to have a determinable but no determinate of that determinable;
+No two things of the same sort can coincide.
+
+We take these claims to have once been considered commonsensical amongst philosophers. Arguably, this is no longer the case. Many of the claims above have now been shown to be highly implausible, if not outright false. Indeed, it might be part of future philosophical common sense to believe the negations of these propositions. But unlike PCs, ELCs do not 'shift' in this way. So, even if Frances is right that there are false common sense propositions, they are just not the kind of common sense that Mooreans are attempting to defend from attack. So, even if Frances's proof is successful, it would be dialectically ineffective against the Moorean.
+
+Now, even if Frances's proof leaves the Moorean approach untouched, it has serious consequences for philosophical theorizing across the board: if PCs alone are to blame, then most of us are bad at philosophy. At least so claims Frances.
+
+But we think that this conclusion is too hasty. Philosophy is, after all, a highly speculative endeavour. Surely most philosophers would be unsurprised to learn that many of the philosophical claims they have endorsed in their work are false or inconsistent, even ones considered commonsensical amongst philosophers (as in the list above). Moreover, if the average philosopher is not a Moorean – nor sympathetic to common sense in general – then it would hardly be a surprise for them to learn that some of their philosophical beliefs are inconsistent or false given that, in principle, most of their beliefs (if not all of them) are subject to revision.
+
+Does this mean that philosophers are bad at their jobs? We are skeptical. True, we often think of success as a function of how well one does something or how reliably one arrives at the truth. An archer that hits a bullseye time and again is good at archery, not bad at it. A mathematician able to prove many incredibly difficult theorems is good at mathematics, not bad at it. Is the metric not the same in philosophy?
+
+We are not so sure. In fact, it seems that being good or bad at philosophy is not necessarily a function of reliably getting at the truth. One can imagine a particularly creative philosopher whose views are often false yet whose perspective is always enlightening. Such a philosopher would be good at philosophy in our books. Of course, if you can get at the truths, more power to you. But failing to do so does not make you a philosophical failure. So, even if Frances's proof is successful, it would not necessarily show that philosophers are bad at their jobs; for it is unclear that what it means for philosophers to be good at their jobs is to always be tracking the truth.
+
+If all of this is right, then Frances is in a jam: if his proof targets PCs, then even if it is successful, it is dialectically ineffective against the Moorean. But if his opponent is not the Moorean, it could only be the non-Moorean philosopher who probably does not assign common sense much weight in the first place, which would make the results of Frances's proof, even if successful, unsurprising. So his proof misfires in both directions.
+
+What sort of argument would work against the Moorean? In light of our present discussion, we speculate that such an argument would have to be one that featured all Hard Core propositions as premisses. But an argument like that, we submit, has yet to be advanced.
+
+[References section follows]

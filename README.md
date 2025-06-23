@@ -410,14 +410,32 @@ outputs/
 ```
 philosophy-pipeline/
 ├── docs/                    # Documentation
-│   ├── prompts/            # Prompt engineering guides
-│   └── archive/            # Archived documentation
-├── tests/                  # Test suite
+│   ├── development/        # Setup, testing, and prompt engineering guides
+│   ├── stages/             # Stage-specific documentation
+│   └── archive_review/     # Historical documents for review
+├── data/                   # Curated data (committed to repo)
+│   ├── philosophical_moves/   # Main database used by pipeline
+│   ├── analysis_extracts/     # Token-efficient Analysis paper TXT files
+│   ├── style_guides/          # Analysis journal writing patterns
+│   └── examples/              # Philosophical examples database
 ├── src/                    # Source code
-├── papers/                 # Literature PDFs
-├── outputs/               # Generated outputs
-└── config/                # Configuration files
+├── papers/                 # Literature PDFs (for specific paper generation)
+├── Analysis_papers/        # Analysis journal PDFs (gitignored, ~14MB)
+├── outputs/               # Generated outputs (gitignored)
+├── config/                # Configuration files
+└── tests/                 # Test suite
 ```
+
+### Data Organization
+
+The `data/` directory contains all curated, reusable data committed to the repository:
+
+- **`philosophical_moves/injectable_examples.json`**: Main database (143 examples) used by Phase II.7
+- **`analysis_extracts/*.txt`**: Token-efficient text versions of Analysis papers (~3x more efficient than PDFs)
+- **`style_guides/analysis_style_guide.md`**: Analysis journal patterns for prompts
+- **`examples/`**: Additional philosophical examples and databases
+
+**Note**: Raw Analysis PDFs go in `Analysis_papers/` (gitignored due to size/copyright). Use the setup guide to populate this directory.
 
 ## Configuration
 
@@ -470,7 +488,11 @@ Edit `config/conceptual_config.yaml` to adjust:
 
 ## Contributing
 
-The project has achieved **core functionality completion** with a working end-to-end pipeline. Current priorities for enhancement:
+The project has achieved **core functionality completion** with a working end-to-end pipeline. 
+
+**📝 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.**
+
+Current priorities for enhancement:
 
 1. **Citation Accuracy**: Implement fact-checking and citation verification systems
 2. **Prompt Optimization**: Fine-tune prompts for even higher quality philosophical content  

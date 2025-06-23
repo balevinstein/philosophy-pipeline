@@ -28,12 +28,10 @@ wheels/
 # Papers
 papers/
 
-# Outputs
+# Generated outputs (except curated data which is now in data/)
 outputs/**
 outputs/
-
-# Analysis paper cache (too large for git)
-analysis_cache/
+!outputs/.gitkeep
 
 # IDE specific files
 .idea/
@@ -70,13 +68,15 @@ outputs_post_improvements/
 # Temporary test outputs
 test_phase_*_outputs/
 
-# PDF files and extracted text
+# External resources (PDFs too large for git)
 Analysis_papers/
-text_extracts/
 
 # Test logs
 phase_*_test*.log
 *.log
 
-# Temporary extraction and analysis scripts results
-extracted_examples/
+# Note: Curated data now organized in data/ directory and IS committed to repo
+# - data/philosophical_moves/ - Curated moves database (commit this)
+# - data/analysis_extracts/   - TXT extracts from Analysis papers (commit this) 
+# - data/style_guides/        - Style documentation (commit this)
+# - data/examples/            - Philosophical examples (commit this)

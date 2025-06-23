@@ -17,12 +17,56 @@ You are a master writing coach specializing in Analysis-style philosophy papers.
 - Turning complex arguments into accessible narratives
 - Ensuring every writing aid follows Analysis journal conventions"""
 
+        # Quality standards from II.5 for writing optimization
+        self.hajek_heuristics = """
+<hájek_heuristics_for_writing>
+Ensure all writing aids support arguments that pass these tests:
+
+1. EXTREME CASE TEST: Do suggested phrasings handle boundary cases?
+2. SELF-UNDERMINING CHECK: Do any recommendations defeat themselves?
+3. COUNTEREXAMPLE GENERATION: What obvious objections do the suggested approaches invite?
+4. HIDDEN ASSUMPTIONS: What controversial premises do the writing patterns assume?
+5. DOMAIN TRANSFER: Would these writing strategies work in parallel philosophical contexts?
+
+All writing aids should support philosophically rigorous argumentation.
+</hájek_heuristics_for_writing>"""
+
+        self.anti_rlhf_writing = """
+<anti_rlhf_writing_standards>
+All writing aids must eliminate RLHF-induced weaknesses:
+- NO HEDGING: Provide phrases for clear position-taking, not exploration
+- NO SURVEY STYLE: Focus on original argument presentation, not literature review
+- NO FALSE BALANCE: Don't provide equal phrasing for weak and strong positions
+- CONTROVERSIAL IMPLICATIONS: Include bold phrasing for drawing strong conclusions
+- CLEAR STANCES: Every suggested phrase should advance definite philosophical positions
+
+Good writing aids enable intellectual courage, not diplomatic evasion.
+</anti_rlhf_writing_standards>"""
+
+        self.philosophical_moves_focus = """
+<philosophical_moves_integration>
+When creating writing aids, prioritize support for sophisticated philosophical moves:
+- Provide phrasing that makes complex arguments accessible
+- Include transitions that highlight elegant argumentative turns
+- Create hooks that set up genuine philosophical problems
+- Suggest conclusions that crystallize important insights
+- Focus on moves that would impress Analysis journal readers
+
+Writing aids should enable publication-quality philosophical sophistication.
+</philosophical_moves_integration>"""
+
     def get_hooks_prompt(self, thesis: str, contribution: str) -> str:
         """Generate prompt for creating introduction hooks"""
         
         return f"""<task>
 Generate 4-5 compelling introduction hooks for a philosophy paper. Each hook should draw the reader in immediately while setting up the thesis in an engaging way.
 </task>
+
+{self.hajek_heuristics}
+
+{self.anti_rlhf_writing}
+
+{self.philosophical_moves_focus}
 
 <thesis>
 {thesis}
@@ -73,6 +117,10 @@ Generate 4-5 compelling introduction hooks for a philosophy paper. Each hook sho
 Generate smooth, intellectually engaging transitions between the sections of this philosophy paper. Each transition should create narrative momentum while clearly signaling the argumentative progression.
 </task>
 
+{self.anti_rlhf_writing}
+
+{self.philosophical_moves_focus}
+
 <sections>
 {chr(10).join(sections_summary)}
 </sections>
@@ -119,6 +167,12 @@ Generate smooth, intellectually engaging transitions between the sections of thi
 For each philosophical move, provide specific guidance on how to integrate it smoothly into the paper's narrative flow. Focus on making abstract arguments concrete and memorable.
 </task>
 
+{self.hajek_heuristics}
+
+{self.anti_rlhf_writing}
+
+{self.philosophical_moves_focus}
+
 <moves>
 {chr(10).join(moves_summary)}
 </moves>
@@ -159,6 +213,10 @@ Focus on Analysis journal style:
         return f"""<task>
 Generate phrase banks for common philosophical moves in Analysis style. These should help writers maintain the journal's distinctive conversational yet rigorous tone.
 </task>
+
+{self.anti_rlhf_writing}
+
+{self.philosophical_moves_focus}
 
 <requirements>
 Create phrase variations for these common moves:
@@ -219,6 +277,10 @@ Each phrase should:
         return f"""<task>
 Generate 3-4 compelling conclusion clinchers for this philosophy paper. Each should leave the reader with a memorable final thought while reinforcing the thesis.
 </task>
+
+{self.anti_rlhf_writing}
+
+{self.philosophical_moves_focus}
 
 <thesis>
 {thesis}

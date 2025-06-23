@@ -87,8 +87,26 @@ class WritingOptimizationWorker(Worker):
             system_prompt=self.prompts.get_system_prompt()
         )
         
-        cleaned_response = self.json_handler.clean_json_string(response_text)
-        hooks_data = json.loads(cleaned_response)
+        try:
+            # Extract JSON portion if response has narrative text before it
+            json_start = response_text.find('```json\n{')
+            if json_start != -1:
+                json_end = response_text.rfind('}\n```')
+                if json_end != -1:
+                    json_content = response_text[json_start+8:json_end+1]  # Extract just the JSON
+                    hooks_data = json.loads(json_content)
+                else:
+                    # Try without ending markers
+                    json_content = response_text[json_start+8:]
+                    cleaned_response = self.json_handler.clean_json_string(json_content)
+                    hooks_data = json.loads(cleaned_response)
+            else:
+                # Standard JSON parsing
+                cleaned_response = self.json_handler.clean_json_string(response_text)
+                hooks_data = json.loads(cleaned_response)
+        except (json.JSONDecodeError, Exception) as e:
+            self.logger.warning(f"Failed to parse introduction hooks JSON: {e}")
+            return []
         
         return hooks_data.get("hooks", [])
         
@@ -151,8 +169,26 @@ class WritingOptimizationWorker(Worker):
             system_prompt=self.prompts.get_system_prompt()
         )
         
-        cleaned_response = self.json_handler.clean_json_string(response_text)
-        conclusion_data = json.loads(cleaned_response)
+        try:
+            # Extract JSON portion if response has narrative text before it
+            json_start = response_text.find('```json\n{')
+            if json_start != -1:
+                json_end = response_text.rfind('}\n```')
+                if json_end != -1:
+                    json_content = response_text[json_start+8:json_end+1]  # Extract just the JSON
+                    conclusion_data = json.loads(json_content)
+                else:
+                    # Try without ending markers
+                    json_content = response_text[json_start+8:]
+                    cleaned_response = self.json_handler.clean_json_string(json_content)
+                    conclusion_data = json.loads(cleaned_response)
+            else:
+                # Standard JSON parsing
+                cleaned_response = self.json_handler.clean_json_string(response_text)
+                conclusion_data = json.loads(cleaned_response)
+        except (json.JSONDecodeError, Exception) as e:
+            self.logger.warning(f"Failed to parse conclusion options JSON: {e}")
+            return []
         
         return conclusion_data.get("conclusion_options", [])
         

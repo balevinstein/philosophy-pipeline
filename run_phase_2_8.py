@@ -3,9 +3,9 @@ import logging
 from pathlib import Path
 from datetime import datetime
 import time
-import yaml
 
 from src.phases.phase_two.stages.stage_eight.workers.writing_optimization_worker import WritingOptimizationWorker
+from run_utils import load_config
 
 
 def setup_logging():
@@ -18,13 +18,6 @@ def setup_logging():
             logging.StreamHandler()
         ]
     )
-
-
-def load_config():
-    """Load configuration from conceptual_config.yaml"""
-    config_path = Path("config/conceptual_config.yaml")
-    with open(config_path, 'r') as f:
-        return yaml.safe_load(f)
 
 
 def load_refined_outputs(outputs_dir: Path) -> dict:

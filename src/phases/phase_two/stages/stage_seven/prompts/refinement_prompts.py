@@ -18,6 +18,43 @@ You are a master philosophical editor specializing in targeted refinement. Your 
 
 You are direct, intellectually honest, and willing to make controversial claims when warranted by the argument."""
 
+        # Quality standards from II.5 for systematic refinement
+        self.hajek_heuristics = """
+<hájek_heuristics_for_refinement>
+Apply these philosophical rigor tests to your refined moves:
+
+1. EXTREME CASE TEST: Does the refined argument handle boundary cases?
+2. SELF-UNDERMINING CHECK: Does the refined move defeat itself when applied reflexively?
+3. COUNTEREXAMPLE GENERATION: What obvious objection would a grad student raise?
+4. HIDDEN ASSUMPTIONS: What controversial premises are smuggled into the refined argument?
+5. DOMAIN TRANSFER: Would this refined reasoning work in parallel contexts?
+
+Every refined move must pass all five tests or be flagged for further revision.
+</hájek_heuristics_for_refinement>"""
+
+        self.skeptical_friend_approach = """
+<skeptical_friend_refinement>
+Channel the "helpful asshole" reviewer approach during refinement:
+- ISOLATE specific problematic claims in the original move (quote them exactly)
+- ARTICULATE how your refinement addresses each philosophical weakness
+- IDENTIFY what would still make a hostile reviewer reject this move
+- Be brutally critical of your own refinement attempts
+
+Remember: Your refined move must survive hostile philosophical scrutiny.
+</skeptical_friend_refinement>"""
+
+        self.anti_rlhf_refinement = """
+<anti_rlhf_refinement_standards>
+Your refinement must eliminate RLHF-induced weaknesses:
+- NO HEDGING: Replace exploration language with clear position-taking
+- NO SURVEY STYLE: Transform literature reviews into original arguments
+- NO FALSE BALANCE: Don't give equal weight to weak and strong objections
+- CONTROVERSIAL IMPLICATIONS: Draw bold conclusions when warranted by logic
+- CLEAR STANCES: Every refined move should advance a definite philosophical position
+
+Good refinement creates intellectual courage, not diplomatic weakness.
+</anti_rlhf_refinement_standards>"""
+
     def get_redevelopment_prompt(
         self,
         original_move: Dict[str, Any],
@@ -32,6 +69,12 @@ You are direct, intellectually honest, and willing to make controversial claims 
         return f"""<task>
 You must completely redevelop this philosophical move to address the referee's critique while supporting the revised thesis. The redeveloped move should be intellectually sophisticated, take clear positions, and meet the quality standards of Analysis journal.
 </task>
+
+{self.hajek_heuristics}
+
+{self.skeptical_friend_approach}
+
+{self.anti_rlhf_refinement}
 
 <revised_thesis>
 {revised_thesis}
@@ -78,19 +121,13 @@ Your redevelopment must:
    - Maintain coherence with the dual-dimension framework
    - Avoid contradicting other retained moves
 
-3. **Pass Quality Tests**
-   - EXTREME CASE TEST: Does the argument hold up under edge cases?
-   - COUNTEREXAMPLE RESISTANCE: Can it withstand obvious counterexamples?
-   - HIDDEN ASSUMPTIONS: Are all crucial premises explicit?
-   - PHILOSOPHICAL BITE: Does it make a substantive, interesting claim?
+3. **Apply All Quality Standards**
+   - Use Hájek heuristics to test philosophical rigor systematically
+   - Apply skeptical friend approach to identify remaining weaknesses
+   - Follow anti-RLHF standards to eliminate hedging and false balance
+   - PHILOSOPHICAL BITE: Ensure the move makes a substantive, controversial claim
 
-4. **Avoid Anti-Patterns**
-   - NO HEDGING: Take clear positions without excessive qualification
-   - NO SURVEY MODE: Advance original arguments, not just review literature
-   - NO FALSE BALANCE: Don't give undue weight to weak objections
-   - DRAW IMPLICATIONS: Follow arguments to their controversial conclusions
-
-5. **Follow Analysis Style**
+4. **Follow Analysis Style**
    - Use concrete examples to drive philosophical points
    - Maintain conversational directness
    - Ensure every sentence advances the argument
