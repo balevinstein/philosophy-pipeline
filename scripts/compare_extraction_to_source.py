@@ -9,7 +9,7 @@ from pathlib import Path
 
 def load_paper_text(filename):
     """Load the extracted text of a paper"""
-    path = Path(f"analysis_cache/extracted_texts/{filename}")
+    path = Path(f"data/analysis_extracts/{filename}")
     if path.exists():
         with open(path, "r", encoding="utf-8") as f:
             return f.read()

@@ -69,7 +69,7 @@ def validate_extractions():
         
         # Show source file for manual verification
         source_file = extraction.get('source_file', 'Unknown')
-        print(f"\n📂 Source file: analysis_cache/extracted_texts/{source_file}")
+        print(f"\n📂 Source file: data/analysis_extracts/{source_file}")
         print("💡 To verify: Check if the quote accurately represents a philosophical move")
         print("   and if the categorization/pattern extraction makes sense")
         

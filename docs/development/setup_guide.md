@@ -84,7 +84,7 @@ python run_pipeline.py
 ### **Adding New Analysis Papers:**
 1. Download PDF to `Analysis_papers/`
 2. Run `python scripts/extract_analysis_cache.py`
-3. New extracts appear in `analysis_cache/extracted_texts/`
+3. New extracts appear in `data/analysis_extracts/`
 
 ### **Testing Individual Components:**
 - See `docs/development/testing_guide.md` for detailed testing procedures

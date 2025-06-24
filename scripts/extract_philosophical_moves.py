@@ -181,7 +181,7 @@ def main():
     api_handler = APIHandler()
     
     # Get all text files
-    text_dir = Path("analysis_cache/extracted_texts")
+    text_dir = Path("data/analysis_extracts")
     text_files = list(text_dir.glob("*.txt"))
     
     print(f"📚 Found {len(text_files)} Analysis papers to analyze")
