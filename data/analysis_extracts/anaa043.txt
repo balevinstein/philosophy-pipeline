@@ -1,0 +1,66 @@
+Here is the complete extracted text content of the paper, formatted with paragraph breaks:
+
+Divine hiddenness or de jure objections to theism: You cannot have both
+Perry Hendricks
+
+1. Introduction
+
+De facto objections to theism purport to show that theism is false, whereas de jure objections to theism claim that, whether or not theism is true, belief in God is irrational. Divine hiddenness – the (supposed) fact that there are people who non-resistantly lack belief in God – is sometimes used as an argument against theism. In this article I show that accepting the argument from divine hiddenness carries a high cost: it eliminates all de jure objections to theism. So atheists can either have de jure objections to theism or the objection from divine hiddenness, but they cannot have both.
+
+2. Divine hiddenness
+
+God, let us assume, is all powerful, all knowing and perfectly loving. If God exists, it may (to some) seem surprising that there are people that nonresistantly do not believe he exists. Some have tried to exploit this purported fact – that some non-resistantly lack belief in God – to motivate atheism. This is called the argument from divine hiddenness. In its traditional form, the argument from divine hiddenness claims that if God exists, then, necessarily, there will not be any (finite) persons that non-resistantly do not believe he exists (e.g. Schellenberg 1993, 2015, 2016). This is because, necessarily, God – since he is perfectly loving – would be open to being in a conscious, interactive, positively meaningful and reciprocal relationship with all those who want to be in a relationship with him, and if a person A is open to being in a relationship with another person B, then A will ensure that B believes A exists, since A could not be in a relationship with B unless A believes B exists.
+
+Schellenberg puts forth an abbreviated version of the argument as follows:
+
+God, if he is perfectly loving, ... will always be open to being in a personal relationship with any finite person. However, if this is the case, then no finite person will ever non[-]resistantly not believe that God exists – if a person does not believe in God, it will be due to her resistance to God. But the non-belief of some persons is non[-]resistant, and so God does not exist. (2015: 103)
+
+Suffice it to say that very few are convinced that the argument in this form is successful: there have been many (more or less) plausible suggestions for why God, while being perfectly loving, at least possibly allows non-resistant nonbelief (if any there be). (See e.g. Crummett 2015, Dumsday 2010, 2012, Howard-Snyder 2016 and Lougheed 2018.) However, one need not state the argument in such strong terms: if stated probabilistically, its plausibility is increased. For example, one might argue that if God exists, then probably there would not be non-resistant non-belief. (But see Bergmann 2001, McBrayer and Swenson 2012 and Taber and McNabb 2018 for challenges to probabilistic formulations of the argument.) Felipe Leon does just this, and states his probabilistic version of it as follows:
+
+(1) If [God] exists, then we'd expect that God would meet all the prerequisites for all those who would want a voluntary relationship with him.
+
+(2) One of the prerequisites is to let others...reasonably believe ... if they wish, that he exists.
+
+(3) But this condition hasn't been met: there are non[-]resistant nonbelievers. By contrast, we would expect the data of non[-]resistant non-belief if naturalism were true. For on that hypothesis, there is no God that is seeking a relationship with us.
+
+(4) Therefore, [non-resistant non-belief] provide[s] some evidence against [God].
+
+Undergirding the argument from divine hiddenness, in both its probabilistic and traditional formulation, is the thought that God's perfect love entails that he would (at least) probably seek to be in a relationship with all those who are capable and not resistant to being in a relationship with him, and that to be in a relationship with God one must believe he exists. So God will (at least) probably ensure that those seeking a relationship with him believe that he exists (Schellenberg 2015: 59–60). This entails the following thesis:
+
+(H) God probably would either (a) directly cause (among those who are non-resistant) belief in him or (b) provide those who are nonresistant with an ability to form beliefs about him.
+
+If one rejects (H), then it is hard to see how the argument from divine hiddenness, in either its probabilistic or traditional form, could be sustained; if (H) is false, then it is not to be expected that God would ensure those who are non-resistant reasonably believe that he exists. This is because if one does not have an ability to form beliefs about God, then one will not have any beliefs at all about God – unless, of course, God directly causes one to believe he exists, but this does not happen given ~(H). So I will take it that if one accepts the argument from divine hiddenness, then one must accept (H).
+
+3. The cost of divine hiddenness
+
+Plantinga (2000, 2015) has argued that if God exists, then belief in God is probably rational. His argument goes like this:
+
+[I]f theistic belief is true, then it seems likely that it does have warrant. If it is true, then there is, indeed, such a person as God, a person who has created us in his image (so that we resemble him, among other things, in having the capacity for knowledge), who loves us, who desires that we know and love him and who is such that it is our end and good to know and love him. But if these things are so, then he would of course intend that we be able to be aware of his presence and to know something about him. And if that is so, the natural thing to think is that he created us in such a way that we would come to hold such true beliefs as that there is such a person as God, that he is our creator, that we owe him obedience and worship, that he is worthy of worship, that he loves us and so on. And if that is so, then the natural thing to think is that the cognitive processes that do produce belief in God are aimed by their designer at producing that belief. But then the belief in question will be produced by cognitive faculties functioning properly according to a design plan successfully aimed at truth: it will therefore have warrant [and therefore be rational]. (2000: 189–90)
+
+The basic idea here is that if God exists, then he has created us in his image, desires for us to know him and various truths about him (that we owe him worship etc.), and this means that God would probably have created us with an ability to know him and various truths about him. Moon succinctly states Plantinga's view as follows:
+
+[I]f God does exist, then theistic belief is probably not a result of cognitive systems gone awry or a loose screw. Rather, it is likely to be formed by properly functioning, reliable faculties. (2017: 454)
+
+We may simplify Plantinga's thesis to this:
+
+(P) If God exists, then theistic belief is probably formed by properly functioning, reliable faculties.
+
+Since beliefs formed by properly functioning, reliable faculties are warranted, it follows that such beliefs will be rational. And this means that belief in God will probably be rational if God exists, since belief in God will probably be produced by a properly functioning and reliable faculty. The upshot here is significant: this does away with all pure de jure objections to theism; since the truth of theism entails its (probable) rationality, it eliminates all objections to the rationality of belief in God that are not also an objection to the existence of God. (While Plantinga's argument appears to have been largely successful, see Moon 2017 and Fales 2003 for challenges to it.)
+
+So far, we have seen that the argument from divine hiddenness is committed to (H) and that if (P) is true, then all de jure objections to theism are eliminated. In what follows, I will show that those who accept (H) must also accept (P), and hence those who accept the argument from divine hiddenness must reject all de jure objections to theism.
+
+Recall (H) and (P):
+
+(H) God probably would either (a) directly cause (among those who are non-resistant) belief in him or (b) provide those who are nonresistant with an ability to form beliefs about him.
+
+(P) If God exists, then theistic belief is probably formed by properly functioning, reliable faculties.
+
+The route from (H) to (P) is fairly simple: if (a) of (H) holds, then one's belief in God will be formed reliably (God directly producing belief in him is, of course, completely reliable), and if (b) of (H) holds, then God has provided humans with an ability to form beliefs about him. But the adherent of (H) must hold that the beliefs formed by the ability God has provided humans with are reliably formed, since these beliefs need to form the basis of a conscious, reciprocal and positively meaningful relationship with God. In other words, a conscious, reciprocal and positively meaningful relationship with God requires one's beliefs to be reliably formed: I must be able to recognize certain things about God, respond appropriately and so on, and this requires that my 'God-belief forming ability' is reliable. (See also Schellenberg 2015: 40.) Put differently: if God has given me an ability to form beliefs about him for the purpose of creating and maintaining a relationship with him, then the ability will be reliable, for otherwise it would not accomplish its purpose. (The same, of course, goes for if the belief was caused directly by God.) So it seems clear that (H) entails (P). However, if this is the case, then those who accept (H) must reject all de jure objections to theism: since (P) does away with all de jure objections to theism, and (H) entails (P), (H) does away with all such objections as well. Since proponents of the argument from divine hiddenness accept (H), it follows that they must reject all de jure objections to theism. And this means that the argument from divine hiddenness is costly for atheists.
+
+Purdue University, 100 University St.
+West Lafayette, Indiana 47907, USA
+ampchendricks@gmail.com
+
+References
+
+[References section follows...]

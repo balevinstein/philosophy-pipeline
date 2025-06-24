@@ -1,0 +1,110 @@
+Here is the complete text content of the PDF document:
+
+Analysis Vol. 84 | Number 3 | July 2024 | 547–555
+Primitive conditional probabilities, subset relations and comparative regularity
+Joshua Thong
+
+Abstract
+Rational agents seem more confident in any possible event than in an impossible event. But if rational credences are real-valued, then there are some possible events that are assigned 0 credence nonetheless. How do we differentiate these events from impossible events when we order events? De Finetti (1975), Hájek (2012) and Easwaran (2014) suggest that, when ordering events, conditional credences and subset relations are as relevant as unconditional credences. I present a counterexample to all their proposals in this paper. While their proposals order possible and impossible events correctly, they deliver the wrong verdict for disjoint possible events assigned equal positive credence.
+
+Keywords: rational credences, regularity, primitive conditional probabilities, Bayesian epistemology
+
+1. Introduction
+Let Cr be one's rational credence function. If Cr(A) < Cr(B) for a rational agent S, then S is less confident in A than in B. But what if Cr(A) = Cr(B)? In this case, it seems natural to say that S is equally confident in A as in B. But things are not so simple. It is well understood that if rational credences are real-valued, then there are some possible events that are assigned 0 credence nonetheless, for example a particular ticket winning in a fair infinite lottery. After all, in any fair lottery, Cr({i}) = Cr({j}), where i and j are tickets in the lottery. Since there are infinitely many tickets in a fair infinite lottery, Cr({i}) < 1/n for all n ∈ N. If rational credences are real-valued, then Cr({i}) = 0.
+
+However, an impossible event, denoted by ∅, is also assigned 0 credence, that is, Cr(∅) = 0. Is S therefore equally confident in {i} as in ∅, that is, is she equally confident in ticket i winning as in an impossible event obtaining? To say yes seems counter-intuitive. After all, the former event is still possible, that is, it can still happen, while the latter can never happen. In fact, de Finetti (1937), Koopman (1940), Pedersen (2014) and DiBella (2022) argue that S is more confident in any possible event than in an impossible event, although Williamson (2007), Pruss (2013) and Parker (2019) disagree.
+
+Say the philosophers in the former group are right, that is, S is more confident in any possible event than in an impossible event. A straightforward way to differentiate {i} and ∅ is to require 0 < Cr({i}) < 1/n for all n ∈ N, that is, rational credences can be positive infinitesimals, which are positive values that are smaller than any positive real number (see Wenmackers 2016 for more details). But since positive infinitesimals are not real numbers, the requirement that rational credences are real-valued must be dropped. Allowing rational credences to take non-real values, for example positive infinitesimals, is a significant departure from classical probability theory formulated by Kolmogorov (1933). Nonetheless, there are some authors who have explored such a departure, for example Shimony (1955), Jeffreys (1961), Bernstein and Wattenberg (1969), Lewis (1980), Benci et al. (2013, 2018), Wenmackers and Horsten (2013), Bottazzi et al. (2019) and Bottazzi and Katz (2021a, 2021b).
+
+Of particular interest to this paper are de Finetti (1975: 566–67), Hájek (2012) and Easwaran (2014), who argued that S is more confident in any possible event than in an impossible event but insisted that rational credences remain real-valued. A common line of thought among these authors is that in determining whether S is more confident in A than in B, subset relations between A and B and S's conditional credences are as relevant as her unconditional credences. That is, according to these authors, S is more confident in A than in B if and only if (iff) the correct relations between her relevant real-valued unconditional or conditional credences hold or the correct subset relation holds.
+
+So, for them, it is false that S is equally confident in A as in B iff Cr(A) = Cr(B), as this principle does not take into account subset relations and her relevant conditional credences.
+
+Cr(p) [is not] the complete mathematical representation of how likely p is for an agent ... What we need is some mathematical relation p ≻ q that says when p is more likely than q. But this relation can depend on mathematical facts beyond Cr(p) and Cr(q). ... [S]tandard probabilism gives two further mathematical features that might be relevant – the conditional probability function Cr(·|·), and the set Ω of doxastic possibilities. (Easwaran 2014: 16)
+
+However, I will argue that the conditional probability function and subset relations cannot do the work they purport to do in differentiating the events that S is more confident in from those that she is less confident in.
+
+In order to examine proposals put forth by de Finetti (1975), Hájek (2012) and Easwaran (2014), technical notions are needed. Hereafter, let A ≼ B represent the statement 'S is at most as confident in A as in B', where A and B are events. Call ≼ S's comparative confidence ordering. Let F be the domain of ≼, that is, if A ≼ B, then A, B ∈ F. From ≼, other relations can be defined.
+
+(Definition 1) Let A, B ∈ F.
+1. A ∼ B := (A ≼ B) ∧ (B ≼ A). This represents the statement 'S is equally confident in A as in B'.
+2. A ≺ B := (A ≼ B) ∧ (B ⊀ A). This represents the statement 'S is less confident in A than in B'.
+
+Next we need the notion of primitive conditional credences. Traditionally S's rational conditional credence in A, given B, is defined as Cr(A∩B)/Cr(B), whenever Cr(B) > 0. Under this definition, her rational conditional credence of A, given B, is undefined if Cr(B) = 0, as division by 0 is undefined. However, as Hájek (2003) has argued, it seems that her rational conditional credence of B, given B, is 1 even when Cr(B) = 0. So the traditional definition has to be revised.
+
+Alternative theories of conditional credences are found in Popper 1955 and Rényi 1970. In these theories, conditional credences are a primitive two-place notion not defined as a ratio of two unconditional credences. Let Cr(A, B) be a function in either theory denoting S's rational conditional credence of A, given B. In both theories, Cr(A, A) = 1 for all nonempty A in the domain of Cr and Cr(A ∩ B, C) = Cr(A, B ∩ C) · Cr(B, C). Unconditional credences are then defined in terms of conditional ones, that is, Cr(A) = Cr(A, Ω) where Ω is the sample space. Also, I shall assume that it is implausible to conditionalize on ∅, that is, B ≠ ∅ in Cr(A, B).
+
+Consider the following proposals.
+(Proper Containment) A ≺ B iff Cr(A) < Cr(B) or A ⊆ B.
+(Conditionality) A ≺ B iff Cr(A, A ∪ B) < Cr(B, A ∪ B).
+(Symmetric Difference) A ≺ B iff Cr(A - B, A∆B) < Cr(B - A, A∆B).
+
+The reference to a rational agent S is implicit in all three proposals. That is, S has the comparative confidence ordering on the left-hand side and the real-valued Cr on the right-hand side represents S's epistemic state. De Finetti (1975: 566–67) proposed the first and third proposals while Easwaran (2014) proposed the first and second. All three proposals ensure that ∅ ≺ A for all nonempty A ∈ F, as ∅ ⊆ A and 0 = Cr(∅, A) < Cr(A, A) = 1. So, even though Cr({i}) = 0 = Cr(∅) in a fair infinite lottery for a real-valued Cr, ∅ ≺ {i} regardless, according to these proposals.
+
+By adopting one of the proposals above, de Finetti (1975), Hájek (2012) and Easwaran (2014) maintain that S is more confident in any possible event than in an impossible event, yet insist that rational credences remain real-valued. In the next section, I shall construct a counterexample against all three proposals. Given some natural constraints on ≼ and a fair infinite lottery, if ∅ ≺ A for all nonempty A ∈ F, then there are possible events B and C in that lottery such that B ∪ {ω} ∼ C but B ≺ C, where B ∩ {ω} = ∅. Yet B ⊀ C according to all three proposals. This means that these proposals cannot do the work they purport to do in differentiating which events S is more confident in from those that she is less confident in. In some cases, they deliver the wrong verdict.
+
+Importantly, the counterexample in the next section is not intended to be a knockdown argument against the position held by the three authors above. After all, for all we know, there may be a fourth proposal that fares better than the three above. That is, there may be a correct general proposal of the form 'A ≺ B iff an appropriate relation R(Cr, A, B) holds', where ∅ ≺ A for all nonempty A ∈ F and Cr is a real-valued credence function representing the epistemic state of a rational agent S, who has the comparative confidence ordering on the left-hand side. R(Cr, A, B) holds iff either (i) an appropriate inequality holds between S's relevant unconditional or conditional credences, according to Cr, or (ii) an appropriate set-theoretic relation holds. Note that the disjunction between (i) and (ii) here is inclusive.
+
+While the counterexample in the next section shows that R(Cr, A, B) is not, for instance, the statement 'Cr(A, A ∪ B) < Cr(B, A ∪ B)' as per Conditionality, it still leaves open the possibility that there is some other statement, according to which the biconditional 'A ≺ B iff an appropriate relation R(Cr, A, B) holds' is correct. I hope this paper will prompt future research on what this other statement may be. Having said that, what is clear is that this paper leaves de Finetti (1975), Hájek (2012) and Easwaran (2014) with an important puzzle. If they want to maintain that S's comparative confidence ordering can be represented by nothing more than set-theoretic relations and her real-valued unconditional or conditional credences, then the onus is on them to demonstrate the existence of an appropriate relation R(Cr, A, B), according to which the biconditional above is correct.
+
+2. A counterexample
+Hereafter, I assume that ≼ respects the following four constraints. Let Ω be a sample space and F be an algebra on Ω. For all A, B, C ∈ F,
+
+(Non-Negativity) ∅ ≼ A.
+(Non-Triviality) ∅ ≺ Ω.
+(Transitivity) If A ≼ B and B ≼ C, then A ≼ C.
+(Comparative Additivity) Let A ∩ C = B ∩ C = ∅. Then A ≼ B iff A ∪ C ≼ B ∪ C.
+
+These four constraints are common across all major axiomatizations of comparative confidence orderings, for example Keynes 1921, de Finetti 1937, Koopman 1940, Luce 1968, Domotor 1969, Krantz et al. 1971 and Fine 1973. Furthermore, Icard (2016) has formulated comparative versions of Dutch book arguments for all these constraints. Next, consider this principle.
+
+(Comparative Regularity) For all nonempty A ∈ F, ∅ ≺ A.
+
+Call a ≼ that satisfies Comparative Regularity regular. According to de Finetti (1975: 566–67), Hájek (2012) and Easwaran (2014), Comparative Regularity constrains ≼.
+
+Now consider a fair lottery over [0, 1] and let F[0,1] be an algebra on [0, 1]. With respect to this lottery, I assume that ≼ satisfies the following constraints.
+
+(Fairness) For all ω, ω' ∈ [0, 1], {ω}∼{ω'}.
+(Length-Ordering) For any two intervals [a, b] and [c, d] that are subsets of [0, 1], [a, b] ≼ [c, d] iff b - a ≤ d - c.
+
+As we are considering a fair lottery over [0, 1], ≼ must satisfy Fairness. But Fairness alone is not enough to characterize a fair lottery over [0, 1]. In addition to being equally confident in any two singleton sets, S is also equally confident in any two closed intervals of equal length in a fair lottery over [0, 1]. While Fairness ensures the former, Length-Ordering ensures the latter. DiBella (2022) has defined a ≼, with F[0,1] as its domain, that satisfies every constraint in this section so far, thus demonstrating their joint consistency. Also, I shall assume that it is at least rationally permissible for an agent to have a comparative confidence ordering defined on F[0,1] that satisfies all the constraints in this section so far.
+
+Since [0.1, 0.2] ∼ [0.8, 0.9], [0.1, 0.2) ≺ [0.8, 0.9] for a regular ≼. For a real-valued Cr representing a fair lottery over [0, 1], Cr([0.1, 0.2)) = Cr([0.8, 0.9]) = 0.1, as Cr({0.2}) = 0. Consequently
+
+Cr([0.1, 0.2), [0.1, 0.2) ∪ [0.8, 0.9]) = Cr([0.8, 0.9], [0.1, 0.2) ∪ [0.8, 0.9]) = 0.5. (1)
+
+Note that [0.1, 0.2) ⊈ [0.8, 0.9]. Therefore, according to Proper Containment, Conditionality and Symmetric Difference, [0.1, 0.2) ⊀ [0.8, 0.9], which is the wrong verdict. So S's comparative confidence ordering seems more fine-grained than her real-valued rational credences can accommodate. Finally note that this counterexample is against the left-to-right directions of all three proposals. This concludes my counterexample.
+
+This counterexample shows that the proposals in §1 cannot do the work they purport to do in differentiating the events that S is more confident in from those that she is less confident in. While all of them order possible and impossible events correctly, they deliver the wrong verdict for disjoint possible events assigned equal positive credence. This failure is a major disadvantage for the approach where events are ordered based on subset relations or S's relevant real-valued unconditional or conditional credences.
+
+Recall that this approach was introduced to ensure that S is more confident in any possible event than in an impossible event, even if her rational credences are real-valued. But once we require that S is more confident in any possible event than in an impossible event, by some natural constraints on ≼, if A ∪ {ω} ∼ B, then A ≺ B, where A ∩ {ω} = ∅ and A and B are nonempty. Can A ≺ B in turn be ensured with subset relations and real-valued rational credences all the time? The counterexample above answers in the negative, thus casting doubt on the entire approach.
+
+Here is a straightforward way of ensuring that A ≺ B, where A and B are the events mentioned in the previous paragraph. We can always require rational credences to be regular. Call Cr regular iff Cr(A) > 0 for all nonempty A in the domain of Cr. It is easy to ensure that A ≺ B with a regular Cr. After all, since A ∪ {ω} ∼ B, Cr(A ∪ {ω}) = Cr(B). And for a regular Cr, Cr({ω}) > 0, so Cr(A) < Cr(B). But of course, to ensure that rational credences are always regular in turn, the requirement that rational credences are real-valued must be dropped. After all, for fair infinite lotteries, for example a fair lottery over [0, 1], in order for a Cr representing one of these lotteries to be regular, Cr has to take on non-real values, for example positive infinitesimals. As there are infinitely many tickets in a fair infinite lottery, Cr({ω}) < 1/n for all n ∈ N, where ω is a ticket in the lottery. But, for a regular Cr, Cr({ω}) > 0 as well. This means that Cr({ω}) is a positive infinitesimal. So de Finetti (1975), Hájek (2012) and Easwaran (2014) cannot adopt this approach, as they require rational credences to be real-valued.
+
+Where does the discussion in this section leave the three authors above? Well, on the one hand, they need not abandon their original position. After all, all the counterexample above shows is that the three proposals put forth in §1 are wrong. But, as pointed out towards the end of §1, it still leaves open the possibility that there is a fourth proposal that fares better than the three just examined. If there is indeed such a fourth proposal, then it is still plausible to maintain that S's comparative confidence ordering can be represented by nothing more than set-theoretic relations and her real-valued unconditional or conditional credences.
+
+However, on the other hand, these three authors cannot do nothing; something must be done in response to this counterexample. If they want to maintain their position, then the onus is on them to prove that there is indeed a fourth proposal that fares better than the three put forth. In the event that there is no such proposal, they will have to revise their position. Perhaps they should be content with a partial representation of S's comparative confidence ordering, for example if Cr(A, A ∪ B) < Cr(B, A ∪ B), then A ≺ B; this is just the right-to-left direction of Conditionality. Recall that the counterexample above is against the left-to-right directions of all three proposals in §1. So dropping that direction is one escape route. By just adopting the right-to-left direction of any one proposal in §1, we can avoid the counterexample, but still ensure that S is more confident in any possible event than in an impossible event, yet her rational credences are entirely real-valued.
+
+To end, I would like to point out an implication that my counterexample has on Easwaran (2014)'s criticism against an argument put forth for requiring rational credences to be regular. Here is the argument:
+
+1. A doxastically possible proposition is more likely for an agent than a contradiction.
+2. If p is more likely than q for a rational agent, then Cr(p) > Cr(q).
+3. If q is a contradiction, then Cr(q) = 0.
+4. Therefore, for a rational agent, if p is doxastically possible, then Cr(p) > 0. (Easwaran 2014: 16)
+
+Easwaran rejects premiss 2 and instead insists on one of the following replacements:
+
+• If p is more likely than q for a rational agent, then Cr(p) > Cr(q) or q ⊆ p, where Cr is real-valued.
+• If p is more likely than q for a rational agent, then Cr(p, p ∪ q) > Cr(q, p ∪ q), where Cr is real-valued.
+
+The conclusion of the argument above cannot be established with either replacement. Therefore, Easwaran rejects the conclusion.
+
+However, my counterexample shows that both replacements are false. This is because [0.8, 0.9] ≻ [0.1, 0.2), yet [0.1, 0.2) ⊈ [0.8, 0.9], Cr([0.8, 0.9]) = Cr([0.1, 0.2)) and Cr([0.8, 0.9], [0.1, 0.2) ∪ [0.8, 0.9]) = Cr([0.1, 0.2), [0.1, 0.2) ∪ [0.8, 0.9]) for a real-valued Cr. Thus Easwaran's attack on the argument above is unsuccessful.
+
+Funding
+This work was supported by an Australian Government Research Training Program (RTP) Scholarship.
+
+Australian National University
+Australia
+joshuathong.zj@gmail.com
+
+[References section follows]

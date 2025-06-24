@@ -1,0 +1,138 @@
+Here is the extracted text content of the paper, formatted with paragraph breaks:
+
+Plantinga, A. 2000. Warranted Christian Belief. New York: Oxford University Press.
+Plantinga, A. 2015. Knowledge and Christian Belief. Grand Rapids, MI: Eerdmans.
+Rassmussen, J. and F. Leon. 2019. Is God the Best Explanation of Things? A Dialogue. London: Palgrave Macmillan.
+Schellenberg, J.L. 1993. Divine Hiddenness and Human Reason. Ithaca, NY: Cornell University Press.
+Schellenberg, J.L. 2015. The Hiddenness Argument: Philosophy's New Challenge to Belief in God. New York: Oxford University Press.
+Schellenberg, J.L. 2016. Divine hiddenness and human philosophy. In Hidden Divinity and Religious Belief: New Perspectives, eds. A. Green and E. Stump, 13–32. Cambridge: Cambridge University Press.
+Taber, T. and T.D. McNabb. 2018. Is the problem of divine hiddenness a problem for the reformed epistemologist? Heythrop Journal 59: 783–93.
+
+There are no fundamental facts
+Roberto Loss
+
+1. Introduction
+
+Many facts appear to depend on, and thus to be grounded in, other facts: the fact that it is true that the Earth's climate is warming is grounded in the fact that the Earth's climate is indeed warming; the fact that {Socrates} exists is grounded in the fact that Socrates exists; the fact that the flag of the European Union is blue is grounded in the fact that it is reflex-blue etc.
+
+Are there fundamental facts – namely, facts that are not grounded in other facts? In this paper I will present an argument showing that certain assumptions concerning the notion of metaphysical grounding entail that no fact is fundamental. In §2 I will briefly present the argument. In §3 I will attempt to defend its main assumptions and compare it with a similar argument recently proposed by Mark Jago. In §4 I will consider two possible objections. I will then conclude that the argument presented in this paper seems to provide at least some minimal support to the idea that (possibly excluding a restricted set of 'special' facts) there are indeed no fundamental facts.
+
+2. The argument 
+
+I endorse here an operational approach to metaphysical grounding (see Correia and Schnieder 2012: 10–13) and take the notion of grounding to be expressed by means of the many-one sentential operator '<'. I take 'G' to be the operator 'it is a grounded fact that', which I define as follows (where 'A', 'B', ... are sentential variables and 'C', 'D', ... are plural variables ranging over lists of sentences):
+
+GA = df ∃C(C < A).
+
+As is common in the literature on grounding (see e.g. Litland 2017, 2018), I will allow for nested occurrences of the grounding operator and thus take formulas like 'GGA' and 'G~GA' to be well formed. The formulas 'GGA' and 'G~GA' are thus equivalent to '∃C(C<∃D(D < A))' and '∃C(C<~∃D(D < A))', respectively.
+
+The argument for the non-existence of fundamental facts is similar to the so-called Church–Fitch 'paradox' (Church 2009, Salerno 2009) and relies on the following three premisses:
+
+(FG) If it is a grounded fact that A, then A:
+GA → A.
+
+(PG) If A ∧ B is the case, it is logically possible that both the fact that A and the fact that B are grounded facts:
+(A ∧ B) → ◊(GA ∧ GB).
+
+(N) Whatever is provably false is provably impossible:
+⊢~A
+⊢~◊A
+
+I follow Jago (2020: 40) in taking '[the] sense of logical possibility in question ... to be weak: ideal conceivability, conceptual coherence or logical consistency, rather than "substantial" metaphysical possibility'. I also take logically possible situations to respect the principle (FG).
+
+The argument against the existence of fundamental facts is the following:
+
+(1) GA ∧ G~GA assumption 
+(2) GA 1, ∧-elimination
+(3) G~GA 1, ∧-elimination
+(4) ~GA 3, (FG)
+(5) GA∧~GA 2, 4, ∧-introduction
+(6) ~(GA ∧ G~GA) 1, 5, reductio
+(7) ~◊(GA ∧ G~GA) 6, (N)
+(8) (A∧~GA) → ◊(GA ∧ G~GA) (PG)
+(9) ~(A∧~GA) 7, 8, modus tollens
+(10) A → GA 9, logic
+
+This argument proves (by generalization) that, for every A, if it is a fact that A, then it is a grounded fact that A, and thus that no fact is fundamental (i.e. ungrounded).
+
+3. Discussion
+
+The argument presented in §2 is very similar to an argument for truthmaker maximalism (the claim that every truth has a truthmaker) recently proposed by Jago (2020). Jago's argument relies on (N) and the following three premisses (where 'TM A' stands for 'A has a truthmaker'):
+
+(P) For each truth A, a truthmaker for A is logically possible:
+A → ◊TM A.
+
+(F) If A has a truthmaker, then A is true:
+TM A → A.
+
+(D) If A ∧ B has a truthmaker, then so do A and B:
+TM(A ∧ B) → (TM A ∧ TM B).
+
+(FG) is just the grounding counterpart of (F) and follows from the harmless assumption that the relevant notion of grounding is factive (see Fine 2012: 48–50). The grounding counterpart of (D) is (DG):
+
+(DG) If it is a grounded fact that A ∧ B, both the fact that A and the fact that B are grounded facts:
+G(A ∧ B) → (GA ∧ GB).
+
+However, employing (DG) instead of (PG) to prove that there are no fundamental facts would be question-begging in this case. In fact, in the literature on grounding, the principle according to which every conjunctive fact is a grounded fact is usually taken to be central to the 'impure logic of ground' (see e.g. Fine 2012: 58). This principle is not valid under a 'worldly' conception of grounding (see Correia and Schnieder 2012: 14–16), according to which the fact that A ∧ A is equivalent to the fact that A (Correia 2010: 267) – which entails that the fact that A ∧ A is ungrounded whenever the fact that A is. Even in this case, however, we have that at least conjunctions of different (that is, non-equivalent) facts are always grounded facts.
+
+Therefore, provided that there are at least two different facts, (DG) alone could be used to prove that no fact is fundamental:
+
+Suppose that the fact that A is a fundamental fact and that the fact that B is a further fact. The fact that A ∧ B is thus a grounded fact. It follows from (DG) that both the fact that A and the fact that B are grounded, and thus that the fact that A is not a fundamental fact. Contradiction! Therefore the fact that A is not fundamental and, by generalization, no fact is.
+
+Jago claims that (P) can be defeasibly justified as follows. First, he argues that, quite plausibly, at least some of the truthmaker maximalist approaches on the market are logically consistent. Then he proceeds inductively and claims that the fact that it is clearly logically possible for some representative truths to have a truthmaker ('Obama is male; wombats are marsupials; 1 + 1 = 2; there is no greatest prime number; scarlet things are red') gives us 'warrant – not a proof, but reason nonetheless – to accept (P)' (Jago 2020: 42).
+
+Also, in the case of (PG), it appears possible to provide at least some defeasible reason for its truth. Consider, first, the non-conjunctive counterpart of (PG):
+
+(PG*) If A, then it is logically possible that it is a grounded fact that A:
+A → ◊GA.
+
+(PG*) clearly holds for derivative facts. As for fundamental facts, it seems fair to say that no facts can be clearly and uncontroversially claimed to be metaphysically fundamental. At the same time, the facts that most uncontroversially may turn out to be metaphysically fundamental seem to be those described by fundamental physics, such as the fact that a certain electron has a certain spin, the fact that a certain photon occupies a certain point in spacetime etc. The sense of possibility relevant to (PG) and (PG*) is logical possibility. Therefore, in order for these kinds of fact to be ungroundable in this sense, there would have to be some kind of logical connection between the notions involved in the relevant facts (e.g. 'electron', 'photon', 'spin', 'spacetime point') and the notion of grounding. But this does not sound at all plausible. It thus appears safe to conclude that the most uncontroversial candidates for actual fundamental facts seem to comply with (PG*), which gives us at least some prima facie, defeasible reason to think that (PG*) is indeed true.
+
+Similar considerations can also be used to bolster (PG). (PG) clearly obtains when the fact that A and the fact that B are both derivative facts. If, instead, the fact that A and the fact that B are both facts of fundamental physics, then (PG*) seems to suggest at least that (PG) is also true: if every fact of fundamental physics could have been a derivative fact, why could any two such facts have not been derivative together? Similarly, if the fact that A is a fact concerning fundamental physics and the fact that B is grounded only in facts of fundamental physics, it is difficult to imagine why the latter could not obtain as a derivative fact if also the former was derivative. Therefore this line of reasoning also seems to lend at least some kind of minimal support for (PG).
+
+4. Objections and replies
+
+As we saw in the previous section, (PG) can be defended by appealing to the prima facie plausibility of (PG*). (PG*) entails that no fact is necessarily fundamental. Consider, however, essentialist facts – that is, facts of the form 'it is essential to x that φ', where 'it is essential to x that' is Fine's (1995) essentialist operator. Some may object that, although the idea that these kinds of fact may be fundamental is clearly not as uncontroversial as in the case of facts of fundamental physics, many will still agree that if essentialist facts are fundamental, they are necessarily so. In a similar vein, one may claim – inspired by Fine's (2012: 62) 'impure' logic of ground – that, if totality facts – saying of some entities that they are all the entities that exist – are fundamental, then they must also be fundamental whenever they obtain. However, even if we accept the existence of either essentialist facts or totality facts and their being 'ungroundable' in this weak sense of possibility, we can simply restrict (PG) to conjunctions of facts that are equivalent to neither essentialist facts nor totality facts. In this case, if the fact that A is neither an essentialist fact nor a totality fact, then most plausibly the same can be said of the fact that ~GA, so that the argument just given can be used to argue that there are at least no fundamental facts that are neither essentialist facts nor totality facts – a result that is surely surprising enough on its own.
+
+Dasgupta (2014) distinguishes between facts that are apt to be grounded but have no ground and autonomous facts, that is, facts that are 'not apt to be grounded':
+
+It is not that the question of what grounds them is well taken and the answer is 'Nothing'; it is, rather, that the question of what grounds them does not legitimately arise in the first place. (Dasgupta 2014: 563)
+
+One may suggest that if grounding facts of the form '~GA' are taken to be autonomous in Dasgupta's sense, then the argument in §2 cannot even get off the ground, as in this case formulas of the form 'G~GA' seem to be best seen as either ill-formed or lacking a truth-value. However, in order to ward off this objection it appears sufficient to replace (PG) with the following, similarly plausible principle:
+
+(PG+) (◊GA ∧ (A ∧ B)) → ◊(GA ∧ B).
+
+(PG+) says that if it is the case that A ∧ B and the fact that A is 'groundable', then it is possible for B to be the case and for the fact that A to be a grounded fact. The same train of thought used above to defend (PG) can also be used to defend (PG+). Equipped with (PG+) we can then argue as follows:
+
+(1) ◊GA assumption
+(2) ~(GA∧~GA) logic 
+(3) ~◊(GA∧~GA) 2, (N)
+(4) (◊GA ∧ (A∧~GA)) → ◊(GA∧~GA) (PG+)
+(5) ~(◊GA ∧ (A∧~GA)) 3, 4, modus tollens
+(6) ◊GA → ~(A∧~GA) 5, logic
+(7) ~(A∧~GA) 1, 6, modus ponens
+(8) A → GA 7, logic
+(9) ◊GA → (A → GA) 1, 8, conditional proof
+
+This argument proves (by generalization) that every groundable fact is grounded. Therefore, if we assume a suitably restricted version of (PG*) that excludes 'special' ungroundable facts, it still follows that none of the 'normal' groundable facts is fundamental.
+
+Finally, one may object that what the present argument shows is simply that truths of the form 'A ∧ ~GA' are counterexamples to both (PG) and (PG+). However, as Jago (2020: 43) notices in relation to his argument, this move appears to be dialectically ineffective in this case, as it consists in simply assuming the falsity of what is at stake, namely, the existence of fundamental facts (since if 'A ∧ ~GA' is true, then the fact that A is a fundamental fact). Similarly, the present argument cannot be said to prove too much, as (PG), (PG*) and (PG+) appear to have far less appeal when applied to other notions, such as knowledge or belief. Consider, for instance, the following counterpart of (PG+) in which the operator 'G' is replaced with the operator 'K' standing for 'Frege knew that':
+
+(KPG+) (◊KA ∧ (A ∧ B)) → ◊(KA ∧ B).
+
+In this case, it is uncontroversial that there are some truths that Frege didn't know: for instance, that Neptune has fourteen moons. Therefore, in order to show the falsity of (KPG+) it is sufficient to replace B with '~KA', and A with any truth that clearly Frege didn't know. Instead, in the case of (PG+), there seem to be no truths that can clearly and uncontroversially be said to be metaphysically fundamental (see also Jago 2019: §4).
+
+5. Conclusion
+
+Jago (2020) has proposed an argument to the effect that every truth has a truthmaker. In this paper I have argued that, if either (PG) or (PG+) is accepted, a similar argument can be used to prove that (perhaps excluding some restricted family of 'special' ungroundable facts) there are no fundamental facts. This result appears to be even more surprising than Jago's. In fact, assuming (as it is quite standard, if not completely uncontroversial) that grounding is irreflexive, asymmetric and transitive, and so there are no grounding 'loops', this entails that every fact (or every 'normal' fact in the sense specified above) is an 'abyss' – that is, a 'derivative [fact] having no fundamental ground and lying at the top of an infinitely descending chain of ground' (Loss 2016: 43) – which surely seems to be rather controversial.
+
+Some may take this to be a bad-company objection to Jago's argument. However, what Jago says in defence of his argument has at least the ring of plausibility to it. I think therefore that the argument presented in this paper can be seen as simply establishing that there is a short and direct way to provide at least some minimal support to the idea that there are no fundamental facts – a support that can be resisted in a dialectically effective way only by presenting some non-question-begging counterexamples to the principles (PG) and (PG+). If I am right, it is possible to conclude that we have at least some prima facie, defeasible reason to think that reality is an abyss.
+
+Philosophisches Seminar
+University of Hamburg 
+Überseering 35
+Hamburg 22297, Germany
+robertoloss@gmail.com
+
+References
+
+[References section omitted for brevity]

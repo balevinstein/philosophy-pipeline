@@ -1,0 +1,23 @@
+[
+  {
+    "paper_title": "Anonymity and Non-Identity Cases",
+    "type": "thought_experiment",
+    "purpose": "Introduces the standard non-identity case to motivate the Non-Identity Principle by testing our intuitions about replacing one person with another",
+    "context": "Used to establish the foundation for the Non-Identity Principle by presenting a clear case where we must choose between bringing different people into existence",
+    "text": "Consider a standard non-identity case, in which one must choose between bringing Eve into existence, with a better life, or instead bringing Adam into existence, with a worse (but still good) life. Imagine that nobody else is affected by this choice, and that there are no other potentially morally relevant differences at play: Adam and Eve are equally deserving, no impersonally valuable things are affected, and so on."
+  },
+  {
+    "paper_title": "Anonymity and Non-Identity Cases",
+    "type": "counterexample",
+    "purpose": "Shows the absurd consequences of rejecting the Non-Identity Principle by demonstrating how it leads to counterintuitive evaluations when combined with plausible assumptions",
+    "context": "Used to argue against rejecting the Non-Identity Principle by showing what would follow if we combined its rejection with Same-Person Anonymity",
+    "text": "|     | Adam | Steve | Eve |\n|-----|------|-------|-----|\n| A   | 60   | 80    | X   |\n| B   | 60   | X     | 40  |\n| C   | 80   | 60    | X   |\n\nIntuitively, C is better than B. Same-Person Anonymity implies that A and C are equally good. Transitivity then implies that A is better than B, in line with the Non-Identity Principle. If we want to reject this instance of the Non-Identity Principle, it thus looks like we have to say that C is not better than B, despite appearances. But compare B and C directly. We can imagine going from C to B by making two changes. First, we make Adam worse off by twenty units of wellbeing. Second, we replace Steve with the worse-off Eve.</text>"
+  },
+  {
+    "paper_title": "Anonymity and Non-Identity Cases",
+    "type": "thought_experiment",
+    "purpose": "Provides a large-scale counterexample to demonstrate the absurdity of rejecting the Non-Identity Principle when applied to real-world population sizes",
+    "context": "Used to strengthen the argument for the Non-Identity Principle by showing its rejection leads to obviously wrong conclusions about global population changes",
+    "text": "Consider two possible futures. In the first future, the present seven billion inhabitants of Earth will each enjoy 80 units of wellbeing, and there will exist seven billion future individuals, each with 60 units of wellbeing. In the second future, the present inhabitants will instead have 60 units of wellbeing, while seven billion future individuals, who are non-identical to the individuals existing in the first future, will have only 40 units of wellbeing. If we suppose that it does not make the world better to replace any number of lives at level 40 by the same number of lives at level 80, an argument exactly analogous to that of the preceding paragraph shows that, given Same-Person Anonymity and Transitivity, the second future is not worse than the first."
+  }
+]

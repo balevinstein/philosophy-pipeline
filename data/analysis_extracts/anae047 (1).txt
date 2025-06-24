@@ -1,0 +1,133 @@
+Analysis Vol. XX | Number XX | XX 2024 | 1–11 doi: https://doi.org/10.1093/analys/anae047
+
+Philosophy moves and meta-moves
+David Kelley
+
+Abstract
+Philosophers sometimes refer to 'moves' made in the context of a philosophical debate. Once familiar with these recognizable tropes, we then possess them as tools – a suite of possible moves to make in novel contexts. In this paper, I outline three such philosophy moves, then demonstrate how moves can be combined. Examples of moves and some combinations feature throughout the paper.
+
+Keywords: philosophical methodology, meta-philosophy, philosophy moves, philosophy heuristics
+
+1. Introduction
+
+Philosophers philosophize. For example, they analyse concepts using a suite of timeless tools: recognizing or offering relevant distinctions, attempting definitions and revising according to counter-examples, constructing useful thought experiments to clarify and challenge our intuitions, presenting arguments by analogy to relate new subjects to old, among other methods.
+
+There is joy, and sometimes perverse satisfaction, in the work of philosophy – a rush that can be difficult to relate to those not already bitten by the bug. Philosophers find reward in deducing surprises by revealing unforeseen entailments, deriving implications of views one already holds, and delighting in the buzzy squirms that come with the resulting cognitive dissonance.
+
+If one is to find reward in doing philosophy, one needs to know how it is done. To more fully understand and inform the doing of philosophy requires a recognition and explication of the various gadgetry within the philosopher's toolbelt.
+
+Among the many valuable philosophy heuristics presented by Alan Hájek is 'begetting new arguments out of old' (2014, 2016). The most straightforward example of doing so is by swapping out variables in a deductive argument. When I argue that P, if P then Q, and infer Q, I can be assured of the argument's validity regardless of what the argument is about. Thus I can draw on an argument I am familiar with (e.g. Socrates is a man; if Socrates is a man, he is mortal; therefore Socrates is mortal) to form a new argument (e.g. the shirt is black; if the shirt is black it will absorb heat; therefore the shirt will absorb heat). Of course, this way of forming new arguments out of old is simplistic, formal, rigid and limited. There are many other ways for known arguments to inspire the formulation of novel arguments. Reading through the philosophical literature, one will likely have noticed certain types of objections, certain types of replies to objections, certain ways to understand some proposition or theory or even patterns throughout entire exchanges from several authors engaged in debate. One may identify useful tropes within philosophical discourse and catalogue them as potential 'moves' for deployment in various other debates. Moves are recognizable chunks of an argument or debate, abstracted from some context and put to work in another. Hence we often talk about the move one can make in response to an interlocutor's challenge, perhaps contrasting with other available moves not made. Alternatively, we may make the move of advancing some type of account over other prominent accounts in a debate, for example, by presenting a pluralist account as a way of disambiguating and folding in distinct concepts; or by proposing that a contentious concept admits of degrees as opposed to being binary, in light of puzzling cases.
+
+I initially presented this notion of 'philosophy moves' featuring five examples from the philosophy of biology (Kelley forthcoming). In this paper, I feature three additional examples of first-order moves, and then introduce the possibility of moves made in combination, while more generally discussing relations between moves. These examples demonstrate how moves can effectively advance debates. In alignment with Hájek's project of equipping philosophers with handy tools of the trade, my aim is to expand the arsenal of moves and, in doing so, promote further familiarity with the methodology.
+
+2. Three philosophy moves
+
+2.1 The Meta-Question Shift
+
+Why is this question so interesting or puzzling in the first place? What different responses might we be soliciting when posing the question?
+
+Moves are sometimes useful for their ability to push through stalemates by posing broader related questions. This move – 'Meta-Question Shift' – invites us to probe a topic in the literature that enjoys a traditional articulation of its central problem. When we make this move, we examine not the content of the topic but the way we have hitherto been posing the central question about the target of our analysis. This move could also be called 'the Meta-Problem Shift'. After all, we are no longer engaged in an analysis of the problem. By making the move we are examining the approach to the problem. The phrase 'the meta-question' emphasizes that making the move generates a different, but obviously related, question for exploration. Making this move allows us to turn our investigation to the ongoing philosophical analysis itself.
+
+For example, we might be interested in quite distinct things when we pose the question 'what is consciousness?' (Chalmers 2018). Or when someone asks 'what is life?', one may have a very different question in mind from someone else investigating the same question (Bedau 2012, Parke 2023). Shifting to the meta-question allows us to consider and potentially disentangle the distinct motivations and intentions behind the questions, as well as the different understandings of the problem. Do we want to know what causes consciousness? Do we want to know what sorts of things are conscious? Are we wondering how consciousness is consistent with a naturalistic worldview? Similarly, do we want to know what it means to be alive as opposed to dead? Or are we trying to identify what processes or materials characterize living matter as opposed to non-living matter? For the given topic, we ask: why does it matter? Why have we formulated these questions as deep problems? What do we find so fascinating or vexing about these topics? What explains why these questions persist and why so much ink has been spilt addressing them?
+
+One advantage of making this move is that we may discover a new approach by revisiting the foundational motivations of the problem. We are forced to consider why this problem is interesting and what we take ourselves to be answering or explaining when we address it. Doing so may also reveal something about the nature of the problem. For example, we can imagine a case in which consideration of the meta-question reveals an assumption that the first-order question is in-principle answerable, when perhaps it is not.
+
+Depending on the scope of your inquiry, one potential disadvantage of this move is that, by its nature, it moves you from your original line of inquiry to a second line of inquiry about the first. In some cases, it may feel as if you are putting the topic itself (or how the topic is currently being investigated) on trial, sitting above the discourse rather than participating directly in it. The second-order inquiry is a separate endeavour and one should take care to keep treatments of each problem distinct. Having said that, dipping into the meta-question might be exactly what is required to provide a novel approach to participating in a more direct way. That is, there may be appropriate ways to usefully integrate discussions of both problems (the problem and the problem with the problem), and this could then be an advantage, not disadvantage, of making this move.
+
+2.2 Concept Elimination
+
+This concept is incoherent, has no referent, or holds no promise for doing the work we thought it would. We should dispense with it altogether.
+
+In the 1980s, Paul and Patricia Churchland famously advanced a view called 'Eliminative Materialism', which holds that our common descriptions of the mind are false (Churchland 1981, Churchland 1989). Our folk theories misrepresent actual neural processes and, as a result, our chunking of psychological phenomena is misguided. Our common descriptions of mental states, such as desire and belief, are 'fundamentally defective' (Churchland 1981: 67). According to this view, folk psychological concepts should be abandoned, and new terms to be supplied by emerging neuroscience embraced.
+
+A recent example that I will develop more fully can be found within the philosophy of biology, where there exists a debate about what biodiversity is and how it is to be measured. Should we think of biodiversity as the target of conservation (and, if so, in what sense? As a particular achievable state of affairs or as an ideal goal state towards which conservationists orientate their efforts?). Or should we think of it as a way of gauging ecosystem function and resilience? While many take for granted that biodiversity refers to the number of species in a given area, (a) 'species' is a disputed concept and (b) tallying species seems to be a proxy for biodiversity, rather than a quantitative measure of it (which leaves the question: proxy for what?). It seems counter-intuitive that a community consisting of only ten species from a single genus is more biodiverse than a community consisting of nine species from different phyla. So, if not (solely) species, what are the relevant 'units and differences' when considering biodiversity (Maclaurin and Sterelny 2008)? Of what relevance are things such as morphology, interconnected lifecycles, ecological function or method of reproduction?
+
+It is from within this quagmire of questions that Carlos Santana (2014) advances Concept Elimination. Santana argues that the concept of biodiversity is just not useful. 'Biodiversity' is an eliminable stand-in for what we really care about: 'biological value'. It would be better to identify what we value and work to prioritize its conservation directly, whether that be the aesthetic sublimity of wilderness, the health benefits of clean air or the scientific value of rare and interesting types of living systems (and whatever else). Furthermore, Bocchi (2022) argues that Santana's view allows one to push past the conceptual incommensurability of 'paleodiversity' and biodiversity. Claims comparing the past with the present are unjustified because these concepts lack a common measure and require different data to make estimates (of paleodiversity and biodiversity). A move away from 'biodiversity' and towards biological value avoids this pitfall.
+
+The potential advantage of making this move is that it may inspire a radical and exciting re-conceptualization of a topic. By making this move, one invites others to dispense with a concept that may be holding up new insights, innovations and conceptual headway.
+
+On the other hand, this is a bold move. The argument that a concept is so misguided or unhelpful as to warrant its elimination must be convincing. One should be prepared to offer some sort of error theory or deflationary account of the misbegotten concept. Furthermore, an injunction to abandon a concept may be ill received if an alternative is not supplied.
+
+2.3 Substance to Process
+
+The phenomenon of concern has traditionally been conceptualized in terms of 'stuff'. But it might better be thought of as a process.
+
+You might think that whatever an organism is, it is a thing – an organism. But the individuality of an organism is maintained by the stable processes of its component parts (e.g. cells, organs and organ systems). There is sufficient continuity with these processes that we can track dramatic developmental changes over the lifetime of an organism. This is perhaps analogous to the spatial contiguity organisms exhibit. That is, an organism at earlier and later stages of development may appear like different species, much like the shell, teeth, fingernails or horns of an animal stand in marked contrast with the soft fleshy portions – yet these are parts, spatial or temporal, of the same organism, 'thingified' by the same underlying processes.
+
+Accordingly, some philosophers of biology invite us to think of organisms as processes. Nicholson argues that, 'the thermodynamic character of life demands a processual conception of the organism' (2018: 141). Organisms are not (simply) stuff; they are 'highly stabilized flows of energy and matter'. On this view, enduring organisms that persist through time and move in space should be considered abstractions from these stable processes. The explanation of why we apprehend an organism as a static object is near oxymoronic: because it is always changing. Organisms are characterized by continual material change with continual structural stability. An organism achieves the stability and permanence required to persist identifiably over time by continually creating itself as a reliable nexus of energy and material exchange with the environment. We can think of an organism, in the abstract, as the structure that hosts the processual means for the sustained pattern by which we identify it. The stability of thingness is an achievement of lower-level processes. What we see as the concrete form of an organism is simply 'the visible expression of the constancy' of the internal metabolic processes within it (148).
+
+Henry Wieman held that 'God is a process' (Wieman et al. 1932: 10). While traditionally God is conceptualized as a being, Wieman held that God is 'the value-making process of nature, in which and with which man must work and live in order to attain the best' (1929: 63). God is the 'interaction between individuals, groups and ages which generates and promotes the greatest mutuality of good' (Wieman et al. 1932: 13). Wieman's account of God is a direct challenge to traditional 'thing thinking' within the theological domain, inviting us to instead think of God in terms of ordered events and patterns of activity.
+
+More generally, a processual ontology will emphasize that the world is always changing (for an overview, see Seibt 2023). While thinking of patterns of processes as fixed objects will be useful in many cases, other times it will be more appropriate to retain a picture of inherent change. To point to some object in front of you is to pick out a location in space in which a hierarchy of processes contributes to an identifiable pattern at the level of observation. We perceive and conceptualize things as static, unchanging and long lived. This is because the underlying processes reliably endure to confer identity over time to the 'thing' they constitute.
+
+This move may be useful for challenging intuitive or traditional metaphysical assumptions. Making this move might be one insightful way of signalling a naturalistic worldview. More flexibly, it may be deployed as a methodological tool, in that it prompts us to consider diachronic aspects of a phenomenon otherwise represented as static. After all, the value of some moves need not come from their making but just in their consideration. That is, a philosopher might find great value in entertaining this move independent of actually advancing an argument along these lines. One's conceptual analysis might greatly benefit from the exercise of switching from 'thing thinking' to 'process thinking', whether about planets or minds or works of art. Additionally, Substance to Process might usefully accompany a semantic analysis, for example of the 'it' in 'it is raining'.
+
+The potential disadvantages of making this move lie primarily in its misapplication. While making this move could be relatively straightforward in naturalistic contexts, one would not want to make this move when the target turns out to be a proposition or representation of something, as opposed to the thing represented. Other times, making this move would not be so much wrong as it would be trivial or simply unhelpful. Invoking Heraclitus in an environmental argument about river pollution is probably less helpful than referring to specific states of specific geographical regions indexed at specific times.
+
+3. Meta-moves and other combinations
+
+We can make moves in combination, mixed and matched in various ways. In this section, I will present a few such combinations, including moves that are about, or following, other moves. The moves I will draw upon are as follows (the first two are from §2; the last three were presented in previous work):
+
+(The Meta-Question Shift) Why is this question so interesting or puzzling in the first place? What different responses might we be soliciting when posing the question?
+
+(Concept Elimination) This concept is incoherent, has no referent or holds no promise for doing the work we thought it would. We should dispense with it altogether.
+
+(The Tripartite Distinction) We can organize our analysis of this concept by distinguishing ontological, epistemological and methodological claims.
+
+(Pluralism) Neither X, Y nor Z are exclusively correct. The suitable account is a pluralist view that accommodates them all.
+
+(Conceptual Gradience) It is not fully this way or that way. Rather it is somewhere along a spectrum – this concept admits of degrees.
+
+My first example will combine the Tripartite Distinction with the Meta-Question Shift.
+
+The Tripartite Distinction has been deployed in a variety of different contexts (e.g. Bunge 1973, Ayala 1974, Ruse 1989, Rawnsley 1998, Ladyman 2007, Malaterre 2007, Kesić 2016, Brooks et al. 2021). This move can be used to distinguish importantly different kinds of claims that may have hitherto been conflated or simply help one organize different types of claims made within a debate or more generally about some topic.
+
+As previously discussed, the Meta-Question Shift is a move that invites us to step back from a debate that has been primarily characterized by a specific question, in order to analyse the question itself (or if not a question, a statement or characterization of the problem).
+
+Within the interdisciplinary debate about the definition of life, some have opted to shift to the meta-question, why is defining life so challenging? To investigate this question, Malaterre and Chartier (2021) make an additional move: the Tripartite Distinction. The authors disambiguate three distinct questions to engage with.
+
+The Ontological Question: Is life a natural kind?
+
+The Epistemological Question: Given current knowledge, can we define life?
+
+The Methodological Question: What is the most appropriate way to answer the question, 'what is life'?
+
+Making the first move (Meta-Question Shift) allows us to take a step back and think about how we have been approaching the first-order question, what is life? Then the second move (the Tripartite Distinction) further allows us not only to see distinct questions that sometimes motivate the first-order question, but also to recognize questions of different kinds – those regarding the nature of what is, what we can know and what methods we should use.
+
+For the next example, I will consider a different combination: Pluralism and the Tripartite Distinction. I want to demonstrate how one might opt to make a meta-move and why it might be helpful in a specific context.
+
+Pluralism is a move one may opt to make in the context of a stagnating conceptual debate. The pluralist retires the assumption that we must decide on a single authoritative concept and recognizes the legitimacy of two or more competing concepts.
+
+Another interdisciplinary debate regards species. There is no agreed-upon species concept. Some say a species refers to an interbreeding population. Others say species should be understood in terms of evolutionary relationships (phylogeny). There are many other candidate species concepts on offer (see Mayden 1999). A pluralist approach recognizes distinct species concepts, each valuable in some domain or for some purpose. But one may survey the literature and conclude that, in addition to a plurality of species concepts, we also need to recognize a plurality of pluralisms about species concepts! So we could imagine making the following second-order move within this debate.
+
+One might choose to distinguish three kinds of pluralism in the following way:
+
+Ontological Pluralism is a view about the plurality of distinct real entities in the world picked out by each concept.
+
+Epistemological Pluralism refers to the adoption of numerous theories simultaneously (e.g. from incommensurable scientific paradigms) giving rise to a plurality of distinct concepts.
+
+Methodological Pluralism prescribes a plurality of approaches (e.g. reductive and non-reductive) to help us understand our subject.
+
+The above serves to exemplify how one move can be made about another. In this case, making the move plausibly adds appreciable nuance to the ongoing debate about species concepts. But one can take the point and remain neutral as to whether this meta-move is a good move to make in this context or whether the way I have made it is the best way (e.g. I am already engaged in a fight with myself about how to best understand both Ontological Pluralism and Epistemological Pluralism!).
+
+I want to remain open as to how moves are individuated and thus equally open to how one wants to think about their relation and integration. So, in addition to meta-moves or combination moves, some moves might be seen as going hand in hand in other ways (i.e. I do not want one way or the other of characterizing 'double moves' to deter anyone who feels reticent to engage with a further claim that one move is 'about' the other or works 'in combination' with another). I will sketch, but not evaluate, three additional couplings.
+
+An argument advocating for the elimination of 'natural kinds' might be preceded by the Meta-Question Shift in which one cuts through the debate about what view of natural kinds is correct, and instead surveys a more basic question: what is it we want the concept of natural kinds to do? In this example, such a survey would produce the reasons to support a case for the abandonment of 'natural kinds' (see Hacking 2007). Hence one might think of these moves – Meta-Question Shift and Conceptual Elimination – as 'going together'.
+
+Here is a second example. Recall from the list at the beginning of this section that Conceptual Gradience refers to the idea that a concept admits of degrees. This move is made within many debates and is more generally a useful tool for challenging a tendency to think in a binary manner. For example, when considering what makes one an expert, it seems reasonable to suggest that some experts possess expertise to a higher or lesser degree (Collins and Evans 2007, Lane 2014).
+
+To the extent that binary thinking has held up progress in a conceptual debate or otherwise misled us in regard to some topic, we might make this move alongside another move: Concept Elimination. This additional move could be seen as a stronger way to make the former move (Conceptual Gradience). Making this combination of moves advances a position that promotes spectrum thinking about the concept and advocates that any binary conception be banished. For example, one could argue that the notion that one is or is not a 'master' of something should be retired, and instead we can say that individuals have more or less mastered some ability or domain of knowledge.
+
+Here is one final example in which one may (or may not) find it useful to think of two moves together. Concept Elimination may sometimes be thought of as going hand in hand with Pluralism. You eliminate the dominant concept, and it is replaced by several alternatives. For example, in the context of the species debate, Marc Ereshefsky advances Pluralism and Concept Elimination together: 'Eliminate the term "species" and replace it with a plurality of more accurate terms' (1992: 681).
+
+Lastly, I invite readers to develop their own ways to think about combinations of moves. But we should also feel free to debate the issue. For example, some may think that the combination Conceptual Gradience plus Concept Elimination is redundant or not a combination – once we go from thinking of x as binary to thinking of x as admitting of degrees, the latter has supplanted the former. However, one may counter as follows. One will be making this move as part of an argument within a larger debate. There may be some within that debate who advance reasons to continue thinking in a binary way. For example, some within the debate about biological individuality think the notion of individuals admitting of degrees is metaphysically incoherent (which is prima facie understandable given the root of the word). So, in a literature characterized by gradient thinking, they would be motivated to insist on a move that goes in the opposite direction (i.e. from a spectrum concept to a binary concept). Perhaps then, in the context of a debate characterized by a competing gradient conception and binary conception, the combination of Conceptual Gradience and Concept Elimination advances a stronger position in which one insists the debate must move forward in a way that recognizes spectrum thinking about x, not in parallel with the binary option.
+
+4. Conclusion
+
+Philosophers can benefit from useful tools that inspire and aid in the formulation of new arguments. I have suggested that there are some usefully noted moves to be found throughout the vast philosophical literature that may help one organize their thinking, recognize and catalogue characteristic dialectical structures and advance debates. In this paper, I have presented three such moves, and introduced the possibility of making meta-moves as well as other combinations of moves.
+
+University of Auckland
+New Zealand
+dkel960@aucklanduni.ac.nz
+
+[References follow]

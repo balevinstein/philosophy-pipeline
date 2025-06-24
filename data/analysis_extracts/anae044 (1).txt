@@ -1,0 +1,118 @@
+Microaggression and ambiguous experience
+Luke Brunning
+
+Abstract
+Regina Rini argues that ambiguity about whether behaviour instantiates oppression is constitutive of microaggression. I give reasons to doubt this: people can be clear that someone's behaviour towards them instantiates oppression; ambiguity does not seem to feature centrally in apologies for microaggression; ambiguity can be present when someone is a victim of microaggression due to external causes such as fatigue; ambiguity can be introduced or dispelled by the corroborating input of third parties, some of whom have expertise as oppressed people themselves. These points lend support to a structural account of microaggression where ambiguity is an optional aggravating feature of some microagressive behaviour.
+
+Keywords: microaggression, ambiguity, oppression, apology, corroboration
+
+1. The 'ambiguous experience' account of microaggressions
+
+Microaggressions – for example, members of racial minorities being asked 'Where are you really from?' – are common, apparently unintentional and minor remarks or actions which seem to denigrate members of oppressed social groups.
+
+Microaggressions require analysis because, although they seem to be a pervasive form of wrongdoing, people disagree about what they are, their relationship to other forms of wrongdoing, whether we are responsible for them and how we ought to address them. Broadly speaking, accounts of microaggressions can focus on the perpetrator's motives, a victim's state of mind or the structural impact of microaggressions on oppressed groups.
+
+Regina Rini (2020) has developed an account of microaggressions that focuses on the experience of victims. She argues that this avoids epistemic problems surrounding the identification of perpetrator motives or cases where they are well-meaning (Rini 2020: 43–47). She also suggests her focus has advantages over structural accounts that struggle to accommodate cases where tokens of microaggression seem unconnected to oppression (Rini 2020: 81).
+
+Rini defines a microaggression as an act or event that is 'perceived by a member of an oppressed group as possibly but not certainly instantiating oppression' (2020: 59). That a microaggression possibly instantiates oppression is intended to ensure this account is not wildly subjective; not every act or remark has such a possible connection (Rini 2020: 66). Embracing standpoint epistemology, Rini presupposes that oppressed people 'are experts in understanding oppression in some general sense' (Rini 2020: 56). Their expertise means they are usually well placed to note how certain remarks or behaviours function to sustain their marginalization.
+
+The idea that microaggressions are not experienced as certainly instantiating oppression is intended to foreground ambiguity as a constitutive feature of microaggressions. What it is to be victim to a microaggression – and what distinguishes microaggressions from 'overt bigotry' (Rini 2020: 63) – is to be unsure about whether the act or remark really does connect to oppression. Ambiguity is why microaggressions harm individuals directly; ambiguity leads to doubt and a range of other epistemic harms and lapses in self-trust (Rini 2020: 65).
+
+This account of microaggression remains highly subjective. If Jim and Jane are subject to the same remark from Karl, for example, but Jane experiences ambiguity about its oppressive significance and Jim does not, then only Jane has been victim to a microaggression (Rini 2020: 61).
+
+Rini contrasts her view with structural accounts such as Emily McTernan's (2018). McTernan characterizes microaggressions as acts undertaken by members of dominant groups that can seem morally innocuous because they are subtle or minor, that are plausibly understood not to require malicious motivations and that serve to degrade or put people down as members of a subordinated social group. McTernan argues that the cumulative impact of microaggressions is to 'form a social practice that contributes to structures of oppression and marginalization' (2018: 269).
+
+Although both Rini and McTernan want to anchor microaggressions in oppression, Rini rejects the structural view for being insufficiently attentive to the epistemic status of oppressed people. She thinks it has the worrying consequence that someone could be mistaken about whether they were subject to a microaggression. As Rini puts it, 'when purported victims themselves insist that the situation is fine, I'm hesitant to overrule their judgment' (Rini 2020: 81). On the structural view, the wrong of microaggressions is 'best understood by considering them collectively', which decentres the victim's experiences of ambiguity and doubt and makes the harms of such ambiguity seem orthogonal to what makes microaggressions wrong (McTernan 2018: 271).
+
+2. The right place for ambiguity
+
+Rini is right that experiences of ambiguity and doubt can be harmful, but they do not seem constitutive or 'definitional' (Rini 2020: 69) of being victim to microaggression, as I will now try to illustrate.
+
+2.1 Ambiguity and clarity
+
+Rini thinks oppression is objective and 'made up of historically entrenched social processes' (Rini 2020: 66). Her definition of microaggression focuses on ambiguity around whether something 'instantiates oppression'. But what this might mean can itself be ambiguous.
+
+Consider Sarah who is asked 'But where are you really from?' by her colleague Mark. Sarah faces two questions, one concerning the status of this type of remark, the other as a token. Viewed as a type of remark, Sarah can consider its wider social impact, function or meaning in asking 'what does that remark mean?' Viewed as a token statement, Sarah can ask 'what did Mark mean by that?'
+
+Sarah could be clear that Mark's remark does instantiate oppression in contributing to a social process that marginalizes some people over others on grounds of ethnicity, while remaining unclear what Mark meant in saying what he said. Conversely, Sarah might be clear about what Mark meant, yet struggle to understand whether, or how, being asked where one is really from connects to oppressive social processes or is typically understood by others as a microaggression. Similarly, Mark's attempts to deflect away from accusations of microaggressing could involve disputing his intentions, for example by saying 'I didn't mean that by it', or by disputing the connections between his remark and oppression, for example by saying 'it has nothing to do with ethnicity'.
+
+Recognizing the possibility of drawing this distinction prompts the question: which form of ambiguity matters most when defining microaggression? It would arguably be too strong to insist that both are necessary for a microaggression to occur. Rini also rejects accounts of microaggression that hinge on a perpetrator's motives because they are often opaque (Rini 2020: 43–59).
+
+This suggests that what really matters is the connection between the type of action/remark and oppressive structures. But the question of whether and how certain typical actions relate to oppressive structures is one that is independent from how a person feels when they experience those actions. Sarah might be unsure whether being asked 'Where are you really from?' constitutes oppression, for instance, but an answer to that question lies outside of the horizon of her experience.
+
+More interestingly, what if Sarah is clear that the question 'Where are you really from?' does help sustain oppression? If so, she does not experience ambiguity in that sense (although she might still wonder what Mark meant by his words at that time). On Rini's ambiguous-experience account we would have to say Sarah is not a victim of a microaggression. But if not, then how are we to understand, and morally label, what Mark has done? If we want to resist suggesting he is overtly bigoted, we lack useful moral language here if we are unable to reach for the concept of microaggression. Insisting that ambiguity is constitutive of microaggressions seems to miss out some paradigm cases, which is implausible.
+
+2.2 Wrongdoing, apology and what matters
+
+Our intuitions about how to make amends to someone can help us appreciate our action's wrong-making features. How might Mark apologize to Sarah for his remark? There seem to be two options: he can apologize for the type of remark he made, or apologize for the way his particular words caused Sarah to experience ambiguity. Typically, we seem to want microaggressors to realize the social implications of their speech or actions, that is, address the type of remark or action. (This emphasis seems to be echoed in Rini's discussion of proleptic blame and how we should respond to microaggressions.) It would seem strange, I suggest, if Mark's apology were to focus instead on the fact that he caused Sarah to experience ambiguity.
+
+This strangeness does not necessarily speak against Rini's account because it could be the case that the wrong-making feature of a microaggression and its apology-requiring feature do not need to align, but the strangeness of apologizing in terms of ambiguity does bring pressure to bear on the idea that the experience of ambiguity lies at the heart of what microaggressions are. At the very least Rini needs to provide further argument to explain why the feature that makes a microaggression a microaggression, on her account, is not the feature central to the apologies of wrongdoers who focus instead on the social and structural meanings of their words and actions. When it comes to making amends for microaggressions, structural accounts seem more natural.
+
+2.3 Ambiguity for the wrong reasons
+
+Ambiguity can creep into microaggressions in different ways, as we have seen. But people are susceptible to experiences of ambiguity for a range of reasons. Temperamental differences, for example, mean some are more sensitive to the possibility of multiple meanings than others.
+
+Actions can also be experienced ambiguously for reasons of tiredness, stress, heightened emotions or being triggered by a recent event. The ambiguous-experience account risks encompassing Gettier-style cases where someone experiences a remark in an ambiguous way, the remark is actually connected to oppressive structures but the cause of their ambiguity experience is unrelated to oppression and has an external cause.
+
+More troublingly, on Rini's view, someone's fatigue might make them experience an overt slur as connected ambiguously to oppression. For example, they may fail to parse someone's remarks correctly, or attend to their body-language, or an aspect of context that makes clear the intended meaning of their speech or behaviour. It seems odd to say they are victims of a microaggression because of tiredness when they would be victims of bigotry if not tired.
+
+Ambiguity is a feature of lots of behaviours, including serious harms like gaslighting and manipulation. If ambiguity is to be a part of an account of what microaggressions are, we need to sift between these cases to isolate instances where someone experiences the ambiguity because of the remark or action itself and not some other factor.
+
+Microaggressions seem liable to generate ambiguity precisely because of their phrasing as compliments or apparently simple or innocent questions that betray underlying views about the marginalized group. There is a difference between being unsure whether something was linked to oppression because someone is tired and cranky, and because of the nature of the words used.
+
+2.4 Bystanders
+
+Experiences of ambiguity can extend beyond people who are subject to a remark or action. Consider this example:
+
+Jane is a white mother with a mixed-raced daughter Simone, who is eight. At school Simone often attracts the attention of other white parents who 'simply must' touch her wavy hair. The other parents are otherwise friendly, but their fixation of Simone's hair unsettles Jane; she thinks their attention is connected to racial oppression but is not sure.
+
+Jane is not racially oppressed herself and is not being touched; however, she appears to be experiencing unease and ambiguity about the connection between the other parents' actions and oppression. This unease might ramify and cause her other forms of doubt and epistemic harm. If this kind of experience is central to what microaggressions are, why not say that Jane is also subject of a microaggression?
+
+Now consider the case again from Simone's perspective.
+
+Tom, a Black parent at the school, notices Simone's confusion after yet another interaction with a white parent and decides to talk to her with Jane saying, 'they do that to my kid too, but you'd never see them touching a blonde girl! They might be well-meaning, but it gives the wrong impression that some people's bodies are more their own than others, sadly.' After speaking to Tom, Simone's confusion shifts into a new appreciation of the racialized nature of these interactions.
+
+Tom's intervention helps to corroborate the experience of Simone and Jane, who sensed that something was awry in the touches of these 'well-meaning' parents. He has the standing to make this intervention as someone from a racial minority who has a child who had similar experiences. But notice that his intervention dispels Simone's sense of ambiguity about what she's experiencing, which, if the ambiguous-experience account is correct, means that Simone is not subject to a microaggression.
+
+Similarly, Tom might encounter Sarah, from my example in §2.1, giving earnest replies to her colleague Mark's questions and might tactfully suggest to her later that those remarks carry connotations about ethnicity, nationality and belonging. As a result, his intervention could introduce ambiguity that she did not feel previously.
+
+As a bystander, Tom seems to have the power to make it the case, or make it not the case, that someone else is a victim of a microaggression as a consequence of his efforts to provide an interpretive perspective on remarks or actions they experience. This seems strange, as we want to say it is Mark, or the white parents, who are the microaggressors in these examples and that they remain so, irrespective of what Tom says.
+
+3. Community corroboration and insight
+
+Rini's account of microaggressions remains deeply dependent on the victim's attitude to a remark or action. In considering cases of hair touching experienced by Black women, she writes
+
+So, is asking to touch a Black woman's hair a microaggression ... it depends on the woman, on the context, and how she experiences it. For Black women who find the request intrusive and see in it the possibility of prejudiced motives, then yes, this is a microaggresion. And for those who welcome the interaction, it's not a microaggression. (Rini 2020: 80)
+
+A leading motivation for embracing this radical position is that it seems inappropriate to suggest these women are mistaken about their experiences. Rini is clear, for example, 'I certainly don't think I, as a white person, am in any position to tell a Black woman who loves people asking to touch her hair that she is misperceiving her social relations' (Rini 2020: 80).
+
+This helps us understand how her account goes awry. Rini is certainly right that as a matter of good moral practice we should often be reluctant to intervene and challenge the experiences of other people, especially in situations where we are not members of a relevant social group or otherwise lack good standing. But recognition of this fact should not influence our underlying account of what microaggressions are. I might be hesitant to tell a stranger that someone raised a middle-finger to them behind their back, for example, but my reluctance – even if justified – does not shape my account of which actions are instances of swearing and which are not.
+
+In trying to avoid some of the trouble that comes with identifying perpetrator intentions, Rini's account swings too far the other way and focuses on victim experiences. This is like an account of meaning that seeks to reject the idea that what words mean is determined by the speaker's intentions by suggesting that what words mean is settled by what the hearer infers. It misses out the fact that there can be a meaning to words that is understood in a social context irrespective of intention or what is understood at a particular time. Different people may do different things with the phrase 'Where are you really from?' but that phrase has a social thickness, a meaning that can be examined and situated in a broader context. The same is true of other phrases, questions, tones, forms of body language and touch that have a history and are patterned around oppressive attitudes and stereotypes.
+
+Recognition of this point is important if we are to do justice to the standing and expertise of oppressed people. Rini's account of microaggression tries to foreground this knowledge but does so in an overly individual way. She might be right to think that she lacks standing to question a Black women's experiences (as I also do), but this might not be true of other Black women or members of other minority groups. Members of the community, like Tom, can explain the connections between hair-touching, racial stereotypes and other dimensions of oppression and help people view certain token actions as instances of more broadly oppressive types. In some cases, such as being asked 'Where are you really from?', these associations might be well trodden and sit on the surface of collective experience. In other cases, however, some analysis might be required to discover whether an apparently innocent or well-meant interaction is linked to oppressive social structures (Dabiri 2020).
+
+A shift of focus onto groups helps us better account for cases of individual variance. Individuals might not appreciate that a certain act is microaggressive, while this is clear to their community. This offers one route Rini might take to salvage her emphasis on ambiguity: namely, to relocate the problem away from oppressed individuals and towards oppressed groups. Viewed in this way, experiences of microaggression are those that would cause any, or most, member(s) of an oppressed group to experience an action as possibly but not definitively instantiating oppression.
+
+This modified approach is still vulnerable to some of the points raised above, however: most notably the concern that ambiguity does not seem to be a necessary feature of microaggression and that experiences of ambiguity can creep into instances of microaggression in extraneous ways. We are also left with Rini's dichotomy between microaggression and overt bigotry, which seems to leave little room for small but unambiguously experienced forms of wrongdoing.
+
+As a result, it is better to view experiences of ambiguity as an aggravating dimension of many instances of microaggression, and as one of the collective harms that repeated microaggressions can engender within oppressed groups.
+
+4. Conclusion
+
+Clearly ambiguity is a feature of some experiences of microaggression. But I have argued that ambiguity is not a defining feature of microaggressions for several reasons.
+
+The question of whether certain behaviour relates to oppression often bypasses the subjective experience of the subject of that behaviour. Sometimes there is no ambiguity that something was a microaggression.
+
+Ambiguity also seems marginal to what is at stake when people apologize and seek to make amends for microaggressing, which either further suggests ambiguity is not an important feature of these wrongs, or points to an interesting misalignment in need of explanation between the wrong-making features of microaggressions and our existing practices of apology.
+
+I have also suggested that when people do experience ambiguity in the context of microagressions it can be present for a range of reasons. Fatigue or strong emotions, for example, can colour someone's perspective and inject ambiguity into a clearly troubling remark. Third parties can also shape how people understand behaviour, and may both introduce and remove ambiguity about the connections between some behaviour and patterns of oppression.
+
+Finally, Rini is rightly cautious about the standing of non-oppressed individuals to make judgements about the experiences of others, but overlooks the ways people within oppressed communities can remove each other's ambiguity in responding to types of microaggression which have clear communal meanings.
+
+Taken together, my argument indirectly supports a structural approach to microaggression. Experiences of ambiguity can still play an aggravating role in making microaggressions worse for some people, but we can capture that insight without suggesting ambiguity is a constitutive feature of microaggression.
+
+References
+Dabiri, E. 2020. Don't Touch My Hair. London: Penguin.
+McTernan, E. 2018. Microaggressions, equality, and social practices. Journal of Political Philosophy 26: 261–81.
+Rini, R. 2020. The Ethics of Microaggression. Abingdon: Routledge.

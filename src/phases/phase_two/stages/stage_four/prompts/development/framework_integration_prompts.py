@@ -48,6 +48,13 @@ Analyze the abstract framework and key moves provided below to create a logical 
 3. Provide word count allocations that ensure appropriate development of each component
 4. Ensure the structure supports the main thesis
 
+## THESIS ADHERENCE (Anti-Drift)
+Your structural decisions must support this thesis: "{main_thesis}"
+- Organize sections to build toward and support the thesis
+- Ensure the structure enables the thesis to be convincingly defended
+- Do NOT create structures that would undermine or contradict the thesis
+- The flow should make the thesis appear well-supported and logical
+
 ## Expected Output Format
 Your output should be a structured outline with:
 - Numbered sections (1, 2, 3, etc.) and subsections (1.1, 1.2, etc.)

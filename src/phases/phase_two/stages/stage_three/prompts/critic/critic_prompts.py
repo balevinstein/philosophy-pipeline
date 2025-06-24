@@ -28,7 +28,7 @@ class MoveCriticPrompts:
             current_content = move_development
 
         # Get the main thesis and contribution from the framework
-        main_thesis = framework.get("main_thesis", "")
+        main_thesis = framework.get("main_thesis", "See framework for thesis")
 
         prompt = f"""<context>
 You are part of an automated philosophy paper generation pipeline. This is Phase II.3 (Key Moves Development).
@@ -60,6 +60,23 @@ Main thesis: "{main_thesis}"
 </move_context>
 
 <requirements>
+PHASE 0: THESIS CONSISTENCY ANALYSIS (PRIORITY CHECK)
+Paper's main thesis: "{main_thesis}"
+
+Systematic consistency check:
+☐ Does this move support the main thesis?
+☐ Does this move contradict the main thesis?  
+☐ Does this move accidentally undermine what the paper claims to establish?
+☐ Are there specific claims that work against the thesis?
+
+If you detect contradiction:
+- Quote the specific contradictory claim
+- Explain how it contradicts the thesis
+- Assess severity: "FATAL FLAW" or "MINOR TENSION"
+- Note: "You claim [thesis] but this move argues [contradiction]"
+
+IMPORTANT: Be skeptical of the thesis itself if warranted. Flag contradictions without forcing agreement. You should evaluate consistency, not enforce agreement.
+
 PHASE 1: CLAIM ISOLATION AND SKEPTICAL ANALYSIS
 For EACH major claim in the development:
 1. Quote the specific claim verbatim
@@ -154,6 +171,11 @@ RED FLAGS that guarantee rejection:
 <output_format>
 # Skeptical Friend Analysis
 
+## Thesis Consistency Check
+Paper thesis: "{main_thesis}"
+Consistency assessment: [SUPPORTS THESIS / CONTRADICTS THESIS / NEUTRAL / MIXED]
+[If contradictory: Quote specific contradictory claims and explain the contradiction]
+
 ## Isolated Claims and Fatal Objections
 [For each major claim:
 "CLAIM: [exact quote]"
@@ -206,6 +228,9 @@ Next steps: [2-5 specific fixes that would satisfy a hostile reviewer]
         else:
             current_content = move_development
 
+        # Get the main thesis from the framework
+        main_thesis = framework.get("main_thesis", "See framework for thesis")
+
         prompt = f"""<context>
 You are part of an automated philosophy paper generation pipeline. This is Phase II.3 (Key Moves Development).
 You are evaluating whether examples are publication-ready for direct inclusion in the final paper.
@@ -225,6 +250,12 @@ Consider the 4,000-word limit - examples must be concise and essential.
 </current_development>
 
 <requirements>
+THESIS CONSISTENCY CHECK:
+Paper's main thesis: "{main_thesis}"
+☐ Do the examples support the main thesis?
+☐ Do any examples undermine or contradict the thesis?
+☐ Are examples chosen to strengthen the thesis argument?
+
 Evaluate whether the examples are truly publication-ready:
 
 1. NECESSITY: Are examples actually needed for this move? Would the argument be clear without them?
@@ -287,6 +318,9 @@ Next steps: [List 2-5 specific, actionable recommendations for improving example
         else:
             current_content = move_development
 
+        # Get the main thesis from the framework
+        main_thesis = framework.get("main_thesis", "See framework for thesis")
+
         # Extract some literature context
         lit_summary = ""
         lit_synthesis = literature.get("synthesis", {})
@@ -322,6 +356,12 @@ Consider the 4,000-word limit - literature citations must be essential.
 </literature_context>
 
 <requirements>
+THESIS CONSISTENCY CHECK:
+Paper's main thesis: "{main_thesis}"
+☐ Does the literature integration support the main thesis?
+☐ Does any cited literature undermine or contradict the thesis?
+☐ Is literature presented in ways that strengthen the thesis argument?
+
 Evaluate whether the literature integration is truly publication-ready:
 
 1. NECESSITY: Is literature engagement actually needed for this move? Would the argument stand alone?

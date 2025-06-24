@@ -1,0 +1,62 @@
+Analysis Vol. 84 | Number 3 | July 2024 | 465–475
+
+Stable dystopia: A critique of the circular definition of stability in Nozick's model of utopia
+Susumu Cato and Hun Chung
+
+Abstract
+
+In Part III of Anarchy, State, and Utopia (1974), Robert Nozick presents what he calls 'the model of possible worlds' (307) to examine the formal properties of utopia, defined as 'the best of all possible worlds' (298). The basic idea is that each person is given the power to create any possible world and its inhabitants by imagining them. Two definitions of stability have been proposed: (a) the non-circular definition according to which a world is stable if and only if nobody can imagine a better world and (b) the circular definition according to which a world is stable if and only if nobody can imagine a better world that is also stable. In this paper, we prove four theorems (namely, the indeterminacy theorem, the stable dystopia theorem, the nobody's utopia theorem and the redundancy theorem) that provide us with decisive reasons to reject the circular definition and opt for the non-circular definition of stability to analyse Nozick's theory of utopia.
+
+Keywords: Nozick, possible worlds model, utopia, dystopia, circular stability
+
+1. Introduction: Nozick's possible worlds model of utopia
+
+After arguing that the minimal state can be justified in Part I and that no state more extensive than the minimal state can be justified in Part II, in Part III of Anarchy, State, and Utopia (ASU), Robert Nozick attempts to show that the minimal state is (rather surprisingly and unexpectedly) the practical realization of utopia, defined as 'the best of all possible worlds' (Nozick 1974: 298). To examine the formal properties of utopia, Nozick presents what he calls 'the model of possible worlds' (Nozick 1974: 307). The basic idea is that each person is given the power to create any possible world and its inhabitants by imagining them; each inhabitant of each world then decides whether to stay in the world or leave the world for an alternative world that they can imagine: 'This process goes on; worlds are created, people leave them, create new worlds, and so on' (Nozick 1974: 299) until we reach a stable equilibrium in which 'none of the inhabitants of [any] world can imagine an alternative world they would rather live in' (Nozick 1974: 299).
+
+Note that the stability so achieved is a very idealized form of stability. Everybody remains in their world, not because they are coerced to stay or because better worlds that may exist only in their imaginations cannot be fully realized due to some practical restrictions. Rather, everybody remains in their current world entirely voluntarily simply because there exists no better world that each person can possibly imagine. For everybody, the current world is literally 'the best of all possible worlds', that is, it is utopia. This is why, in Nozick's possible worlds model, '[b]eing stable turns out to be a necessary and sufficient condition for a world to have the utopian property' (Bader 2011: 257).
+
+The crucial question is whether any stable worlds in Nozick's possible worlds model exist. Achieving stability in Nozick's possible worlds model is not easy. This is because, in order for any world to be stable, it must be the very best world for each and every member of that world. Nozick's basic motivation for initially proposing (but ultimately rejecting) a circular definition of stability was, in part, to make it easier to find stable worlds in his possible worlds model. The basic idea is that when judging whether a specific world ω is stable, we need not ask each inhabitant of ω whether there exists an alternative imaginable world that they prefer; rather, we need only ask whether there exists an alternative imaginable stable world that they prefer (Nozick 1974: 305). Bader (2011) defines the circular definition of stability as follows:
+
+stabiltyW: Stable worlds have the property of being such that none of their inhabitants can imagine any world they consider to be stable and of which they would rather be an inhabitant. (Bader 2011: 257)
+
+The definition is circular because stability of a world is defined in terms of the lack of better worlds that are stable: that is, stability is defined in terms of stability. Owing to its circularity, Nozick quickly dismissed the circular definition of stability as soon as he introduced it (Nozick 1974: 305). However, against Nozick's pessimism, Bader argues that the circular definition of stability, despite its circularity, is unproblematic:
+
+Since the worlds that have to satisfy the condition of not being judged to be better than the utopian world are restricted to worlds that are believed to be stable, the characterization of stability is circular. Nozick is aware of this problem but sets it aside (see p. 305). We can note that this circularity is unproblematic since the conditions for stability of w will be disjunctive; that is, either there is no world w∗ that is judged to be better than w, or every world w∗∗ that is judged to be better than w is believed not to be stable, whereby the latter condition is cashed out as there being a world w∗∗∗ that is better than w∗∗ and stable, whereby the conditions for w∗∗∗ to be stable are again our original disjunctive conditions, i.e., either there is no world w∗∗∗∗ that is judged to be better than w∗∗∗, or every world w∗∗∗∗∗ that is judged to be better than w∗∗∗ is believed not to be stable, and so on, thereby making it the case that the stability conditions will not always be finitely statable. (Bader 2011: 285 n.2)
+
+It is not entirely clear how the conditions for stability being 'disjunctive' make the circular definition of stability unproblematic as Bader explains. However, the basic thought seems to be this: according to the circular definition of stability, a world ω can be stable if either (a) there is no other world that is judged to be better than ω, or (b) every other world that is judged to better than ω is believed to be unstable. If a world ω is stable in the non-circular definition, then it automatically satisfies the first disjunct, (a), and is therefore stable also in the circular definition; however, a world that is unstable in the non-circular definition (i.e. a world that fails to satisfy (a)) may nonetheless still be stable in the circular definition by satisfying the second disjunct, (b). In other words, there is an additional way for a world ω to be stable in the circular sense as opposed to being stable in the non-circular sense. Therefore the set of stable worlds in the circular sense is larger than the set of stable worlds in the non-circular sense. If we are interested in ensuring the existence of stable worlds in Nozick's possible worlds model, then using the circular definition of stability might seem to be prima facie a better candidate assuming that such a circular definition does not have other critical problems.
+
+However, in this paper, we will reinforce Nozick's pessimism and demonstrate that the circular definition of stability is much more problematic (independent of its circularity) than Bader and even Nozick had initially thought. We will argue that the non-circular definition of stability is the preferred concept when analysing Nozick's theory of utopia.
+
+2. The setup: formalizing Nozick's possible worlds model
+
+Let N be the set of possible individuals who are rational. We assume that N is a finite or infinite set. A coalition A is a subset of N; it represents the set of inhabitants/members of a given world. Let Γ be the set of possible institutional arrangements. Then a world ω is a pair of a coalition A ⊆ N and an institutional arrangement γ ∈ Γ; that is, a generic world is given as follows:
+
+ω = (A, γ).
+
+Depending on how we characterize γ, this definition allows our basic setup to be widely applicable to many different institutional situations. We assume that each individual i ∈ N imagines about the set of possible worlds. This set of imaginings is denoted by Ii. That is, ω = (A, γ) ∈ Ii means that the world ω (with its corresponding set of inhabitants A and institutional arrangement γ) is imaginable for individual i. Let I be a profile of imaginings of possible individuals:
+
+I = (Ii)i∈N.
+
+We also assume that each individual has a preference ordering i (an asymmetric and negatively transitive binary relation) over worlds: for each i ∈ N and any two worlds ω and ω, ωiω means that individual i prefers to live in world ω rather than in world ω.
+
+3. Two definitions of stable worlds
+
+Given a profile I of individual imaginings, let S∗(I) denote the set of stable worlds characterized by the non-circular definition of stable stability and let S(I) denote the set of stable worlds characterized by the circular definition of stability. From this we may formally define both the non-circular and circular definitions of stable worlds as follows.
+
+(Non-circular definition of stability) Let ω = (A, γ) be any world. Then ω = (A, γ) ∈ S∗(I) if and only if ω ∈ Ii for each individual i ∈ A, and there exists no i ∈ A such that ω
+iω for some ω∈ Ii.
+
+(Circular definition of stability) Let ω = (A, γ) be any world. Then, ω = (A, γ) ∈ S(I) if and only if ω ∈ Ii for each individual i ∈ A, and there exists no i ∈ A such that ω
+iω for some ω ∈ Ii ∩ S(I).
+
+We would like to point out that there is nothing wrong with using circular definitions in themselves; there are several mathematical concepts (e.g. the factorial function n!, the set of natural numbers N, etc.) that can be defined precisely using recursive circular definitions. So we are not criticizing the circular definition of stability for its circularity. However, in the remainder of the paper, we will demonstrate that the circular definition of stability has critical theoretical and conceptual flaws that completely contradict the basic intention behind its very design.
+
+4. The circular definition of stability is unstable
+
+We first demonstrate a fundamental flaw of the circular definition of stability: the circular definition of stable worlds does not uniquely determine a set of stable worlds. The implication is that any set of stable worlds that results from the circular definition is arbitrary, rendering the circular definition of stability unstable.
+
+Theorem 1 (Indeterminacy Theorem). There exists a set of individuals N and an imagination profile I such that S(I) (i.e. the set of stable worlds characterized by the circular definition of stability) is not uniquely determined.
+
+[Content continues with proof of theorems and further discussion through page 475]
+
+[Truncated rest of content due to length]

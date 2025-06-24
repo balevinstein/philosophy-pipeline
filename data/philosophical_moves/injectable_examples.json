@@ -1,0 +1,143 @@
+{
+  "abstract_development": {
+    "description": "Moves for developing clear thesis statements and framing",
+    "examples": [
+      {
+        "pattern_name": "Special Cases Restriction Maneuver",
+        "pattern_description": "When universal claim faces counterexamples: (1) acknowledge the exceptions, (2) restrict scope appropriately, (3) argue restricted conclusion still philosophically important",
+        "example_quote": "However, even if we accept the existence of either essentialist facts or totality facts and their being 'ungroundable' in this weak sense of possibility, we can simply restrict (PG) to conjunctions of facts that are equivalent to neither essentialist facts nor totality facts. In this case, if the fact that A is neither an essentialist fact nor a totality fact, then most plausibly the same can be said of the fact that ~GA, so that the argument just given can be used to argue that there are at least no fundamental facts that are neither essentialist facts nor totality facts \u2013 a result that is surely surprising enough on its own.",
+        "mechanism": "When faced with potential counterexamples to universal claim, restrict scope to exclude problematic cases while maintaining substantive conclusion",
+        "achievement": "Preserves main argument by acknowledging limitations while showing result remains philosophically significant",
+        "source": "There are no fundamental facts by Roberto Loss",
+        "context": "[Responding to objection that essentialist facts and totality facts might be necessarily fundamental, which would violate the argument's assumptions]"
+      },
+      {
+        "pattern_name": "Mechanism-Testing Through Systematic Variation",
+        "pattern_description": "When mechanism M is proposed, test M across varied contexts to identify its scope and limits",
+        "example_quote": "An important property of conversational implicatures arising from an utterance of a certain form of words is that they do not arise in every context in which that form of words is uttered. In particular, conversational implicatures that are otherwise present usually disappear in contexts in which the implicated content is already part of the common ground: (6') A: Is Karl a good philosopher? B: No, he isn't. But he's got a beautiful handwriting. (7') A: Are you going to the party tonight? B: No, I won't go. I don't like parties. As (6') and (7') illustrate, if we explicitly assert the otherwise implicated content, and thereby add it to the common ground before the utterance in question is made, the original implicature is blocked or suspended.",
+        "mechanism": "Identifies a general principle about implicatures, then tests it systematically across multiple cases to establish its reliability",
+        "achievement": "Establishes the contextual suspension principle as a reliable test for genuine implicatures",
+        "source": "Moderate pragmatic invariantism and contextual implicature cancellation by Michael Blome-Tillmann",
+        "context": "[Building on the established cases (6) and (7) from the previous move]"
+      },
+      {
+        "pattern_name": "Scope Limitation via Idealization Defense",
+        "pattern_description": "Acknowledge apparent counterexample \u2192 Restrict scope to domain where counterexample doesn't apply \u2192 Justify restriction as theoretically appropriate",
+        "example_quote": "The Guaranteed Principle does not hold of imperfect agents, nor of agents who expect to be imperfect. Take an extreme illustration. Suppose that the least choiceworthy option made available by a decision that guarantees $n is very bad indeed, and suppose that I have a lesion that makes me choose from among the least choiceworthy options when I face decisions of that sort. Then, as a way of protecting myself from my disposition to choose irrationally, I should prefer the decision that forces $m to the decision that guarantees $n > $m. But the Guaranteed Principle does not purport to hold true of imperfect agents. It is restricted to (perfectly) rational agents: the idealized agents that are the subject matter of decision theory. If an agent fully expects to choose from among the most choiceworthy options, as rational agents always do, then the agent must strictly prefer a decision that guarantees $n to a decision that forces $m < $n.",
+        "mechanism": "Acknowledges apparent counterexample, then restricts scope of principle to idealized agents where counterexample doesn't apply",
+        "achievement": "Protects principle from obvious objections while maintaining theoretical relevance",
+        "source": "An argument against causal decision theory by Jack Spencer"
+      }
+    ]
+  },
+  "key_moves_development": {
+    "description": "Core dialectical and conceptual moves",
+    "examples": [
+      {
+        "pattern_name": "Inductive Plausibility Defense",
+        "pattern_description": "For controversial principle P: (1) show P holds for uncontroversial cases, (2) argue no clear counterexamples, (3) claim prima facie warrant",
+        "example_quote": "Jago claims that (P) can be defeasibly justified as follows. First, he argues that, quite plausibly, at least some of the truthmaker maximalist approaches on the market are logically consistent. Then he proceeds inductively and claims that the fact that it is clearly logically possible for some representative truths to have a truthmaker ('Obama is male; wombats are marsupials; 1 + 1 = 2; there is no greatest prime number; scarlet things are red') gives us 'warrant \u2013 not a proof, but reason nonetheless \u2013 to accept (P)' (Jago 2020: 42). Also, in the case of (PG), it appears possible to provide at least some defeasible reason for its truth.",
+        "mechanism": "Shows principle holds for clear cases, argues no clear counterexamples exist, concludes principle is prima facie plausible",
+        "achievement": "Provides defeasible support for controversial metaphysical principle without claiming certainty",
+        "source": "There are no fundamental facts by Roberto Loss",
+        "context": "[(P) is the principle that every truth can possibly have a truthmaker; (PG) is the analogous principle for grounding]"
+      },
+      {
+        "pattern_name": "Special Cases Restriction Maneuver",
+        "pattern_description": "When universal claim faces counterexamples: (1) acknowledge the exceptions, (2) restrict scope appropriately, (3) argue restricted conclusion still philosophically important",
+        "example_quote": "However, even if we accept the existence of either essentialist facts or totality facts and their being 'ungroundable' in this weak sense of possibility, we can simply restrict (PG) to conjunctions of facts that are equivalent to neither essentialist facts nor totality facts. In this case, if the fact that A is neither an essentialist fact nor a totality fact, then most plausibly the same can be said of the fact that ~GA, so that the argument just given can be used to argue that there are at least no fundamental facts that are neither essentialist facts nor totality facts \u2013 a result that is surely surprising enough on its own.",
+        "mechanism": "When faced with potential counterexamples to universal claim, restrict scope to exclude problematic cases while maintaining substantive conclusion",
+        "achievement": "Preserves main argument by acknowledging limitations while showing result remains philosophically significant",
+        "source": "There are no fundamental facts by Roberto Loss",
+        "context": "[Responding to objection that essentialist facts and totality facts might be necessarily fundamental, which would violate the argument's assumptions]"
+      },
+      {
+        "pattern_name": "Autonomous Facts Alternative Principle",
+        "pattern_description": "When principle P faces objection O: (1) construct weaker principle P+ that avoids O, (2) show P+ still sufficient for main conclusion, (3) argue P+ equally plausible as P",
+        "example_quote": "However, in order to ward off this objection it appears sufficient to replace (PG) with the following, similarly plausible principle: (PG+) (\u25caGA \u2227 (A \u2227 B)) \u2192 \u25ca(GA \u2227 B). (PG+) says that if it is the case that A \u2227 B and the fact that A is 'groundable', then it is possible for B to be the case and for the fact that A to be a grounded fact. The same train of thought used above to defend (PG) can also be used to defend (PG+). Equipped with (PG+) we can then argue as follows: [formal argument follows] This argument proves (by generalization) that every groundable fact is grounded.",
+        "mechanism": "When original principle faces objection, construct weaker but sufficient alternative principle that avoids the problem while preserving the argument's force",
+        "achievement": "Maintains argumentative power while accommodating legitimate objection about autonomous facts",
+        "source": "There are no fundamental facts by Roberto Loss",
+        "context": "[Responding to Dasgupta's objection that some facts might be 'autonomous' - not apt to be grounded at all]"
+      }
+    ]
+  },
+  "outline_development": {
+    "description": "Structural and organizational moves",
+    "examples": [
+      {
+        "pattern_name": "Bridge Case Construction for Principle Application",
+        "pattern_description": "Embed problematic case X within larger choice structure Y to make principle Z directly applicable",
+        "example_quote": "To get the argument going, consider the following elaboration of The Frustrater: (Two Rooms) An agent must enter either Room #1 or Room #2. If she enters Room #1, she gets $35. If she enters Room #2, she faces The Frustrater. The agent knows all of this. The 'decision' in Room #1 forces $35. The decision in Room #2 \u2013 namely, The Frustrater \u2013 guarantees $40. The Guaranteed Principle thus entails that a rational agent strictly prefers Room #2 to Room #1.",
+        "mechanism": "Embeds original case within new choice structure that makes principle directly applicable",
+        "achievement": "Creates scenario where principle gives clear verdict that can be tested against theory",
+        "source": "An argument against causal decision theory by Jack Spencer",
+        "context": "[The Frustrater case was described earlier as a scenario with envelope containing $40 and boxes with various amounts]"
+      },
+      {
+        "pattern_name": "Operational Definition by Grounding Profile",
+        "pattern_description": "Define abstract operations by their systematic effects: (1) State general principle as slogan, (2) Give precise clauses for each operation, (3) Show how clauses justify desired principles",
+        "example_quote": "On the present structured account ground and antiground enter the picture in the definitions of the logical operations themselves \u2013 the idea being that a logical operation is defined by the contribution it makes to how propositions containing it are grounded and antigrounded. In a slogan: logical operations are individuated by their Grounding Profile. The clause for negation is straightforward. Negation is that operation \u223c such that for all propositions p (i) the immediate grounds for \u223cp are exactly the antigrounds for p; and (ii) the unique antiground for \u223cp is exactly p.",
+        "mechanism": "Defines abstract operations by specifying their systematic contribution to grounding relations, encapsulated in memorable slogan",
+        "achievement": "Provides precise definitions of logical operations that justify the desired grounding principles",
+        "source": "A note on the Wilhelmine Inconsistency by Jon Erling Litland",
+        "context": "[Context: This is the structured criterion which maintains that propositions have logical operations as constituents]"
+      }
+    ]
+  },
+  "section_writing": {
+    "description": "Detailed argumentation and example development",
+    "examples": [
+      {
+        "pattern_name": "Inductive Plausibility Defense",
+        "pattern_description": "For controversial principle P: (1) show P holds for uncontroversial cases, (2) argue no clear counterexamples, (3) claim prima facie warrant",
+        "example_quote": "Jago claims that (P) can be defeasibly justified as follows. First, he argues that, quite plausibly, at least some of the truthmaker maximalist approaches on the market are logically consistent. Then he proceeds inductively and claims that the fact that it is clearly logically possible for some representative truths to have a truthmaker ('Obama is male; wombats are marsupials; 1 + 1 = 2; there is no greatest prime number; scarlet things are red') gives us 'warrant \u2013 not a proof, but reason nonetheless \u2013 to accept (P)' (Jago 2020: 42). Also, in the case of (PG), it appears possible to provide at least some defeasible reason for its truth.",
+        "mechanism": "Shows principle holds for clear cases, argues no clear counterexamples exist, concludes principle is prima facie plausible",
+        "achievement": "Provides defeasible support for controversial metaphysical principle without claiming certainty",
+        "source": "There are no fundamental facts by Roberto Loss",
+        "context": "[(P) is the principle that every truth can possibly have a truthmaker; (PG) is the analogous principle for grounding]"
+      },
+      {
+        "pattern_name": "Special Cases Restriction Maneuver",
+        "pattern_description": "When universal claim faces counterexamples: (1) acknowledge the exceptions, (2) restrict scope appropriately, (3) argue restricted conclusion still philosophically important",
+        "example_quote": "However, even if we accept the existence of either essentialist facts or totality facts and their being 'ungroundable' in this weak sense of possibility, we can simply restrict (PG) to conjunctions of facts that are equivalent to neither essentialist facts nor totality facts. In this case, if the fact that A is neither an essentialist fact nor a totality fact, then most plausibly the same can be said of the fact that ~GA, so that the argument just given can be used to argue that there are at least no fundamental facts that are neither essentialist facts nor totality facts \u2013 a result that is surely surprising enough on its own.",
+        "mechanism": "When faced with potential counterexamples to universal claim, restrict scope to exclude problematic cases while maintaining substantive conclusion",
+        "achievement": "Preserves main argument by acknowledging limitations while showing result remains philosophically significant",
+        "source": "There are no fundamental facts by Roberto Loss",
+        "context": "[Responding to objection that essentialist facts and totality facts might be necessarily fundamental, which would violate the argument's assumptions]"
+      },
+      {
+        "pattern_name": "Autonomous Facts Alternative Principle",
+        "pattern_description": "When principle P faces objection O: (1) construct weaker principle P+ that avoids O, (2) show P+ still sufficient for main conclusion, (3) argue P+ equally plausible as P",
+        "example_quote": "However, in order to ward off this objection it appears sufficient to replace (PG) with the following, similarly plausible principle: (PG+) (\u25caGA \u2227 (A \u2227 B)) \u2192 \u25ca(GA \u2227 B). (PG+) says that if it is the case that A \u2227 B and the fact that A is 'groundable', then it is possible for B to be the case and for the fact that A to be a grounded fact. The same train of thought used above to defend (PG) can also be used to defend (PG+). Equipped with (PG+) we can then argue as follows: [formal argument follows] This argument proves (by generalization) that every groundable fact is grounded.",
+        "mechanism": "When original principle faces objection, construct weaker but sufficient alternative principle that avoids the problem while preserving the argument's force",
+        "achievement": "Maintains argumentative power while accommodating legitimate objection about autonomous facts",
+        "source": "There are no fundamental facts by Roberto Loss",
+        "context": "[Responding to Dasgupta's objection that some facts might be 'autonomous' - not apt to be grounded at all]"
+      }
+    ]
+  },
+  "critics_all": {
+    "description": "Moves showing philosophical rigor for critics to look for",
+    "examples": [
+      {
+        "pattern_name": "Infinite Lottery Counterexample",
+        "pattern_description": "Use extreme mathematical cases to reveal conceptual problems in standard theories",
+        "example_quote": "It is well understood that if rational credences are real-valued, then there are some possible events that are assigned 0 credence nonetheless, for example a particular ticket winning in a fair infinite lottery. After all, in any fair lottery, Cr({i}) = Cr({j}), where i and j are tickets in the lottery. Since there are infinitely many tickets in a fair infinite lottery, Cr({i}) < 1/n for all n \u2208 N. If rational credences are real-valued, then Cr({i}) = 0. However, an impossible event, denoted by \u2205, is also assigned 0 credence, that is, Cr(\u2205) = 0. Is S therefore equally confident in {i} as in \u2205, that is, is she equally confident in ticket i winning as in an impossible event obtaining? To say yes seems counter-intuitive.",
+        "mechanism": "Uses mathematical properties of infinite sequences to show that possible events can have zero credence, creating paradox",
+        "achievement": "Establishes the core problem that motivates the entire debate about how to order events",
+        "source": "Primitive conditional probabilities, subset relations and comparative regularity by Joshua Thong",
+        "context": "[Cr represents credence function, {i} represents ticket i, \u2205 represents impossible event]"
+      },
+      {
+        "pattern_name": "Empirical Prediction via Theoretical Application",
+        "pattern_description": "Apply theoretical distinction to extreme case \u2192 Derive specific prediction about intuitive responses \u2192 Use prediction to test theory against alternatives \u2192 Present as evidence for theoretical superiority",
+        "example_quote": "However, the coercer has no grounds besides the joint intention on which they can make demands. To explain this, the notion of respect is critical again. By forcing me to engage in an immoral joint action, the criminal disrespects me in such a fundamental way that if the gun turns out to be fake, I have of course no obligations towards this person to notify or to seek permission to leave. I can simply leave or even call the police. I predict that lay people will share this intuition. My distinction allows us to see that leaving is not a form of wronging (moral or otherwise). Leaving does not require any special justification as there was no obligation to the criminal to begin with. There was a mistake, but only in the morally innocent first sense of merely failing to act in accordance with the joint intention.",
+        "mechanism": "Uses theoretical framework to generate specific empirical predictions about intuitive responses to extreme cases",
+        "achievement": "Demonstrates theoretical power by making testable predictions and using them to support the theoretical framework over competitors",
+        "source": "Two kinds of failure in joint action: On disrespect and directed duties by Guido L\u00f6hr",
+        "context": "[Discussing coercive joint actions and how they test theories of joint intention normativity]"
+      }
+    ]
+  }
+}

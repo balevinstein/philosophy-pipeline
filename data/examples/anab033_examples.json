@@ -1,0 +1,37 @@
+[
+  {
+    "paper_title": "Can a risk of harm itself be a harm?",
+    "type": "thought_experiment",
+    "purpose": "Tests whether subjective risks can constitute harms by creating a case where there is subjective risk but no objective possibility of harm",
+    "context": "Used to support the Interference Objection against subjective accounts of risk harm",
+    "text": "Russian Roulette Aggressor: Completely unbeknown to Adam, who is enjoying the weather on a park bench, Beth is aiming a six-shooter at him with the intention to kill him. Beth loads a single bullet into the cylinder. However, Beth in fact loads a blank, but does not realize this. Reasonably believing that there is one bullet and five empty chambers in the cylinder, Beth pulls the trigger."
+  },
+  {
+    "paper_title": "Can a risk of harm itself be a harm?",
+    "type": "thought_experiment",
+    "purpose": "Challenges objective risk accounts by forcing precision about when exactly a risk constitutes harm and demonstrating the timing problem",
+    "context": "Used to argue against Finkelstein's preference-based account of risk harm",
+    "text": "Deadly Bingo: Beth has a sophisticated lottery ball machine that triggers a loaded gun the moment ball number 13 is drawn. The gun is pointing at Adam, who is sitting on a park bench blissfully unaware of Beth's contraption. Once the machine is turned on, twenty lottery balls spin in the container."
+  },
+  {
+    "paper_title": "Can a risk of harm itself be a harm?",
+    "type": "thought_experiment",
+    "purpose": "Demonstrates that objective risks cannot interfere with interests by showing that perfect predictability renders the risk impotent without changing its objective probability",
+    "context": "Used within the Deadly Bingo scenario to argue against objective risk accounts",
+    "text": "Suppose that a perfect predictor, knowing all antecedent causes, could predict whether ball number 13 would be drawn when Beth turns on the machine. Since objective risks are mind-independent, the predictor's knowledge does not interfere with any causal processes. Suppose that the predictor perfectly predicts that ball number 13 will not be drawn. Does the objective risk nevertheless harm Adam? Since it is perfectly predicted that the risk is 'impotent', the risk's impact on Adam's interests is the same as pointing a certainly empty gun at Adam and pulling the trigger."
+  },
+  {
+    "paper_title": "Can a risk of harm itself be a harm?",
+    "type": "test_case",
+    "purpose": "Illustrates the autonomy-based account of risk harm by showing how risks can allegedly make options unsafe",
+    "context": "Presents Oberdiek's view that risks harm by limiting safe options",
+    "text": "Beth laying a trap on a path makes Adam's option of using that path unsafe. Beth makes safe passage unavailable to Adam, and this in turn sets back his interest in having a range of acceptable alternatives from which to choose."
+  },
+  {
+    "paper_title": "Can a risk of harm itself be a harm?",
+    "type": "real_world_case",
+    "purpose": "Provides the foundational scenario that motivates the entire philosophical investigation into whether risks themselves can be harms",
+    "context": "Opens the paper and establishes the practical context for the theoretical debate",
+    "text": "Beth drinks too much, gets into her car and attempts to drive home. With impaired reflexes and some swerves here and there, she continues her drive. On Beth's route is a pedestrian on the sidewalk, Adam, whom she narrowly misses. Adam is completely unaware of Beth's presence."
+  }
+]

@@ -3,8 +3,27 @@ import logging
 import os
 import subprocess
 from typing import Any, Dict
+from pathlib import Path
+import yaml
 
 import requests
+
+
+def load_config() -> Dict[str, Any]:
+    """Load configuration from config/conceptual_config.yaml"""
+    config_path = Path("config/conceptual_config.yaml")
+    if not config_path.exists():
+        raise FileNotFoundError(f"Config file not found: {config_path}")
+    
+    with open(config_path, 'r') as f:
+        return yaml.safe_load(f)
+
+
+def ensure_output_dir(dir_path: str) -> Path:
+    """Ensure output directory exists and return Path object"""
+    path = Path(dir_path)
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
 
 def load_final_selection() -> Dict[str, Any]:

@@ -138,6 +138,13 @@ KEY ARGUMENTATIVE MOVES:
 </input_data>
 
 <requirements>
+THESIS CONSISTENCY CHECK (Priority):
+Paper's main thesis: "{main_thesis}"
+☐ Does the structural framework support the main thesis?
+☐ Is the organization conducive to defending the thesis?
+☐ Are sections arranged to build toward thesis support?
+☐ Would this structure undermine the thesis argument?
+
 Evaluate the structural framework based on these specific criteria:
 
 1. **Key Move Accommodation**
