@@ -72,8 +72,7 @@ class APIHandler:
         # In APIHandler.__init__
         self.anthropic_client = anthropic.Client(
             api_key=self.anthropic_key,
-            # Add any required headers through client configuration
-            default_headers={"anthropic-beta": "pdfs-2024-09-25"},
+            # We no longer need the beta header for PDFs
         )
         if config is None:
             self.config = self.load_config()  # Load default if none provided
@@ -137,8 +136,25 @@ class APIHandler:
                 if system_prompt:
                     kwargs["system"] = system_prompt
                 
+                # Enable thinking mode for Claude Sonnet 4
+                if "claude-sonnet-4" in config["model"]:
+                    kwargs["thinking"] = {
+                        "type": "enabled",
+                        "budget_tokens": 10000
+                    }
+                    print("🧠 Thinking mode enabled for Claude Sonnet 4 (with PDF)")
+                
                 response = self.anthropic_client.messages.create(**kwargs)
-                return response.content[0].text
+                
+                # Handle thinking mode response structure
+                text_content = ""
+                for block in response.content:
+                    if block.type == "thinking":
+                        print(f"🧠 Thinking summary: {block.thinking[:200]}..." if len(block.thinking) > 200 else f"🧠 Thinking: {block.thinking}")
+                    elif block.type == "text":
+                        text_content += block.text
+                
+                return text_content if text_content else response.content[0].text
 
             except Exception as e:
                 print(f"Anthropic API call with PDF failed: {e}")
@@ -182,8 +198,25 @@ class APIHandler:
                 if system_prompt:
                     kwargs["system"] = system_prompt
                 
+                # Enable thinking mode for Claude Sonnet 4
+                if "claude-sonnet-4" in config["model"]:
+                    kwargs["thinking"] = {
+                        "type": "enabled",
+                        "budget_tokens": 10000
+                    }
+                    print("🧠 Thinking mode enabled for Claude Sonnet 4 (with multiple PDFs)")
+                
                 response = self.anthropic_client.messages.create(**kwargs)
-                return response.content[0].text
+                
+                # Handle thinking mode response structure
+                text_content = ""
+                for block in response.content:
+                    if block.type == "thinking":
+                        print(f"🧠 Thinking summary: {block.thinking[:200]}..." if len(block.thinking) > 200 else f"🧠 Thinking: {block.thinking}")
+                    elif block.type == "text":
+                        text_content += block.text
+                
+                return text_content if text_content else response.content[0].text
 
             except Exception as e:
                 print(f"Anthropic API call with PDFs failed: {e}")
@@ -270,8 +303,25 @@ class APIHandler:
                 if system_prompt:
                     kwargs["system"] = system_prompt
 
+                # Enable thinking mode for Claude Sonnet 4
+                if "claude-sonnet-4" in config["model"]:
+                    kwargs["thinking"] = {
+                        "type": "enabled",
+                        "budget_tokens": 10000
+                    }
+                    print("🧠 Thinking mode enabled for Claude Sonnet 4")
+
                 response = self.anthropic_client.messages.create(**kwargs)
-                return response.content[0].text
+                
+                # Handle thinking mode response structure
+                text_content = ""
+                for block in response.content:
+                    if block.type == "thinking":
+                        print(f"🧠 Thinking summary: {block.thinking[:200]}..." if len(block.thinking) > 200 else f"🧠 Thinking: {block.thinking}")
+                    elif block.type == "text":
+                        text_content += block.text
+                
+                return text_content if text_content else response.content[0].text
             except anthropic.InternalServerError as e:
                 print(f"Anthropic Internal Server Error: {e}")
                 print("This is likely a temporary issue with the Anthropic API.")
@@ -288,9 +338,25 @@ class APIHandler:
                     
                     if system_prompt:
                         kwargs_shortened["system"] = system_prompt
+                    
+                    # Enable thinking mode for Claude Sonnet 4
+                    if "claude-sonnet-4" in config["model"]:
+                        kwargs_shortened["thinking"] = {
+                            "type": "enabled",
+                            "budget_tokens": 10000
+                        }
                         
                     response = self.anthropic_client.messages.create(**kwargs_shortened)
-                    return response.content[0].text
+                    
+                    # Handle thinking mode response structure
+                    text_content = ""
+                    for block in response.content:
+                        if block.type == "thinking":
+                            print(f"🧠 Thinking summary: {block.thinking[:200]}..." if len(block.thinking) > 200 else f"🧠 Thinking: {block.thinking}")
+                        elif block.type == "text":
+                            text_content += block.text
+                    
+                    return text_content if text_content else response.content[0].text
                 except Exception as inner_e:
                     print(f"Still failed with shortened prompt: {inner_e}")
                     raise
@@ -300,21 +366,113 @@ class APIHandler:
 
         return make_call()
 
-    def make_api_call(
-        self, stage: str, prompt: str, pdf_path: Optional[Path] = None, pdf_paths: Optional[list[Path]] = None, system_prompt: Optional[str] = None
+    def _call_anthropic_with_texts(
+        self, prompt: str, text_paths: list[Path], config: Dict[str, Any], system_prompt: Optional[str] = None
     ) -> str:
-        """Make API call to appropriate provider based on stage"""
+        """Make Anthropic API call with multiple text file support using streaming"""
+        
+        full_prompt = ""
+        for i, text_path in enumerate(text_paths):
+            with open(text_path, 'r', encoding='utf-8') as f:
+                text_content = f.read()
+            full_prompt += f"<analysis_paper_example_{i+1}>\n{text_content}\n</analysis_paper_example_{i+1}>\n\n"
+
+        full_prompt += prompt
+
+        # Use streaming for long requests to avoid timeout
+        return self._call_anthropic_streaming(full_prompt, config, system_prompt)
+
+    def _call_anthropic_streaming(self, prompt: str, config: Dict[str, Any], system_prompt: Optional[str] = None) -> str:
+        """Make streaming Anthropic API call to avoid timeouts"""
+
+        @self._retry_standard
+        def make_streaming_call():
+            try:
+                print(f"\nMaking streaming API call to {config['model']}")
+
+                # Build kwargs with optional system prompt
+                kwargs = {
+                    "model": config["model"],
+                    "max_tokens": config["max_tokens"],
+                    "messages": [{"role": "user", "content": prompt}],
+                }
+                
+                if system_prompt:
+                    kwargs["system"] = system_prompt
+
+                # Enable thinking mode for Claude Sonnet 4
+                if "claude-sonnet-4" in config["model"]:
+                    kwargs["thinking"] = {
+                        "type": "enabled",
+                        "budget_tokens": 10000
+                    }
+                    print("🧠 Thinking mode enabled for Claude Sonnet 4")
+
+                # Collect the full response
+                thinking_content = ""
+                text_content = ""
+                
+                with self.anthropic_client.messages.stream(**kwargs) as stream:
+                    thinking_started = False
+                    response_started = False
+
+                    for event in stream:
+                        if event.type == "content_block_start":
+                            # Reset flags for each new block
+                            thinking_started = False
+                            response_started = False
+                        elif event.type == "content_block_delta":
+                            if event.delta.type == "thinking_delta":
+                                if not thinking_started:
+                                    print("🧠 Thinking: ", end="", flush=True)
+                                    thinking_started = True
+                                print(".", end="", flush=True)  # Show progress dots instead of full thinking
+                                thinking_content += event.delta.thinking
+                            elif event.delta.type == "text_delta":
+                                if not response_started:
+                                    print("\n📝 Response: ", end="", flush=True)
+                                    response_started = True
+                                print(".", end="", flush=True)  # Show progress dots
+                                text_content += event.delta.text
+                        elif event.type == "content_block_stop":
+                            print("")  # New line after progress dots
+
+                # Show thinking summary like other methods
+                if thinking_content:
+                    summary = thinking_content[:200] + "..." if len(thinking_content) > 200 else thinking_content
+                    print(f"🧠 Thinking summary: {summary}")
+
+                return text_content
+
+            except Exception as e:
+                print(f"Anthropic streaming API call failed: {e}")
+                raise
+
+        return make_streaming_call()
+
+    def make_api_call(
+        self, stage: str, prompt: str, text_paths: Optional[list[Path]] = None, pdf_path: Optional[Path] = None, pdf_paths: Optional[list[Path]] = None, system_prompt: Optional[str] = None
+    ) -> tuple[str, float]:
+        """Make API call to appropriate provider based on stage and return duration."""
+        start_time = time.time()
         model_config = self.config["models"][stage]
 
         if model_config["provider"] == "openai":
-            if pdf_path or pdf_paths:
-                print("Warning: OpenAI provider doesn't support PDF inputs, ignoring PDF parameters")
-            return self._call_openai(prompt, model_config, system_prompt)
+            if text_paths or pdf_path or pdf_paths:
+                print("Warning: OpenAI provider doesn't support text/PDF file inputs, ignoring file parameters")
+            response_text = self._call_openai(prompt, model_config, system_prompt)
         elif model_config["provider"] == "anthropic":
-            if pdf_paths:
-                return self._call_anthropic_with_pdfs(prompt, pdf_paths, model_config, system_prompt)
-            elif pdf_path:
-                return self._call_anthropic_with_pdf(prompt, pdf_path, model_config, system_prompt)
-            return self._call_anthropic(prompt, model_config, system_prompt)
+            if pdf_path:
+                response_text = self._call_anthropic_with_pdf(prompt, pdf_path, model_config, system_prompt)
+            elif pdf_paths:
+                response_text = self._call_anthropic_with_pdfs(prompt, pdf_paths, model_config, system_prompt)
+            elif text_paths:
+                response_text = self._call_anthropic_with_texts(prompt, text_paths, model_config, system_prompt)
+            else:
+                response_text = self._call_anthropic(prompt, model_config, system_prompt)
         else:
             raise ValueError(f"Unknown provider: {model_config['provider']}")
+        
+        duration = time.time() - start_time
+        self.logger.info(f"API call for stage '{stage}' took {duration:.2f} seconds.")
+        return response_text, duration

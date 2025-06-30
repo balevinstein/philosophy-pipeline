@@ -3,25 +3,15 @@ from datetime import datetime
 import os
 import sys
 import json
-import yaml
 import time
 
 from src.phases.phase_two.stages.stage_four.master_workflow import (
     DetailedOutlineDevelopmentWorkflow,
 )
+from run_utils import load_config, ensure_output_dir
 
 # Add the project root to the path so we can import modules
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
-
-def load_config():
-    """Load configuration from config/conceptual_config.yaml."""
-    config_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "config", "conceptual_config.yaml"
-    )
-    with open(config_path, "r") as f:
-        config = yaml.safe_load(f)
-    return config
 
 
 def main():
@@ -32,10 +22,7 @@ def main():
     config = load_config()
 
     # Prepare output directories
-    output_dir = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "outputs", "detailed_outline"
-    )
-    os.makedirs(output_dir, exist_ok=True)
+    output_dir = ensure_output_dir("outputs/detailed_outline")
 
     # Initialize the workflow with the new phases
     workflow = DetailedOutlineDevelopmentWorkflow(config)

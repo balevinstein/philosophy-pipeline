@@ -1,0 +1,97 @@
+Here is the complete text content of the paper, formatted with paragraph breaks:
+
+Phenomenal transparency and the transparency of subjecthood
+Kevin Morris
+
+1. Introduction
+
+Phenomenal transparency is a thesis about phenomenal concepts, the concepts we use to think about phenomenal properties in terms of what it is like to have them (in contrast, say, to the concepts we use to think about phenomenal properties in terms of their causes and effects). As Philip Goff (2017: 15) puts it, a concept C is transparent just in case 'it reveals the nature of the entity it refers to, in the sense that it is a priori (for someone possessing the concept and in virtue of possessing the concept) what it is for that entity to be part of reality'. So, if phenomenal transparency is true, phenomenal concepts reveal the nature of phenomenal properties. Phenomenal transparency is an important thesis; it is plausible, for example, that well-known arguments against physicalism about consciousness stand and fall with phenomenal transparency.
+
+What is the connection between phenomenal transparency and our epistemic status with respect to subjecthood, what it is to be a subject of experience? Given phenomenal transparency, does it follow that our concept of a subject is also transparent? Or can one endorse the transparency of phenomenal concepts while holding that the concept of a subject is 'opaque', comparable to the way one can employ the concept of water without having a grasp of the nature of that to which it refers?
+
+How one answers this question is of some significance. Consider one version of the 'combination problem' for panpsychism. Generally, the combination problem alleges that panpsychism is in no better position than traditional physicalisms when it comes to explaining consciousness in organisms. Thus, according to one version of panpsychism, the basic constituents of reality have conscious experiences and are subjects of experience, and consciousness in organisms is explained in terms of the 'micro-consciousness' attributed to these basic constituents. However, prima facie it is puzzling how an array of 'micro-subjects' could combine into a 'macro-subject' of experience. This is the 'subject summing' combination problem (Goff 2017: 171). Such considerations may be especially forceful if the concept of subjecthood is transparent. In contrast, if the concept is opaque, it might be possible to set aside the prima facie inability of micro-subjects to combine into a macro-subject as reflecting our failure to grasp the nature of what it is to be a subject. From a different direction, one might worry that being a subject does not seem, a priori, to be something that can analysed into more basic terms. This is the 'subject irreducibility' problem (Goff 2017: 209). Again, the force of such considerations may vary according to whether the concept of subjecthood is transparent or opaque.
+
+For my part, I am not sure whether the concept of a subject is transparent, though I tend to think that it is not. Indeed, aside from broadly mathematical and logical concepts, I am not sure that any concepts are transparent, perhaps aside from phenomenal concepts. However, in the case of phenomenal concepts, the reason they may be transparent turns on the idea that phenomenal properties are directly presented to introspection (see Goff 2017: 106–8; for related discussion, see Morris forthcoming). I doubt, however, that transparency about the concept of a subject can be grounded in the same way. My reason for doubt is broadly the same as David Hume's (2000 [1739]: §6) – when I introspect, I find an array of experiences, but I never find a subject as something that has these experiences. I do not seem to have a subject presented to me in anything like the way that experiences, or the phenomenal properties of them, are so presented.
+
+In any case, my aim in what follows is somewhat modest. Specifically, I will be interested in a recent argument, due to Goff, for thinking that phenomenal transparency entails transparency about the concept of a subject. For ease of reference, I will sometimes refer to the latter idea as the 'transparency of subjecthood' or 'subjecthood transparency'. The argument, is premissed on the idea that subjecthood is related to specific phenomenal properties as a determinable of more specific determinates. In my view, the argument fails, which opens the door for one to endorse phenomenal transparency while denying subjecthood transparency.
+
+2. Goff on phenomenal transparency and subjecthood transparency
+
+Goff presents his argument for thinking that phenomenal transparency entails subjecthood transparency in the context of discussing the subject summing combination problem. Goff (2017: 174) expresses this in terms of a conceivability thesis, according to which, for any set of subjects, it is conceivable for just those subjects to exist with the experiences they have without some further subject also existing. In response, Goff considers an appeal to ignorance:
+
+It might perhaps be suggested that it is our ignorance of the nature of subjecthood – of what it is for something to be a subject – that explains our inability to grasp the combinability of subjects. The most straightforward version of this would be to adopt full-blown opacity concerning our concept of subjecthood, according to which we have no a priori grasp of what it is for something to be a subject. It could then be claimed that if we understood what it is for something to be a conscious subject we would understand that subjects are the kind of things that combine to yield other subjects.
+
+The problem with this proposal, according to Goff, is that phenomenal transparency is true, and phenomenal transparency entails the transparency of the concept of a subject. Moreover, Goff worries that denying subjecthood transparency would undermine his earlier case against physicalism that took phenomenal transparency as its centrepiece:
+
+I defended Phenomenal Transparency, the thesis that direct phenomenal concepts reveal the essences of the states they denote. I take it that subjecthood is a determinable of which each conscious state is a determinate. For example, to be pain is to be a subject in some specific way; to have an experience of orange is to be a subject in some other way. I further take it that if one grasps the essence of a given determinate one thereby grasps the essence of the determinable of that determinate.... It follows that, for any phenomenal property I conceive of under a direct phenomenal concept, in grasping the nature of that property I thereby grasp the nature of subjecthood.... Moreover, if we have no a priori grasp of the nature of subjecthood, then we have no a priori grounds for denying that that property is wholly physical, which would leave the panpsychist with no means for rejecting physicalism and would therefore undermine the crucial motivation for her view.
+
+In short, a panpsychist cannot appeal to ignorance about the nature of subjecthood consistent with endorsing phenomenal transparency; and a panpsychist cannot reject phenomenal transparency, since a panpsychist needs phenomenal transparency in order to reject physicalism.
+
+3. Against subjecthood as a determinable of conscious states as determinates
+
+In rejecting the opacity of subjecthood, Goff's crucial claim is that 'subjecthood is a determinable of which each conscious state is a determinate'. However, there is reason to question whether this is true. Further, if this is not the case, there is little reason to think that phenomenal transparency entails subjecthood transparency.
+
+While there is some debate over the nature of the determinable/determinate relation (see Funkhouser 2006), this is typically understood to involve an ordering according to abstractness along with certain corresponding logical principles. Thus consider the following ordering:
+
+Coloured
+Red
+Scarlet
+Maximally determinate shade
+
+Each item higher up on the list arguably counts as a determinable of each item lower on the list. For example, scarlet is a determinable of some maximally determinate shade, while red is a determinable of scarlet and colour is a determinable of red. Logically it seems necessary that if an object has some determinate D, it thereby has each determinable D' of D, as it seems necessary that if something is scarlet, then it is red. Similarly, it seems necessary that if an object has some determinable D', it thereby has some determinate D of D', but there is no determinate D of D' such that having D' entails D. For example, given that something is coloured, it must have some shade, but there is no shade that is entailed by being coloured. As in the quotation above, it is often said that determinates are ways of having (or being) a determinable, as being red is a way of being coloured.
+
+I am willing to concede that, for any experience, there is some subject, something that has the experience. This, however, does not entail that being a subject is a determinable of particular conscious experiences as determinates, any more than the fact, if it is a fact, that every property that is instantiated is instantiated by some object entails that objecthood is a determinable of which properties are determinates. And I would like to propose that however exactly a subject is related to its experiences, this is not naturally understood as an instance of the determinable/determinate relationship. Take pain. In my view, a determinable/determinate ordering here would look something like the following:
+
+Sensation
+Tactile sensation
+Pain
+Sharp pain
+Maximally determinate type of pain
+
+Perhaps one could continue this ordering further: perhaps, for example, state or property should show up after sensation. However, subjecthood, or being a subject, is not going to show up on this ordering. The concept of a subject of experience is not the concept of an abstract sort of experience.
+
+What about the suggestion that determinates are ways of having determinables, and the claim that 'to be pain is to be a subject in some specific way; to have an experience of orange is to be a subject in some other way'? Does this show that subjecthood ought to be regarded as a determinable that has specific types of experiences as its determinates? On the contrary, I believe that to the extent that it is compelling to think that 'to be pain is to be a subject in some specific way', this can be cashed out simply as the idea that for each experience there is a subject of that experience. In this case, the claim that 'to be pain is to be a subject in some specific way' can be cashed out as expressing something like an object/property relation, with the subject as the object that has the property.
+
+If these remarks on the right track, it cannot be maintained that 'subjecthood is a determinable of which each conscious state is a determinate'. The concept of a subject is the concept of something that has experience, not the concept of an abstract kind of experience. The relationship between a subject and its experiences is more like the relation between an object and its properties than the relation between a determinable and its determinates. In this case, even if it is accepted that 'if one grasps the essence of a given determinate one thereby grasps the essence of the determinable of that determinate', subjecthood transparency is not entailed by phenomenal transparency.
+
+It might be maintained that, even if subjecthood is not a determinable of conscious experiences as determinates, there is nonetheless reason to think that a grasp of the nature of some phenomenal property entails a grasp of the nature of that which has that property, the subject of the experience. But it is difficult to see why this should be. It is not the case, in general, that by grasping the nature of a property, one is thereby in a position to grasp the nature of that which possesses the property. Moreover, the reasons for thinking that phenomenal transparency holds do not obviously count as reasons for thinking that subjecthood transparency holds. As above, to the extent that phenomenal transparency holds, it is natural to think that it is because phenomenal properties are directly presented in introspection. However, what it is to be a subject does not seem to be directly available to introspection in this way.
+
+Goff's case for binding subjecthood transparency to phenomenal transparency thus falls short, which opens the door for one to endorse phenomenal transparency while denying subjecthood transparency. In this way, while I have not shown that subjecthood transparency is definitely false, I have shown that at least one argument for this thesis can be set aside. Further, if these considerations are on track, there is room for one to accept phenomenal transparency but appeal to ignorance about the nature of subjecthood in responding to the subject summing and subject irreducibility combination problems. Further, if phenomenal transparency does not entail subjecthood transparency, the rejection of the latter should not threaten a case against physicalism premissed on the former.
+
+4. Conclusion
+
+When I attend to my current conscious experience, there is perhaps a sense in which the phenomenal properties of the experience are 'right there' for me. This does not, however, seem to be the case when it comes to the subject of these experiences. This conjunction of these ideas would be difficult to maintain if subjecthood were a determinable of particular conscious experiences. I have argued, however, that there is little reason to think that this is true.
+
+Moreover, once phenomenal transparency is distinguished from subjecthood transparency, this opens the door to certain responses to the combination problem; further, doing so does not seem to undermine any case against physicalism premissed on phenomenal transparency.
+
+Tulane University, 1229 Broadway
+New Orleans, LA 70118, USA
+kevin.michael.morris@gmail.com
+
+References
+
+Chalmers, D. 2009. The two-dimensional argument against materialism. In The Oxford Handbook of Philosophy of Mind, ed. B. McLaughlin, 313–35. Oxford: Oxford University Press.
+
+Chalmers, D. 2015. Panpsychism and panprotopsychism. In Consciousness in the Physical World: Perspectives on Russellian Monism, eds. T. Alter and Y. Nagasawa, 246–76. Oxford: Oxford University Press.
+
+Chalmers, D. 2016. The combination problem for panpsychism. In Panpsychism, eds. G. Brüntrup and L. Jaskolla, 179–214. Oxford: Oxford University Press.
+
+Coleman, S. 2012. Mental chemistry: combination for panpsychists. Dialectica 66: 137–66.
+
+Funkhouser, E. 2006. The determinable-determinate relation. Noûs 40: 548–69.
+
+Goff, P. 2017. Consciousness and Fundamental Reality. Oxford: Oxford University Press.
+
+Hill, C. 2009. Consciousness. Cambridge: Cambridge University Press.
+
+Hume, D. 2000 [1739]. A Treatise of Human Nature. Oxford: Oxford University Press.
+
+Morris, K. 2017. The combination problem: subjects and unity. Erkenntnis 82: 103–20.
+
+Morris, K. forthcoming. The super justification argument for phenomenal transparency. Inquiry.
+
+Pereboom, D. 2011. Consciousness and the Prospects of Physicalism. New York: Oxford University Press.
+
+Roelofs, L. 2019. Combining Minds: How to Think about Composite Subjectivity. New York: Oxford University Press.
+
+Strawson, G. 2006. Realistic monism: why physicalism entails panpsychism. Journal of Consciousness Studies 13: 3–31.

@@ -120,7 +120,7 @@ def save_final_paper(integration_results: Dict[str, Any], analysis_results: Dict
         "phase_3_1_metadata": phase_3_1_output["metadata"],
         "paper_overview": phase_3_1_output["paper_overview"],
         "word_count_progression": {
-            "phase_3_1_draft": phase_3_1_output["metadata"]["total_words_written"],
+            "phase_3_1_draft": phase_3_1_output["metadata"]["total_words"],
             "final_paper": integration_results["final_word_count"],
             "target": phase_3_1_output["paper_overview"]["target_words"]
         }
@@ -185,7 +185,7 @@ def run_phase_3_2():
         print(f"   📄 Final paper: {final_paper_file}")
         print(f"   📊 Final word count: {final_word_count} words")
         print(f"   🎯 Target achievement: {word_efficiency:.1f}% of {target_words} word target")
-        print(f"   📈 Word progression: {phase_3_1_output['metadata']['total_words_written']} → {final_word_count}")
+        print(f"   📈 Word progression: {phase_3_1_output['metadata']['total_words']} → {final_word_count}")
         print(f"   🔧 Changes implemented: {len(integration_results['changes_made'])}")
         print(f"   ⚡ Analysis assessment: {analysis_results['summary_assessment']}")
         print(f"⏱️  Phase III.2 duration: {duration:.1f} seconds ({duration/60:.1f} minutes)")

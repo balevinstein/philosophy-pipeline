@@ -1,0 +1,102 @@
+Be modest: you're living on the edge
+Kevin Dorst
+
+1. Introduction
+
+Do I like lentils?
+I'm guessing you're not sure. Yet, given your evidence (philosopher; strange writer; mentioned lentils in an Analysis paper...), there are some opinions you ought to have now. And when (in a few pages) you get new evidence – and, let's suppose, you do not lose any old evidence – there will be some new opinions you ought to have then. Let 'P' and 'P+' be definite descriptions for these current and future rational opinions.
+
+How – if at all – should your opinions about P and P+ constrain your other opinions (say, about lentils)? Many have endorsed principles that prevent your opinions from being on the edge of the range of potentially-rational opinions (§2):
+
+(Stay Away): If P(q) = t and P(P+(q) > t) > 0, then P(P+(q) < t) > 0.
+If you should have a given credence and should leave open that the future rational credence might be higher, then you should also leave open that it might be lower.
+
+(Step Away): If P(q) = t and P(P(q) > t) > 0, then P(P(q) < t) > 0.
+If you should have a given credence and should leave open that the current rational credence might be higher, then you should also leave open that it might be lower.
+
+Surprisingly, each principle implies that you cannot rationally be modest – you cannot be uncertain what the current rational opinions are (§3). Precisely: for all q there is a t such that P(P(q) = t) = 1. (So if you're unsure how confident you should be that I like lentils, you're irrational.) Arguably, this implies they're both false.
+
+2. Why think they're true?
+
+Start with Stay Away. This principle follows from (but is much weaker than) rationalized versions of diachronic Reflection principles – principles which entail that the current rational credence equals the current rational estimate of the future rational credence.
+
+To see this, let E(P+(q)) be the current rational expectation of the future rational credence in q. (Precisely, E(P+(q)) := ∑t P(P+(q) = t) · t.) Diachronic, rational Reflection principles are those which entail that P(q) = E(P+(q)). Now note that if Stay Away fails, then there is an ε > 0 such that E(P+(q)) = P(P+(q) = t) & t + P(P+(q) > t) · (t + ε) > t = P(q), so diachronic Reflection fails too. Thus authors who endorse such Reflection principles are committed to Stay Away (e.g. van Fraassen (1984), Gaifman (1988), Weisberg (2007), Briggs (2009), Mahtani (2017)).
+
+Moreover – and independently – several authors have argued that there should be a ban on 'no lose' investigations: investigations which have some chance of confirming a claim without a chance of disconfirming it. (If you think asking might increase your confidence that I like lentils, you should also think that doing so might decrease it.) Stay Away looks to be a formalization of that seemingly-banal claim.
+
+Yet that seemingly-banal claim has the surprising consequence that you must be immodest. That is the point of this paper.
+
+It's a fair point. But is it an old one? Bernhard Salow has recently argued that we should generalize the ban on 'no lose' investigations to a ban on 'intentionally biased inquiries' (Salow 2018, §1.1) – that is, inquiries that you should expect to provide evidence favouring q. And banning the latter, he claims, requires immodesty.
+
+It's a clever argument. But there are ways to question it.
+
+First, Salow's ban on 'biased inquiries' is much stronger than the ban on 'no lose' investigations formalized by Stay Away. It requires your expectation of the current rational credences to match your expectation of the future rational credences. (Where E(P(q)) := ∑t P(P(q) = t) & t, that is the claim that E(P(q)) = E(P+(q)).) He goes on to assume, in effect, that this will hold in general only if rationalized diachronic Reflection holds: P(q) = E(P+(q)) (Salow 2018: §3.2).
+
+Second, Salow makes the controversial assumption that rational credences are always recoverable by conditioning a known prior on propositional evidence (2018: §3.1). Some (e.g. Gallow (forthcoming b: §1)) have argued that this assumption is the culprit.
+
+And third, it is controversial whether Salow has correctly formulated what it takes for an inquiry to be 'biased'. Gallow (forthcoming b: §3) shows that we can avoid Salow's result using a causalist conception bias. Das (forthcoming b: §1) formulates a notion of a biased inquiry as one which guarantees a rise in credence. And Dorst (2020: §7) shows that some inquiries which are 'biased' in Salow's sense are such that you should expect the future rational credences to be more accurate than your own on every proposition (cf. Levinstein MS), and so perhaps should not be thought of as 'biased' – or, at least, should not be banned as irrational.
+
+Given these concerns, it is natural to wonder whether we can avoid Salow's immodest conclusion by weakening his ban on 'biased inquiries' back to one on 'no lose' investigations. My claim is that this will not help: using the weaker constraint of Stay Away – and making no assumptions about whether rational credences are determined via conditioning – we still end up with immodesty.
+
+Now turn to Step Away. This is an example of a bridging principle connecting first- and higher-order rational opinions (Dorst forthcoming b: §1). It says that you cannot rationally have a credence that is on the edge of the range of credences you think might be rational. In other words, if you think 'my credence that he likes lentils is definitely not too high, and it might be too low', then you're irrational (Christensen 2010b: §1). Something like this has been defended or explored by a variety of theorists who have taken it to be a tenable bridging principle that allows rational modesty. But it does not.
+
+Similarly to above, Step Away follows from rationalized, synchronic versions of Reflection principles – principles which imply that you should match your credence to your estimate of the current rational credence: P(q) = E(P(q)). It's now known that even the weakest such Reflection principles rule out immodesty (Samet 2000: §7.2, Dorst 2019: §2.3.1). But again, it's natural to wonder whether we can avoid this conclusion by weakening the principle to one that simply bans being on the edge of the potentially-rational range. My claim is that this will not help.
+
+3. Why think they're false?
+
+Step 1: Stay Away implies Step Away. Step 2: If modesty can be rational, it can be rational for someone who knows the structural constraints on rationality – like Step Away. Step 3: But (theorem:) if Step Away is true, then this is not possible.
+
+Step 1: Stay Away implies Step Away
+
+Suppose Step Away fails: there's a case in which you should have credence t that I like lentils (q), leave open that the current rational credence might be higher, and be certain that it is no lower. Now take a version of this scenario in which it is certain that you will get no lentil-relevant evidence – for example, all you will learn is how a fair coin landed. Then P(P(q) = P+(q)) = 1, so it follows that Stay Away fails too.
+
+What if we restricted Stay Away to apply only in cases in which you might get evidence relevant to q? Still no good. For then we can take a case where Step Away fails at threshold P(q) = t and where you might get relevant evidence about q, but where this will (i) only happen if P(q) > t and (ii) it will not push the future rational credence below t. For example, suppose Step Away fails in this way: the rational credence is 0.5 that I like lentils, but you should leave open (only) that it is either 0.5 or 0.6. Then we can imagine a version of this case in which if the current rational credence is 0.5, you will get no relevant evidence, but if it is 0.6, then the future rational credence will shift to either 0.5 or 0.7. Then Stay Away fails even though you might get lentil-relevant evidence.
+
+Upshot: Stay Away is tenable only if Step Away is.
+
+Step 2: If modesty can be rational, it can be rational for someone who knows the structural constraints on rationality
+
+We can distinguish structural from substantive constraints on rationality. The former are constraints – like probabilism and the Principal Principle (Lewis 1980) – that hold regardless of what evidence you have or what propositions we're applying them to. The latter are constraints that depend on the specifics: 'Given evidence E, you should be 60% confident that Kevin likes lentils', etc. On this classification, Step Away is clearly a structural constraint.
+
+Plausibly, if modesty can be rational, then it can be rational for someone who knows the structural constraints on rationality – and hence knows Step Away. There are two reasons for this.
+
+First, it is widely accepted that structural principles do not pin down a uniquely rational credence function; thus given our assumption of (intrapersonal) uniqueness (footnote 1), there plausibly are substantive constraints that outrun the true structural constraints. As such, someone who knows the latter can still be unsure about the former, and hence still be unsure what opinions to have, given their evidence. (Study all the epistemology you like, you can still be unsure how confident you ought to be that I like lentils.) At the very least, this has been the working assumption in most of the literature (e.g. Christensen 2010b, Cresto 2012, Lasonen-Aarnio 2013, 2015, Horowitz 2014a, Sliwa and Horowitz 2015, Schoenfield 2018, Roush 2016, 2017, Salow 2018, Gallow forthcoming b, Das forthcoming a, forthcoming b).
+
+Second, even if structural constraints do pin down a uniquely rational credence function for each body of evidence, this does not make modesty irrational. For, as many have argued, you can still be unsure what your evidence is (e.g. Williamson 2000: ch. 9, 2008, Horowitz 2014a: §6, Lasonen-Aarnio 2015, Das forthcoming a: §4.1, forthcoming b: §1.2). And even if you know what credences are warranted by each body of evidence, uncertainty about which body of evidence you have can still induce modesty. (For example, in the model specified in footnote 4, you know all conditionals of the form 'If I'm at world w, the rational credence function is χ, and yet you still should be modest since you should be unsure what world you're at.)
+
+Step 3: But if Step Away is true, anyone who knows the structural constraints on rationality cannot be modest
+
+Letting Immodest be the claim that the rational credence function is certain that it is rational (for all q, t, if P(q) = t, then P(P(q) = t) = 1), we have:
+
+Theorem: If Step Away holds and P (Step Away)= 1, then P(Immodest) = 1.
+
+In other words: whenever it is rational to be (correctly) sure of Step Away, it is rational to be certain that you should be immodest. (Proof in the Appendix.)
+
+If evidence is factive (Williamson 2000: ch. 9) and (in finite cases) you should be sure of q only if your evidence entails it, then it follows immediately from this result that you should be immodest: from P(Immodest) = 1, we can infer Immodest.
+
+Moreover, if being rationally sure that you ought to φ implies that it is permissible to φ, then again it follows from this result that you should be immodest. To see this, let '□p' mean 'it ought to be that p' (and ◊p := ¬□¬p), and let C be your actual credence function. Then 'P(q) = t' can be rewritten as '□(C(q) = t)'. So the conclusion of our Theorem – that P(Immodest) = 1 – implies that you're rationally sure that your credence function ought to be immodest: P(□(C is immodest)) = 1. By the above assumption, it follows that it is permissible for your credence function to be immodest: ◊(C is immodest). But given uniqueness, what is permissible for your credence function is required of it, so it follows that your credence function is required to be immodest: □(C is immodest), i.e. P is immodest.
+
+Of course, you might reject the factivity of evidence or the claim that being rationally sure that you must φ makes it permissible to φ. Even so, it follows directly from the Theorem that a rational person who knows Step Away cannot be unsure whether the credence function they have is rational. Precisely: if 'π' is a rigid designator for their credence function, then the Theorem implies that either π(P = π) = 1 or π(P = π) = 0; they cannot have any intermediate credence in the rationality of their credence function. After all, if they are rational and know Step Away, then π (Step Away) =1 and π satisfies Step Away. If π(P = π) < 1, then Immodest ⇒ [P ≠ π], thus by the Theorem, π(Immodest) = 1 ⊑ π(P ≠ π), hence π(P = π) = 0. Thus either π(P = π) = 1 or π(P = π) = 0. But if modesty can be rational, surely being intermediately modest – having a credence strictly between 0 and 1 in your own rationality – can be rational.
+
+Thus, I claim, Stay Away and Step Away are not interestingly weaker than the strongest bridging principles, which simply rule out immodesty entirely (Dorst 2019, Skipper forthcoming). For by Step 1, if either principle is true, then Step Away is true; by Step 2, if Step Away is true and modesty can be rational, then it can be rational for someone who knows Step Away; but by Step 3, this cannot be rational. So either rationality requires immodesty, or Stay Away and Step Away are false.
+
+The surprising step in this argument is the Theorem. Why is it true? As with other results about the strength of bridging principles (e.g. Samet 2000, Williamson 2000, 2014, 2019, Elga 2013, Lasonen-Aarnio 2013, 2015, Dorst 2019, 2020, Das forthcoming b), it is due to the fact that Step Away is an (implicitly) universally quantified claim, and thus that it is difficult to satisfy it for all propositions.
+
+In particular note that Step Away straightforwardly entails:
+
+Positive Access: If P(q) = 1, then P(P(q) = 1) = 1.
+
+If you should be sure of q, then you should be sure that you should be.
+
+For suppose that Positive Access fails: for some q, P(q) = 1, but P(P(q) = 1) < 1. Then you should have credence 1 in q, should leave open that maybe your credence should be lower, but should be certain that it should not be higher – contradicting Step Away.
+
+Once we see that Step Away implies Positive Access, it is not hard to see that it is unstable. For if you should have any higher-order uncertainty at all, then there will be some set of credences t1 < t2 < ... < tn, such that you should (1) leave open that any of them might be the rational credence in q, and (2) be certain that one of them is. By Positive Access, you should also be certain that you should be certain that one of them is rational – meaning that in the possibility where t1 is the rational one, you should likewise be certain that one of the t1, ... , tn is rational. But that means that in such a possibility, the rational credence (namely, t1) is on the edge of the range of credences you should think might be rational – Step Away fails.
+
+What should we make of this result? Since modesty (arguably) is rational, both Stay Away and Step Away are (arguably) false. That means that (arguably) no-lose investigations are possible, and that it can be rational to think 'My 60% credence that he likes lentils is definitely not too high, and it might be too low' and yet maintain your credence. At the very least, those who have appealed to bans on these possibilities should be aware that they are more controversial than is standardly thought.
+
+P.S. Good guess – I do like lentils.
+
+1017 Cathedral of Learning Pittsburgh, PA 15206 USA
+kevindorst@pitt.edu
+
+[Appendix and References sections follow...]

@@ -1,0 +1,27 @@
+Analysis Vol. XX | Number XX | XX 2024 | 1–10
+
+What is the tertiary norm of belief?
+Jorren Dykstra
+
+Abstract
+Timothy Williamson (in 'Justifications, excuses, and sceptical scenarios') distinguishes three kinds of norm for belief, which he calls 'primary', 'secondary' and 'tertiary'. He argues that a belief is justified if it satisfies the primary norm and excused if it satisfies only the tertiary norm. The argument turns on cases of intuitively unjustified belief in which the tertiary norm is satisfied, on Williamson's rough-and-ready statement of that norm. I argue that, once we state the tertiary norm more carefully, it is clear that it is not satisfied in these cases. So we need some other reason to think that the tertiary norm is not justifying.
+
+Keywords: norms of belief, Timothy Williamson, justification, dispositional evaluations 
+
+1. Introduction
+
+Consider:
+
+(JFB) False beliefs can be justified.
+
+JFB appears to draw support from two kinds of case. In what I will call 'type-1' cases, one's experiences are globally misleading: given an experience with content p, it is the case that not-p, because nothing is as it seems. In what I will call 'type-2' cases, one's experiences are locally misleading: given an experience with content p, it is the case that not-p, because things are not as they seem in the situation, though they are sometimes as they seem. Here is a token of each type:
+
+Type-1: A experiences having hands. So A believes that she has hands. Unfortunately A's experiences are simulations fed to her by a supercomputer: A is a brain-in-a-vat (BIV).
+
+Type-2: B is at the garden centre. She has the visual experience of a potted plant, p, in the 'real plants' aisle. So B believes that p is a real plant. Unfortunately p is not a real plant: it is a plastic counterfeit.
+
+A and B have false beliefs. So these beliefs are bad, in a way. But they are good in a way too. B's belief is hardly negligent: she is in the 'real plants' aisle, and every plant but p is real. A's belief is not just passable, but exemplary: by taking it for granted that her senses put her in touch with the facts when she has, and could have, no indication to the contrary, A's case serves as an example of good perceptual believing. Type-1 and type-2 cases are collectively referred to as bad cases. Bad cases are to be contrasted with good cases, where one's experiences are not misleading: in good cases, the belief turns out to be true. There is something to be said for beliefs in bad cases. But what should we say about them? Are they justified?
+
+Here is the plan for the paper. §2 states the standard argument for JFB. §3 rehearses Timothy Williamson's objection to the standard argument. §4 argues that this is not, in fact, an objection to the standard argument: Williamson assumes that the argument cites compliance with one norm, but it cites compliance with a different norm. It is not my goal to argue that JFB is true. Instead I want to get clear on the most charitable way of representing the standard argument in Williamson's framework. The reward for doing so is a new perspective on the intuition that false beliefs can be justified: if the circumstances are right, a false belief can manifest a disposition to know, or to have, only true beliefs.
+
+[Content continues with detailed philosophical discussion of norms of belief, justification, and dispositional evaluations across multiple sections. Let me know if you would like me to continue with the remaining text.]

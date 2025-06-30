@@ -118,6 +118,12 @@ def process_all_key_moves(
                         # If it's a string, pass it directly as the current content
                         initial_state["current_move_development"] = previous_phase_result
 
+            # ADD INTER-MOVE AWARENESS
+            # Pass previously developed moves so current move can maintain consistency
+            if i > 0:  # For moves after the first
+                initial_state["previously_developed_moves"] = developed_moves[:i]
+                logging.info(f"Providing {i} previously developed moves for context")
+
             # Create and execute the workflow for this phase
             workflow = create_key_moves_dev_workflow(
                 config=config,

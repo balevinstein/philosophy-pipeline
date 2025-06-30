@@ -12,12 +12,12 @@ class AnalysisPatternIntegrator:
     """Handles Analysis paper integration for conceptual development phases"""
     
     def __init__(self):
-        self.analysis_dir = Path("./Analysis_papers")
-        self.selected_papers = []
+        self.analysis_dir = Path("./data/analysis_extracts")
+        self.selected_texts = []
         
-    def get_pdfs_for_phase(self, phase: str) -> int:
-        """Return optimal number of PDFs for each development phase"""
-        phase_pdf_counts = {
+    def get_files_for_phase(self, phase: str) -> int:
+        """Return optimal number of text files for each development phase"""
+        phase_file_counts = {
             # Phase II.2 - Framework Development
             "abstract and thesis development": 2,
             "outline structure": 2, 
@@ -35,48 +35,48 @@ class AnalysisPatternIntegrator:
             "default": 1
         }
         
-        return phase_pdf_counts.get(phase, phase_pdf_counts["default"])
+        return phase_file_counts.get(phase, phase_file_counts["default"])
         
     def get_analysis_exemplars_for_development(self, phase: str = "default") -> Dict[str, Any]:
         """
-        Select Analysis papers for development phases (II.2-6)
-        Returns both PDF paths and philosophical guidance
-        Phase-aware selection for optimal PDF count
+        Select Analysis paper texts for development phases (II.2-6)
+        Returns both text file paths and philosophical guidance
+        Phase-aware selection for optimal file count
         """
         if not self.analysis_dir.exists():
             return {
                 "available": False,
                 "guidance": self._get_fallback_guidance(),
-                "pdf_paths": [],
+                "file_paths": [],
                 "paper_names": []
             }
         
-        papers = list(self.analysis_dir.glob("*.pdf"))
-        if not papers:
+        texts = list(self.analysis_dir.glob("*.txt"))
+        if not texts:
             return {
                 "available": False,
                 "guidance": self._get_fallback_guidance(),
-                "pdf_paths": [],
+                "file_paths": [],
                 "paper_names": []
             }
         
-        # Get optimal number of papers for this phase
-        num_papers = self.get_pdfs_for_phase(phase)
+        # Get optimal number of files for this phase
+        num_files = self.get_files_for_phase(phase)
         
-        # Select papers for style reference
-        selected = random.sample(papers, min(num_papers, len(papers)))
-        self.selected_papers = selected
+        # Select files for style reference
+        selected = random.sample(texts, min(num_files, len(texts)))
+        self.selected_texts = selected
         
         return {
             "available": True,
             "guidance": self._get_analysis_development_guidance(selected, phase),
-            "pdf_paths": selected,
+            "file_paths": selected,
             "paper_names": [p.name for p in selected]
         }
     
-    def _get_analysis_development_guidance(self, selected_papers: List[Path], phase: str) -> str:
+    def _get_analysis_development_guidance(self, selected_texts: List[Path], phase: str) -> str:
         """Generate phase-specific guidance for development based on Analysis patterns"""
-        paper_names = [p.name for p in selected_papers]
+        paper_names = [p.name for p in selected_texts]
         
         # Phase-specific guidance
         phase_guidance = self._get_phase_specific_guidance(phase)
@@ -156,9 +156,9 @@ Key principles for Analysis journal style:
 === END ANALYSIS PATTERNS ===
 """
 
-    def get_selected_papers(self) -> List[Path]:
-        """Return currently selected Analysis papers for API calls"""
-        return self.selected_papers
+    def get_selected_texts(self) -> List[Path]:
+        """Return currently selected Analysis texts for API calls"""
+        return self.selected_texts
     
     def enhance_prompt_with_analysis_patterns(self, base_prompt: str, phase: str) -> str:
         """
@@ -176,7 +176,7 @@ Key principles for Analysis journal style:
 
 {exemplars["guidance"]}
 
-NOTE: {len(exemplars["pdf_paths"])} Analysis papers are available as PDFs in your context for detailed style reference.
+NOTE: {len(exemplars["file_paths"])} Analysis paper texts are available as PDFs in your context for detailed style reference.
 Study these papers to understand how Analysis approaches philosophical problems, develops arguments, and presents ideas.
 
 Your {phase} development should reflect Analysis journal patterns: example-driven, conversational, accessible.
@@ -196,11 +196,11 @@ def enhance_development_prompt(prompt: str, phase: str) -> tuple[str, List[Path]
     Phase-aware: Returns optimal number of PDFs for the specified phase
     """
     enhanced_prompt = analysis_integrator.enhance_prompt_with_analysis_patterns(prompt, phase)
-    pdf_paths = analysis_integrator.get_selected_papers()
+    file_paths = analysis_integrator.get_selected_texts()
     
-    return enhanced_prompt, pdf_paths
+    return enhanced_prompt, file_paths
 
 
-def get_analysis_pdfs_for_api() -> List[Path]:
-    """Get current Analysis PDFs for API calls"""
-    return analysis_integrator.get_selected_papers() 
+def get_analysis_texts_for_api() -> List[Path]:
+    """Get current Analysis texts for API calls"""
+    return analysis_integrator.get_selected_texts() 

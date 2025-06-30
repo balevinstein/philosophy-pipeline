@@ -61,7 +61,9 @@ class OutlinePlanningWorker(PlanningWorker):
             model_stage = "abstract_development"  # Use a similar stage's config
             print(f"No specific model config for {self.stage_name}, using {model_stage} instead")
             
-        return self.api_handler.make_api_call(model_stage, prompt)
+        # API handler returns (response_text, duration) tuple, we only need the response text
+        response_text, _ = self.api_handler.make_api_call(model_stage, prompt)
+        return response_text
 
     def _construct_prompt(self, input_data: WorkerInput) -> str:
         """Construct the planning prompt."""

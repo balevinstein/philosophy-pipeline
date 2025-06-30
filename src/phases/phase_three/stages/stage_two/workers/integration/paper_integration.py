@@ -1,5 +1,6 @@
 from typing import Dict, Any, List
 from pathlib import Path
+import random
 
 from src.phases.core.base_worker import WorkerInput, WorkerOutput
 from src.phases.core.worker_types import RefinementWorker
@@ -17,36 +18,40 @@ class PaperIntegrationWorker(RefinementWorker):
         self._state = {"iterations": 0, "integration_history": []}
         self.stage_name = "paper_integration"
         self.prompts = PaperIntegrationPrompts()
-        self.selected_analysis_pdfs = []  # Store selected Analysis PDFs
+        self.selected_analysis_texts = []  # Store selected Analysis text extracts
 
-    def _get_analysis_pdfs(self, pdf_count: int = 1) -> list:
-        """Select Analysis PDFs for final publication standards guidance"""
-        analysis_dir = Path("Analysis_papers")
+    def _get_analysis_texts(self, text_count: int = 2) -> list:
+        """Select Analysis text extracts for final publication standards guidance"""
+        analysis_dir = Path("./data/analysis_extracts")
         if not analysis_dir.exists():
-            print(f"⚠️ Analysis papers directory not found at {analysis_dir}")
+            print(f"⚠️ Analysis text extracts directory not found at {analysis_dir}")
             return []
         
-        pdf_files = list(analysis_dir.glob("*.pdf"))
-        if not pdf_files:
-            print(f"⚠️ No PDF files found in {analysis_dir}")
+        text_files = list(analysis_dir.glob("*.txt"))
+        if not text_files:
+            print(f"⚠️ No text files found in {analysis_dir}")
             return []
         
-        # Select PDFs with preference for publication quality examples
-        selected_pdfs = pdf_files[:pdf_count]
+        # Select text extracts randomly for varied publication quality examples
+        selected_texts = random.sample(text_files, min(text_count, len(text_files)))
         
-        print(f"📑 Including {len(selected_pdfs)} Analysis paper(s) for {self.stage_name} publication standards:")
-        for pdf in selected_pdfs:
-            print(f"   • {pdf.name}")
+        print(f"📑 Including {len(selected_texts)} Analysis text extract(s) for {self.stage_name} publication standards:")
+        for txt in selected_texts:
+            print(f"   • {txt.name}")
         
-        return selected_pdfs
+        return selected_texts
+
+    def get_system_prompt(self) -> str:
+        """Return the system prompt for API calls"""
+        return self.prompts.system_prompt
 
     def execute(self, state: Dict[str, Any]) -> WorkerOutput:
-        """Main execution method with Analysis PDF support for final polish"""
+        """Main execution method with Analysis text extracts for final polish"""
         input_data = self.process_input(state)
         
-        # Select Analysis PDFs for publication standards guidance
-        analysis_pdfs = self._get_analysis_pdfs(pdf_count=1)
-        self.selected_analysis_pdfs = analysis_pdfs
+        # Select Analysis text extracts for publication standards guidance
+        analysis_texts = self._get_analysis_texts(text_count=3)
+        self.selected_analysis_texts = analysis_texts
         
         # Construct prompt
         prompt = self._construct_prompt(input_data)
@@ -54,17 +59,17 @@ class PaperIntegrationWorker(RefinementWorker):
         # Get system prompt if available
         system_prompt = self.get_system_prompt() if hasattr(self, 'get_system_prompt') else None
         
-        # Call LLM with Analysis PDFs if available
+        # Call LLM with Analysis text extracts if available
         print(f"\n🔧 Executing {self.stage_name} with Analysis guidance...")
-        if self.selected_analysis_pdfs:
-            response = self.api_handler.make_api_call(
+        if self.selected_analysis_texts:
+            response, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
-                pdf_paths=self.selected_analysis_pdfs,
+                text_paths=self.selected_analysis_texts,
                 system_prompt=system_prompt
             )
         else:
-            response = self.api_handler.make_api_call(
+            response, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
                 system_prompt=system_prompt

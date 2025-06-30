@@ -16,27 +16,41 @@ The goal is to achieve a ~20% success rate in generating publishable-quality pap
 
 ## Current Status
 
-**🎉 COMPLETE END-TO-END PIPELINE WORKING!** 
+**🎉 COMPLETE END-TO-END PIPELINE WITH ENHANCED QUALITY CONTROL!** 
 
-The full pipeline now generates complete philosophy papers from topic generation through final publication-ready drafts:
+The full pipeline now generates complete philosophy papers with sophisticated quality assurance:
 
 - ✅ **Phase I.1** (Topic Generation): Complete
 - ✅ **Phase I.2** (Literature Research): Complete - find relevant literature on the web
 - ✅ **Phase II.1** (Literature Processing): Complete - uses Claude's native PDF processing
 - ✅ **Phase II.2** (Framework Development): Complete - framework-driven paper development
-- ✅ **Phase II.3** (Key Moves Development): Complete - sophisticated argument development
+- ✅ **Phase II.3** (Key Moves Development): Complete - sophisticated argument development with inter-move awareness
 - ✅ **Phase II.4** (Detailed Outline Development): Complete - comprehensive outline with literature mapping
-- ✅ **Phase II.5** (Context Consolidation): Complete - unified context for Phase III
+- ✅ **Phase II.5** (Intelligent Consolidation): Complete - comprehensive diagnostic analysis with quality standards
+- ✅ **Phase II.6** (Holistic Review): Complete - two-stage expert philosophical review and revision planning
+- ✅ **Phase II.7** (Targeted Refinement): Complete - implements review recommendations with quality validation
+- ✅ **Phase II.8** (Writing Context Optimization): Complete - generates writing aids, hooks, transitions, phrase banks
 - ✅ **Phase III.1** (Section-by-Section Writing): Complete - detailed section writing with critique and refinement
 - ✅ **Phase III.2** (Global Integration): Complete - publication-ready paper with professional formatting
 
-### Latest Achievements
+### Latest Achievements (Phase II.5-8 Enhancement)
 
-- **Complete Papers**: Generated 3000+ word philosophy papers with coherent argumentation
-- **Professional Quality**: Proper academic titles, structured sections, theoretical frameworks
-- **Integration Pipeline**: Global analysis and refinement for publication-ready output
-- **Advanced Models**: Upgraded to Claude Sonnet 4 for enhanced quality and capability
-- **Real Philosophical Content**: Original arguments with case studies and objection responses
+- **Quality Standards Integration**: Hájek heuristics (5 tests), Analysis patterns, Anti-RLHF checks
+- **Expert Review Process**: Two-stage holistic review with hostile-but-helpful philosophical referee
+- **Targeted Refinement**: Move-by-move improvements with redevelopment, merging, or cutting strategies
+- **Writing Aids**: Generated hooks, transitions, phrase banks for professional polish
+- **Diagnostic Clarity**: Specific, actionable feedback at every stage
+- **Performance**: New phases add only ~5 minutes total to pipeline
+
+### Quality Control Framework
+
+The enhanced pipeline now includes:
+
+1. **Hájek Heuristics** (Phase II.5): Extreme case, self-undermining, counterexample, hidden assumptions, domain transfer tests
+2. **Anti-RLHF Standards**: Detection of hedging, equivocation, both-sidesism
+3. **Analysis Journal Patterns**: Hook→Thesis→Roadmap, Claim→Example→Analysis
+4. **Philosophical Skepticism**: Boundary vulnerabilities, conceptual precision checks
+5. **Expert Review**: Professional philosopher perspective with actionable critique
 
 ### Analysis Journal Integration (Latest)
 
@@ -46,7 +60,7 @@ The full pipeline now generates complete philosophy papers from topic generation
 - **Phase II.2** (Abstract Development): Analysis abstract patterns and conversational tone
 - **Phase II.3** (Key Moves Development): Curated philosophical examples database (14 examples from 3 Analysis papers)
 - **Phase II.4** (Detailed Outline Development): Analysis structural patterns with **critical bug fix**
-- **Phase II.6** (Writing Context): Analysis-aware consolidation
+- **Phase II.8** (Writing Context Optimization): Analysis-aware content preparation
 - **Phase III.1** (Section Writing): Analysis writing style and voice patterns
 - **Phase III.2** (Paper Integration): Analysis publication standards and quality assessment
 
@@ -100,7 +114,7 @@ The pipeline recently generated: **"Distinguishing Epistemic from Moral Blame in
 
 - **Mature Codebase**: Core functionality complete with robust error handling
 - **Typed Workers**: Development, Critique, and Refinement workers in `src/phases/core`
-- **Hybrid Architecture**: Python orchestration with Rivet for complex AI workflows
+- **Hybrid Architecture**: Python orchestration with Rivet for Phase I.2 literature research
 - **Production Ready**: Full pipeline tested and working reliably
 
 Detailed system design available in `docs/architecture-doc.md`
@@ -110,12 +124,12 @@ Detailed system design available in `docs/architecture-doc.md`
 ### Prerequisites
 
 - Python 3.8+
-- Node.js (for Rivet server)
+- Node.js (for Rivet server - only needed for Phase I.2)
 - API Keys:
   - Anthropic API key (required for all phases)
-  - OpenAI API key
-  - Tavily Search API key
-- [Rivet](https://rivet.ironcladapp.com/) - Download and install the Rivet IDE
+  - OpenAI API key (optional, for specific phases)
+  - Tavily Search API key (for literature search)
+- [Rivet](https://rivet.ironcladapp.com/) - Only needed for Phase I.2 literature research
 
 ### Installation
 
@@ -141,13 +155,11 @@ deactivate
 
 3. **Install dependencies**
 
-In the root directory:
-
 ```bash
 pip install -r requirements.txt
 ```
 
-In the `rivet` directory:
+4. **Install Rivet dependencies** (only needed if running Phase I.2)
 
 ```bash
 cd rivet
@@ -155,7 +167,7 @@ npm install
 cd ..
 ```
 
-4. **Create `.env` file with API keys in the root directory**
+5. **Create `.env` file with API keys in the root directory**
 
 ```bash
 ANTHROPIC_API_KEY=your_anthropic_key_here
@@ -163,16 +175,7 @@ OPENAI_API_KEY=your_openai_key_here
 TAVILY_API_KEY=your_tavily_key_here
 ```
 
-5. **Start Rivet server** (required for Phase II.5)
-
-In a separate terminal:
-
-```bash
-cd rivet
-node --watch server.js
-```
-
-Keep this running while using the pipeline.
+**Note on Rivet**: Rivet is only required for Phase I.2 (literature research). Phase II.5 has been completely rewritten with direct API integration and no longer requires Rivet.
 
 ## Running the Pipeline
 
@@ -186,13 +189,15 @@ Once you have literature papers in the `papers/` directory, you can run the comp
 # Activate virtual environment
 source venv/bin/activate
 
-# Run complete pipeline (takes ~145 minutes)
+# Run complete pipeline (takes ~130 minutes)
 python run_phase_2_1.py  # Literature processing
 python run_phase_2_2.py  # Framework development  
 python run_phase_2_3.py  # Key moves development
 python run_phase_2_4.py  # Detailed outline
-python run_phase_2_5.py  # Context consolidation
-python run_phase_2_6.py  # Writing context preparation
+python run_phase_2_5.py  # Intelligent consolidation
+python run_phase_2_6_review.py  # Holistic review
+python run_phase_2_7.py  # Targeted refinement
+python run_phase_2_8.py  # Writing context optimization
 python run_phase_3_1.py  # Section-by-section writing
 python run_phase_3_2.py  # Global integration & final paper
 ```
@@ -213,6 +218,13 @@ python run_phase_1_1.py
 
 ##### 2. Search papers for literature engagement
 
+First, start the Rivet server in a separate terminal:
+```bash
+cd rivet
+node ./app.js --watch
+```
+
+Then run the literature search:
 ```bash
 python run_phase_1_2.py
 ```
@@ -260,44 +272,84 @@ python run_phase_2_4.py
 **Duration**: ~53 minutes (with Analysis PDF integration)
 **Output**: `outputs/detailed_outline/detailed_outline_final.json`
 
-##### 7. Consolidate Context
-
-**Requires**: Rivet server running (`cd rivet && node server.js`)
+##### 7. Intelligent Consolidation
 
 ```bash
 python run_phase_2_5.py
 ```
 
-**Output**: `outputs/phase_3_context.json` (comprehensive context for Phase III)
+**Duration**: ~85 seconds
+**Features**: 
+- Comprehensive quality diagnostics using Hájek heuristics
+- Analysis journal pattern compliance checking
+- Anti-RLHF validation (hedging, equivocation detection)
+- Philosophical skepticism tests
+- Priority-ranked issue identification
+**Output**: `outputs/paper_[id]/phase_2_5_intelligent_consolidation/consolidation_output.json`
 
-##### 8. Prepare Writing Context
+##### 8. Holistic Review
 
 ```bash
-python run_phase_2_6.py
+python run_phase_2_6_review.py
 ```
 
-**Output**: `outputs/phase_3_writing_context.json` (section-specific writing guidance)
+**Duration**: ~90 seconds
+**Features**:
+- Two-stage process: expert critique + revision planning
+- Fatal flaw detection
+- Move-by-move revision strategies
+- Thesis refinement recommendations
+**Output**: `outputs/paper_[id]/phase_2_6_holistic_review/review_output.json`
+
+##### 9. Targeted Refinement
+
+```bash
+python run_phase_2_7.py
+```
+
+**Duration**: ~20 seconds
+**Features**:
+- Implements revision plan from Phase II.6
+- Strategies: refine, redevelop, merge, or cut moves
+- Re-validates against all quality standards
+- Updates thesis and contribution as needed
+**Output**: `outputs/phase_2_7_refined_context.json`
+
+##### 10. Writing Context Optimization
+
+```bash
+python run_phase_2_8.py
+```
+
+**Duration**: ~92 seconds
+**Features**:
+- Generates 4-5 introduction hooks
+- Creates section transitions
+- Builds Analysis-style phrase banks
+- Provides move integration guidance
+- Prepares conclusion options
+**Output**: `outputs/phase_2_8_writing_context.json`
 
 #### Phase III: Paper Writing & Integration
 
-##### 9. Section-by-Section Writing
+##### 11. Section-by-Section Writing
 
 ```bash
 python run_phase_3_1.py
 ```
 
-**Duration**: ~25 minutes (with Analysis style guidance)
+**Duration**: ~12 minutes (with Analysis style guidance)
 **Output**: 
 - `outputs/phase_3_1_draft.md` (complete draft)
 - `outputs/phase_3_1_progress.json` (writing metadata)
 
-##### 10. Global Integration & Final Paper
+##### 12. Global Integration & Final Paper
 
 ```bash
 python run_phase_3_2.py
 ```
 
-**Duration**: ~2 minutes (with Analysis publication standards)
+**Duration**: ~2.8 minutes (with Analysis publication standards)
 **Output**: 
 - `outputs/final_paper.md` (publication-ready paper)
 - `outputs/final_paper_metadata.json` (comprehensive metadata)
@@ -334,17 +386,23 @@ Recent pipeline output: **"Distinguishing Epistemic from Moral Blame in Professi
 
 ```
 outputs/
-├── final_selection.json           # Phase I topic selection
-├── literature_synthesis.json      # Phase II.1 literature analysis
-├── framework_development/         # Phase II.2 core framework
-├── key_moves_development/         # Phase II.3 developed arguments
-├── detailed_outline/              # Phase II.4 comprehensive outline
-├── phase_3_context.json          # Phase II.5 consolidated context
-├── phase_3_writing_context.json  # Phase II.6 writing guidance
-├── phase_3_1_draft.md            # Phase III.1 complete draft
-├── phase_3_1_progress.json       # Phase III.1 writing metadata
-├── final_paper.md                # Phase III.2 publication-ready paper
-└── final_paper_metadata.json     # Phase III.2 comprehensive metadata
+├── final_selection.json                  # Phase I topic selection
+├── literature_synthesis.json             # Phase II.1 literature analysis
+├── framework_development/                # Phase II.2 core framework
+├── key_moves_development/                # Phase II.3 developed arguments
+├── detailed_outline/                     # Phase II.4 comprehensive outline
+├── paper_[id]/                           # Phase II.5-6 outputs
+│   ├── phase_2_5_intelligent_consolidation/
+│   │   └── consolidation_output.json    # Phase II.5 diagnostic analysis
+│   └── phase_2_6_holistic_review/
+│       └── review_output.json           # Phase II.6 review and plan
+├── phase_2_7_refined_context.json        # Phase II.7 refined content
+├── phase_2_8_writing_context.json        # Phase II.8 writing guidance
+├── phase_2_8_optimization_summary.json   # Phase II.8 summary
+├── phase_3_1_draft.md                    # Phase III.1 complete draft
+├── phase_3_1_progress.json               # Phase III.1 writing metadata
+├── final_paper.md                        # Phase III.2 publication-ready paper
+└── final_paper_metadata.json             # Phase III.2 comprehensive metadata
 ```
 
 ## Project Structure
@@ -352,14 +410,32 @@ outputs/
 ```
 philosophy-pipeline/
 ├── docs/                    # Documentation
-│   ├── prompts/            # Prompt engineering guides
-│   └── archive/            # Archived documentation
-├── tests/                  # Test suite
+│   ├── development/        # Setup, testing, and prompt engineering guides
+│   ├── stages/             # Stage-specific documentation
+│   └── archive_review/     # Historical documents for review
+├── data/                   # Curated data (committed to repo)
+│   ├── philosophical_moves/   # Main database used by pipeline
+│   ├── analysis_extracts/     # Token-efficient Analysis paper TXT files
+│   ├── style_guides/          # Analysis journal writing patterns
+│   └── examples/              # Philosophical examples database
 ├── src/                    # Source code
-├── papers/                 # Literature PDFs
-├── outputs/               # Generated outputs
-└── config/                # Configuration files
+├── papers/                 # Literature PDFs (for specific paper generation)
+├── Analysis_papers/        # Analysis journal PDFs (gitignored, ~14MB)
+├── outputs/               # Generated outputs (gitignored)
+├── config/                # Configuration files
+└── tests/                 # Test suite
 ```
+
+### Data Organization
+
+The `data/` directory contains all curated, reusable data committed to the repository:
+
+- **`philosophical_moves/injectable_examples.json`**: Main database (143 examples) used by Phase II.7
+- **`analysis_extracts/*.txt`**: Token-efficient text versions of Analysis papers (~3x more efficient than PDFs)
+- **`style_guides/analysis_style_guide.md`**: Analysis journal patterns for prompts
+- **`examples/`**: Additional philosophical examples and databases
+
+**Note**: Raw Analysis PDFs go in `Analysis_papers/` (gitignored due to size/copyright). Use the setup guide to populate this directory.
 
 ## Configuration
 
@@ -376,11 +452,13 @@ Edit `config/conceptual_config.yaml` to adjust:
 - **Phase II.2**: ~10 minutes (framework development)
 - **Phase II.3**: ~45 minutes (key moves development, 2 moves)
 - **Phase II.4**: ~53 minutes (detailed outline with Analysis PDF integration)
-- **Phase II.5**: ~2 minutes (context consolidation)
-- **Phase II.6**: ~3 minutes (writing context preparation)
-- **Phase III.1**: ~25 minutes (section-by-section writing with critique/refinement and Analysis style guidance)
-- **Phase III.2**: ~2 minutes (global integration and final paper generation with Analysis publication standards)
-- **Total Pipeline**: ~145 minutes for complete Analysis-style philosophy paper generation
+- **Phase II.5**: ~85 seconds (intelligent consolidation with comprehensive diagnostics)
+- **Phase II.6**: ~90 seconds (two-stage holistic review and revision planning)
+- **Phase II.7**: ~20 seconds (targeted refinement of moves and thesis)
+- **Phase II.8**: ~92 seconds (writing aid generation with 5 API calls)
+- **Phase III.1**: ~12 minutes (section-by-section writing with critique/refinement)
+- **Phase III.2**: ~2.8 minutes (global integration and final paper generation)
+- **Total Pipeline**: ~130 minutes for complete Analysis-style philosophy paper generation
 
 ### Model Usage
 
@@ -393,12 +471,13 @@ Edit `config/conceptual_config.yaml` to adjust:
 
 ### Common Issues
 
-1. **Rivet server not running**: Phase II.5 requires `node server.js` in rivet directory
-2. **Missing PDFs**: Download papers to `papers/` directory before Phase II.1
-3. **API rate limits**: The pipeline respects rate limits but may take longer during high usage
-4. **Virtual environment**: Always activate with `source venv/bin/activate`
-5. **Phase III.1 context missing**: Ensure Phase II.6 completed successfully before running Phase III.1
+1. **Missing PDFs**: Download papers to `papers/` directory before Phase II.1
+2. **API rate limits**: The pipeline respects rate limits but may take longer during high usage
+3. **Virtual environment**: Always activate with `source venv/bin/activate`
+4. **Rivet server** (Phase I.2 only): Ensure `node ./app.js --watch` is running in `rivet/` directory
+5. **Phase III.1 context missing**: Ensure Phase II.8 completed successfully before running Phase III.1
 6. **Final paper quality**: Phase III.2 requires Claude Sonnet 4; check config for correct model settings
+7. **Review stage issues**: If II.6 fails, check that II.5 completed and all outputs exist
 
 ### Getting Help
 
@@ -409,7 +488,11 @@ Edit `config/conceptual_config.yaml` to adjust:
 
 ## Contributing
 
-The project has achieved **core functionality completion** with a working end-to-end pipeline. Current priorities for enhancement:
+The project has achieved **core functionality completion** with a working end-to-end pipeline. 
+
+**📝 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.**
+
+Current priorities for enhancement:
 
 1. **Citation Accuracy**: Implement fact-checking and citation verification systems
 2. **Prompt Optimization**: Fine-tune prompts for even higher quality philosophical content  

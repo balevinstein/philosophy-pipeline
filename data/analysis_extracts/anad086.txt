@@ -1,0 +1,103 @@
+Here is the complete text content of the PDF document:
+
+Analysis Vol. 84 | Number 3 | July 2024 | 504–511
+
+Subjecthood transparency
+Donnchadh O'Conaill
+
+Abstract
+In recent work Philip Goff has defended the thesis of subjecthood transparency: someone possessing the concept 'subjecthood' is thereby in a position to know, a priori, what it is for an entity to be a subject of experiences. Kevin Morris has criticized a specific argument that Goff provides for subjecthood transparency. I will argue that Morris's criticism of Goff's argument does not succeed. I will then present an alternative criticism of Goff's argument, one that also applies to the thesis of subjecthood transparency itself.
+
+Keywords: subjecthood, transparency, phenomenal concepts, subject of experience, determinable, determinates
+
+1. Introduction
+Philip Goff has recently defended a claim that I shall term subjecthood transparency: roughly speaking, someone possessing the concept 'subjecthood' is thereby in a position to know, a priori, what it is for an entity to be a subject of experiences (2017: 178). This claim is of considerable interest as regards the metaphysical study of subjects, since if correct it promises a relatively straightforward way of understanding what it is for an entity to be a subject. Goff also puts this claim to use in discussing a major problem facing many forms of panpsychism (e.g. for micropsychism, on which micro-subjects combine in intelligible ways to produce ordinary subjects). This is the subject-summing problem, the challenge of explaining how the most fundamental entities in our universe, which the panpsychist claims are themselves subjects of experience, can combine to form more familiar subjects such as ourselves. One way the panpsychist could respond to the subject-summing problem is what Goff terms the Ignorance Response: we are ignorant of the nature of subjecthood, and the apparent intractability of the subject-summing problem could be explained as a function of this ignorance (2017: 177). But if subjecthood transparency is correct, then we can understand the nature of subjecthood in a quite straightforward way, and so the Ignorance Response cannot work (Goff 2017: 178–79).
+
+Kevin Morris (2021) has criticized a specific argument that Goff provides for subjecthood transparency. After outlining some preliminary definitions and Goff's argument (§2), I will discuss Morris's criticism of this argument and conclude that his criticism does not succeed (§3). In §4 I will present an alternative criticism of Goff's argument. In §5 I will argue that this alternative criticism goes beyond Morris's by suggesting a way of criticizing the claim of subjecthood transparency itself.
+
+2. Goff's argument
+A concept is transparent if it reveals the complete essence of the entity or entities that satisfy it; that is, thinking about an entity using this concept reveals 'what it is for that entity to be part of reality' (Goff 2017: 15). (The qualifier 'complete' here is important because it distinguishes transparent concepts from translucent concepts, concepts that reveal some but not all of the essence of the entity or entities that satisfy them – Goff 2017: 102; see also n. 3 below.) Goff's preferred example is the concept 'sphericity'. One who has this concept is in a position to know that for the property of sphericity to be instantiated just is for there to be an entity such that each point on its surface is equidistant from its centre. (There are two possible complications here, which I mention to set aside. First, Goff assumes that for a property to be part of reality is for it to be instantiated. Second, Goff's account of the essence of sphericity might be contested, for example by those who hold that this property essentially disposes its bearer to behave in certain ways – see Taylor 2013: 1290.)
+
+Phenomenal concepts are concepts we use to think about experiences in terms of what they are like. Phenomenal concepts might be thought to be satisfied by token experiences (token conscious states or events) or by phenomenal properties, properties the instantiation of which is necessarily like something for some subject. The differences between these entities are important in other contexts, but in this paper I will refer to them more or less interchangeably. Phenomenal transparency is simply the claim that phenomenal concepts are transparent (Goff 2017: 15). For example, if one feels elated and one thinks about this feeling in terms of what it is like, one is thereby in a position to know what it is for a feeling of elation to occur.
+
+I understand subjecthood to be the condition of being a subject, or 'what it is for something to be a subject' (Goff 2017: 178). On this definition, subjecthood is to particular subjects as bachelorhood is to particular bachelors or childhood is to particular children. Subjecthood transparency is the claim that our concept 'subjecthood', our concept of what it is for an entity to be a subject, is transparent.
+
+Given these definitions, we can now state Goff's argument (2017: 178, 210–11):
+
+(P1) Phenomenal concepts are transparent.
+(P2) Subjecthood is a determinable, and each conscious state is a determinate of this determinable (e.g. 'to be pained is to be a subject in some specific way; to have an experience of orange is to be a subject in some other way' – Goff 2017: 178).
+(P3) If one grasps the essence of a determinate one thereby grasps the essence of any determinable under which that determinate falls.
+(C) If one thinks about an experience under a phenomenal concept, one is thereby in a position to grasp the essence of subjecthood.
+
+To grasp the essence of subjecthood is to understand what it is for an entity to be a subject. If one grasps the essence of subjecthood and one has the concept 'subjecthood', then this concept would be transparent; thinking of subjecthood using this concept would reveal what it is for an entity to be a subject.
+
+3. Morris on Goff's argument
+Morris's criticism of Goff's argument focuses on P2: he denies that we have good reason to accept that subjecthood is a determinable of any specific experience. Describing a determinable–determinate ordering that runs from maximally determinate sharp pain through sharp pain, pain, tactile sensation and sensation, he claims that
+
+subjecthood, or being a subject, is not going to show up on this ordering. The concept of a subject of experience is not the concept of an abstract sort of experience. (2021: 43)
+
+Rather,
+
+The relationship between a subject and its experiences is more like the relation between an object and its properties than the relation between a determinable and its determinates. (2021: 43)
+
+I agree with Morris that subjecthood is not a determinable of any experience, and so we should not accept P2 of Goff's argument. However, I do not accept the specific criticism that Morris levels at this premiss. I have two main disagreements with what Morris says here. First, Morris seems to assume that determinables are entities of the same kind as their determinates, differing only in being more abstract. But we need not (and in some cases we should not) understand determinables in this way. For instance, the determinable being coloured is plausibly not itself a colour; likewise, the concept of 'being coloured' is not the concept of an abstract sort of colour. Again, the determinable being shaped is plausibly not itself a shape. (If one was to ask which shape a certain entity is, one would surely not be satisfied by the answer 'It is shaped'.) So even if we grant (as I think we should) that the concept 'subjecthood' is not the concept of an abstract kind of experience, this does not establish that subjecthood is not a determinable under which experiences fall.
+
+Second, there is a difference between subjects and subjecthood, and likewise between the concepts 'a subject of experience' and 'subjecthood'. As a point of comparison, consider the difference between a coloured entity (an entity that is coloured) and the condition of being coloured; likewise, consider the difference between the concept 'an entity that is coloured' and the concept 'being coloured'. It is very plausible that a coloured entity is not itself a determinable under which various colours fall; rather, it is an entity which can have various colour properties. But it does not follow from this that the condition of being coloured is not a determinable under which colours fall. Likewise, as Morris suggests, a subject can have experiences (or have phenomenal properties) rather than itself being a determinable under which experiences or phenomenal properties fall. However, it does not follow that subjecthood, the condition of being a subject, is not a determinable under which experiences or phenomenal properties fall.
+
+For these two reasons, even though I agree with Morris that we should not accept P2, I think the specific criticism he offers does not succeed, and hence he has not undermined Goff's argument.
+
+4. Another criticism of Goff's argument
+That said, I think Goff's argument does not work. Furthermore, seeing why it does not work allows us to call into question the thesis of subjecthood transparency itself.
+
+I suggest that the most natural way of reading P2 is that every possible determinate of the determinable subjecthood is a conscious state, that is, an experience (I will presently consider an alternative reading of this premiss). Furthermore, it is generally agreed that, necessarily, if a determinable is instantiated by an entity x at time t, at least one of its determinates must also be instantiated by x at t (Funkhouser 2006: 549). Given this general claim about determinables, the proposed reading of P2 entails that, necessarily, if x is a subject at time t, then x has some experience at t.
+
+But this entailed claim is extremely controversial. Subjecthood may be compatible with having no experiences, in the following sense: it may be possible for x to be a subject at time t and to not have any experiences at t (for related discussion see Dainton 2008: 77–80). For instance, it may be that while in a coma or a dreamless sleep one does not have any experiences but one does not thereby cease to be a subject. At the very least, it is not obvious that in such circumstances one would necessarily cease to be a subject.
+
+Given how controversial this claim entailed by P2 is, we have reason to reject the conclusion of Goff's argument. Goff's conclusion is that one can grasp the essence of subjecthood by grasping the essence of any phenomenal property. But to grasp the essence of subjecthood surely requires knowing whether or not an entity can be a subject at a time and not have any experiences at that time. And this is not something one could be in a position to know based on one's grasp of the essence of any phenomenal property (or even of every phenomenal property). To be clear, I am not assuming that it is possible that x could be a subject at t and not have any experiences at t. Rather, I am claiming that we cannot rule out this possibility simply on the basis of grasping the essence of phenomenal properties. Therefore, we should not accept the conclusion of Goff's argument. Specifically, we should not accept that by conceiving an experience under a phenomenal concept, one is thereby in a position to grasp what it is for an entity to be a subject.
+
+It might help to clarify the dialectic here by comparing subjecthood with the property being (phenomenally) conscious, where this is understood as the property of having some conscious experience or other. I have argued that we should not assume that subjecthood is a determinable under which each specific experience falls as a determinate. But if there is a property of being phenomenally conscious, then plausibly it fits the standard criteria for being a determinable relative to any specific experience (see Funkhouser 2006: 548–49). If an entity x instantiates this property, then necessarily x has some specific token experience; if x has any specific token experience, then necessarily x instantiates the property being phenomenally conscious; and, plausibly, having a token experience is a specific way of being phenomenally conscious (compare with Kriegel 2009: 11, 54).
+
+For these reasons, P2 is very plausible if it is understood as a claim about being phenomenally conscious. And perhaps Goff assumes that subjecthood is identical with the property of being phenomenally conscious. But it is not obvious that subjecthood is identical with this property. That is, it is not obvious that to be a subject just is to have some conscious experience or other. I have defended this claim by arguing that it may be possible for an entity x to be a subject at time t and not have any experiences at t. At any rate, this is not a possibility that we are in a position to rule out on the basis of what is revealed by our grasp of phenomenal concepts.
+
+I will consider two possible responses to the argument presented in this section. The first response is to suggest an alternative reading of P2. On this alternative reading, one of the determinations of the determinable subjecthood is to lack any experiences. That is, one way of being a subject is to not be (at a certain moment) experiencing. If this alternative reading is granted, then P2 would not require that a subject have some experience at every moment it is a subject.
+
+I do not think we should accept this alternative reading, for three reasons. First, it seems ad hoc; at any rate, it is not clear to me why we ought to accept it, other than as a way of salvaging Goff's argument. Second, it would require a sharp distinction between subjecthood and other determinables of which we have a relatively clear understanding (for instance, colour – it is surely not the case that a specific way of being a coloured entity is to lack any colour). Third, it requires appealing to a wholly negative determinate, which seems dubiously coherent (see e.g. Molnar 2000).
+
+A second possible response to my argument is as follows: while subjecthood is not identical with the property of being phenomenally conscious, it is defined in terms of this property, in that to be a subject is to be capable of being phenomenally conscious, that is, to be capable of having conscious experiences (Dainton 2008: 78–80, Duncan 2018: 90). Therefore, one might think, a transparent grasp of the property of being phenomenally conscious would yield a transparent grasp of subjecthood.
+
+I accept that subjecthood can be defined as being capable of having experiences. I also accept that a transparent grasp of the property of being phenomenally conscious would reveal some of the essence of subjecthood. However, the claim that the concept 'subjecthood' is transparent requires more than this; it requires that one in possession of this concept is thereby in a position to grasp completely what it is to be a subject. And this stronger claim, I suggest, does not follow from a transparent grasp of the property being phenomenally conscious.
+
+In general, to grasp the complete essence of a capacity or capability requires more than having a complete grasp of what that capacity is a capacity to do (its manifestation or manifestations). It also requires grasping whether or not this capacity can be had only while being exercised, and whether or not having this capacity requires having a distinct categorical property on which the capacity is grounded (for different views on this second issue see Prior et al. 1982 and Heil 2005). Furthermore, it requires grasping whether or not this capacity is had intrinsically or extrinsically (see McKitrick 2003), and if it is had extrinsically, which kinds of extrinsic factor are relevant. These points also apply to the capacity to have experiences. A complete grasp of the property of being phenomenally conscious will not reveal, for instance, whether or not the capacity to have experiences can be had while not being exercised, or whether or not having this capacity requires having a categorical property that grounds it. Therefore, it is plausible that even a complete grasp of the property of being phenomenally conscious cannot by itself reveal the full essence of the capacity to have experiences.
+
+5. Criticism of subjecthood transparency
+In §4 I focused on Goff's argument that thinking of experiences using phenomenal concepts puts one in a position to grasp the essence of subjecthood. But the line of thought sketched in that section also suggests a direct criticism of subjecthood transparency itself. Having experiences is plausibly sufficient for an entity to count as a subject, but it is by no means clear whether or not it is necessary; and without knowing whether or not it is necessary, there is a clear sense in which we do not have a complete grasp of what it is for an entity to be a subject, which is what subjecthood transparency requires.
+
+It is worth mentioning two points with regard to this argument. First, one might think that we could simply stipulate that subjecthood entails that subjects always have experiences. But such stipulation risks trivializing the thesis of subjecthood transparency. And it is by no means clear that there are any entities that would satisfy the concept 'subjecthood' thus qualified. For instance, it is not clear whether there exist any subjects that are such that, necessarily, they would cease to be subjects if they ceased to have experiences (see e.g. Galen Strawson's notion of a 'thin subject' (2009: 323–25); for criticism see Shoemaker 2009).
+
+Second, one might think that, by dint of empirical research or detailed argumentation, one could arrive at a complete grasp of what it is for an entity to be a subject. That is, one could by a process of rational inquiry refine our existing concept 'subjecthood', and this refined concept might be transparent. Nothing I have said rules out this possibility, but I take it that this is not what Goff had in mind in his discussion. As things stand, we have a concept 'subjecthood', and I take it that Goff's position is that this concept, as opposed to a suitably refined replacement, is transparent.
+
+Subjecthood transparency, if correct, would open an extremely promising route to investigating the metaphysics of the subject, specifically what it is for an entity to be a subject. Goff defends subjecthood transparency by offering an argument from the transparency of phenomenal concepts. Morris criticizes this argument, and in particular Goff's claim that subjecthood is a determinable under which each token experience falls. While I agree with Morris that we should not accept this claim, I have argued that Morris's criticisms of this claim do not work. I have offered a different criticism, one that provides reason to doubt not only Goff's argument for subjecthood transparency but also the thesis of subjecthood transparency itself.
+
+Funding
+This work was supported by Schweizerischer Nationalfunds zur Förderung der Wissenschaftlichen Forschung (grant application 189031).
+
+Université de Fribourg
+Switzerland
+doconaill@yahoo.co.uk
+
+References
+
+Dainton, B. 2008. The Phenomenal Self. Oxford: Oxford University Press.
+Duncan, M. 2018. Subjectivity as self-acquaintance. Journal of Consciousness Studies 25: 88–111.
+Funkhouser, E. 2006. The determinable-determinate relation. Noûs 40: 548–69.
+Goff, P. 2017. Consciousness and Fundamental Reality. Oxford: Oxford University Press.
+Heil, J. 2005. Dispositions. Synthese 144: 343–56.
+Kriegel, U. 2009. Subjective Consciousness: A Self-Representational Theory. Oxford: Oxford University Press.
+McKitrick, J. 2003. A case for extrinsic dispositions. Australasian Journal of Philosophy 81: 155–74.
+Molnar, G. 2000. Truthmakers for negative truths. Australasian Journal of Philosophy 78: 72–86.
+Morris, K. 2021. Phenomenal transparency and the transparency of subjecthood. Analysis 81: 39–45.
+Prior, E.W., R. Pargetter and F. Jackson. 1982. Three theses about dispositions. American Philosophical Quarterly 19: 251–56.
+Shoemaker, S. 2009. Review of Galen Strawson Selves. Notre Dame Philosophical Reviews. https://ndpr.nd.edu/reviews/selves-an-essay-in-revisionary-metaphysics/.
+Strawson, G. 2009. Selves: An Essay in Revisionary Metaphysics. Oxford: Oxford University Press.
+Taylor, J.H. 2013. Physicalism and phenomenal concepts: bringing ontology and philosophy of mind together. Philosophia 41: 1283–97.
+Windt, J.M., T. Nielsen and E. Thompson. 2016. Does consciousness disappear in dreamless sleep? Trends in Cognitive Sciences 20: 871–82.

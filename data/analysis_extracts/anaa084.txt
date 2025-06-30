@@ -1,0 +1,117 @@
+Here is the complete extracted text content from the PDF document:
+
+Beliefs don't simplify our reasoning, credences do
+Alexander Dinges
+
+1. Introduction
+
+Doxastic dualists acknowledge both outright beliefs (henceforth 'beliefs') and credences, and they maintain that neither state is reducible to the other. This gives rise to the 'Bayesian Challenge', which is to explain why we need beliefs if we have credences already. This challenge arises for doxastic dualists because if we do not need beliefs, doxastic dualism entails an implausibly wasteful doxastic double structure.
+
+On a popular response to the Bayesian Challenge, we need beliefs to simplify our reasoning. More specifically, we need beliefs because we sometimes have to ignore small probabilities to make our reasoning tractable and because only beliefs allow us to keep track of what we can and cannot ignore.
+
+I argue that this response fails because credences perform this function at least as well as beliefs do. I describe a common practice of simplifying reasoning (§2) along with one account of this practice in terms of belief and another in terms of credences (§3). I argue that the credence account is at least on a par with the belief account (§4). I conclude that the indicated response to the Bayesian Challenge fails (§5).
+
+This shows neither that beliefs do not exist nor that doxastic dualism fails. I tend to think that beliefs exist trivially, and there may be other ways to respond to the Bayesian Challenge. My point is that dualists must explore these other options.
+
+2. Simplifying reasoning
+
+Many authors hold that we simplify both theoretical and practical reasoning by taking propositions for granted even when they could be false. On the practical side, Bratman (1992: 5), for instance, suggests that '[i]n planning my day – a June day in Palo Alto – I simply take it for granted that it will not rain even though I am not certain about this'. On the theoretical side, Staffel (2019: 940–41) considers a case where I try to figure out how likely it is to rain during an upcoming tennis match. The calculation is complicated because I am unsure where the match takes place, as represented by the following credence function Cr:
+
+Cr(NY) = 0.48,
+Cr(Boston) = 0.48,
+Cr(LA) = 0.04.
+
+Staffel suggests that we reduce complexity by just taking it for granted that the match will not take place in LA, working with something like the following simplified credence function instead:
+
+Cr'(NY) = 0.5,
+Cr'(Boston) = 0.5,
+Cr'(LA) = 0.
+
+Holton (2008: 36), Ross and Schroeder (2014: 264–66) and Weisberg (2020: 6–7), among others, express similar ideas.
+
+3. Two accounts
+
+What explains this simplifying practice? What explains that we take some propositions for granted but not others in the way described? One response appeals to belief. Ross and Schroeder (2014: 267–68), for instance, suggest the following principle.
+
+(B) If S believes that p, then S is disposed to treat p as true in her reasoning.
+
+Given B, we can explain why, for example, we take for granted that it will not rain on a June day in Palo Alto while we do not take for granted that the sun will not shine. We do so because we believe the former proposition but not the latter. Call this the B-account of simplifying reasoning. If the B-account is correct, then beliefs play an important role in reasoning, and we have answered the Bayesian Challenge.
+
+However, there is an obvious alternative to the B-account in terms of credences.
+
+(C) If S has a high credence in p, then S is disposed to treat p as true in her reasoning.
+
+Given C, we can equally explain the Palo Alto case, for example. We have a high credence in the proposition that it will not rain and a low credence in the proposition that the sun will not shine. Therefore, we take one proposition for granted but not the other. Call this the C-account of simplifying reasoning. If the C-account is correct, the B-account becomes superfluous, and appeals to simplified reasoning no longer suffice to answer the Bayesian Challenge.
+
+Before presenting my arguments for the C-account, let me address two objections against it. First objection. It is in the nature of every credence in p short of 1 that it disposes us to consider not-p in our reasoning. This means that, contrary to C, no credence short of 1 can dispose us to treat p as true in our reasoning. Response. It is not in the nature of every credence in p short of 1 that it disposes us to consider not-p in our reasoning, or at least I see no reason to believe this. For instance, I might die of a heart attack within the next hour, and my credence that I will not is less than 1. Still, I am not disposed to consider this possibility in my reasoning. Maybe every credence in p short of 1 disposes us to consider not-p under certain circumstances, such as when the stakes are high. But we will see later that, properly spelled out, C is compatible with this assumption. Notice also that if credences short of 1 did entail a general disposition to consider not-p in our reasoning, principle B too would become unattractive for many doxastic dualists. It would entail that belief entails credence 1 (or the lack of any credence), for only a credence of 1 in p would be compatible with the disposition to treat p as true in one's reasoning. This conclusion is generally contentious, and doxastic dualists should find it particularly worrisome. For, if, as they argue, beliefs and credences were metaphysically distinct, one would not expect such entailment relations to hold.
+
+Second objection. The C-account 'give[s] away the game' (Weisberg 2020: 8) by positing a state of treating something as true. Dualists can identify this state with belief. Thus the C-account entails a role for belief in reasoning, and it cannot undermine this role. Response. The suggested identification of treating something as true with belief is implausible for two reasons. First, what we treat as true is under our voluntary control in a way that belief is not. I can decide to consider the possibility of rain in planning my day in Palo Alto and thus stop treating it as true that it will not rain. Meanwhile it seems implausible that I thereby decide to stop believing that it will not rain. Second, the state of treating something as true is less stable than belief is. I treat it as true that it will not rain while planning my day, but I stop doing so once my planning is over. Meanwhile I do not lose my beliefs just because I stop deliberating. In response one might suggest identifying belief with the posited state of being disposed to treat something as true. As we shall see, however, the specific dispositions posited by the C-account cannot plausibly be identified with belief because they are often based on statistical evidence (§4.1) and because they come in degrees (§4.2).
+
+4. Against belief
+
+Should we prefer the B-account or the C-account? In §§4.1 and 4.2, I argue that the C-account is explanatorily more powerful in two ways and therefore preferable. In §4.3, I weaken this conclusion slightly, suggesting that the C-account and the B-account are at least on a par.
+
+4.1 Statistical evidence 
+
+The first reason to prefer the C-account is that, unlike the B-account, it explains why we take propositions for granted based on purely statistical evidence.
+
+Consider Staffel's case of the tennis match, and suppose that the credences assigned to the indicated locations rely solely on statistical evidence, such as the known odds of a lottery that determines the location of the match. I submit that we would still take it for granted in the relevant bit of reasoning that the match does not take place in LA. I find this intuitively plausible, and Staffel seems to agree, as she apparently felt no need to guard against this statistical construal of her case. Moreover, the idea that we grant statistically likely propositions in reasoning follows from the general rationale behind our practice of simplifying reasoning. We do this when simplification foreseeably leaves the outcome of our reasoning untouched, or affects it only marginally (see e.g. Ross and Schroeder 2014: 274). That is often so when the proposition taken for granted is very probable, independently of whether the underlying evidence is statistical.
+
+This data is hard to explain on the B-account. To explain why we take for granted that the match will not take place in LA in the envisaged case, proponents of the B-account have to hold that we believe this, despite the fact that we have purely statistical evidence. However, outright belief is connected to knowledge and assertion. For instance, it is often assumed to be something like the inner version of assertion (see e.g. Williamson 2000: 255–56), and it supposedly feels like knowledge (see e.g. Greco 2015: 180). We would not assert that the match does not take place in LA, and we would not feel as though we know this, if we had only statistical evidence. Hence, one would be hard-pressed to claim that we believe this.
+
+Proponents of the B-account might abandon the indicated roles for belief in knowledge and assertion. Instead, they might focus exclusively on our ordinary notion of belief. According to Hawthorne et al. (2016), this notion is 'weak', and it allows for beliefs based on statistical evidence alone. I will come back to this in §4.3.
+
+Meanwhile notice that the C-account nicely explains the data. Independently of the type of our evidence, statistical or otherwise, we have a high credence in the proposition that the match will not take place in LA. Given C, we take this proposition for granted.
+
+One may object that we do not always take propositions for granted when they are statistically likely. For instance, when asked to bet on the match taking place in LA, I would not treat it as true that the match does not take place in LA. I would have to accept absurd bets otherwise. But this just shows that the disposition described in C is defeasible. It is defeated, for instance, when there is no need to simplify because the envisaged reasoning is straightforward enough as it is. Following Holton (2008: 39–40), this is typically so in betting situations, where the relevant decision 'does not require much from you'.
+
+My opponents – proponents of the B-account – should be happy with this response. For the indicated worry arises for them too, and they have to respond in the same way. Even if I had an outright belief that the match does not take place in LA (e.g. based on a newspaper report), I would not take this for granted when asked to bet on it. I would not bet my life on the other options. The disposition in B must be defeated in betting situations, just as the disposition in C is on my account.
+
+4.2. Stakes
+
+The second reason to favour the C-account is that it explains how simplification is sensitive to stakes, while the B-account does not.
+
+For starters, consider a blunt worry with the B-account. In the Palo Alto case as described, we grant that it will not rain, in line with the B-account, assuming that we believe this outright. Now suppose that I do not plan a picnic, say, but a trip to my wedding. My wedding dress is delicate, and it would not withstand rain. In that situation, I might no longer take it for granted that it will not rain. Instead I might consider this possibility for safety. The B-account may seem to predict otherwise, for my belief that it will not rain should still dispose me to take this for granted.
+
+Here is a convincing response. The disposition described in B is defeasible. Accordingly we can sharpen principle B along the following lines, where ts is a relatively high threshold on the scale of stakes (see e.g. Ross and Schroeder 2014: 267 and Weisberg 2020: 4).
+
+(B') If S believes that p, then S is disposed to treat p as true in her reasoning when the stakes regarding p are below ts.
+
+If ts is well chosen, the stakes are above ts in the wedding case, where being mistaken about the rain has terrible consequences. Hence the B'-account no longer predicts that we grant that it will not rain in this situation, in line with the data.
+
+Let us now turn to the real challenge for the B'-account. Take the proposition that it will not snow, and assume that snow would also ruin the dress so that the stakes with respect to this proposition are as high as they are for the proposition that it will not rain. Even so, we plausibly take this proposition for granted in the wedding case, intuitively because snow is even less likely than rain. More generally there should be situations such that (i) we take a bunch of propositions for granted due to our beliefs (B'-account) or our credences (C-account); and (ii) equally raising the stakes for these propositions leads us to stop taking some of these propositions (e.g. that it will not rain) for granted but not others (e.g. that it will not snow).
+
+The B'-account cannot explain this. If the raised stakes are below ts, then we should keep taking all relevant propositions for granted. For the manifestation conditions in B' are satisfied, and hence our beliefs should lead to this outcome. Meanwhile, if the raised stakes are above ts, then we should no longer take any of the relevant propositions for granted. For the manifestation conditions in B' are no longer satisfied, and hence our beliefs should no longer lead us to take anything for granted. Independently of how we raise the stakes, if we raise them equally for all propositions involved, we should grant all or none of them.
+
+One response would be that ts is a function of S's context (or the context of the ascriber or the assessor). This will not do because the decision to ignore, say, rain or snow takes place in the same context, and yet we ignore one possibility but not the other. Another response would be that belief comes in degrees with corresponding lower or higher thresholds ts. On one way to spell this out, belief itself is graded (see e.g. Williamson 2000: 99). On another, belief combines with credences to deliver degrees of belief. A high degree of belief would thus amount to a belief with a high credence. Based on either proposal, one could argue that we take for granted that it will not snow, while we do not take for granted that it will not rain, because we have a higher degree of belief in the former proposition. I will challenge this idea in §4.3.
+
+Notice meanwhile that the C-account explains the data perfectly. Proponents of the C-account will also hold that the disposition in C is defeasible. Let ts(.) be a function that takes any given credence onto a certain stakes threshold, where higher credences go to higher thresholds. We get a principle along the following lines.
+
+(C') If S has a credence of x in p, then S is disposed to treat p as true in her reasoning when the stakes regarding p are below ts(x).
+
+This principle explains why we no longer grant that it will not rain in the wedding case. We have a high credence in this proposition, and ts(.) maps this credence onto a relatively high stakes threshold. Given that the stakes in this case are very high, however, this threshold is surpassed and the manifestation conditions in C' are not satisfied. C' also explains why we continue to take for granted that it will not snow. Our credence in this proposition is even higher, and so ts(.) maps it onto an even higher stakes threshold. This second threshold may fail to be surpassed and the manifestation conditions in C' may be satisfied.
+
+4.3 Coda
+
+I have left open one response strategy on behalf of the B-account for each worry I raised. In response to the worry from statistical evidence, one could suggest that belief is weak and that we form beliefs based on purely statistical evidence. In response to the worry from stakes, one could suggest that simplified reasoning relies on degrees of belief. Thus one could mimic the just described account in terms of C'.
+
+By themselves these responses may be fine, but one must recall the dialectical context here. The B-account is part of a defence of dualism against the Bayesian Challenge. Hence it must be compatible with dualism, the view that beliefs and credences are metaphysically distinct. Once we construe beliefs as weak and graded, we undermine this assumption, for degrees of weak belief just are credences. At least, a case would have to be made to tear these states apart. Williamson (2000: 99), for instance, motivates his distinction between credences and degrees of belief based on the idea that we do not form beliefs of any degree on statistical evidence alone. This motivation seems convincing on a strong conception of belief. On a weak conception, however, it fails because on this conception we form such beliefs.
+
+Even if we could distinguish degrees of weak belief from credences, problems would remain. Dualists could establish that the B-account and the C-account are on a par as far as statistical evidence and stakes are concerned. To answer the Bayesian Challenge, however, they must show that the B-account is preferable to the C-account. Only this would allow them to conclude that we need beliefs in addition to credences. Once we construe the B-account in terms of degrees of weak belief, however, this becomes exceedingly difficult. What work can degrees of weak belief do that credences cannot? No answer to this question seems forthcoming.
+
+5. Conclusion
+
+Appeals to simplified reasoning do not suffice to answer the Bayesian Challenge, for credences explain this phenomenon at least as well as beliefs do. We must either abandon doxastic dualism or find another response to the Bayesian Challenge.
+
+Funding
+
+This work was supported by the German Research Foundation [grant numbers DI 2172/1-1, SCHU 3080/3-2].
+
+Institut für Philosophie,
+Friedrich-Alexander-Universität Erlangen-Nürnberg,  
+Bismarckstr. 1, Erlangen 91054, Germany
+alexander.dinges@fau.de
+
+References
+
+[References section follows...]

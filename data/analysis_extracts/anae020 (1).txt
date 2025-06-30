@@ -1,0 +1,19 @@
+Analysis Vol. 84 | Number 3 | July 2024 | 576–592
+On the dilemma for partial subjunctive supposition
+Snow Zhang
+
+Abstract
+In 'The logic of partial supposition', Eva and Hartmann present a dilemma for a normative account of partial subjunctive supposition: the natural subjunctive analogue of Jeffrey conditionalization is Jeffrey imaging, but this rule violates a natural monotonicity constraint. This paper offers a partial defence of Jeffrey imaging against Eva and Hartmann's objection. I show that, although Jeffrey imaging is non-monotonic in Eva and Hartmann's sense, it is what I call status quo monotonic. A status quo monotonic credal revision rule is monotonic in Eva and Hartmann's sense if it is conservative in the sense of Meehan and Zhang ('Jeffrey meets Kolmogorov'), but Jeffrey imaging is in general non-conservative. On the other hand, Jeffrey imaging satisfies a different constraint that I call convexity, and the only rule that is both convex and conservative is Jeffrey conditionalization. To this extent, the real dilemma for a normative account of partial subjunctive supposition is not between monotonicity (broadly construed) and Jeffrey imaging, but between convexity and conservativeness.
+
+Keywords: indicative, subjunctive, supposition, belief revision
+
+1. Introduction
+
+Some supposition involves hypothetically assigning probability 1 to a proposition. When I suppose that Shakespeare did not write Hamlet, I temporarily treat the proposition as if it were true with certainty, and readjust the rest of my probabilities accordingly. However, just as not all learning involves learning something with certainty (Jeffrey 1990), one might think that not all supposition involves supposing something with certainty; one may suppose however one likes.
+
+How should rational agents provisionally revise their beliefs under full or partial supposition? Presumably the answer depends on the mood of the supposition. According to the orthodoxy, there are two moods of supposition: indicative and subjunctive (Joyce 1999, Eva et al. 2020, Eva and Hartmann 2021). Following Eva and Hartmann (2021) (hereafter E&H), I will assume that, at least as a first-pass heuristic, to indicatively suppose X is to revise one's epistemic state in exactly the way one would if one were to learn that X is true; to subjunctively suppose X is to revise one's epistemic state in exactly the way one would if one were to learn that X were made true by a 'local miracle' or 'ideal intervention'.
+
+[Content continues through multiple sections discussing formal probabilistic frameworks, monotonicity conditions, and technical proofs, ending with references]
+
+References
+[List of academic references]

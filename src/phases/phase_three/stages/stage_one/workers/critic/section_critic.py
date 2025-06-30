@@ -5,6 +5,7 @@ from src.phases.core.worker_types import CriticWorker
 from src.phases.phase_three.stages.stage_one.prompts.section_writing.section_writing_prompts import (
     SectionWritingPrompts,
 )
+from src.phases.phase_two.base.framework import ValidationError
 
 
 class SectionCriticWorker(CriticWorker):
@@ -164,3 +165,22 @@ class SectionCriticWorker(CriticWorker):
 
         print(f"Critique validation passed! Assessment: {summary_assessment}")
         return True 
+
+    def execute(self, state: Dict[str, Any]) -> WorkerOutput:
+        """Execute the critic worker with proper tuple unpacking"""
+        input_data = self.process_input(state)
+        prompt = self._construct_prompt(input_data)
+        system_prompt = self.get_system_prompt()
+        
+        # Make API call and unpack tuple
+        response, _ = self.api_handler.make_api_call(
+            stage=self.stage_name,
+            prompt=prompt,
+            system_prompt=system_prompt
+        )
+        
+        output = self.process_output(response)
+        if not self.validate_output(output):
+            print(response)
+            raise ValidationError("Worker output failed validation: ", self.stage_name)
+        return output 

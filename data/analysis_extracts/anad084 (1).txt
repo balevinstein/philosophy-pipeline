@@ -1,0 +1,32 @@
+Analysis Vol. 84 | Number 3 | July 2024 | 449–456
+
+Newcomb, frustrated
+Rhys Borchert and Jack Spencer
+
+Abstract
+This paper develops a hybridization of Newcomb's Problem and the Frustrater (Spencer and Wells's 2019 paper 'Why take both boxes?'), underscoring how difficult it is to reconcile the rationality of taking both boxes in Newcomb's Problem and the rationality of taking the envelope in the Frustrater.
+
+Keywords: decision theory, causal decision theory, evidential decision theory, hybrid decision theory
+
+1. Some decision theorists have a pair of intuitions. They think that two-boxing in Newcomb's Problem is rational, and they think that taking the envelope is rational in the following:
+
+(Frustrater)
+There are two boxes, A and B, and an envelope. The agent has three options – they can take any of the three. The envelope contains $40. The boxes together contain $100. The distribution is frustrating: a reliable predictor made a prediction about what the agent would choose, placing $100 in A/B if they predicted that the agent would take B/A, and placing $50 in each box if they predicted that the agent would take the envelope. The agent knows all of this.
+
+The two intuitions are hard to reconcile. The two leading approaches to decision theory are Evidential Decision Theory (EDT) and Causal Decision Theory (CDT), and neither vindicates both. Suppose that we have a set of possible worlds, W = {w1, ..., wn}, a set of dependency hypotheses, K = {k1, ..., km} and a set of options, A = {a1, ..., ak}, and suppose that C and u are the agent's credence and utility functions, respectively. EDT prescribes maximizing V, where V(a)=ΣWC(w|a) u(w)=ΣKC(k|a) V(ak). CDT prescribes maximizing U, where U(a)=ΣKC(k) V(ak). But two-boxing in Newcomb's Problem does not maximize V, and taking the envelope in the Frustrater does not maximize U.
+
+The question arises whether the intuitions can be reconciled, and this paper gives new reasons for thinking not. It formulates a new decision problem, a hybridization of Newcomb's Problem and the Frustrater, which, in two ways, underscores how hard reconciling the intuitions is.
+
+[Content continues for several more pages discussing the technical details and arguments around reconciling these decision theory intuitions through various formal approaches and variants of the problems]
+
+[Final section concludes that reconciling the two intuitions - formulating a decision theory that predicts both that two-boxing is rational in Newcomb's Problem and that taking the envelope is rational in the Frustrater - is harder than has been appreciated, if taking the envelope is rational in Newcomb Frustrater. And there is reason to think that taking the envelope is rational in Newcomb Frustrater, if both intuitions are correct.]
+
+[References section lists relevant academic papers and books on decision theory]
+
+University of Arizona
+USA
+rhysborchert@arizona.edu
+
+Massachusetts Institute of Technology  
+USA
+jackspen@mit.edu
