@@ -195,7 +195,7 @@ python run_phase_2_2.py  # Framework development
 python run_phase_2_3.py  # Key moves development
 python run_phase_2_4.py  # Detailed outline
 python run_phase_2_5.py  # Intelligent consolidation
-python run_phase_2_6_review.py  # Holistic review
+python run_phase_2_6.py  # Holistic review
 python run_phase_2_7.py  # Targeted refinement
 python run_phase_2_8.py  # Writing context optimization
 python run_phase_3_1.py  # Section-by-section writing
@@ -290,7 +290,7 @@ python run_phase_2_5.py
 ##### 8. Holistic Review
 
 ```bash
-python run_phase_2_6_review.py
+python run_phase_2_6.py
 ```
 
 **Duration**: ~90 seconds
