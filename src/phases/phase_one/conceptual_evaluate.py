@@ -57,7 +57,7 @@ class ConceptualTopicEvaluator(BaseStage):
 
         # Make API call
         prompt = self.prompt_manager.get_prompt(json.dumps(topics, indent=2))
-        response = self.api_handler.make_api_call(
+        response, duration = self.api_handler.make_api_call(
             stage="topic_evaluation", prompt=prompt
         )
 

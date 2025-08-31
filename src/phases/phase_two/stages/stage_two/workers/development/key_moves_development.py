@@ -57,22 +57,22 @@ class KeyMovesDevelopmentWorker(DevelopmentWorker):
         
         # Make API call with Analysis PDFs if available
         if self.selected_analysis_pdfs:
-            response = self.api_handler.make_api_call(
+            response_text, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
                 pdf_paths=self.selected_analysis_pdfs,
                 system_prompt=system_prompt
             )
         else:
-            response = self.api_handler.make_api_call(
+            response_text, _ = self.api_handler.make_api_call(
                 stage=self.stage_name,
                 prompt=prompt,
                 system_prompt=system_prompt
             )
             
-        output = self.process_output(response)
+        output = self.process_output(response_text)
         if not self.validate_output(output):
-            print(response)
+            print(response_text)
             raise ValidationError("Worker output failed validation: ", self.stage_name)
         return output
 

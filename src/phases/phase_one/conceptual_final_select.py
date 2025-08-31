@@ -20,11 +20,11 @@ class FinalTopicSelector(BaseStage):
 
         prompt = self.prompt_manager.get_selection_prompt(json.dumps(topics, indent=2))
 
-        response = self.api_handler.make_api_call(
+        response_text, _ = self.api_handler.make_api_call(
             stage="topic_selection", prompt=prompt
         )
 
-        result = json.loads(self.json_handler.clean_json_string(response))
+        result = json.loads(self.json_handler.clean_json_string(response_text))
 
         self._print_selection_summary(result)
         return result
@@ -37,11 +37,11 @@ class FinalTopicSelector(BaseStage):
             json.dumps(selected_topic, indent=2)
         )
 
-        response = self.api_handler.make_api_call(
+        response_text, _ = self.api_handler.make_api_call(
             stage="phase_two_setup", prompt=prompt
         )
 
-        result = json.loads(self.json_handler.clean_json_string(response))
+        result = json.loads(self.json_handler.clean_json_string(response_text))
 
         self._print_setup_summary(result)
         return result

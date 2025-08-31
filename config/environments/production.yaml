@@ -1,0 +1,84 @@
+# Philosophy Pipeline - Production Environment Configuration
+# This file contains production-specific optimizations and settings
+
+# Production environment settings
+environment:
+  debug: false
+  log_level: INFO
+  cache_enabled: true
+  verbose_output: false
+  performance_monitoring: true
+
+# Production-optimized model configurations
+models:
+  # High-quality production settings
+  topic_selection:
+    temperature: 0.2  # Lower temperature for consistent production results
+
+  # Production literature processing with full capabilities
+  literature_processing:
+    pdf_settings:
+      cache_enabled: true
+      max_pages: 150  # Increased from base 100
+      max_size_mb: 64  # Increased from base 32
+
+  # Production Phase III with full token limits
+  paper_integration:
+    max_tokens: 64000  # Increased for comprehensive integration
+
+# Production parameters for comprehensive results
+parameters:
+  num_initial_topics: 8  # Increased from base 6
+  max_selected_topics: 3  # Increased from base 2
+  development_cycles:
+    abstract_num_cycles: 4  # Increased from base 3
+    outline_num_cycles: 4   # Increased from base 3
+    key_moves_num_cycles: 4 # Increased from base 3
+    key_move_max_cycles: 4
+    outline_max_cycles: 4
+  literature_processing:
+    max_retries: 5  # Increased from base 3
+    min_wait: 6     # Increased from base 4
+    max_wait: 120   # Increased from base 60
+
+# Production paths with organized structure
+paths:
+  base_dir: ./outputs/production
+  papers_dir: ./papers
+
+# Production API settings with reliability focus
+api:
+  max_tokens: 12000  # Increased from base 8000
+  temperature: 0.05  # Lower for production consistency
+
+# Production worker configurations with higher limits
+workers:
+  framework_developer:
+    max_tokens: 8000  # Increased from base 6000
+    temperature: 0.05
+  detailed_outline_developer:
+    max_tokens: 8000  # Increased from base 6000
+    temperature: 0.05
+  literature_researcher:
+    max_tokens: 8000  # Increased from base 6000
+    temperature: 0.1
+  literature_synthesizer:
+    max_tokens: 8000  # Increased from base 6000
+    temperature: 0.05
+  section_writer:
+    max_tokens: 12000  # Increased from base 8000
+    temperature: 0.05
+  section_refinement:
+    max_tokens: 12000  # Increased from base 8000
+    temperature: 0.05
+  paper_integration:
+    max_tokens: 12000  # Increased from base 8000
+    temperature: 0.05
+
+# Production outputs with full backup and monitoring
+outputs:
+  save_intermediate: true
+  create_backups: true
+  timestamp_files: true
+  performance_logs: true
+  quality_metrics: true

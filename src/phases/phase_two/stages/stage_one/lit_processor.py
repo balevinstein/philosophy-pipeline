@@ -71,13 +71,13 @@ class InitialReader(PhaseIIWorker):
         
         # Stage 1: Extract quotes
         print("  Stage 1: Extracting key quotes...")
-        quote_response = self.api_handler.make_api_call(
+        quote_response_text, _ = self.api_handler.make_api_call(
             stage="initialreader",
             prompt=self._construct_prompt(input_data, stage="quotes"),
             pdf_path=input_data.context["paper_path"],
             system_prompt=self.prompts.get_system_prompt()
         )
-        quote_output = self.process_output(quote_response, stage="quotes")
+        quote_output = self.process_output(quote_response_text, stage="quotes")
         quotes = quote_output.modifications["quotes"]
         
         # Stage 2: Deep analysis using quotes
@@ -89,7 +89,7 @@ class InitialReader(PhaseIIWorker):
             stage="analysis"
         ).replace("{quotes}", quotes_formatted)
         
-        analysis_response = self.api_handler.make_api_call(
+        analysis_response_text, _ = self.api_handler.make_api_call(
             stage="initialreader",
             prompt=analysis_prompt,
             pdf_path=input_data.context["paper_path"],
@@ -97,7 +97,7 @@ class InitialReader(PhaseIIWorker):
         )
         
         # Process the full analysis
-        final_output = self.process_output(analysis_response, stage="full")
+        final_output = self.process_output(analysis_response_text, stage="full")
         
         # Add the extracted quotes to the final output
         if "initial_reading" in final_output.modifications:
@@ -164,12 +164,12 @@ class ProjectSpecificReader(PhaseIIWorker):
 
     def run(self, state: Dict[str, Any]) -> WorkerOutput:
         input_data = self.prepare_input(state)
-        response = self.api_handler.make_api_call(
+        response_text, _ = self.api_handler.make_api_call(
             stage="projectspecificreader", 
             prompt=self._construct_prompt(input_data),
             system_prompt=self.prompts.get_system_prompt()
         )
-        return self.process_output(response)
+        return self.process_output(response_text)
 
 
 class LiteratureSynthesizer(PhaseIIWorker):
@@ -303,12 +303,12 @@ class LiteratureSynthesizer(PhaseIIWorker):
 
     def run(self, state: Dict[str, Any]) -> WorkerOutput:
         input_data = self.prepare_input(state)
-        response = self.api_handler.make_api_call(
+        response_text, _ = self.api_handler.make_api_call(
             stage="literaturesynthesizer", 
             prompt=self._construct_prompt(input_data),
             system_prompt=self.prompts.get_system_prompt()
         )
-        return self.process_output(response)
+        return self.process_output(response_text)
 
 
 class LiteratureManager:

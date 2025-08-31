@@ -1,0 +1,282 @@
+# Philosophy Pipeline - Configuration Schema
+# This file defines the validation schema for all configuration files
+
+schema:
+  type: object
+  required:
+    - models
+    - paths
+    - parameters
+    - api
+    - workers
+    - outputs
+    - environment
+  
+  properties:
+    models:
+      type: object
+      patternProperties:
+        "^[a-z_][a-z0-9_]*$":
+          type: object
+          required:
+            - provider
+            - model
+            - max_tokens
+            - temperature
+          properties:
+            provider:
+              type: string
+              enum: ["anthropic", "openai"]
+            model:
+              type: string
+              pattern: "^(claude-|gpt-|o1-)"
+            max_tokens:
+              type: integer
+              minimum: 1000
+              maximum: 200000
+            temperature:
+              type: number
+              minimum: 0.0
+              maximum: 1.0
+            pdf_settings:
+              type: object
+              properties:
+                cache_enabled:
+                  type: boolean
+                max_pages:
+                  type: integer
+                  minimum: 10
+                  maximum: 500
+                max_size_mb:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+
+    paths:
+      type: object
+      required:
+        - base_dir
+        - papers_dir
+      properties:
+        base_dir:
+          type: string
+          pattern: "^\\./.*"
+        papers_dir:
+          type: string
+          pattern: "^\\./.*"
+        generated_topics:
+          type: string
+          pattern: "\\.json$"
+        topics_culled:
+          type: string
+          pattern: "\\.json$"
+        topic_development:
+          type: string
+          pattern: "\\.json$"
+        topic_analysis:
+          type: string
+          pattern: "\\.json$"
+        development:
+          type: string
+          pattern: "\\.json$"
+        final_selection:
+          type: string
+          pattern: "\\.json$"
+        literature_output:
+          type: object
+          properties:
+            initial_readings:
+              type: string
+              pattern: "\\.json$"
+            project_readings:
+              type: string
+              pattern: "\\.json$"
+            synthesis:
+              type: object
+              properties:
+                json:
+                  type: string
+                  pattern: "\\.json$"
+                markdown:
+                  type: string
+                  pattern: "\\.md$"
+
+    parameters:
+      type: object
+      required:
+        - num_initial_topics
+        - development_cycles
+        - literature_processing
+      properties:
+        num_initial_topics:
+          type: integer
+          minimum: 1
+          maximum: 20
+        cull_min:
+          type: integer
+          minimum: 1
+        cull_max:
+          type: integer
+          minimum: 1
+        max_selected_topics:
+          type: integer
+          minimum: 1
+          maximum: 10
+        development_stages:
+          type: integer
+          minimum: 1
+          maximum: 10
+        min_examples_per_topic:
+          type: integer
+          minimum: 1
+        max_technical_score:
+          type: number
+          minimum: 0.0
+          maximum: 1.0
+        required_elements:
+          type: array
+          items:
+            type: string
+        literature_processing:
+          type: object
+          required:
+            - max_retries
+            - min_wait
+            - max_wait
+          properties:
+            max_retries:
+              type: integer
+              minimum: 1
+              maximum: 10
+            min_wait:
+              type: integer
+              minimum: 1
+              maximum: 30
+            max_wait:
+              type: integer
+              minimum: 30
+              maximum: 300
+        development_cycles:
+          type: object
+          properties:
+            abstract_num_cycles:
+              type: integer
+              minimum: 1
+              maximum: 10
+            outline_num_cycles:
+              type: integer
+              minimum: 1
+              maximum: 10
+            key_moves_num_cycles:
+              type: integer
+              minimum: 1
+              maximum: 10
+            key_move_max_cycles:
+              type: integer
+              minimum: 1
+              maximum: 10
+            outline_max_cycles:
+              type: integer
+              minimum: 1
+              maximum: 10
+
+    api:
+      type: object
+      required:
+        - model
+        - max_tokens
+        - temperature
+      properties:
+        model:
+          type: string
+          pattern: "^(claude-|gpt-|o1-)"
+        max_tokens:
+          type: integer
+          minimum: 1000
+          maximum: 200000
+        temperature:
+          type: number
+          minimum: 0.0
+          maximum: 1.0
+
+    workers:
+      type: object
+      patternProperties:
+        "^[a-z_][a-z0-9_]*$":
+          type: object
+          required:
+            - model
+            - max_tokens
+            - temperature
+          properties:
+            model:
+              type: string
+              pattern: "^(claude-|gpt-|o1-)"
+            max_tokens:
+              type: integer
+              minimum: 1000
+              maximum: 200000
+            temperature:
+              type: number
+              minimum: 0.0
+              maximum: 1.0
+
+    outputs:
+      type: object
+      required:
+        - save_intermediate
+        - create_backups
+      properties:
+        save_intermediate:
+          type: boolean
+        create_backups:
+          type: boolean
+        debug_outputs:
+          type: boolean
+        timestamp_files:
+          type: boolean
+        performance_logs:
+          type: boolean
+        quality_metrics:
+          type: boolean
+
+    environment:
+      type: object
+      required:
+        - debug
+        - log_level
+        - cache_enabled
+      properties:
+        debug:
+          type: boolean
+        log_level:
+          type: string
+          enum: ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+        cache_enabled:
+          type: boolean
+        verbose_output:
+          type: boolean
+        performance_monitoring:
+          type: boolean
+
+# Validation rules for environment-specific configurations
+validation_rules:
+  # Development environment rules
+  development:
+    max_tokens_limit: 8192  # Development should use smaller token limits
+    required_debug: true    # Debug must be enabled in development
+    
+  # Production environment rules
+  production:
+    min_cycles: 3          # Production should have minimum 3 cycles
+    required_backups: true # Backups must be enabled in production
+    max_temperature: 0.3   # Production should use lower temperatures for consistency
+
+# Environment variable requirements
+env_variables:
+  required:
+    - OPENAI_API_KEY
+    - ANTHROPIC_API_KEY
+  optional:
+    - PHILOSOPHY_PIPELINE_ENV  # Override environment detection
+    - PHILOSOPHY_PIPELINE_CONFIG_PATH  # Override config path

@@ -1,0 +1,132 @@
+import json
+
+# Fix import paths for moved script location
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+
+import logging
+import os
+import subprocess
+from typing import Any, Dict
+
+import requests
+
+
+def load_final_selection() -> Dict[str, Any]:
+    """Load final selection from Phase I"""
+    try:
+        with open("./outputs/final_selection.json") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise ValueError("Could not find final_selection.json. Run Phase I first.")
+
+
+def load_framework() -> Dict[str, Any]:
+    """Load framework"""
+    try:
+        with open("./outputs/framework_development/framework.json") as f:
+            return json.load(f)["framework"]
+    except FileNotFoundError:
+        raise ValueError("Could not find framework.json.")
+
+
+def load_outline() -> Dict[str, Any]:
+    """Load outline"""
+    try:
+        with open("./outputs/framework_development/outline.json") as f:
+            return json.load(f)["outline"]
+    except FileNotFoundError:
+        raise ValueError("Could not find outline.json.")
+
+
+def load_key_moves() -> Dict[str, Any]:
+    """Load key moves from framework"""
+    try:
+        # Try to load from framework first since key_moves are embedded there
+        framework = load_framework()
+        if "key_moves" in framework:
+            return {"key_moves": framework["key_moves"]}
+        
+        # Fallback to separate file if it exists
+        with open("./outputs/framework_development/key_moves.json") as f:
+            return json.load(f)["key_moves"]
+    except FileNotFoundError:
+        # If no separate file, extract from framework
+        framework = load_framework()
+        if "key_moves" in framework:
+            return {"key_moves": framework["key_moves"]}
+        raise ValueError("Could not find key_moves in framework or separate file.")
+
+
+def load_developed_key_moves() -> Dict[str, Any]:
+    """Load Developed key moves"""
+    try:
+        with open(
+            "./outputs/key_moves_development/key_moves_development/all_developed_moves.json"
+        ) as f:
+            return json.load(f)["developed_moves"]
+    except FileNotFoundError:
+        raise ValueError("Could not find all_developed_json.json.")
+
+
+def load_literature() -> Dict[str, Any]:
+    """Load literature analysis from Phase II.1"""
+    try:
+        lit_readings = json.load(open("./outputs/literature_readings.json"))
+        lit_synthesis = json.load(open("./outputs/literature_synthesis.json"))
+        with open("./outputs/literature_synthesis.md") as f:
+            lit_narrative = f.read()
+        return {
+            "readings": lit_readings,
+            "synthesis": lit_synthesis,
+            "narrative": lit_narrative,
+        }
+    except FileNotFoundError as e:
+        raise ValueError(f"Missing literature files. Run Phase II.1 first. Error: {e}")
+
+
+def load_developed_moves() -> Dict[str, Any]:
+    """Load all developed key moves"""
+    try:
+        lit_readings = json.load(open("./outputs/literature_readings.json"))
+        lit_synthesis = json.load(open("./outputs/literature_synthesis.json"))
+        with open("./outputs/literature_synthesis.md") as f:
+            lit_narrative = f.read()
+        return {
+            "readings": lit_readings,
+            "synthesis": lit_synthesis,
+            "narrative": lit_narrative,
+        }
+    except FileNotFoundError as e:
+        raise ValueError(f"Missing literature files. Run Phase II.1 first. Error: {e}")
+
+
+def caffeinate():
+    """Prevent system sleep during execution"""
+    try:
+        subprocess.Popen(["caffeinate", "-i", "-w", str(os.getpid())])
+    except Exception as e:
+        print(f"Warning: Could not caffeinate process: {e}")
+        print(
+            "You may want to manually prevent your system from sleeping during execution."
+        )
+
+
+def setup_logging():
+    """Configure logging"""
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+    )
+
+
+def check_rivet_life() -> Dict[str, Any]:
+    """Check if Rivet server is up"""
+    try:
+        result = requests.get("http://localhost:4040/life", timeout=5000)
+        if result.ok:
+            print("Rivet alive")
+    except ConnectionError:
+        raise ValueError(
+            "Could not connect to the Rivet server. Please run `node ./rivet/app.js --watch` in another terminal process"
+        )

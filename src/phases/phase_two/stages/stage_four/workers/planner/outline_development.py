@@ -179,22 +179,70 @@ class OutlineDevelopmentWorker(BaseWorker):
         if isinstance(developed_key_moves, list):
             for move in developed_key_moves:
                 if isinstance(move, dict):
-                    move_text = move.get("text", "")
-                    if not move_text and "final_content" in move:
-                        move_text = move.get("final_content", "")
-                    formatted_key_moves.append(move_text if move_text else str(move))
+                    # Extract only the essential key move text, not the verbose development data
+                    move_text = move.get("key_move_text", "")
+                    if not move_text:
+                        move_text = move.get("text", "")
+                    if not move_text:
+                        # If we have final_content, extract only the key move text from it
+                        final_content = move.get("final_content", "")
+                        if final_content and isinstance(final_content, str):
+                            try:
+                                # Try to parse and extract just the key move text
+                                parsed = json.loads(final_content)
+                                if isinstance(parsed, dict) and "key_moves" in parsed:
+                                    key_moves = parsed["key_moves"]
+                                    if isinstance(key_moves, dict) and "key_moves" in key_moves:
+                                        move_text = key_moves["key_moves"][0] if key_moves["key_moves"] else ""
+                                    elif isinstance(key_moves, list):
+                                        move_text = key_moves[0] if key_moves else ""
+                                elif isinstance(parsed, dict) and "key_moves" in parsed:
+                                    key_moves = parsed["key_moves"]
+                                    if isinstance(key_moves, list):
+                                        move_text = key_moves[0] if key_moves else ""
+                            except:
+                                # If parsing fails, use a truncated version
+                                move_text = final_content[:200] + "..." if len(final_content) > 200 else final_content
+                    # Limit the length of each move text to prevent massive prompts
+                    if len(move_text) > 200:
+                        move_text = move_text[:200] + "..."
+                    formatted_key_moves.append(move_text if move_text else "Key move text not available")
                 else:
-                    formatted_key_moves.append(str(move))
+                    formatted_key_moves.append(str(move)[:200] + "..." if len(str(move)) > 200 else str(move))
         elif isinstance(developed_key_moves, dict):
             # If it's a dictionary with numbered keys
             for key, move in developed_key_moves.items():
                 if isinstance(move, dict):
-                    move_text = move.get("text", "")
-                    if not move_text and "final_content" in move:
-                        move_text = move.get("final_content", "")
-                    formatted_key_moves.append(move_text if move_text else str(move))
+                    # Extract only the essential key move text, not the verbose development data
+                    move_text = move.get("key_move_text", "")
+                    if not move_text:
+                        move_text = move.get("text", "")
+                    if not move_text:
+                        # If we have final_content, extract only the key move text from it
+                        final_content = move.get("final_content", "")
+                        if final_content and isinstance(final_content, str):
+                            try:
+                                # Try to parse and extract just the key move text
+                                parsed = json.loads(final_content)
+                                if isinstance(parsed, dict) and "key_moves" in parsed:
+                                    key_moves = parsed["key_moves"]
+                                    if isinstance(key_moves, dict) and "key_moves" in key_moves:
+                                        move_text = key_moves["key_moves"][0] if key_moves["key_moves"] else ""
+                                    elif isinstance(key_moves, list):
+                                        move_text = key_moves[0] if key_moves else ""
+                                elif isinstance(parsed, dict) and "key_moves" in parsed:
+                                    key_moves = parsed["key_moves"]
+                                    if isinstance(key_moves, list):
+                                        move_text = key_moves[0] if key_moves else ""
+                            except:
+                                # If parsing fails, use a truncated version
+                                move_text = final_content[:200] + "..." if len(final_content) > 200 else final_content
+                    # Limit the length of each move text to prevent massive prompts
+                    if len(move_text) > 200:
+                        move_text = move_text[:200] + "..."
+                    formatted_key_moves.append(move_text if move_text else "Key move text not available")
                 else:
-                    formatted_key_moves.append(str(move))
+                    formatted_key_moves.append(str(move)[:200] + "..." if len(str(move)) > 200 else str(move))
         else:
             # If it's already a string, try to parse it
             try:
@@ -203,24 +251,68 @@ class OutlineDevelopmentWorker(BaseWorker):
                     if isinstance(parsed_moves, list):
                         for move in parsed_moves:
                             if isinstance(move, dict):
-                                move_text = move.get("text", "")
-                                if not move_text and "final_content" in move:
-                                    move_text = move.get("final_content", "")
-                                formatted_key_moves.append(move_text if move_text else str(move))
+                                # Extract only the essential key move text
+                                move_text = move.get("key_move_text", "")
+                                if not move_text:
+                                    move_text = move.get("text", "")
+                                if not move_text:
+                                    # Extract from final_content if available
+                                    final_content = move.get("final_content", "")
+                                    if final_content and isinstance(final_content, str):
+                                        try:
+                                            parsed = json.loads(final_content)
+                                            if isinstance(parsed, dict) and "key_moves" in parsed:
+                                                key_moves = parsed["key_moves"]
+                                                if isinstance(key_moves, dict) and "key_moves" in key_moves:
+                                                    move_text = key_moves["key_moves"][0] if key_moves["key_moves"] else ""
+                                                elif isinstance(key_moves, list):
+                                                    move_text = key_moves[0] if key_moves else ""
+                                            elif isinstance(parsed, dict) and "key_moves" in parsed:
+                                                key_moves = parsed["key_moves"]
+                                                if isinstance(key_moves, list):
+                                                    move_text = key_moves[0] if key_moves else ""
+                                        except:
+                                            move_text = final_content[:200] + "..." if len(final_content) > 200 else final_content
+                                # Limit the length of each move text to prevent massive prompts
+                                if len(move_text) > 200:
+                                    move_text = move_text[:200] + "..."
+                                formatted_key_moves.append(move_text if move_text else "Key move text not available")
                             else:
-                                formatted_key_moves.append(str(move))
+                                formatted_key_moves.append(str(move)[:200] + "..." if len(str(move)) > 200 else str(move))
                     elif isinstance(parsed_moves, dict):
                         for key, move in parsed_moves.items():
                             if isinstance(move, dict):
-                                move_text = move.get("text", "")
-                                if not move_text and "final_content" in move:
-                                    move_text = move.get("final_content", "")
-                                formatted_key_moves.append(move_text if move_text else str(move))
+                                # Extract only the essential key move text
+                                move_text = move.get("key_move_text", "")
+                                if not move_text:
+                                    move_text = move.get("text", "")
+                                if not move_text:
+                                    # Extract from final_content if available
+                                    final_content = move.get("final_content", "")
+                                    if final_content and isinstance(final_content, str):
+                                        try:
+                                            parsed = json.loads(final_content)
+                                            if isinstance(parsed, dict) and "key_moves" in parsed:
+                                                key_moves = parsed["key_moves"]
+                                                if isinstance(key_moves, dict) and "key_moves" in key_moves:
+                                                    move_text = key_moves["key_moves"][0] if key_moves["key_moves"] else ""
+                                                elif isinstance(key_moves, list):
+                                                    move_text = key_moves[0] if key_moves else ""
+                                            elif isinstance(parsed, dict) and "key_moves" in parsed:
+                                                key_moves = parsed["key_moves"]
+                                                if isinstance(key_moves, list):
+                                                    move_text = key_moves[0] if key_moves else ""
+                                        except:
+                                            move_text = final_content[:200] + "..." if len(final_content) > 200 else final_content
+                                # Limit the length of each move text to prevent massive prompts
+                                if len(move_text) > 200:
+                                    move_text = move_text[:200] + "..."
+                                formatted_key_moves.append(move_text if move_text else "Key move text not available")
                             else:
-                                formatted_key_moves.append(str(move))
+                                formatted_key_moves.append(str(move)[:200] + "..." if len(str(move)) > 200 else str(move))
             except:
                 # If parsing fails, just use as is
-                formatted_key_moves = [str(developed_key_moves)]
+                formatted_key_moves = [str(developed_key_moves)[:200] + "..." if len(str(developed_key_moves)) > 200 else str(developed_key_moves)]
         
         # Get the previous phase outputs as a dictionary
         previous_outputs = {}

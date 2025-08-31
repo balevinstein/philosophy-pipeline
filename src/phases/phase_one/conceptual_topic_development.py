@@ -24,28 +24,28 @@ class ConceptualTopicDeveloper(BaseStage):
             # Literature assessment phase
             print("Starting literature assessment...")
             lit_prompt = self.prompt_manager.get_literature_prompt(topic)
-            lit_response = self.api_handler.make_api_call(
+            lit_response_text, _ = self.api_handler.make_api_call(
                 stage="literature_assessment", prompt=lit_prompt
             )
-            lit_results = json.loads(self.json_handler.clean_json_string(lit_response))
+            lit_results = json.loads(self.json_handler.clean_json_string(lit_response_text))
 
             # Development testing phase
             print("Starting development testing...")
             dev_prompt = self.prompt_manager.get_development_prompt(topic, lit_results)
-            dev_response = self.api_handler.make_api_call(
+            dev_response_text, _ = self.api_handler.make_api_call(
                 stage="development_testing", prompt=dev_prompt
             )
-            dev_results = json.loads(self.json_handler.clean_json_string(dev_response))
+            dev_results = json.loads(self.json_handler.clean_json_string(dev_response_text))
 
             # Refinement phase
             print("Starting refinement phase...")
             ref_prompt = self.prompt_manager.get_refinement_prompt(
                 topic, lit_results, dev_results
             )
-            ref_response = self.api_handler.make_api_call(
+            ref_response_text, _ = self.api_handler.make_api_call(
                 stage="topic_refinement", prompt=ref_prompt
             )
-            ref_results = json.loads(self.json_handler.clean_json_string(ref_response))
+            ref_results = json.loads(self.json_handler.clean_json_string(ref_response_text))
 
             # Assemble results
             results = {

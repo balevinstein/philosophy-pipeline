@@ -73,13 +73,13 @@ class BaseWorker(ABC):
         # Get system prompt if available
         system_prompt = self.get_system_prompt()
         
-        response = self.api_handler.make_api_call(
+        response_text, _ = self.api_handler.make_api_call(
             stage=self.stage_name, 
             prompt=self._construct_prompt(input_data),
             system_prompt=system_prompt
         )
-        output = self.process_output(response)
+        output = self.process_output(response_text)
         if not self.validate_output(output):
-            print(response)
+            print(response_text)
             raise ValidationError("Worker output failed validation: ", self.stage_name)
         return output

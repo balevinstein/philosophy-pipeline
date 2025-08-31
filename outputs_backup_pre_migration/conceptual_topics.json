@@ -1,0 +1,266 @@
+[
+  {
+    "title": "Performative Allyship and the Sincerity Problem",
+    "core_contribution": {
+      "conceptual_issue": "Current critiques of performative allyship conflate genuine but misguided support with deliberate self-serving behavior, creating unfair skepticism toward well-intentioned allies",
+      "proposed_solution": "Distinguish between mimetic allyship (copying ally behaviors without understanding) and strategic allyship (deliberate image management), showing each requires different responses",
+      "significance": "Provides more nuanced framework for evaluating ally behavior and avoiding counterproductive blanket dismissals of imperfect support"
+    },
+    "novelty": {
+      "what_is_new": "First systematic analysis separating different motivational structures underlying apparently performative ally behavior",
+      "why_publishable": "Resolves persistent debates about ally authenticity by providing clearer conceptual distinctions",
+      "why_achievable": "Uses familiar examples and straightforward conceptual analysis without requiring extensive empirical research"
+    },
+    "scope_assessment": {
+      "technical_requirements": "Basic conceptual analysis using intention-action frameworks",
+      "key_assumptions": [
+        "Actions can be evaluated by motivational structure",
+        "Performative behavior is not monolithic",
+        "Allyship involves both internal commitment and external action"
+      ],
+      "literature_engagement": "Recent work on performativity, virtue signaling, and solidarity in feminist philosophy and philosophy of race",
+      "background_knowledge": [
+        "Basic action theory",
+        "Contemporary debates on allyship",
+        "Performativity concepts"
+      ],
+      "example_types": [
+        "Social media activism",
+        "Corporate diversity initiatives",
+        "Educational allyship training"
+      ]
+    },
+    "viability_assessment": {
+      "conceptual_clarity": "Clear behavioral patterns that can be analyzed through standard philosophical tools for examining motivation and action",
+      "development_risks": [
+        "Risk of seeming to excuse harmful behavior",
+        "Need to balance theoretical precision with practical applicability"
+      ],
+      "distinctive_advantages": [
+        "Addresses timely social issue",
+        "Provides practical guidance",
+        "Uses accessible examples everyone recognizes"
+      ]
+    }
+  },
+  {
+    "title": "The Autonomy Paradox in Content Moderation",
+    "core_contribution": {
+      "conceptual_issue": "Platform content moderation creates a paradox where protecting user autonomy requires restricting user autonomy, but current analyses fail to distinguish between different autonomy interests at stake",
+      "proposed_solution": "Separate immediate choice autonomy from reflective autonomy, showing that content curation can enhance reflective autonomy even while constraining immediate choices",
+      "significance": "Provides framework for evaluating content policies that moves beyond simple freedom-restriction trade-offs"
+    },
+    "novelty": {
+      "what_is_new": "Novel application of autonomy distinctions to digital platform governance, revealing hidden conceptual structure",
+      "why_publishable": "Advances both autonomy theory and applied ethics of technology through precise conceptual work",
+      "why_achievable": "Builds on established autonomy concepts and uses clear real-world examples without requiring technical expertise"
+    },
+    "scope_assessment": {
+      "technical_requirements": "Standard autonomy analysis from moral and political philosophy",
+      "key_assumptions": [
+        "Autonomy is not monolithic",
+        "Digital environments affect autonomous choice",
+        "Some restrictions can enhance rather than diminish autonomy"
+      ],
+      "literature_engagement": "Classical autonomy theory, recent work on digital ethics and platform governance",
+      "background_knowledge": [
+        "Basic autonomy concepts",
+        "Content moderation debates",
+        "Choice architecture"
+      ],
+      "example_types": [
+        "Algorithm-curated feeds",
+        "Misinformation policies",
+        "Platform recommendation systems"
+      ]
+    },
+    "viability_assessment": {
+      "conceptual_clarity": "Well-established autonomy concepts applied to concrete digital scenarios with clear practical implications",
+      "development_risks": [
+        "Complexity of digital platforms",
+        "Need to avoid technical details about algorithms"
+      ],
+      "distinctive_advantages": [
+        "Highly relevant contemporary issue",
+        "Bridges theoretical and applied ethics",
+        "Clear policy implications"
+      ]
+    }
+  },
+  {
+    "title": "Borrowed Offense and Moral Standing",
+    "core_contribution": {
+      "conceptual_issue": "Debates about who can take offense on behalf of others lack clarity about what grounds moral standing to be offended, leading to inconsistent judgments about borrowed offense",
+      "proposed_solution": "Distinguish between relational standing (based on relationships to affected parties) and structural standing (based on position within relevant social structures)",
+      "significance": "Provides principled framework for evaluating when borrowed offense is legitimate versus overreach"
+    },
+    "novelty": {
+      "what_is_new": "First systematic analysis of the grounds for moral standing in offense-taking, revealing overlooked complexity",
+      "why_publishable": "Addresses widespread social phenomenon through rigorous conceptual analysis",
+      "why_achievable": "Uses clear examples and established concepts from moral philosophy without requiring extensive background"
+    },
+    "scope_assessment": {
+      "technical_requirements": "Basic moral standing analysis and conceptual distinction-drawing",
+      "key_assumptions": [
+        "Not everyone has equal standing to be offended by everything",
+        "Standing can be earned or derived from relationships",
+        "Moral emotions can be appropriate or inappropriate"
+      ],
+      "literature_engagement": "Work on moral standing, moral emotions, and group-differentiated harms",
+      "background_knowledge": [
+        "Basic moral psychology",
+        "Concepts of harm and offense",
+        "Group membership dynamics"
+      ],
+      "example_types": [
+        "Cultural appropriation disputes",
+        "Historical injustice responses",
+        "Identity-based humor controversies"
+      ]
+    },
+    "viability_assessment": {
+      "conceptual_clarity": "Observable social behaviors that can be analyzed using familiar moral philosophical tools",
+      "development_risks": [
+        "Politically sensitive topic requiring careful handling",
+        "Risk of oversimplifying complex social dynamics"
+      ],
+      "distinctive_advantages": [
+        "Addresses common real-world dilemmas",
+        "Provides practical guidance",
+        "Contributes to multiple philosophical areas"
+      ]
+    }
+  },
+  {
+    "title": "Aesthetic Testimony and the Limits of Deference",
+    "core_contribution": {
+      "conceptual_issue": "Standard accounts of aesthetic testimony fail to explain why deferring to critics feels epistemically appropriate but aesthetically unsatisfying",
+      "proposed_solution": "Aesthetic knowledge requires experiential acquaintance in a way that creates rational pressure to seek direct experience even when testimony is reliable",
+      "significance": "Explains the distinctive epistemic structure of aesthetic domains and why aesthetic testimony feels different from other forms of expert testimony"
+    },
+    "novelty": {
+      "what_is_new": "Identifies unique feature of aesthetic epistemology that distinguishes it from standard testimony cases",
+      "why_publishable": "Resolves puzzling asymmetry in our attitudes toward aesthetic experts using rigorous conceptual analysis",
+      "why_achievable": "Uses familiar examples and established epistemological concepts without requiring technical apparatus"
+    },
+    "scope_assessment": {
+      "technical_requirements": "Basic epistemological analysis of testimony and knowledge types",
+      "key_assumptions": [
+        "Different domains may have different epistemic structures",
+        "Aesthetic experience has distinctive features",
+        "Knowledge and understanding can come apart"
+      ],
+      "literature_engagement": "Recent work on aesthetic testimony, epistemic value of experience, and testimony more generally",
+      "background_knowledge": [
+        "Basic epistemology of testimony",
+        "Aesthetic theory basics",
+        "Experience versus knowledge debates"
+      ],
+      "example_types": [
+        "Art criticism",
+        "Wine expertise",
+        "Music recommendations"
+      ]
+    },
+    "viability_assessment": {
+      "conceptual_clarity": "Clear intuitive phenomenon that can be analyzed using well-established epistemological distinctions",
+      "development_risks": [
+        "Need to avoid overgeneralizing about aesthetic experience",
+        "Risk of conflating different types of aesthetic judgment"
+      ],
+      "distinctive_advantages": [
+        "Addresses puzzle many readers will recognize",
+        "Contributes to both epistemology and aesthetics",
+        "Uses accessible examples"
+      ]
+    }
+  },
+  {
+    "title": "Complicity Gradations and Moral Residue",
+    "core_contribution": {
+      "conceptual_issue": "Binary complicity judgments fail to capture the moral reality that complicit agents experience different degrees and types of moral residue depending on their level of involvement",
+      "proposed_solution": "Develop gradational account of complicity that tracks different contribution types and explains corresponding variations in moral residue and remedial obligations",
+      "significance": "Provides more nuanced framework for assessing complicit agents moral status and forward-looking obligations"
+    },
+    "novelty": {
+      "what_is_new": "First systematic account linking degrees of complicity to patterns of moral residue and remedial obligation",
+      "why_publishable": "Advances complicity theory by explaining previously unanalyzed moral phenomena",
+      "why_achievable": "Builds on existing complicity literature using clear examples and conceptual analysis"
+    },
+    "scope_assessment": {
+      "technical_requirements": "Standard moral philosophical analysis of complicity, responsibility, and moral emotions",
+      "key_assumptions": [
+        "Complicity comes in degrees",
+        "Different contribution types matter morally",
+        "Moral residue tracks responsibility levels"
+      ],
+      "literature_engagement": "Recent work on complicity, collective responsibility, and moral emotions",
+      "background_knowledge": [
+        "Basic complicity theory",
+        "Collective action problems",
+        "Moral psychology of guilt and responsibility"
+      ],
+      "example_types": [
+        "Institutional complicity cases",
+        "Consumer complicity",
+        "Bystander scenarios"
+      ]
+    },
+    "viability_assessment": {
+      "conceptual_clarity": "Well-defined moral phenomena that can be analyzed using established tools from moral philosophy",
+      "development_risks": [
+        "Complexity of mapping contribution types to moral residue",
+        "Need to avoid overly complex taxonomies"
+      ],
+      "distinctive_advantages": [
+        "Addresses widespread moral experience",
+        "Practical implications for institutional reform",
+        "Connects theory to lived moral experience"
+      ]
+    }
+  },
+  {
+    "title": "Transformative Empathy and Identity Boundaries",
+    "core_contribution": {
+      "conceptual_issue": "Accounts of empathy assume stable identity boundaries, but transformative empathetic experiences can alter the empathizer in ways that blur the self-other distinction",
+      "proposed_solution": "Distinguish between projective empathy (maintaining identity boundaries) and incorporative empathy (allowing identity boundary shifts), showing each has different epistemic and ethical properties",
+      "significance": "Explains why some empathetic experiences feel identity-threatening while others feel identity-preserving, with implications for empathy ethics"
+    },
+    "novelty": {
+      "what_is_new": "First analysis of how empathy can transform rather than merely inform the empathizer, challenging standard empathy models",
+      "why_publishable": "Identifies overlooked feature of empathetic experience with implications for empathy theory and ethics",
+      "why_achievable": "Uses recognizable examples and established concepts from philosophy of mind and ethics"
+    },
+    "scope_assessment": {
+      "technical_requirements": "Basic conceptual analysis of empathy, personal identity, and moral psychology",
+      "key_assumptions": [
+        "Empathy can be transformative",
+        "Identity boundaries can be fluid",
+        "Different empathy types have different properties"
+      ],
+      "literature_engagement": "Recent work on empathy, transformative experience, and personal identity",
+      "background_knowledge": [
+        "Basic empathy theory",
+        "Personal identity concepts",
+        "Moral psychology"
+      ],
+      "example_types": [
+        "Deep literary engagement",
+        "Cross-cultural immersion",
+        "Caregiving relationships"
+      ]
+    },
+    "viability_assessment": {
+      "conceptual_clarity": "Identifiable psychological phenomenon that can be analyzed using standard philosophical tools",
+      "development_risks": [
+        "Need to avoid overly psychological focus",
+        "Risk of conflating empathy with other phenomena"
+      ],
+      "distinctive_advantages": [
+        "Addresses universal human experience",
+        "Bridges multiple philosophical areas",
+        "Has practical implications for moral education"
+      ]
+    }
+  }
+]

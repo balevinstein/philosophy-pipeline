@@ -47,11 +47,11 @@ class PhaseIIWorker(ABC):
     def run(self, state: Dict[str, Any]) -> WorkerOutput:
         """Execute worker's task"""
         input_data = self.prepare_input(state)
-        response = self.api_handler.make_api_call(
+        response_text, _ = self.api_handler.make_api_call(
             stage=getattr(self, 'stage_name', self.__class__.__name__.lower()),
             prompt=self._construct_prompt(input_data)
         )
-        return self.process_output(response)
+        return self.process_output(response_text)
         
     @abstractmethod
     def _construct_prompt(self, input_data: WorkerInput) -> str:

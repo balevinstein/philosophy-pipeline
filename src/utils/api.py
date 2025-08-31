@@ -1,5 +1,5 @@
 # src/utils/api.py
-from typing import Dict, Any, Optional, Callable
+from typing import Dict, Any, Optional, Callable, List
 import os
 import logging
 import base64
@@ -17,6 +17,18 @@ from tenacity import (
     RetryCallState,
 )
 import time
+
+# Import performance optimization modules
+try:
+    from src.performance.api_cache import APICache
+    from src.performance.memory_manager import MemoryManager
+    from src.performance.batch_processor import BatchProcessor
+    PERFORMANCE_AVAILABLE = True
+except ImportError:
+    APICache = None
+    MemoryManager = None
+    BatchProcessor = None
+    PERFORMANCE_AVAILABLE = False
 
 
 def create_retry_decorator(
@@ -52,13 +64,22 @@ def create_retry_decorator(
 
 
 def load_config() -> Dict[str, Any]:
-    """Load configuration from yaml file"""
-    with open("config/conceptual_config.yaml", "r") as f:
-        return yaml.safe_load(f)
+    """Load configuration from yaml file (legacy function)"""
+    try:
+        # Try new configuration system first
+        from src.config import ConfigManager
+        config_manager = ConfigManager()
+        return config_manager.load_config()
+    except ImportError:
+        # Fall back to legacy configuration loading
+        with open("config/conceptual_config.yaml", "r") as f:
+            return yaml.safe_load(f)
 
 
 class APIHandler:
-    def __init__(self, config: Dict[str, Any] = None):
+    def __init__(self, config: Dict[str, Any] = None, config_manager=None, 
+                 enable_caching: bool = True, enable_batching: bool = False,
+                 enable_memory_management: bool = True):
         load_dotenv()
         self.openai_key = os.getenv("OPENAI_API_KEY")
         self.anthropic_key = os.getenv("ANTHROPIC_API_KEY")
@@ -74,6 +95,9 @@ class APIHandler:
             api_key=self.anthropic_key,
             # We no longer need the beta header for PDFs
         )
+        
+        # Configuration management with backward compatibility
+        self.config_manager = config_manager
         if config is None:
             self.config = self.load_config()  # Load default if none provided
         else:
@@ -89,13 +113,84 @@ class APIHandler:
         self._retry_standard = create_retry_decorator(
             max_attempts=3, min_wait=2, max_wait=30
         )
+        
+        # Initialize performance optimization components
+        self._init_performance_components(
+            enable_caching, enable_batching, enable_memory_management
+        )
+        
+    def _init_performance_components(self, enable_caching: bool, 
+                                   enable_batching: bool, enable_memory_management: bool):
+        """Initialize performance optimization components."""
+        if not PERFORMANCE_AVAILABLE:
+            self.logger.warning("Performance optimization modules not available")
+            self.cache = None
+            self.memory_manager = None
+            self.batch_processor = None
+            return
+            
+        # API Cache
+        if enable_caching and APICache:
+            try:
+                self.cache = APICache(
+                    default_ttl=3600,  # 1 hour cache
+                    max_cache_size_mb=50,
+                    enable_compression=True
+                )
+                self.logger.info("API caching enabled")
+            except Exception as e:
+                self.logger.warning(f"Could not initialize API cache: {e}")
+                self.cache = None
+        else:
+            self.cache = None
+            
+        # Memory Manager
+        if enable_memory_management and MemoryManager:
+            try:
+                self.memory_manager = MemoryManager(
+                    memory_threshold_percent=80.0,
+                    gc_threshold_mb=100.0,
+                    enable_monitoring=True
+                )
+                self.logger.info("Memory management enabled")
+            except Exception as e:
+                self.logger.warning(f"Could not initialize memory manager: {e}")
+                self.memory_manager = None
+        else:
+            self.memory_manager = None
+            
+        # Batch Processor (optional, not enabled by default)
+        if enable_batching and BatchProcessor:
+            try:
+                self.batch_processor = BatchProcessor(
+                    max_concurrent=3,
+                    batch_delay=1.0,
+                    rate_limit_rpm=50
+                )
+                self.logger.info("Batch processing enabled")
+            except Exception as e:
+                self.logger.warning(f"Could not initialize batch processor: {e}")
+                self.batch_processor = None
+        else:
+            self.batch_processor = None
 
     # To make loading the config easier in the run_phase_one script.
     # Check there are no problems when loading a different config for tests.
     def load_config(self) -> Dict[str, Any]:
-        """Load configuration from yaml file"""
-        with open("config/conceptual_config.yaml", "r") as f:
-            return yaml.safe_load(f)
+        """Load configuration with new system support and legacy fallback"""
+        if self.config_manager:
+            return self.config_manager.load_config()
+        
+        try:
+            # Try new configuration system first
+            from src.config import ConfigManager
+            config_manager = ConfigManager()
+            self.config_manager = config_manager  # Cache for future use
+            return config_manager.load_config()
+        except (ImportError, Exception):
+            # Fall back to legacy configuration loading
+            with open("config/conceptual_config.yaml", "r") as f:
+                return yaml.safe_load(f)
 
     def _encode_pdf(self, pdf_path: Path) -> str:
         """Convert PDF to base64 encoding"""
@@ -341,3 +436,172 @@ class APIHandler:
         duration = time.time() - start_time
         self.logger.info(f"API call for stage '{stage}' took {duration:.2f} seconds.")
         return response_text, duration
+
+    def make_api_call_cached(
+        self, stage: str, prompt: str, text_paths: Optional[List[Path]] = None, 
+        pdf_path: Optional[Path] = None, pdf_paths: Optional[List[Path]] = None, 
+        system_prompt: Optional[str] = None, force_refresh: bool = False
+    ) -> tuple[str, float]:
+        """Make API call with caching support."""
+        
+        if not self.cache or force_refresh:
+            return self.make_api_call(stage, prompt, text_paths, pdf_path, pdf_paths, system_prompt)
+        
+        model_config = self.config["models"][stage]
+        
+        # Collect file paths for cache key generation
+        file_paths = []
+        if text_paths:
+            file_paths.extend(text_paths)
+        if pdf_path:
+            file_paths.append(pdf_path)
+        if pdf_paths:
+            file_paths.extend(pdf_paths)
+        
+        # Try cache first
+        cached_response = self.cache.get(
+            prompt=prompt,
+            model_config=model_config,
+            system_prompt=system_prompt,
+            file_paths=file_paths if file_paths else None
+        )
+        
+        if cached_response:
+            self.logger.info(f"Cache hit for stage '{stage}'")
+            return cached_response, 0.0  # No API call time for cached response
+        
+        # Cache miss - make API call
+        response_text, duration = self.make_api_call(
+            stage, prompt, text_paths, pdf_path, pdf_paths, system_prompt
+        )
+        
+        # Cache the response
+        self.cache.put(
+            prompt=prompt,
+            model_config=model_config,
+            response=response_text,
+            system_prompt=system_prompt,
+            file_paths=file_paths if file_paths else None
+        )
+        
+        return response_text, duration
+
+    def make_batch_api_calls(self, requests: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Make multiple API calls using batch processing."""
+        
+        if not self.batch_processor:
+            # Fall back to sequential processing
+            results = []
+            for req in requests:
+                try:
+                    response, duration = self.make_api_call_cached(**req)
+                    results.append({
+                        'id': req.get('id', f"req_{len(results)}"),
+                        'response': response,
+                        'duration': duration,
+                        'success': True
+                    })
+                except Exception as e:
+                    results.append({
+                        'id': req.get('id', f"req_{len(results)}"),
+                        'response': '',
+                        'duration': 0.0,
+                        'success': False,
+                        'error': str(e)
+                    })
+            return results
+        
+        # Use batch processor
+        batch_results = self.batch_processor.submit_batch(requests)
+        
+        # Convert to expected format
+        results = []
+        for batch_result in batch_results:
+            results.append({
+                'id': batch_result.request_id,
+                'response': batch_result.response,
+                'duration': batch_result.duration,
+                'success': batch_result.success,
+                'error': batch_result.error,
+                'cached': batch_result.cached
+            })
+        
+        return results
+
+    def process_large_pdf_optimized(
+        self, stage: str, prompt: str, pdf_path: Path, system_prompt: Optional[str] = None
+    ) -> tuple[str, float]:
+        """Process large PDF with memory optimization."""
+        
+        if not self.memory_manager:
+            return self.make_api_call_cached(stage, prompt, pdf_path=pdf_path, system_prompt=system_prompt)
+        
+        # Use memory manager for large PDF processing
+        with self.memory_manager.process_pdf_memory_optimized(pdf_path):
+            return self.make_api_call_cached(stage, prompt, pdf_path=pdf_path, system_prompt=system_prompt)
+
+    def get_performance_stats(self) -> Dict[str, Any]:
+        """Get performance statistics from all optimization components."""
+        stats = {
+            'api_calls_made': getattr(self, 'api_calls_made', 0),
+            'performance_components': {
+                'cache_available': self.cache is not None,
+                'memory_manager_available': self.memory_manager is not None,
+                'batch_processor_available': self.batch_processor is not None
+            }
+        }
+        
+        if self.cache:
+            stats['cache_stats'] = self.cache.get_stats()
+            
+        if self.memory_manager:
+            stats['memory_stats'] = self.memory_manager.get_stats()
+            
+        if self.batch_processor:
+            stats['batch_stats'] = self.batch_processor.get_stats()
+            
+        return stats
+
+    def optimize_performance(self):
+        """Perform performance optimization operations."""
+        if self.cache:
+            # Save cache to disk
+            self.cache.save_cache()
+            
+        if self.memory_manager:
+            # Optimize memory usage
+            self.memory_manager.optimize_memory()
+            
+        self.logger.info("Performance optimization completed")
+
+    def clear_cache(self):
+        """Clear API response cache."""
+        if self.cache:
+            self.cache.clear_cache()
+            self.logger.info("API cache cleared")
+        else:
+            self.logger.warning("No cache available to clear")
+
+    def invalidate_model_cache(self, model: str) -> int:
+        """Invalidate cache entries for a specific model."""
+        if self.cache:
+            return self.cache.invalidate_model_cache(model)
+        return 0
+
+    def __enter__(self):
+        """Context manager entry."""
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Context manager exit - cleanup and optimization."""
+        try:
+            self.optimize_performance()
+            
+            if self.memory_manager:
+                self.memory_manager.stop_monitoring()
+                
+            if self.batch_processor:
+                self.batch_processor.stop_processing()
+                
+        except Exception as e:
+            self.logger.error(f"Error during APIHandler cleanup: {e}")

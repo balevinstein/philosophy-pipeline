@@ -1,0 +1,446 @@
+{
+  "topic_evaluations": [
+    {
+      "title": "Performative Allyship and the Sincerity Problem",
+      "core_analysis": {
+        "original_contribution": "Distinguishes mimetic allyship from strategic allyship to resolve unfair skepticism toward well-intentioned but imperfect ally behavior",
+        "key_strength": "Provides conceptual clarity for a widespread social phenomenon using accessible philosophical tools",
+        "current_formulation": "Well-defined problem with clear practical stakes and recognizable examples",
+        "potential_improvements": [
+          "Could strengthen by connecting to broader virtue theory",
+          "Might benefit from clearer criteria for distinguishing the two types"
+        ]
+      },
+      "development_assessment": {
+        "llm_alignment": "Strong alignment with systematic conceptual analysis and distinction-drawing capabilities",
+        "reasoning_pathway": "Clear progression from identifying conflation to drawing distinctions to showing practical implications",
+        "example_needs": "Abundant accessible examples from social media, corporate behavior, and educational contexts",
+        "technical_requirements": "Basic action theory and intention analysis well within LLM capabilities",
+        "anticipated_challenges": [
+          "Maintaining theoretical rigor while addressing politically sensitive topic",
+          "Avoiding appearance of excusing harmful behavior"
+        ]
+      },
+      "literature_assessment": {
+        "key_debates": [
+          "Recent work on performativity in social contexts",
+          "Virtue signaling literature",
+          "Philosophy of race and feminist philosophy on solidarity"
+        ],
+        "engagement_strategy": "Can build directly on existing performativity concepts while adding novel distinctions",
+        "background_requirements": [
+          "Basic action theory",
+          "Contemporary social philosophy",
+          "Performativity concepts"
+        ]
+      },
+      "refinement_opportunities": {
+        "core_preserving_changes": [
+          "Could narrow focus to specific contexts like corporate or educational settings",
+          "Might strengthen connection to established virtue theory"
+        ],
+        "development_suggestions": [
+          "Develop clearer diagnostic criteria for the distinction",
+          "Add section on practical implications for ally education"
+        ],
+        "scope_adjustments": [
+          "Could limit to particular domains of allyship behavior",
+          "Might focus more specifically on institutional contexts"
+        ]
+      },
+      "viability_summary": {
+        "strengths": [
+          "Highly relevant contemporary issue",
+          "Clear conceptual contribution",
+          "Abundant accessible examples"
+        ],
+        "concerns": [
+          "Political sensitivity requiring careful handling",
+          "Risk of seeming to excuse problematic behavior"
+        ],
+        "overall_assessment": "Strong candidate with clear contribution and manageable development path"
+      }
+    },
+    {
+      "title": "The Autonomy Paradox in Content Moderation",
+      "core_analysis": {
+        "original_contribution": "Separates immediate choice autonomy from reflective autonomy to resolve apparent paradox in content moderation policies",
+        "key_strength": "Applies established philosophical distinctions to highly relevant contemporary problem with clear policy implications",
+        "current_formulation": "Well-structured paradox with clear theoretical resolution pathway",
+        "potential_improvements": [
+          "Could strengthen empirical grounding about how platforms actually affect choice",
+          "Might benefit from more concrete policy recommendations"
+        ]
+      },
+      "development_assessment": {
+        "llm_alignment": "Excellent fit for systematic analysis of conceptual distinctions and their applications",
+        "reasoning_pathway": "Clear structure from paradox identification through distinction-drawing to resolution and implications",
+        "example_needs": "Rich examples from familiar platform behaviors like algorithmic curation and content policies",
+        "technical_requirements": "Standard autonomy theory well within LLM analytical capabilities",
+        "anticipated_challenges": [
+          "Avoiding getting bogged down in technical details about platforms",
+          "Maintaining philosophical focus while addressing practical concerns"
+        ]
+      },
+      "literature_assessment": {
+        "key_debates": [
+          "Classical autonomy theory from Kant through contemporary work",
+          "Recent digital ethics literature",
+          "Platform governance debates"
+        ],
+        "engagement_strategy": "Can build on established autonomy concepts while making novel application to digital contexts",
+        "background_requirements": [
+          "Basic autonomy theory",
+          "Some familiarity with digital platform issues",
+          "Choice architecture concepts"
+        ]
+      },
+      "refinement_opportunities": {
+        "core_preserving_changes": [
+          "Could focus on specific types of content moderation",
+          "Might narrow to particular platforms or contexts"
+        ],
+        "development_suggestions": [
+          "Develop more concrete criteria for when restrictions enhance reflective autonomy",
+          "Add practical guidance for platform designers"
+        ],
+        "scope_adjustments": [
+          "Could limit to particular content types like misinformation",
+          "Might focus specifically on recommendation algorithms"
+        ]
+      },
+      "viability_summary": {
+        "strengths": [
+          "Highly timely and relevant",
+          "Clear theoretical contribution",
+          "Strong policy implications"
+        ],
+        "concerns": [
+          "Complexity of digital platform landscape",
+          "Need to maintain philosophical rather than technical focus"
+        ],
+        "overall_assessment": "Very strong candidate with clear contribution and broad relevance"
+      }
+    },
+    {
+      "title": "Borrowed Offense and Moral Standing",
+      "core_analysis": {
+        "original_contribution": "Distinguishes relational from structural standing to provide principled framework for evaluating borrowed offense legitimacy",
+        "key_strength": "Addresses widespread social phenomenon through systematic moral philosophical analysis",
+        "current_formulation": "Clear problem with practical stakes and systematic theoretical approach",
+        "potential_improvements": [
+          "Could strengthen criteria for determining different types of standing",
+          "Might benefit from clearer guidance on borderline cases"
+        ]
+      },
+      "development_assessment": {
+        "llm_alignment": "Good fit for conceptual distinction-drawing and systematic moral analysis",
+        "reasoning_pathway": "Clear progression from identifying confusion through drawing distinctions to applying framework",
+        "example_needs": "Abundant examples from cultural appropriation debates and identity-based controversies",
+        "technical_requirements": "Basic moral standing analysis well suited to LLM capabilities",
+        "anticipated_challenges": [
+          "Political sensitivity of topic requiring very careful handling",
+          "Risk of oversimplifying complex social dynamics"
+        ]
+      },
+      "literature_assessment": {
+        "key_debates": [
+          "Moral standing literature",
+          "Work on group-differentiated harms",
+          "Moral emotions and appropriateness"
+        ],
+        "engagement_strategy": "Can build on established moral standing concepts while making novel application to offense contexts",
+        "background_requirements": [
+          "Basic moral standing theory",
+          "Group membership and identity concepts",
+          "Moral psychology basics"
+        ]
+      },
+      "refinement_opportunities": {
+        "core_preserving_changes": [
+          "Could focus on specific contexts like cultural appropriation",
+          "Might narrow to particular types of group-based offense"
+        ],
+        "development_suggestions": [
+          "Develop clearer diagnostic tests for different standing types",
+          "Add more guidance on practical application"
+        ],
+        "scope_adjustments": [
+          "Could limit to specific cultural contexts",
+          "Might focus on institutional rather than individual cases"
+        ]
+      },
+      "viability_summary": {
+        "strengths": [
+          "Addresses common real-world dilemmas",
+          "Clear conceptual contribution",
+          "Practical guidance potential"
+        ],
+        "concerns": [
+          "High political sensitivity",
+          "Risk of appearing to take sides in contentious debates"
+        ],
+        "overall_assessment": "Promising but requires very careful handling of sensitive material"
+      }
+    },
+    {
+      "title": "Aesthetic Testimony and the Limits of Deference",
+      "core_analysis": {
+        "original_contribution": "Explains why aesthetic testimony feels epistemically appropriate but aesthetically unsatisfying through experiential acquaintance requirements",
+        "key_strength": "Addresses intuitive puzzle using rigorous epistemological analysis with clear theoretical payoff",
+        "current_formulation": "Well-defined epistemological puzzle with systematic theoretical solution",
+        "potential_improvements": [
+          "Could strengthen account of what makes aesthetic domains distinctive",
+          "Might benefit from addressing potential counterexamples"
+        ]
+      },
+      "development_assessment": {
+        "llm_alignment": "Excellent match for systematic epistemological analysis and conceptual distinction-drawing",
+        "reasoning_pathway": "Clear structure from puzzle identification through theoretical analysis to resolution",
+        "example_needs": "Familiar examples from art criticism, wine expertise, and cultural recommendations",
+        "technical_requirements": "Standard epistemological concepts well within LLM analytical range",
+        "anticipated_challenges": [
+          "Need to avoid overgeneralizing about aesthetic experience",
+          "Risk of conflating different judgment types"
+        ]
+      },
+      "literature_assessment": {
+        "key_debates": [
+          "Recent aesthetic testimony literature",
+          "Epistemology of testimony generally",
+          "Experience versus propositional knowledge"
+        ],
+        "engagement_strategy": "Can engage directly with recent aesthetic testimony debates while adding novel theoretical insight",
+        "background_requirements": [
+          "Basic epistemology of testimony",
+          "Aesthetic theory fundamentals",
+          "Knowledge versus understanding debates"
+        ]
+      },
+      "refinement_opportunities": {
+        "core_preserving_changes": [
+          "Could focus on specific aesthetic domains like visual art or music",
+          "Might narrow to particular types of aesthetic judgment"
+        ],
+        "development_suggestions": [
+          "Develop more precise account of experiential acquaintance requirements",
+          "Address potential objections more systematically"
+        ],
+        "scope_adjustments": [
+          "Could limit to specific art forms",
+          "Might focus on professional versus amateur aesthetic judgment"
+        ]
+      },
+      "viability_summary": {
+        "strengths": [
+          "Addresses recognizable puzzle",
+          "Clear theoretical contribution",
+          "Contributes to multiple philosophical areas"
+        ],
+        "concerns": [
+          "Need to avoid overgeneralization",
+          "Risk of conflating different aesthetic phenomena"
+        ],
+        "overall_assessment": "Strong theoretical contribution with clear development path and manageable scope"
+      }
+    },
+    {
+      "title": "Complicity Gradations and Moral Residue",
+      "core_analysis": {
+        "original_contribution": "Links degrees of complicity to patterns of moral residue and remedial obligations through systematic gradational account",
+        "key_strength": "Addresses gap in complicity theory by explaining previously unanalyzed moral phenomena",
+        "current_formulation": "Clear theoretical contribution building systematically on existing literature",
+        "potential_improvements": [
+          "Could strengthen mapping between contribution types and residue patterns",
+          "Might benefit from clearer taxonomy of complicity degrees"
+        ]
+      },
+      "development_assessment": {
+        "llm_alignment": "Good fit for systematic moral analysis and taxonomy development",
+        "reasoning_pathway": "Clear progression from identifying theoretical gap through developing gradational account to showing implications",
+        "example_needs": "Examples from institutional complicity, consumer behavior, and bystander scenarios",
+        "technical_requirements": "Standard moral philosophical analysis of responsibility and moral emotions",
+        "anticipated_challenges": [
+          "Complexity of mapping contribution types to moral residue accurately",
+          "Risk of creating overly complex taxonomies"
+        ]
+      },
+      "literature_assessment": {
+        "key_debates": [
+          "Recent complicity theory",
+          "Collective responsibility literature",
+          "Moral psychology of guilt and shame"
+        ],
+        "engagement_strategy": "Can build directly on established complicity literature while filling identified theoretical gap",
+        "background_requirements": [
+          "Complicity theory basics",
+          "Collective action and responsibility",
+          "Moral emotions and psychology"
+        ]
+      },
+      "refinement_opportunities": {
+        "core_preserving_changes": [
+          "Could focus on specific institutional contexts",
+          "Might narrow to particular types of collective wrongdoing"
+        ],
+        "development_suggestions": [
+          "Develop clearer criteria for distinguishing complicity degrees",
+          "Add more concrete guidance for remedial obligations"
+        ],
+        "scope_adjustments": [
+          "Could limit to institutional rather than individual complicity",
+          "Might focus on specific domains like corporate or political complicity"
+        ]
+      },
+      "viability_summary": {
+        "strengths": [
+          "Clear theoretical contribution",
+          "Connects to lived moral experience",
+          "Practical implications for institutions"
+        ],
+        "concerns": [
+          "Complexity of accurately mapping degrees to residue",
+          "Risk of overly complex theoretical apparatus"
+        ],
+        "overall_assessment": "Solid theoretical contribution but requires careful management of complexity"
+      }
+    },
+    {
+      "title": "Transformative Empathy and Identity Boundaries",
+      "core_analysis": {
+        "original_contribution": "Distinguishes projective from incorporative empathy to explain identity-threatening versus identity-preserving empathetic experiences",
+        "key_strength": "Identifies overlooked feature of empathetic experience with implications across multiple philosophical areas",
+        "current_formulation": "Novel theoretical insight addressing gap in empathy theory",
+        "potential_improvements": [
+          "Could strengthen criteria for distinguishing the two empathy types",
+          "Might benefit from clearer account of identity boundary shifts"
+        ]
+      },
+      "development_assessment": {
+        "llm_alignment": "Reasonable fit for conceptual analysis though requires careful handling of personal identity issues",
+        "reasoning_pathway": "Clear structure from identifying theoretical gap through developing distinctions to showing implications",
+        "example_needs": "Examples from literary engagement, cultural immersion, and caregiving relationships",
+        "technical_requirements": "Requires integration of empathy theory, personal identity concepts, and moral psychology",
+        "anticipated_challenges": [
+          "Complexity of personal identity issues",
+          "Risk of conflating empathy with other psychological phenomena"
+        ]
+      },
+      "literature_assessment": {
+        "key_debates": [
+          "Recent empathy theory",
+          "Transformative experience literature",
+          "Personal identity and psychological continuity"
+        ],
+        "engagement_strategy": "Must integrate literature from multiple areas including empathy, personal identity, and moral psychology",
+        "background_requirements": [
+          "Empathy theory",
+          "Personal identity concepts",
+          "Transformative experience literature",
+          "Moral psychology"
+        ]
+      },
+      "refinement_opportunities": {
+        "core_preserving_changes": [
+          "Could focus on specific contexts like literary or cross-cultural empathy",
+          "Might narrow to particular identity aspects"
+        ],
+        "development_suggestions": [
+          "Develop clearer criteria for identity boundary shifts",
+          "Focus more specifically on moral implications"
+        ],
+        "scope_adjustments": [
+          "Could limit to specific empathy contexts",
+          "Might focus on epistemic rather than ethical implications"
+        ]
+      },
+      "viability_summary": {
+        "strengths": [
+          "Novel theoretical insight",
+          "Bridges multiple philosophical areas",
+          "Addresses universal human experience"
+        ],
+        "concerns": [
+          "Complexity of personal identity issues",
+          "Requires integration across multiple literatures"
+        ],
+        "overall_assessment": "Interesting contribution but high complexity and challenging development requirements"
+      }
+    }
+  ],
+  "selection_decision": {
+    "selected_topics": [
+      {
+        "title": "The Autonomy Paradox in Content Moderation",
+        "rank": 1,
+        "selection_rationale": "Offers clearest theoretical contribution with highest contemporary relevance and most manageable development path",
+        "comparative_advantages": [
+          "Most timely and broadly relevant topic",
+          "Clean theoretical structure with established philosophical tools",
+          "Clear policy implications without political sensitivity"
+        ]
+      },
+      {
+        "title": "Aesthetic Testimony and the Limits of Deference",
+        "rank": 2,
+        "selection_rationale": "Provides solid theoretical contribution to established debate with clear development pathway and minimal risks",
+        "comparative_advantages": [
+          "Well-defined theoretical puzzle with systematic solution",
+          "Builds directly on recent literature",
+          "Low political risk with broad philosophical appeal"
+        ]
+      },
+      {
+        "title": "Performative Allyship and the Sincerity Problem",
+        "rank": 3,
+        "selection_rationale": "Strong conceptual contribution to important contemporary issue but requires very careful handling of sensitive material",
+        "comparative_advantages": [
+          "Addresses highly relevant social phenomenon",
+          "Clear practical implications",
+          "Uses accessible examples and straightforward analysis"
+        ]
+      }
+    ],
+    "rejected_topics": [
+      {
+        "title": "Borrowed Offense and Moral Standing",
+        "rejection_rationale": [
+          "High political sensitivity creates significant development risks",
+          "Potential for appearing to take sides in contentious cultural debates"
+        ]
+      },
+      {
+        "title": "Complicity Gradations and Moral Residue",
+        "rejection_rationale": [
+          "Risk of creating overly complex theoretical apparatus",
+          "Mapping between complicity degrees and moral residue may prove unwieldy"
+        ]
+      },
+      {
+        "title": "Transformative Empathy and Identity Boundaries",
+        "rejection_rationale": [
+          "Requires integration across too many complex literatures",
+          "Personal identity issues add significant theoretical complexity"
+        ]
+      }
+    ],
+    "comparative_analysis": {
+      "key_differentiators": [
+        "Contemporary relevance and timeliness",
+        "Political sensitivity and development risks",
+        "Theoretical complexity and literature integration requirements",
+        "Clarity of development pathway"
+      ],
+      "ranking_rationale": "Selected topics balance clear theoretical contributions with manageable development paths while avoiding excessive political sensitivity or theoretical complexity"
+    }
+  },
+  "stage_guidance": {
+    "development_priorities": [
+      "Focus on clear conceptual distinctions rather than complex taxonomies",
+      "Emphasize practical implications while maintaining theoretical rigor",
+      "Use abundant concrete examples to illustrate abstract points",
+      "Engage recent literature efficiently without extensive review"
+    ],
+    "next_stage_considerations": "Begin with autonomy paradox topic given its clear structure and broad appeal, then develop aesthetic testimony piece as solid theoretical contribution, considering performative allyship only if confident about handling sensitivity issues appropriately"
+  }
+}

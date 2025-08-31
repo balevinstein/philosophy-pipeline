@@ -23,7 +23,7 @@ class ConceptualTopicGenerator(BaseStage):
         """Run the conceptual topic generation stage"""
         try:
             # Get response from API
-            response_text = self.api_handler.make_api_call(
+            response_text, duration = self.api_handler.make_api_call(
                 stage="idea_generation", prompt=self._get_generation_prompt()
             )
 

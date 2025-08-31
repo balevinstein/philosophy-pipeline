@@ -1,0 +1,92 @@
+# Philosophy Pipeline - Development Environment Configuration
+# This file contains development-specific overrides and settings
+
+# Development environment settings
+environment:
+  debug: true
+  log_level: DEBUG
+  cache_enabled: true
+  verbose_output: true
+
+# Reduced token limits for faster development iterations
+models:
+  idea_generation:
+    max_tokens: 4096  # Reduced from 8192
+    temperature: 0.8  # Higher temperature for more creative development
+  topic_evaluation:
+    max_tokens: 4096
+  literature_assessment:
+    max_tokens: 4096
+  development_testing:
+    max_tokens: 4096
+    temperature: 0.8
+  topic_refinement:
+    max_tokens: 4096
+  topic_analysis:
+    max_tokens: 4096
+  conceptual_development:
+    max_tokens: 4096
+    temperature: 0.8
+
+  # Reduced Phase II limits for development
+  literature_processing:
+    max_tokens: 4096
+    pdf_settings:
+      cache_enabled: true
+      max_pages: 50  # Reduced from 100
+      max_size_mb: 16  # Reduced from 32
+  abstract_development:
+    max_tokens: 4096
+    temperature: 0.8
+  outline_development:
+    max_tokens: 4096
+    temperature: 0.8
+  key_moves_development:
+    max_tokens: 4096
+    temperature: 0.8
+
+  # Faster refinement cycles for development
+  abstract_refinement:
+    max_tokens: 4096
+  outline_refinement:
+    max_tokens: 4096
+  key_moves_refinement:
+    max_tokens: 4096
+
+  # Development-optimized Phase III
+  section_writing:
+    max_tokens: 4096
+    temperature: 0.8
+  paper_integration:
+    max_tokens: 16000  # Reduced from 32000
+
+# Reduced development cycles for faster iteration
+parameters:
+  num_initial_topics: 3  # Reduced from 6
+  development_cycles:
+    abstract_num_cycles: 2  # Reduced from 3
+    outline_num_cycles: 2   # Reduced from 3
+    key_moves_num_cycles: 2 # Reduced from 3
+    key_move_max_cycles: 2
+    outline_max_cycles: 2
+  literature_processing:
+    max_retries: 2  # Reduced from 3
+    min_wait: 2     # Reduced from 4
+    max_wait: 30    # Reduced from 60
+
+# Development paths with clear separation
+paths:
+  base_dir: ./outputs/dev
+  papers_dir: ./papers/dev
+
+# Development API settings
+api:
+  max_tokens: 4000  # Reduced from 8000
+  temperature: 0.2  # Slightly higher for development
+
+# Development outputs with extra debugging
+outputs:
+  save_intermediate: true
+  create_backups: false  # Disabled for development
+  debug_outputs: true
+  timestamp_files: true
